@@ -24,6 +24,7 @@ func _process(delta):
 
 func modify_health(modification):
 	health += modification
+	
 	if health < 0:
 		die()
 	emit_signal("health_changed", health, modification, true)

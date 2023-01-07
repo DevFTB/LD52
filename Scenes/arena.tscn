@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd0cbyq3rs8iv"]
+[gd_scene load_steps=17 format=3 uid="uid://bd0cbyq3rs8iv"]
 
 [ext_resource type="Script" path="res://Scenes/ControllablePlayer.gd" id="2_d8hb5"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="4_grhpe"]
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="5_2elvb"]
 [ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/korn.png" id="6_c4fpn"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="6_cb21j"]
+[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_k8gt7"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="7_i4ft2"]
 [ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="7_vbxnd"]
 
@@ -19,6 +21,30 @@ use_texture_padding = false
 [sub_resource type="TileSet" id="TileSet_8kn6x"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_ssi7g")
+
+[sub_resource type="Animation" id="Animation_c6npk"]
+resource_name = "Korn"
+
+[sub_resource type="Animation" id="Animation_2ff7n"]
+resource_name = "EnemyFlashOnHit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy/Korn:use_parent_material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xv8km"]
+_data = {
+"EnemyFlashOnHit": SubResource("Animation_2ff7n"),
+"Korn": SubResource("Animation_c6npk")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
 font_size = 36
@@ -72,7 +98,16 @@ grow_vertical = 2
 position = Vector2(177, 348)
 script = ExtResource("5_2elvb")
 
+[node name="FlashOnHit" type="AnimationPlayer" parent="Enemy"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_xv8km")
+}
+script = ExtResource("6_k8gt7")
+
 [node name="Korn" type="Sprite2D" parent="Enemy"]
+material = ExtResource("6_cb21j")
+use_parent_material = true
 texture = ExtResource("6_c4fpn")
 
 [node name="EnemyGUI" type="Control" parent="Enemy"]
@@ -99,4 +134,5 @@ autostart = true
 [connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="stats_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
 [connection signal="health_changed" from="Enemy" to="Enemy/EnemyGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="Enemy" to="Enemy/FlashOnHit" method="_on_enemy_health_changed"]
 [connection signal="timeout" from="Enemy/EnemyGUI/Pain" to="Enemy" method="_on_pain_timeout"]
