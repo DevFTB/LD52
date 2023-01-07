@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="2_k8iw2"]
 [ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="2_xc1q6"]
 [ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/korn.png" id="3_uswls"]
-[ext_resource type="Texture2D" path="res://Enemy/dead_korn.png" id="4_7b4be"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/dead_korn.png" id="4_7b4be"]
 [ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="4_n0s1c"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jfuxr"]
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_fgrfn"]
@@ -31,8 +31,8 @@ outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
-radius = 24.0
-height = 112.0
+radius = 18.0
+height = 78.0
 
 [node name="Enemy" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_hiw8e")
@@ -47,6 +47,7 @@ script = ExtResource("2_3tym0")
 material = ExtResource("2_k8iw2")
 use_parent_material = true
 position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
 frames = SubResource("SpriteFrames_0ihq0")
 animation = &"alive"
 

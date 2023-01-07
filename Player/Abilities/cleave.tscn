@@ -1,21 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl6446wxowdpo"]
+[gd_scene load_steps=10 format=3 uid="uid://bq32vdiv30t2u"]
 
 [ext_resource type="Script" path="res://Scenes/AoEAttack.gd" id="1_dc3g1"]
-[ext_resource type="Texture2D" uid="uid://dwbfw7t1ml3m5" path="res://Player/cleave.png" id="2_hxckn"]
+[ext_resource type="Texture2D" uid="uid://dwbfw7t1ml3m5" path="res://Player/Abilities/cleave.png" id="2_yxpoh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv2ya"]
+atlas = ExtResource("2_yxpoh")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqn01"]
+atlas = ExtResource("2_yxpoh")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqsyv"]
+atlas = ExtResource("2_yxpoh")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx6e7"]
+atlas = ExtResource("2_yxpoh")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42d73"]
+atlas = ExtResource("2_yxpoh")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h0j0"]
+atlas = ExtResource("2_yxpoh")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ie1fe"]
+animations = [{
+"frames": [SubResource("AtlasTexture_pv2ya"), SubResource("AtlasTexture_aqn01"), SubResource("AtlasTexture_mqsyv"), SubResource("AtlasTexture_jx6e7"), SubResource("AtlasTexture_42d73"), SubResource("AtlasTexture_5h0j0")],
+"loop": true,
+"name": &"default",
+"speed": 18.0
+}]
 
 [node name="Cleave" type="Node2D"]
 script = ExtResource("1_dc3g1")
-duration = 0.18
+duration = 0.33
 
-[node name="Cleave" type="Sprite2D" parent="."]
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("2_hxckn")
+[node name="Cleave" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.2, 1.2)
+frames = SubResource("SpriteFrames_ie1fe")
+playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-5, -8, 4, -52, 47, -89, -14, -71, -45, -43, -61, -6, -52, 39, -20, 83, 36, 103, -10, 30)
+position = Vector2(7, -2)
+polygon = PackedVector2Array(-7, 1, 7, -23, 32, -61, 2, -52, -18, -37, -35, -4, -31, 36, -12, 57, 23, 70, 3, 35)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

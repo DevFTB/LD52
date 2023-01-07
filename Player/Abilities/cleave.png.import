@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwbfw7t1ml3m5"
-path="res://.godot/imported/cleave.png-bed36c4fec5f9222aea1c37a776fe68d.ctex"
+path="res://.godot/imported/cleave.png-cd5134978bc591367eb05e08154b27ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/cleave.png"
-dest_files=["res://.godot/imported/cleave.png-bed36c4fec5f9222aea1c37a776fe68d.ctex"]
+source_file="res://Player/Abilities/cleave.png"
+dest_files=["res://.godot/imported/cleave.png-cd5134978bc591367eb05e08154b27ca.ctex"]
 
 [params]
 
