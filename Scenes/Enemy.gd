@@ -61,3 +61,7 @@ func attack(available_attack):
 	# Can be changed for more complexity
 	$Attacks.get_child(available_attack).attack()
 	can_attack[available_attack] = false
+
+
+func _on_health_changed(new_health, difference, should_display):
+	pass # Replace with function body.

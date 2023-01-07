@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/ControllablePlayer.gd" id="2_d8hb5"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
-[ext_resource type="PackedScene" uid="uid://d4bceykc58s8j" path="res://Enemy/enemy.tscn" id="2_m1pyp"]
+[ext_resource type="PackedScene" uid="uid://xj0dkwgp4dak" path="res://Enemy/enemy.tscn" id="2_m1pyp"]
 [ext_resource type="Texture2D" uid="uid://bg4rds4np3i0o" path="res://Level/level.png" id="2_mbeb0"]
 [ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="4_grhpe"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="6_cb21j"]
@@ -38,12 +38,6 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(17, 1, 1, 0, 1, 1, 16, 1, 1, 15, 1, 1, 14, 1, 1, 13, 1, 1, 12, 1, 1, 11, 1, 1, 10, 1, 1, 9, 1, 1, 8, 1, 1, 7, 1, 1, 6, 1, 1, 5, 1, 1, 4, 1, 1, 3, 1, 1, 2, 1, 1, 1, 1, 1, 655360, 1, 1, 655361, 1, 1, 655362, 1, 1, 655363, 1, 1, 655364, 1, 1, 655365, 1, 1, 655366, 1, 1, 655367, 1, 1, 655368, 1, 1, 655369, 1, 1, 655370, 1, 1, 655371, 1, 1, 655372, 1, 1, 655373, 1, 1, 655374, 1, 1, 655375, 1, 1, 655376, 1, 1, 655377, 1, 1)
-
-[node name="Enemy" parent="." instance=ExtResource("2_m1pyp")]
-position = Vector2(378, 297)
-
-[node name="Enemy2" parent="." instance=ExtResource("2_m1pyp")]
-position = Vector2(273, 420)
 
 [node name="GrimCheaper" type="Node2D" parent="." groups=["player"]]
 position = Vector2(1110, 321)
@@ -91,6 +85,12 @@ autostart = true
 
 [node name="FlashOnHit" type="Node" parent="GrimCheaper"]
 script = ExtResource("6_k8gt7")
+
+[node name="Enemy" parent="." instance=ExtResource("2_m1pyp")]
+position = Vector2(211, 412)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_m1pyp")]
+position = Vector2(113, 255)
 
 [connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/FlashOnHit" method="_on_health_changed"]
