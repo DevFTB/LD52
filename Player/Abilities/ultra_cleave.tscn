@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqivytgoalyta"]
+
+[ext_resource type="Script" path="res://Player/Abilities/UltraCleave.gd" id="1_lv2es"]
+
+[node name="UltraCleave" type="Node2D"]
+script = ExtResource("1_lv2es")
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Points"]
+position = Vector2(-84, 0)
+
+[node name="Node2D2" type="Node2D" parent="Points"]
+position = Vector2(-40, -52)
+rotation = 1.0472
+
+[node name="Node2D3" type="Node2D" parent="Points"]
+position = Vector2(-40, 54)
+rotation = -1.0472
+
+[node name="Node2D4" type="Node2D" parent="Points"]
+position = Vector2(-73, -31)
+rotation = 0.523599
+
+[node name="Node2D5" type="Node2D" parent="Points"]
+position = Vector2(-72, 37)
+rotation = -0.523599
+scale = Vector2(1, 1)
+
+[node name="Attacks" type="Node2D" parent="."]

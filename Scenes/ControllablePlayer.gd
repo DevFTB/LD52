@@ -11,15 +11,23 @@ extends Node2D
 
 var direction : Vector2 = Vector2.ZERO
 
+var can_use_skill = true
+
 signal stats_changed(hp)
 signal health_changed(new_health)
 signal death
 
+var normal_attack = preload("res://Player/Abilities/cleave.tscn")
+var skill = preload("res://Player/Abilities/ultra_cleave.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("stats_changed", hp)
 	emit_signal("health_changed", health)
 	pass # Replace with function body.
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	position += direction.normalized() * movement_speed * delta
+	pass
 
 func modify_health(modification):
 	health += modification
@@ -32,11 +40,16 @@ func die():
 	emit_signal("death")
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	position += direction.normalized() * movement_speed * delta
+func do_attack(attack):
+	var new_attack = attack.instantiate()
+	$Attack.add_child(new_attack)
+	
+	var rot_angle = Vector2.LEFT.angle_to(direction.normalized())
+	print(rot_angle)
+	new_attack.position = Vector2(-50, 0).rotated(rot_angle)
+	new_attack.rotation = rot_angle
 	pass
-
+	
 func _input(event):
 	if event is InputEventKey:
 		if event.is_action_pressed("move_up"):
@@ -58,5 +71,19 @@ func _input(event):
 			direction.x += 1
 		if event.is_action_released("move_right"):
 			direction.x -= 1
-			
+		
+		if event.is_action_pressed("skill") and can_use_skill:
+			do_attack(skill)
+			can_use_skill = false
+			$SkillTimer.start()
 	pass
+
+
+func _on_attack_timer_timeout():
+	do_attack(normal_attack)
+	pass # Replace with function body.
+
+
+func _on_skill_timer_timeout():
+	can_use_skill = true
+	pass # Replace with function body.

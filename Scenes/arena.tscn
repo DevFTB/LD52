@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd0cbyq3rs8iv"]
+[gd_scene load_steps=13 format=3 uid="uid://bd0cbyq3rs8iv"]
 
 [ext_resource type="Script" path="res://Scenes/ControllablePlayer.gd" id="2_d8hb5"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
@@ -19,6 +19,10 @@ use_texture_padding = false
 [sub_resource type="TileSet" id="TileSet_8kn6x"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_ssi7g")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
+radius = 24.0
+height = 112.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
 font_size = 36
@@ -46,16 +50,15 @@ position = Vector2(1110, 321)
 script = ExtResource("2_d8hb5")
 
 [node name="Sprite" type="Sprite2D" parent="GrimCheaper"]
-position = Vector2(0, -49.435)
 texture = ExtResource("2_ixflb")
 
 [node name="CharacterGUI" type="Control" parent="GrimCheaper"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -42.0
-offset_top = 6.0
-offset_right = 38.0
-offset_bottom = 20.363
+offset_left = -43.0
+offset_top = 59.0
+offset_right = 37.0
+offset_bottom = 73.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="GrimCheaper/CharacterGUI"]
@@ -68,11 +71,27 @@ offset_bottom = 12.637
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Enemy" type="Node2D" parent="."]
+[node name="Area2D" type="Area2D" parent="GrimCheaper"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrimCheaper/Area2D"]
+shape = SubResource("CapsuleShape2D_61i3l")
+
+[node name="Attack" type="Node2D" parent="GrimCheaper"]
+
+[node name="AttackTimer" type="Timer" parent="GrimCheaper"]
+wait_time = 2.0
+autostart = true
+
+[node name="SkillTimer" type="Timer" parent="GrimCheaper"]
+
+[node name="Enemy" type="Node2D" parent="." groups=["enemy"]]
 position = Vector2(177, 348)
 script = ExtResource("5_2elvb")
 
 [node name="Korn" type="Sprite2D" parent="Enemy"]
+position = Vector2(-2, -41)
 texture = ExtResource("6_c4fpn")
 
 [node name="EnemyGUI" type="Control" parent="Enemy"]
@@ -94,9 +113,18 @@ script = ExtResource("7_i4ft2")
 
 [node name="Pain" type="Timer" parent="Enemy/EnemyGUI"]
 wait_time = 1.5
-autostart = true
+
+[node name="Area2D" type="Area2D" parent="Enemy"]
+position = Vector2(-2, -40)
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
+shape = SubResource("CapsuleShape2D_61i3l")
 
 [connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="stats_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
+[connection signal="timeout" from="GrimCheaper/AttackTimer" to="GrimCheaper" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="GrimCheaper/SkillTimer" to="GrimCheaper" method="_on_skill_timer_timeout"]
 [connection signal="health_changed" from="Enemy" to="Enemy/EnemyGUI" method="_on_health_changed"]
 [connection signal="timeout" from="Enemy/EnemyGUI/Pain" to="Enemy" method="_on_pain_timeout"]

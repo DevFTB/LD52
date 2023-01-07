@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl6446wxowdpo"]
+
+[ext_resource type="Script" path="res://Scenes/AoEAttack.gd" id="1_dc3g1"]
+[ext_resource type="Texture2D" uid="uid://dwbfw7t1ml3m5" path="res://Player/cleave.png" id="2_hxckn"]
+
+[node name="Cleave" type="Node2D"]
+script = ExtResource("1_dc3g1")
+duration = 0.18
+
+[node name="Cleave" type="Sprite2D" parent="."]
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_hxckn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-5, -8, 4, -52, 47, -89, -14, -71, -45, -43, -61, -6, -52, 39, -20, 83, 36, 103, -10, 30)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
