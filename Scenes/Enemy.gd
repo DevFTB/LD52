@@ -38,3 +38,6 @@ func die():
 func _on_pain_timeout():
 	modify_health(-1)
 	pass # Replace with function body.
+	
+func get_sprite():
+	return $Sprite

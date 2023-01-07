@@ -1,21 +1,17 @@
-extends AnimationPlayer
+extends Node
 
+@export var flash_duration: float = 0.2
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var parent_sprite =get_parent().get_sprite()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func flash():
+	parent_sprite.use_parent_material = false
+	get_tree().create_timer(flash_duration).timeout.connect(unflash)
+	
+func unflash():
+	parent_sprite.use_parent_material = true
+	
+func _on_health_changed(new_health, difference, should_display):
+	if should_display:
+		flash()
 	pass
-
-
-func _on_enemy_health_changed(new_health, difference, should_display):
-	play("EnemyFlashOnHit")
-	pass # Replace with function body.
-
-
-func _on_character_health_changed(new_health):
-	play("EnemyFlashOnHit")
-	pass # Replace with function body.
