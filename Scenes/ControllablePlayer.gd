@@ -23,6 +23,7 @@ var skill = preload("res://Player/Abilities/ultra_cleave.tscn")
 func _ready():
 	emit_signal("stats_changed", hp)
 	emit_signal("health_changed", health, 0, false)
+	print("player pos: " + str(global_position))
 	pass # Replace with function body.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,7 +34,7 @@ func modify_health(modification):
 	health += modification
 	if health < 0:
 		die()
-	emit_signal("health_changed", health)
+	emit_signal("health_changed", health, modification, true)
 
 func die():
 	print("death")
