@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd0cbyq3rs8iv"]
+[gd_scene load_steps=12 format=3 uid="uid://bd0cbyq3rs8iv"]
 
 [ext_resource type="Script" path="res://Scenes/ControllablePlayer.gd" id="2_d8hb5"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
 [ext_resource type="Texture2D" uid="uid://bg4rds4np3i0o" path="res://Level/level.png" id="2_mbeb0"]
 [ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="4_grhpe"]
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="5_2elvb"]
+[ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/korn.png" id="6_c4fpn"]
+[ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="7_i4ft2"]
+[ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="7_vbxnd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssi7g"]
 texture = ExtResource("2_mbeb0")
@@ -15,6 +19,11 @@ use_texture_padding = false
 [sub_resource type="TileSet" id="TileSet_8kn6x"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_ssi7g")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
+font_size = 36
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Arena" type="Node2D"]
 
@@ -59,5 +68,35 @@ offset_bottom = 12.637
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(177, 348)
+script = ExtResource("5_2elvb")
+
+[node name="Korn" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("6_c4fpn")
+
+[node name="EnemyGUI" type="Control" parent="Enemy"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 14.363
+script = ExtResource("7_vbxnd")
+
+[node name="DamageNumber" type="Label" parent="Enemy/EnemyGUI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = -84.0
+offset_right = 40.0
+offset_bottom = -58.0
+text = "0"
+label_settings = SubResource("LabelSettings_lgit8")
+script = ExtResource("7_i4ft2")
+
+[node name="Pain" type="Timer" parent="Enemy/EnemyGUI"]
+wait_time = 1.5
+autostart = true
+
 [connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="stats_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
+[connection signal="health_changed" from="Enemy" to="Enemy/EnemyGUI" method="_on_health_changed"]
+[connection signal="timeout" from="Enemy/EnemyGUI/Pain" to="Enemy" method="_on_pain_timeout"]
