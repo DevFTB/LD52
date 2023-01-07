@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dn6kp1v8qdosw"]
+[gd_scene load_steps=17 format=3 uid="uid://dn6kp1v8qdosw"]
 
 [ext_resource type="Script" path="res://Scenes/ControllablePlayer.gd" id="2_d8hb5"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_k8gt7"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="7_i4ft2"]
 [ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="7_vbxnd"]
+[ext_resource type="Script" path="res://Scenes/HitManager.gd" id="11_m6qxy"]
+[ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="12_c41m3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssi7g"]
 texture = ExtResource("2_mbeb0")
@@ -97,12 +99,6 @@ script = ExtResource("6_k8gt7")
 position = Vector2(177, 348)
 script = ExtResource("5_2elvb")
 
-[node name="Sprite" type="Sprite2D" parent="Enemy"]
-material = ExtResource("6_cb21j")
-use_parent_material = true
-position = Vector2(-2, -41)
-texture = ExtResource("6_c4fpn")
-
 [node name="EnemyGUI" type="Control" parent="Enemy"]
 layout_mode = 3
 anchors_preset = 0
@@ -134,6 +130,17 @@ shape = SubResource("CapsuleShape2D_61i3l")
 [node name="FlashOnHit" type="Node" parent="Enemy"]
 script = ExtResource("6_k8gt7")
 
+[node name="HitManager" type="Node2D" parent="Enemy"]
+script = ExtResource("11_m6qxy")
+
+[node name="ImpactEffect" parent="Enemy/HitManager" instance=ExtResource("12_c41m3")]
+
+[node name="Sprite" type="Sprite2D" parent="Enemy"]
+material = ExtResource("6_cb21j")
+use_parent_material = true
+position = Vector2(-2, -41)
+texture = ExtResource("6_c4fpn")
+
 [connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/FlashOnHit" method="_on_health_changed"]
 [connection signal="stats_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
@@ -141,4 +148,5 @@ script = ExtResource("6_k8gt7")
 [connection signal="timeout" from="GrimCheaper/SkillTimer" to="GrimCheaper" method="_on_skill_timer_timeout"]
 [connection signal="health_changed" from="Enemy" to="Enemy/EnemyGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Enemy" to="Enemy/FlashOnHit" method="_on_health_changed"]
+[connection signal="health_changed" from="Enemy" to="Enemy/HitManager" method="_on_enemy_health_changed"]
 [connection signal="timeout" from="Enemy/EnemyGUI/Pain" to="Enemy" method="_on_pain_timeout"]
