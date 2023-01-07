@@ -1,14 +1,36 @@
 extends Node2D
 
 @export var movement_speed : float = 100
+@export var starting_hp : float = 10
+
+# the variable hp stat, max health
+@onready var hp = starting_hp 
+
+# the health of the character
+@onready var health = hp
 
 var direction : Vector2 = Vector2.ZERO
 
+signal stats_changed(hp)
+signal health_changed(new_health)
+signal death
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	emit_signal("stats_changed", hp)
+	emit_signal("health_changed", health)
 	pass # Replace with function body.
 
+func modify_health(modification):
+	health += modification
+	if health < 0:
+		die()
+	emit_signal("health_changed", health)
+
+func die():
+	print("death")
+	emit_signal("death")
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
