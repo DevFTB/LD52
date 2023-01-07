@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://xbcmvwm5iboa"]
+[gd_scene load_steps=15 format=3 uid="uid://xj0dkwgp4dak"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_hiw8e"]
+[ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_3tym0"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="2_k8iw2"]
+[ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="2_xc1q6"]
 [ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/korn.png" id="3_uswls"]
 [ext_resource type="Texture2D" path="res://Enemy/dead_korn.png" id="4_7b4be"]
 [ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="4_n0s1c"]
@@ -36,6 +38,11 @@ height = 112.0
 script = ExtResource("1_hiw8e")
 max_hp = 8
 
+[node name="HitManager" type="Node2D" parent="."]
+script = ExtResource("2_3tym0")
+
+[node name="ImpactEffect" parent="HitManager" instance=ExtResource("2_xc1q6")]
+
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_k8iw2")
 use_parent_material = true
@@ -52,7 +59,6 @@ script = ExtResource("4_n0s1c")
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -83,6 +89,7 @@ projectile_stats = ExtResource("9_kqmrm")
 [node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot"]
 one_shot = true
 
+[connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
 [connection signal="timeout" from="EnemyGUI/Pain" to="." method="_on_pain_timeout"]
