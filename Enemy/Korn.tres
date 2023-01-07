@@ -1,6 +1,0 @@
-[gd_resource type="AnimatedTexture" load_steps=2 format=3 uid="uid://cc0th3w35t4mp"]
-
-[ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/korn.png" id="1_6l6e3"]
-
-[resource]
-frame_0/texture = ExtResource("1_6l6e3")
