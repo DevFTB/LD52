@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4bceykc58s8j"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_hiw8e"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="2_k8iw2"]
+[ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/korn.png" id="3_uswls"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/dead_korn.png" id="4_7b4be"]
+[ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="4_n0s1c"]
+[ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jfuxr"]
+[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_fgrfn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ihq0"]
+animations = [{
+"frames": [ExtResource("3_uswls")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("4_7b4be")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
+font_size = 36
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
+radius = 24.0
+height = 112.0
+
+[node name="Enemy" type="Node2D" groups=["enemy"]]
+position = Vector2(177, 348)
+script = ExtResource("1_hiw8e")
+max_hp = 8
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_k8iw2")
+use_parent_material = true
+position = Vector2(-2, -41)
+frames = SubResource("SpriteFrames_0ihq0")
+animation = &"alive"
+
+[node name="EnemyGUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 14.363
+script = ExtResource("4_n0s1c")
+
+[node name="DamageNumber" type="Label" parent="EnemyGUI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = -84.0
+offset_right = 40.0
+offset_bottom = -58.0
+text = "0"
+label_settings = SubResource("LabelSettings_lgit8")
+script = ExtResource("5_jfuxr")
+
+[node name="Pain" type="Timer" parent="EnemyGUI"]
+wait_time = 1.5
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-2, -40)
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_61i3l")
+
+[node name="FlashOnHit" type="Node" parent="."]
+script = ExtResource("6_fgrfn")
+
+[connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
+[connection signal="timeout" from="EnemyGUI/Pain" to="." method="_on_pain_timeout"]

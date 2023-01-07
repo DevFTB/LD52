@@ -8,6 +8,8 @@ extends Node2D
 
 @onready var health = max_hp
 
+var is_dead = false
+
 signal health_changed(new_health, difference, should_display)
 signal death
 
@@ -23,15 +25,18 @@ func _process(delta):
 	pass
 
 func modify_health(modification):
-	health += modification
-	
-	if health < 0:
-		die()
-	emit_signal("health_changed", health, modification, true)
+	if not is_dead:
+		health += modification
+		
+		if health < 0:
+			die()
+		emit_signal("health_changed", health, modification, true)
 
 func die():
 	print("death")
 	emit_signal("death")
+	$Sprite.play("dead")    
+	is_dead = true
 	pass
 
 
