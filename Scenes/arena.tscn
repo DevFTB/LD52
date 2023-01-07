@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bd0cbyq3rs8iv"]
+[gd_scene load_steps=15 format=3 uid="uid://dn6kp1v8qdosw"]
 
 [ext_resource type="Script" path="res://Scenes/ControllablePlayer.gd" id="2_d8hb5"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="4_grhpe"]
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="5_2elvb"]
 [ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/korn.png" id="6_c4fpn"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="6_cb21j"]
+[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_k8gt7"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="7_i4ft2"]
 [ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="7_vbxnd"]
 
@@ -50,6 +52,8 @@ position = Vector2(1110, 321)
 script = ExtResource("2_d8hb5")
 
 [node name="Sprite" type="Sprite2D" parent="GrimCheaper"]
+material = ExtResource("6_cb21j")
+use_parent_material = true
 texture = ExtResource("2_ixflb")
 
 [node name="CharacterGUI" type="Control" parent="GrimCheaper"]
@@ -86,11 +90,16 @@ autostart = true
 
 [node name="SkillTimer" type="Timer" parent="GrimCheaper"]
 
+[node name="FlashOnHit" type="Node" parent="GrimCheaper"]
+script = ExtResource("6_k8gt7")
+
 [node name="Enemy" type="Node2D" parent="." groups=["enemy"]]
 position = Vector2(177, 348)
 script = ExtResource("5_2elvb")
 
-[node name="Korn" type="Sprite2D" parent="Enemy"]
+[node name="Sprite" type="Sprite2D" parent="Enemy"]
+material = ExtResource("6_cb21j")
+use_parent_material = true
 position = Vector2(-2, -41)
 texture = ExtResource("6_c4fpn")
 
@@ -122,9 +131,14 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
 shape = SubResource("CapsuleShape2D_61i3l")
 
+[node name="FlashOnHit" type="Node" parent="Enemy"]
+script = ExtResource("6_k8gt7")
+
 [connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="GrimCheaper" to="GrimCheaper/FlashOnHit" method="_on_health_changed"]
 [connection signal="stats_changed" from="GrimCheaper" to="GrimCheaper/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
 [connection signal="timeout" from="GrimCheaper/AttackTimer" to="GrimCheaper" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="GrimCheaper/SkillTimer" to="GrimCheaper" method="_on_skill_timer_timeout"]
 [connection signal="health_changed" from="Enemy" to="Enemy/EnemyGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="Enemy" to="Enemy/FlashOnHit" method="_on_health_changed"]
 [connection signal="timeout" from="Enemy/EnemyGUI/Pain" to="Enemy" method="_on_pain_timeout"]

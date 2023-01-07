@@ -10,7 +10,7 @@ func _process(delta):
 	pass
 
 
-func _on_health_changed(new_health):
+func _on_health_changed(new_health, difference, should_display):
 	$HealthBar.value = new_health
 	pass # Replace with function body.
 

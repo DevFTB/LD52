@@ -25,6 +25,5 @@ rotation = 0.523599
 [node name="Node2D5" type="Node2D" parent="Points"]
 position = Vector2(-72, 37)
 rotation = -0.523599
-scale = Vector2(1, 1)
 
 [node name="Attacks" type="Node2D" parent="."]

@@ -24,6 +24,7 @@ func _process(delta):
 
 func modify_health(modification):
 	health += modification
+	
 	if health < 0:
 		die()
 	emit_signal("health_changed", health, modification, true)
@@ -37,3 +38,6 @@ func die():
 func _on_pain_timeout():
 	modify_health(-1)
 	pass # Replace with function body.
+	
+func get_sprite():
+	return $Sprite

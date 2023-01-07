@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwax5uwomrfi0"]
+
+[ext_resource type="Shader" path="res://Shaders/HurtFlash.gdshader" id="1_5hmpy"]
+
+[resource]
+shader = ExtResource("1_5hmpy")
+shader_parameter/solid_color = Color(1, 1, 1, 0.603922)

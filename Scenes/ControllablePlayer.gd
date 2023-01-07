@@ -14,7 +14,7 @@ var direction : Vector2 = Vector2.ZERO
 var can_use_skill = true
 
 signal stats_changed(hp)
-signal health_changed(new_health)
+signal health_changed(new_health, difference, should_display)
 signal death
 
 var normal_attack = preload("res://Player/Abilities/cleave.tscn")
@@ -22,7 +22,7 @@ var skill = preload("res://Player/Abilities/ultra_cleave.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("stats_changed", hp)
-	emit_signal("health_changed", health)
+	emit_signal("health_changed", health, 0, false)
 	pass # Replace with function body.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -87,3 +87,6 @@ func _on_attack_timer_timeout():
 func _on_skill_timer_timeout():
 	can_use_skill = true
 	pass # Replace with function body.
+
+func get_sprite():
+	return $Sprite
