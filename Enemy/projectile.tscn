@@ -1,16 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbqxj0glj21vm"]
+[gd_scene load_steps=7 format=3 uid="uid://b1ut6nqdiqnxo"]
 
 [ext_resource type="Script" path="res://Enemy/Projectile.gd" id="1_5hisi"]
-[ext_resource type="Texture2D" uid="uid://d053fjmqpv0gu" path="res://Enemy/korn_projectile.png" id="2_kt40w"]
+[ext_resource type="Texture2D" path="res://Enemy/korn_projectile.png" id="2_kt40w"]
 
-[sub_resource type="Gradient" id="Gradient_3ej6n"]
+[sub_resource type="Gradient" id="Gradient_nxq2d"]
 interpolation_mode = 2
 colors = PackedColorArray(1, 0.520852, 0.182072, 1, 0.81026, 1, 0.470764, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_edenx"]
-gradient = SubResource("Gradient_3ej6n")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ctlkf"]
+gradient = SubResource("Gradient_nxq2d")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ru5q6"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0xx2y"]
 particle_flag_disable_z = true
 direction = Vector3(-1, 0, 0)
 spread = 9.37
@@ -22,9 +22,9 @@ orbit_velocity_max = 0.0
 scale_min = 3.0
 scale_max = 4.0
 color = Color(0.87451, 1, 0.384314, 1)
-color_ramp = SubResource("GradientTexture1D_edenx")
+color_ramp = SubResource("GradientTexture1D_ctlkf")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wpg1x"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xew1"]
 radius = 7.0
 
 [node name="Projectile" type="Node2D"]
@@ -38,13 +38,13 @@ texture = ExtResource("2_kt40w")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(-7, 0)
 amount = 14
-process_material = SubResource("ParticleProcessMaterial_ru5q6")
+process_material = SubResource("ParticleProcessMaterial_0xx2y")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_wpg1x")
+shape = SubResource("CircleShape2D_8xew1")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
