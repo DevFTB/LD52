@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4bceykc58s8j"]
+[gd_scene load_steps=13 format=3 uid="uid://xbcmvwm5iboa"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_hiw8e"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="2_k8iw2"]
 [ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/korn.png" id="3_uswls"]
-[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/dead_korn.png" id="4_7b4be"]
+[ext_resource type="Texture2D" path="res://Enemy/dead_korn.png" id="4_7b4be"]
 [ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="4_n0s1c"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jfuxr"]
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_fgrfn"]
 [ext_resource type="Script" path="res://Enemy/ProjectileShoot.gd" id="8_i7f5s"]
-[ext_resource type="Resource" uid="uid://bxnprj3gow0u4" path="res://Enemy/korn_projectile.tres" id="9_kqmrm"]
+[ext_resource type="Resource" path="res://Enemy/korn_projectile.tres" id="9_kqmrm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ihq0"]
 animations = [{
@@ -52,6 +52,7 @@ script = ExtResource("4_n0s1c")
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
