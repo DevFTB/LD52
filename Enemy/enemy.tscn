@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jfuxr"]
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_fgrfn"]
 [ext_resource type="Script" path="res://Enemy/ProjectileShoot.gd" id="8_i7f5s"]
-[ext_resource type="Resource" uid="uid://bxnprj3gow0u4" path="res://Enemy/korn_projectile.tres" id="9_kqmrm"]
+[ext_resource type="Resource" path="res://Enemy/korn_projectile.tres" id="9_kqmrm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ihq0"]
 animations = [{
@@ -62,7 +62,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0

@@ -7,7 +7,7 @@ extends Node2D
 @export var player_stats: PlayerStats
 
 @onready var hp = player_stats.get_hp()
-@onready var health = hp
+@onready var health = float(hp)
 
 @onready var atk = player_stats.get_atk()
 @onready var atk_speed = player_stats.get_atk_speed()
@@ -17,8 +17,10 @@ var dmg_reduction = 0
 
 var direction : Vector2 = Vector2.ZERO
 
-signal stats_changed(hp, atk, atk_speed, move_speed)
+signal stats_changed(hp, atk, atk_speed, move_speed, dmg_reduction, skill_cooldown)
 signal health_changed(new_health, difference, should_display)
+signal used_attack(cd)
+signal used_skill(cd)
 signal death
 
 # Called when the node enters the scene tree for the first time.
@@ -40,7 +42,7 @@ var find_enemy_timeout = 0.25
 
 func _ready():
 	$AnimatedSprite.animation_finished.connect(on_anim_end)
-	emit_signal("stats_changed", hp, atk, atk_speed, move_speed)
+	emit_signal("stats_changed", hp, atk, atk_speed, move_speed, dmg_reduction, player_stats.get_skill_cooldown())
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()
 	$AnimatedSprite.play("walk")
@@ -80,17 +82,23 @@ func _process(delta):
 func modify_health(modification):
 	if not is_dead and enabled:
 		if modification < 0:
-			health += modification * 1 - min(dmg_reduction, 1)
+			var delta =  modification * (1 - min(dmg_reduction, 1))
+			health += delta
+		else:
+			health += modification
+			
 		health = min(hp, health)
-		if health < 0:
-			die()
 		emit_signal("health_changed", health, modification, true)
+		if health <= 0:
+			die()
+
 
 func die():
 	emit_signal("death")
 	is_dead = true 
 	disable()
 
+	$AnimatedSprite.play("walk")
 	if level_width != null:
 		var tween = get_tree().create_tween()
 		var destination = Vector2(level_width + 150, position.y + (randi() % 150))
@@ -139,6 +147,7 @@ func do_attack():
 	var rot_angle = Vector2.LEFT.angle_to(direction.normalized())
 	new_attack.position = Vector2(-50, 0).rotated(rot_angle)
 	new_attack.rotation = rot_angle
+	emit_signal("used_attack", $AttackTimer.wait_time)
 
 func do_skill():
 	var new_skill = skill.instantiate()
@@ -155,6 +164,7 @@ func do_skill():
 	new_skill.rotation = rot_angle
 
 	$Attack.add_child(new_skill)
+	emit_signal("used_skill", $SkillTimer.wait_time)
 
 func modify_attack(attack):
 	pass
@@ -271,7 +281,7 @@ func recalculate_stats():
 	
 	$AttackTimer.wait_time = 1.0 / atk_speed
 	$SkillTimer.wait_time = player_stats.get_skill_cooldown()
-	
+	emit_signal("stats_changed", hp, atk, atk_speed, move_speed, dmg_reduction, player_stats.get_skill_cooldown())
 	
 # ai stuff here
 func process_ai(delta):
@@ -299,8 +309,3 @@ func process_ai(delta):
 		
 		if global_position.distance_to(enemy_pos) > ai_stopping_range:
 			position += direction.normalized() * move_speed * 100 * delta
-	
-	
-	
-
-	

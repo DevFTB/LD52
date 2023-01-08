@@ -11,5 +11,5 @@ func buff():
 	var players = get_tree().get_nodes_in_group("player")
 	
 	for player in players:
-		player.apply_buff(BuffStats.new(0, buff_amount, buff_amount, buff_amount), duration)
+		player.apply_buff(BuffStats.new(1, buff_amount, buff_amount, buff_amount), duration)
 	pass

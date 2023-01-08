@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ch0um0qfy57rk"]
+[gd_scene load_steps=55 format=3 uid="uid://ch0um0qfy57rk"]
 
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
 [ext_resource type="Texture2D" uid="uid://bgduad68wqtvd" path="res://Level/level.png" id="2_mbeb0"]
@@ -22,6 +22,24 @@
 [ext_resource type="PackedScene" uid="uid://cep38mpyaw3j1" path="res://Player/Arboarist/boar_shield.tscn" id="19_76w3q"]
 [ext_resource type="Script" path="res://Player/Stat.gd" id="20_ifu6p"]
 [ext_resource type="Script" path="res://Player/PlayerStats.gd" id="21_m4u31"]
+[ext_resource type="Script" path="res://Scenes/BottomPlayerGUI.gd" id="23_goqrg"]
+[ext_resource type="Texture2D" uid="uid://x8vrjqjjm5i7" path="res://Player/GrimCheaper/gc_portrait.png" id="23_wpicw"]
+[ext_resource type="Texture2D" uid="uid://cb8ov6ywh3qb0" path="res://Player/GrimCheaper/Chicken Attack.png" id="24_5u0gn"]
+[ext_resource type="Texture2D" uid="uid://cd637n8bdvrwd" path="res://Player/UI/circular_fill.png" id="24_i0vlm"]
+[ext_resource type="Texture2D" uid="uid://bakk28guwmqm0" path="res://Player/Sheepard/sp_portrait.png" id="24_kqsrd"]
+[ext_resource type="Texture2D" uid="uid://07birr4t000w" path="res://Player/UI/circular_over.png" id="25_7gjg3"]
+[ext_resource type="Texture2D" uid="uid://byupeqxeairry" path="res://Player/Arboarist/ab_portrait.png" id="25_8evei"]
+[ext_resource type="Texture2D" uid="uid://culij2c0eqngi" path="res://Player/GrimCheaper/chicken skill.png" id="27_e6b38"]
+[ext_resource type="Texture2D" uid="uid://bns4f8f0l5n7a" path="res://Player/UI/portrait_cover.png" id="27_fsxvs"]
+[ext_resource type="Texture2D" uid="uid://ctpxc31vgbh67" path="res://Player/Sheepard/sheep attack.png" id="30_ok0me"]
+[ext_resource type="Texture2D" uid="uid://gqtvjrm66sh" path="res://Player/Sheepard/sheep skill.png" id="31_flu44"]
+[ext_resource type="Texture2D" uid="uid://dfyuuo8mdnc20" path="res://Player/UI/portrait_cover_sp.png" id="31_lvaba"]
+[ext_resource type="Texture2D" uid="uid://rjuko74ssr4o" path="res://Player/Arboarist/pig attack.png" id="33_v7ejp"]
+[ext_resource type="Texture2D" uid="uid://w0cv7hlnj4rn" path="res://Player/Arboarist/Pig Skill.png" id="34_lbumw"]
+[ext_resource type="Texture2D" uid="uid://d4l61rxco2req" path="res://Player/UI/portrait_cover_ab.png" id="35_682vb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pr8j4"]
+font_size = 12
 
 [sub_resource type="Animation" id="Animation_0dauk"]
 resource_name = "LevelStart"
@@ -118,6 +136,7 @@ level_bonus = 0.02
 
 [sub_resource type="Resource" id="Resource_gxlbg"]
 script = ExtResource("21_m4u31")
+player_name = "The Arboarist"
 hp = SubResource("Resource_bepct")
 atk = SubResource("Resource_1svkk")
 atk_speed = SubResource("Resource_g7ort")
@@ -134,6 +153,481 @@ spawnable_groups = [ExtResource("3_211vp")]
 spawnable_area = Rect2(0, 200, 700, 400)
 level_size = Vector2(1152, 704)
 difficulty_level = 6
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerGUI2" type="Control" parent="CanvasLayer/GUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -337.0
+offset_top = -106.0
+offset_right = 337.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/PlayerGUI2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0666667, 0.0313726, 0.396078)
+
+[node name="PlayerGUI" type="HBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("23_goqrg")
+player_path = NodePath("../../../../../Players/GrimCheaper")
+player_icon = ExtResource("23_wpicw")
+player_border = ExtResource("27_fsxvs")
+attack_icon = ExtResource("24_5u0gn")
+skill_icon = ExtResource("27_e6b38")
+used_modulation = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="PlayerPortrait" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="PlayerIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/PlayerPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_wpicw")
+
+[node name="PlayerBorder" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/PlayerPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_fsxvs")
+
+[node name="Details" type="VBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details"]
+layout_mode = 2
+text = "Grim Cheeper"
+label_settings = SubResource("LabelSettings_pr8j4")
+horizontal_alignment = 1
+
+[node name="Abilities" type="HBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Attack" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details/Abilities"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttackIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details/Abilities/Attack"]
+modulate = Color(0.301961, 0.301961, 0.301961, 1)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("24_5u0gn")
+ignore_texture_size = true
+
+[node name="AttackCDBar" type="TextureProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details/Abilities/Attack"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 20.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("24_i0vlm")
+texture_over = ExtResource("25_7gjg3")
+texture_progress = ExtResource("24_i0vlm")
+tint_progress = Color(0.129412, 0.403922, 0.235294, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details/Abilities"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Skill" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details/Abilities"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details/Abilities/Skill"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("27_e6b38")
+ignore_texture_size = true
+
+[node name="SkillCDBar" type="TextureProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details/Abilities/Skill"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("24_i0vlm")
+texture_over = ExtResource("25_7gjg3")
+texture_progress = ExtResource("24_i0vlm")
+tint_progress = Color(0.129412, 0.403922, 0.235294, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control/Details"]
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Control6" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("23_goqrg")
+player_path = NodePath("../../../../../Players/TheSheepard")
+player_icon = ExtResource("24_kqsrd")
+player_border = ExtResource("31_lvaba")
+attack_icon = ExtResource("30_ok0me")
+skill_icon = ExtResource("31_flu44")
+used_modulation = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="PlayerPortrait" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_vertical = 2
+
+[node name="PlayerIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/PlayerPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_wpicw")
+
+[node name="PlayerBorder" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/PlayerPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_fsxvs")
+
+[node name="Details" type="VBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details"]
+layout_mode = 2
+text = "Grim Cheeper"
+label_settings = SubResource("LabelSettings_pr8j4")
+horizontal_alignment = 1
+
+[node name="Abilities" type="HBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Attack" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details/Abilities"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttackIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details/Abilities/Attack"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("24_5u0gn")
+ignore_texture_size = true
+
+[node name="AttackCDBar" type="TextureProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details/Abilities/Attack"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 20.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("24_i0vlm")
+texture_over = ExtResource("25_7gjg3")
+texture_progress = ExtResource("24_i0vlm")
+tint_progress = Color(0.129412, 0.403922, 0.235294, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details/Abilities"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Skill" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details/Abilities"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details/Abilities/Skill"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("27_e6b38")
+ignore_texture_size = true
+
+[node name="SkillCDBar" type="TextureProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details/Abilities/Skill"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("24_i0vlm")
+texture_over = ExtResource("25_7gjg3")
+texture_progress = ExtResource("24_i0vlm")
+tint_progress = Color(0.129412, 0.403922, 0.235294, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control6/Details"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Control7" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("23_goqrg")
+player_path = NodePath("../../../../../Players/Arboarist")
+player_icon = ExtResource("25_8evei")
+player_border = ExtResource("35_682vb")
+attack_icon = ExtResource("33_v7ejp")
+skill_icon = ExtResource("34_lbumw")
+used_modulation = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="PlayerPortrait" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_vertical = 2
+
+[node name="PlayerIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/PlayerPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_wpicw")
+
+[node name="PlayerBorder" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/PlayerPortrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_fsxvs")
+
+[node name="Details" type="VBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details"]
+layout_mode = 2
+text = "Grim Cheeper"
+label_settings = SubResource("LabelSettings_pr8j4")
+horizontal_alignment = 1
+
+[node name="Abilities" type="HBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Attack" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details/Abilities"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttackIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details/Abilities/Attack"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("24_5u0gn")
+ignore_texture_size = true
+
+[node name="AttackCDBar" type="TextureProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details/Abilities/Attack"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 20.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("24_i0vlm")
+texture_over = ExtResource("25_7gjg3")
+texture_progress = ExtResource("24_i0vlm")
+tint_progress = Color(0.129412, 0.403922, 0.235294, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details/Abilities"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Skill" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details/Abilities"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillIcon" type="TextureRect" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details/Abilities/Skill"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("27_e6b38")
+ignore_texture_size = true
+
+[node name="SkillCDBar" type="TextureProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details/Abilities/Skill"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("24_i0vlm")
+texture_over = ExtResource("25_7gjg3")
+texture_progress = ExtResource("24_i0vlm")
+tint_progress = Color(0.129412, 0.403922, 0.235294, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI/Control7/Details"]
+layout_mode = 2
 
 [node name="LevelStart" type="AnimationPlayer" parent="."]
 libraries = {
