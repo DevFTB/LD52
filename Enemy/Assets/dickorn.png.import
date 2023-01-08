@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pnpsbdlclhg2"
-path="res://.godot/imported/korn.png-2576da4fe0998785a9b097e371bcf4b1.ctex"
+uid="uid://tbcffgpog888"
+path="res://.godot/imported/dickorn.png-38015153fa6a6c8ee09452d715fafa25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/korn.png"
-dest_files=["res://.godot/imported/korn.png-2576da4fe0998785a9b097e371bcf4b1.ctex"]
+source_file="res://Enemy/Assets/dickorn.png"
+dest_files=["res://.godot/imported/dickorn.png-38015153fa6a6c8ee09452d715fafa25.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dna0b5w73ci03"
-path="res://.godot/imported/dead_korn.png-0ea52ff7dfce4bd10f5768eae08e259a.ctex"
+uid="uid://c2ukhurkkq77d"
+path="res://.godot/imported/sunkorn.png-c9d71b0c862fae7e1419a2266d3edf32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/dead_korn.png"
-dest_files=["res://.godot/imported/dead_korn.png-0ea52ff7dfce4bd10f5768eae08e259a.ctex"]
+source_file="res://Enemy/Assets/sunkorn.png"
+dest_files=["res://.godot/imported/sunkorn.png-c9d71b0c862fae7e1419a2266d3edf32.ctex"]
 
 [params]
 
