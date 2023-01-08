@@ -13,11 +13,11 @@ func _on_enemy_health_changed(new_health, difference, should_display):
 		rng.randomize()
 		hitRandom = rng.randi_range(1,3)
 		if hitRandom == 1 :
-			$"Hit Sound".play()
+			$"HitSound".play()
 		if hitRandom == 2 :
-			$"Hit Sound2".play()
+			$"HitSound2".play()
 		if hitRandom == 3 :
-			$"Hit Sound3".play()
+			$"HitSound3".play()
 		
 
 
@@ -25,23 +25,22 @@ func _on_enemy_health_changed(new_health, difference, should_display):
 func _on_enemy_death():
 	rng.randomize()
 	deathRandom = rng.randi_range(1,9)
-	print(deathRandom)
 	if deathRandom == 1 :
-		$"Death Sound".play()
+		$"DeathSound".play()
 	if deathRandom == 2 :
-		$"Death Sound2".play()
+		$"DeathSound2".play()
 	if deathRandom == 3 :
-		$"Death Sound3".play()
+		$"DeathSound3".play()
 	if deathRandom == 4 :
-		$"Death Sound4".play()
+		$"DeathSound4".play()
 	if deathRandom == 5 :
-		$"Death Sound5".play()
+		$"DeathSound5".play()
 	if deathRandom == 6 :
-		$"Death Sound6".play()
+		$"DeathSound6".play()
 	if deathRandom == 7 :
-		$"Death Sound7".play()
+		$"DeathSound7".play()
 	if deathRandom == 8 :
-		$"Death Sound8".play()
+		$"DeathSound8".play()
 	if deathRandom == 9 :
-		$"Death Sound9".play()
+		$"DeathSound9".play()
 
