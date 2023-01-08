@@ -186,7 +186,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerGUI2" type="Control" parent="CanvasLayer/GUI"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -199,6 +199,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/PlayerGUI2"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -209,6 +210,7 @@ grow_vertical = 2
 color = Color(0.0156863, 0.0666667, 0.0313726, 0.396078)
 
 [node name="PlayerGUI" type="HBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -217,13 +219,14 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("3_qo3d1")]
+layout_mode = 2
 
 [node name="Control4" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
 custom_minimum_size = Vector2(30, 0)
-layout_mode = 3
-anchors_preset = 0
+layout_mode = 2
 
 [node name="Control2" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("3_qo3d1")]
+layout_mode = 2
 player_path = NodePath("../../../../../Players/TheSheepard")
 player_icon = ExtResource("24_kqsrd")
 player_border = ExtResource("31_lvaba")
@@ -232,10 +235,10 @@ skill_icon = ExtResource("31_flu44")
 
 [node name="Control5" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
 custom_minimum_size = Vector2(30, 0)
-layout_mode = 3
-anchors_preset = 0
+layout_mode = 2
 
 [node name="Control3" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("3_qo3d1")]
+layout_mode = 2
 player_path = NodePath("../../../../../Players/Arboarist")
 player_icon = ExtResource("25_8evei")
 player_border = ExtResource("35_682vb")
@@ -299,6 +302,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/GrimCheaper/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -379,6 +383,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/TheSheepard/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -458,6 +463,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/Arboarist/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
