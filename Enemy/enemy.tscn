@@ -60,6 +60,7 @@ script = ExtResource("4_n0s1c")
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -78,8 +79,9 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_61i3l")
 
-[node name="FlashOnHit" type="Node" parent="."]
+[node name="FlashOnHit" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("6_fgrfn")
+sprite = NodePath("../Sprite")
 
 [node name="Attacks" type="Node2D" parent="."]
 

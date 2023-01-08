@@ -4,10 +4,17 @@ extends Node2D
 @export var spawnable_area : Rect2
 @export var level_size = Vector2(2304, 1408)
 @export var difficulty_level :  int = 12
+
+@onready var players  = get_tree().get_nodes_in_group("player")
+var controlled_player_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_arena()
+	
+	for player in players:
+		player.death.connect(func(): on_player_death(player))
 
+	players[controlled_player_index].controlled =true
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +43,6 @@ func spawn_enemies():
 	pass
 	
 func enable_entities():
-	var players = get_tree().get_nodes_in_group("player")
 	for player in players:
 		player.enable()
 		
@@ -69,5 +75,26 @@ func select_enemy_groups(difficulty_level) -> Array[EnemyGroup]:
 				j+=1
 	
 	return groups
+
+func on_player_death(player):
+	if player.controlled:
+		player.controlled = false
+		
+		controlled_player_index = -1
+		for p in players:
+			if not p.is_dead:
+				p.controlled = true
+				controlled_player_index = players.find(p)
+		
+		if controlled_player_index == -1:
+			lose_round()	
+	pass
+func lose_round():
+	pass
 	
-	
+func _input(event):
+	if event is InputEventKey:
+		if event.is_action_released("switch_player"):
+			players[controlled_player_index].controlled = false
+			controlled_player_index = (controlled_player_index + 1) % players.size()
+			players[controlled_player_index].controlled = true

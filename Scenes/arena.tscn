@@ -120,7 +120,6 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/GrimCheaper/CharacterGUI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -173,7 +172,6 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/TheSheepard/CharacterGUI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

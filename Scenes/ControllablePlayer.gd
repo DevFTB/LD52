@@ -20,11 +20,10 @@ signal health_changed(new_health, difference, should_display)
 signal death
 
 # Called when the node enters the scene tree for the first time.
-
 var enabled = false
 var can_use_skill = true
 var is_dead = false
-var controlled = true
+var controlled = false
 
 var level_width = null
 
