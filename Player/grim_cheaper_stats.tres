@@ -50,6 +50,7 @@ level_bonus = 1.0
 
 [resource]
 script = ExtResource("1_vbqsq")
+player_name = "Grim Cheaper"
 hp = SubResource("Resource_i3k8i")
 atk = SubResource("Resource_gp1ws")
 atk_speed = SubResource("Resource_m6nid")

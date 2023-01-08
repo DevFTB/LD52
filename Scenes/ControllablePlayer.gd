@@ -7,24 +7,29 @@ extends Node2D
 @export var player_stats: PlayerStats
 
 @onready var hp = player_stats.get_hp()
-@onready var health = hp
+@onready var health = float(hp)
 
 @onready var atk = player_stats.get_atk()
 @onready var atk_speed = player_stats.get_atk_speed()
 @onready var move_speed = player_stats.get_move_speed()
 
+var dmg_reduction = 0
+
 var direction : Vector2 = Vector2.ZERO
 
-signal stats_changed(hp, atk, atk_speed, move_speed)
+signal stats_changed(hp, atk, atk_speed, move_speed, dmg_reduction, skill_cooldown)
 signal health_changed(new_health, difference, should_display)
+signal used_attack(cd)
+signal used_skill(cd)
+signal control_changed(controlled)
 signal death
 
 # Called when the node enters the scene tree for the first time.
-
 var enabled = false
 var can_use_skill = true
 var is_dead = false
-var controlled = true
+var controlled = false
+
 
 var level_width = null
 
@@ -37,9 +42,12 @@ var find_enemy_timeout = 0.25
 @export var ai_stopping_range = 20
 
 func _ready():
-	emit_signal("stats_changed", hp, atk, atk_speed, move_speed)
+	$AnimatedSprite.animation_finished.connect(on_anim_end)
+	emit_signal("stats_changed", hp, atk, atk_speed, move_speed, dmg_reduction, player_stats.get_skill_cooldown())
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()
+	$AnimatedSprite.play("walk")
+	pass # Replace with function body.
 	
 	# start find enemy timer
 	_find_enemy_timer = Timer.new()
@@ -74,17 +82,24 @@ func _process(delta):
 
 func modify_health(modification):
 	if not is_dead and enabled:
-		health += modification
+		if modification < 0:
+			var delta =  modification * (1 - min(dmg_reduction, 1))
+			health += delta
+		else:
+			health += modification
+			
 		health = min(hp, health)
-		if health < 0:
-			die()
 		emit_signal("health_changed", health, modification, true)
+		if health <= 0:
+			die()
+
 
 func die():
 	emit_signal("death")
 	is_dead = true 
 	disable()
 
+	$AnimatedSprite.play("walk")
 	if level_width != null:
 		var tween = get_tree().create_tween()
 		var destination = Vector2(level_width + 150, position.y + (randi() % 150))
@@ -95,7 +110,7 @@ func die():
 func enable():
 	enabled = true
 	can_use_skill = true
-	
+	$AnimatedSprite.play("walk")
 	$AttackTimer.start()
 	$SkillTimer.start()
 	pass
@@ -113,12 +128,18 @@ func get_attack_damage():
 	
 func get_skill_damage():
 	return player_stats.get_skill_damage(atk)
+	
+func on_anim_end():
+	
+	pass
 
 func do_attack():
+	$AnimatedSprite.play("attack")
 	var new_attack = normal_attack.instantiate()
 
 	new_attack.set_damage(get_attack_damage())
 	new_attack.damage_callback = on_attack_damage
+	new_attack.source_player = self
 	
 	modify_attack(new_attack)
 
@@ -127,13 +148,15 @@ func do_attack():
 	var rot_angle = Vector2.LEFT.angle_to(direction.normalized())
 	new_attack.position = Vector2(-50, 0).rotated(rot_angle)
 	new_attack.rotation = rot_angle
+	emit_signal("used_attack", $AttackTimer.wait_time)
 
 func do_skill():
 	var new_skill = skill.instantiate()
 
-	
 	new_skill.set_damage(get_attack_damage())
 	new_skill.damage_callback = on_attack_damage
+	new_skill.source_player = self
+	new_skill.duration = player_stats.get_skill_duration()
 	
 	modify_skill(new_skill)
 	
@@ -142,6 +165,8 @@ func do_skill():
 	new_skill.rotation = rot_angle
 
 	$Attack.add_child(new_skill)
+	emit_signal("used_skill", $SkillTimer.wait_time)
+
 func modify_attack(attack):
 	pass
 
@@ -162,26 +187,31 @@ func do_combat(attack, damage):
 	
 func on_attack_damage(damage):
 	pass
-	
+
+var buffer = false
 func _input(event):
-	if controlled:
+	if controlled and not is_dead:
 		if event is InputEventKey:
+			if not event.pressed and buffer:
+				buffer = false
+				return
+			if event.pressed and buffer:
+				buffer= false
+			
 			if event.is_action_pressed("move_up"):
 				direction.y -= 1
-			if event.is_action_released("move_up"):
-				direction.y += 1
-				
 			if event.is_action_pressed("move_down"):
+				direction.y += 1
+			if event.is_action_pressed("move_left"):
+				direction.x -= 1
+			if event.is_action_pressed("move_right"):
+				direction.x += 1
+			
+			if event.is_action_released("move_up"):
 				direction.y += 1
 			if event.is_action_released("move_down"):
 				direction.y -= 1
-				
-			if event.is_action_pressed("move_left"):
-				direction.x -= 1
 			if event.is_action_released("move_left"):
-				direction.x += 1
-				
-			if event.is_action_pressed("move_right"):
 				direction.x += 1
 			if event.is_action_released("move_right"):
 				direction.x -= 1
@@ -209,21 +239,41 @@ func walk_on(level_width, edge_offset, duration):
 	var tween = get_tree().create_tween()
 	var destination = Vector2(level_width - edge_offset, position.y)
 	tween.tween_property(self, "position", destination, duration).from_current()
-	
+
+
 func apply_buff(buff: BuffStats, duration: float) -> void:
-	var time = Time.get_ticks_msec()
-	buffs[time] = buff
+	var buff_id = Time.get_ticks_usec()
+	buffs[buff_id] = buff
+	var callback = func(): remove_buff(buff_id)
+	get_tree().create_timer(duration).timeout.connect(callback)
 	
+	print("apply buff on " + name + " with id " +str(buff_id))
 	recalculate_stats()
 	
-	get_tree().create_timer(duration).timeout.connect(func(): remove_buff(time))
+	var timer =  Timer.new()
+	timer.wait_time = duration
+	timer.autostart = true
+	
+	add_child(timer)
 	pass
 
-func remove_buff(time_key):
-	var buff = buffs[time_key]
-	buffs.erase(time_key)
+func remove_buff(key):
+	print("removing buff from " + name  + " with id " + str(key))
+	var buff = buffs[key]
+	buffs.erase(key)
 	
 	recalculate_stats()
+
+func enable_control():
+	controlled = true
+	direction = Vector2.ZERO
+	buffer = true
+	emit_signal("control_changed", controlled)
+	
+func disable_control():
+	controlled= false
+	direction = Vector2.ZERO
+	emit_signal("control_changed", controlled)
 
 func recalculate_stats():
 	var total = BuffStats.new()
@@ -234,7 +284,7 @@ func recalculate_stats():
 	
 	$AttackTimer.wait_time = 1.0 / atk_speed
 	$SkillTimer.wait_time = player_stats.get_skill_cooldown()
-	
+	emit_signal("stats_changed", hp, atk, atk_speed, move_speed, dmg_reduction, player_stats.get_skill_cooldown())
 	
 # ai stuff here
 func process_ai(delta):
@@ -262,8 +312,3 @@ func process_ai(delta):
 		
 		if global_position.distance_to(enemy_pos) > ai_stopping_range:
 			position += direction.normalized() * move_speed * 100 * delta
-	
-	
-	
-
-	
