@@ -268,7 +268,6 @@ sprite = NodePath("../AnimatedSprite")
 [node name="Buffs" type="Node2D" parent="Players/TheSheepard"]
 
 [node name="Arboarist" type="Node2D" parent="Players" groups=["player"]]
-visible = false
 texture_filter = 1
 position = Vector2(1301, 153)
 script = ExtResource("17_mc5g8")

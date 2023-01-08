@@ -1,16 +1,12 @@
-extends Node2D
+extends PlayerAttack
 
 var cleave_attack = preload("res://Player/Abilities/cleave.tscn")
 
 var max_amount = -1
-var damage = 0
-var duration : float = 0
-var damage_callback = null
 
 var finished = false
 
 var amount_active = 0
-var timer = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(global_position)
@@ -22,7 +18,6 @@ func set_damage(damage):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	timer += delta
 	if finished:
 		if $Attacks.get_child_count() == 0:
 			queue_free()

@@ -4,7 +4,7 @@ class_name PlayerAttack
 @export var duration = 0.4
 @export var damage = 1
 
-var timer = 0
+var timer = 0.0
 var damage_callback = null
 
 var source_player = null

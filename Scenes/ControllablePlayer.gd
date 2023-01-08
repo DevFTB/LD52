@@ -32,6 +32,12 @@ var level_width = null
 
 var buffs : Dictionary = {}
 
+var nearest_enemy = null
+var _find_enemy_timer = null
+var find_enemy_timeout = 0.25
+
+@export var ai_stopping_range = 20
+
 func _ready():
 	$AnimatedSprite.animation_finished.connect(on_anim_end)
 	emit_signal("stats_changed", hp, atk, atk_speed, move_speed)
@@ -39,11 +45,37 @@ func _ready():
 	recalculate_stats()
 	$AnimatedSprite.play("walk")
 	pass # Replace with function body.
+	
+	# start find enemy timer
+	_find_enemy_timer = Timer.new()
+	add_child(_find_enemy_timer)
+	_find_enemy_timer.timeout.connect(_find_enemy_timeout)
+	_find_enemy_timer.set_wait_time(find_enemy_timeout)
+	_find_enemy_timer.set_one_shot(false)
+	_find_enemy_timer.start()
+	
+func get_nearest_enemy():
+	var enemies = get_tree().get_nodes_in_group("enemy").filter(func (e): return not e.is_dead)
+	
+	if len(enemies) == 0:
+		return null
+	
+	var nearest_enemy = enemies[0]
+	for enemy in enemies:
+		if enemy.global_position.distance_to(global_position) < \
+		nearest_enemy.global_position.distance_to(global_position):
+			nearest_enemy = enemy
+	
+	return nearest_enemy
+	
+func _find_enemy_timeout():
+	nearest_enemy = get_nearest_enemy()
  
 func _process(delta):
-	if enabled and not is_dead:
+	if enabled and not is_dead and not controlled:
+		process_ai(delta)
+	elif enabled and not is_dead and controlled:
 		position += direction.normalized() * move_speed * 100 * delta
-		pass
 
 func modify_health(modification):
 	if not is_dead and enabled:
@@ -114,6 +146,7 @@ func do_skill():
 	new_skill.set_damage(get_attack_damage())
 	new_skill.damage_callback = on_attack_damage
 	new_skill.source_player = self
+	new_skill.duration = player_stats.get_skill_duration()
 	
 	modify_skill(new_skill)
 	
@@ -195,19 +228,28 @@ func walk_on(level_width, edge_offset, duration):
 	var tween = get_tree().create_tween()
 	var destination = Vector2(level_width - edge_offset, position.y)
 	tween.tween_property(self, "position", destination, duration).from_current()
-	
+
+
 func apply_buff(buff: BuffStats, duration: float) -> void:
-	var time = Time.get_ticks_msec()
-	buffs[time] = buff
+	var buff_id = Time.get_ticks_usec()
+	buffs[buff_id] = buff
+	var callback = func(): remove_buff(buff_id)
+	get_tree().create_timer(duration).timeout.connect(callback)
 	
+	print("apply buff on " + name + " with id " +str(buff_id))
 	recalculate_stats()
 	
-	get_tree().create_timer(duration).timeout.connect(func(): remove_buff(time))
+	var timer =  Timer.new()
+	timer.wait_time = duration
+	timer.autostart = true
+	
+	add_child(timer)
 	pass
 
-func remove_buff(time_key):
-	var buff = buffs[time_key]
-	buffs.erase(time_key)
+func remove_buff(key):
+	print("removing buff from " + name  + " with id " + str(key))
+	var buff = buffs[key]
+	buffs.erase(key)
 	
 	recalculate_stats()
 
@@ -229,3 +271,36 @@ func recalculate_stats():
 	
 	$AttackTimer.wait_time = 1.0 / atk_speed
 	$SkillTimer.wait_time = player_stats.get_skill_cooldown()
+	
+	
+# ai stuff here
+func process_ai(delta):
+	if nearest_enemy:
+		# todo: enforce player separation
+		var enemy_pos = nearest_enemy.global_position
+
+		direction.x = 0
+		if enemy_pos.x > global_position.x + 1:
+			direction.x = 1
+		if enemy_pos.x < global_position.x - 1:
+			direction.x = -1
+		direction.y = 0
+
+		if enemy_pos.y > global_position.y + 1:
+			direction.y = 1
+		if enemy_pos.y < global_position.y - 1:
+			direction.y = -1
+
+		# todo: use range or make it smarter with skills
+		if can_use_skill and not is_dead:
+			do_skill()
+			can_use_skill = false
+			$SkillTimer.start()
+		
+		if global_position.distance_to(enemy_pos) > ai_stopping_range:
+			position += direction.normalized() * move_speed * 100 * delta
+	
+	
+	
+
+	
