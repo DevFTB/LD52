@@ -89,7 +89,6 @@ script = ExtResource("9_8ewh1")
 [node name="ProjectileShoot" type="Node2D" parent="Attacks"]
 script = ExtResource("10_61kwo")
 projectile_stats = ExtResource("11_4tndr")
-attack_frequency = 2.0
 
 [node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot"]
 one_shot = true

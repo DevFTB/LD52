@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dn6kp1v8qdosw"]
 
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
-[ext_resource type="Resource" uid="uid://oecoev00ju04" path="res://Level/EnemyGroups/group3.tres" id="2_cij7d"]
+[ext_resource type="Resource" uid="uid://cl0m2omuae7rn" path="res://Level/EnemyGroups/group4.tres" id="2_g6po0"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
 [ext_resource type="Texture2D" uid="uid://bgduad68wqtvd" path="res://Level/level.png" id="2_mbeb0"]
 [ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="4_grhpe"]
@@ -67,7 +67,7 @@ height = 72.0
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_l5hyt")
-spawnable_groups = [ExtResource("2_cij7d")]
+spawnable_groups = [ExtResource("2_g6po0")]
 spawnable_area = Rect2(0, 200, 700, 400)
 level_size = Vector2(1152, 704)
 
@@ -118,7 +118,6 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/GrimCheaper/CharacterGUI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -169,7 +168,6 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/TheSheepard/CharacterGUI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
