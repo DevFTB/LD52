@@ -19,8 +19,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" instance=ExtResource("1_xg7fb")]
+[node name="Enemy2" instance=ExtResource("1_xg7fb")]
 max_hp = 30
+
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+offset_top = 0.0
+offset_bottom = 26.0
 
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")

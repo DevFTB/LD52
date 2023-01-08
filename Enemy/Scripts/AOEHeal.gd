@@ -26,5 +26,5 @@ func heal(amount, range):
 	filter(func(e): return e.global_position.distance_to(global_position) < range)
 	
 	for e in enemies:
-		e.modify_health(min(amount, e.max_hp - e.health))
+		e.modify_health(amount)
 	

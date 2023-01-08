@@ -12,6 +12,7 @@ var attack_timer = 0
 var skill_timer = 0
 
 func _ready():
+	$DeathRect.visible = false
 	$Details/PlayerName.text = player.player_stats.get_player_name()
 	
 	$PlayerPortrait/PlayerIcon.texture = player_icon
@@ -26,7 +27,7 @@ func _ready():
 	player.used_attack.connect(on_used_attack)
 	player.used_skill.connect(on_used_skill)
 	player.control_changed.connect(on_control_changed)
-	
+	player.death.connect(on_death)
 	$Details/Abilities/Attack/AttackCDBar.visible = false
 	$Details/Abilities/Skill/SkillCDBar.visible = false
 	pass
@@ -47,6 +48,9 @@ func _process(delta):
 		else:
 			$Details/Abilities/Skill/SkillCDBar.value = skill_timer
 	pass
+func on_death():
+	$DeathRect.visible = true
+	
 func on_control_changed(controlled):
 	if controlled:
 		$Details/PlayerName.modulate = Color.YELLOW_GREEN

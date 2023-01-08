@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0kpi7dj307wm"]
+
+[ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_ms5u3"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyCleaveAttack.gd" id="2_o28u0"]
+[ext_resource type="Resource" uid="uid://dlfqmg3pwv7yv" path="res://Enemy/Assets/cactus_cleave.tres" id="3_50s60"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_ewwve"]
+[ext_resource type="Texture2D" uid="uid://cg1rk6g87r05y" path="res://Enemy/Assets/cactuskorn.png" id="5_8rkbg"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_06kiq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ue4xy"]
+animations = [{
+"frames": [ExtResource("5_8rkbg")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("6_06kiq")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[node name="Enemy2" instance=ExtResource("1_ms5u3")]
+max_hp = 450
+
+[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
+
+[node name="CleaveAttack" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("2_o28u0")
+cleave_stats = ExtResource("3_50s60")
+attack_frequency = 0.2
+
+[node name="AttackTimer" type="Timer" parent="Attacks/CleaveAttack" index="0"]
+one_shot = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
+material = ExtResource("4_ewwve")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_ue4xy")
+animation = &"alive"

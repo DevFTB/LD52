@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dwl8t1kbij4g0"]
+
+[ext_resource type="Script" path="res://Enemy/Scripts/CleaveStats.gd" id="1_e3spj"]
+
+[resource]
+script = ExtResource("1_e3spj")
+damage = 20.0
+range = 128.0
+size = 128.0
