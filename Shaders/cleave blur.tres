@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bl2k0ybb7c1lx"]
+
+[ext_resource type="Shader" path="res://Player/Abilities/blur.gdshader" id="1_5luwf"]
+
+[resource]
+shader = ExtResource("1_5luwf")
+shader_parameter/value = 6.283
+shader_parameter/quality = 20
+shader_parameter/occilation_speed = 10.0
+shader_parameter/scale_value = 0.8
+shader_parameter/xOffset = 0.5
+shader_parameter/yOffset = 0.097
