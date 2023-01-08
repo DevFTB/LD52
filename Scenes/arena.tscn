@@ -1,7 +1,7 @@
 [gd_scene load_steps=69 format=3 uid="uid://ch0um0qfy57rk"]
 
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
-[ext_resource type="Resource" uid="uid://cl0m2omuae7rn" path="res://Level/EnemyGroups/group4.tres" id="2_g6po0"]
+[ext_resource type="Resource" uid="uid://coh34xecoab8g" path="res://Level/EnemyGroups/group5.tres" id="2_7i6s6"]
 [ext_resource type="Texture2D" uid="uid://bgduad68wqtvd" path="res://Level/level.png" id="2_mbeb0"]
 [ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="4_grhpe"]
 [ext_resource type="Script" path="res://Scenes/GrimCheaper.gd" id="4_vjqr2"]
@@ -163,7 +163,7 @@ passive = SubResource("Resource_wrn2r")
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_l5hyt")
-spawnable_groups = [ExtResource("2_g6po0")]
+spawnable_groups = [ExtResource("2_7i6s6")]
 spawnable_area = Rect2(0, 200, 700, 400)
 level_size = Vector2(1152, 704)
 difficulty_level = 6

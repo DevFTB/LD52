@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbnerk3jq0dya"]
+[gd_scene load_steps=7 format=3 uid="uid://vgfjoagjbwu0"]
 
-[ext_resource type="Script" path="res://Enemy/Scripts/Projectile.gd" id="1_6kv5l"]
-[ext_resource type="Texture2D" uid="uid://d053fjmqpv0gu" path="res://Enemy/Assets/korn_projectile.png" id="2_rbmxe"]
+[ext_resource type="Script" path="res://Enemy/Scripts/HealingProjectile.gd" id="1_ego0b"]
+[ext_resource type="Texture2D" uid="uid://d053fjmqpv0gu" path="res://Enemy/Assets/korn_projectile.png" id="2_l6aal"]
 
 [sub_resource type="Gradient" id="Gradient_o3p4x"]
 interpolation_mode = 2
@@ -28,12 +28,12 @@ color_ramp = SubResource("GradientTexture1D_2pu4n")
 radius = 7.0
 
 [node name="Projectile" type="Node2D"]
-script = ExtResource("1_6kv5l")
+script = ExtResource("1_ego0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 rotation = 0.74351
-texture = ExtResource("2_rbmxe")
+texture = ExtResource("2_l6aal")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(-7, 0)

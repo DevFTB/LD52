@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv8mx0js8ys2"]
+
+[ext_resource type="PackedScene" uid="uid://bf21dvyk6qugq" path="res://Enemy/EnemyScenes/DPSPurpleRose.tscn" id="1_ah41y"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("1_ah41y")]
+position = Vector2(39, 31)
