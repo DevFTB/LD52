@@ -22,7 +22,7 @@ animations = [{
 }]
 
 [node name="Enemy" instance=ExtResource("1_u5u4g")]
-max_hp = 600
+max_hp = 2
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
 layout_mode = 0
