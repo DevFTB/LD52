@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xj0dkwgp4dak"]
+[gd_scene load_steps=28 format=3 uid="uid://xj0dkwgp4dak"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_hiw8e"]
 [ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_3tym0"]
@@ -15,6 +15,15 @@
 [ext_resource type="AudioStream" uid="uid://f3m74mv86atu" path="res://Sounds/Enemy/enemy hit 1.wav" id="13_a452g"]
 [ext_resource type="AudioStream" uid="uid://dnoa3vvuj2a1r" path="res://Sounds/Enemy/enemy hit 2.wav" id="14_cgqsh"]
 [ext_resource type="AudioStream" uid="uid://hjjhtvrhso1a" path="res://Sounds/Enemy/enemy hit 3.wav" id="15_4uwl6"]
+[ext_resource type="AudioStream" uid="uid://c8u45ggoqxdmk" path="res://Sounds/Enemy/death sound 1.wav" id="16_8rwxr"]
+[ext_resource type="AudioStream" uid="uid://ck7aui2x8ki53" path="res://Sounds/Enemy/death sound 2.wav" id="17_77edf"]
+[ext_resource type="AudioStream" uid="uid://cs1r0ppi64ixn" path="res://Sounds/Enemy/death sound 3.wav" id="18_yo3go"]
+[ext_resource type="AudioStream" uid="uid://ug5r0ve2mjq6" path="res://Sounds/Enemy/death sound 4.wav" id="19_we2k7"]
+[ext_resource type="AudioStream" uid="uid://m3c5447xfkm6" path="res://Sounds/Enemy/death sound 5.wav" id="20_g25gu"]
+[ext_resource type="AudioStream" uid="uid://cbbpi6rv063u3" path="res://Sounds/Enemy/death sound 6.wav" id="21_6pvp7"]
+[ext_resource type="AudioStream" uid="uid://cuoxh547aqkf0" path="res://Sounds/Enemy/death sound 7.wav" id="22_kqxtj"]
+[ext_resource type="AudioStream" uid="uid://cs60wu1q20f0u" path="res://Sounds/Enemy/death sound 8.wav" id="23_lr4fr"]
+[ext_resource type="AudioStream" uid="uid://duo653g2tiu0i" path="res://Sounds/Enemy/death sound 9.wav" id="24_yftw2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ihq0"]
 animations = [{
@@ -64,6 +73,7 @@ script = ExtResource("4_n0s1c")
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -110,7 +120,33 @@ stream = ExtResource("15_4uwl6")
 max_polyphony = 5
 
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("16_8rwxr")
 
+[node name="Death Sound2" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("17_77edf")
+
+[node name="Death Sound3" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("18_yo3go")
+
+[node name="Death Sound4" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("19_we2k7")
+
+[node name="Death Sound5" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("20_g25gu")
+
+[node name="Death Sound6" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("21_6pvp7")
+
+[node name="Death Sound7" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("22_kqxtj")
+
+[node name="Death Sound8" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("23_lr4fr")
+
+[node name="Death Sound9" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("24_yftw2")
+
+[connection signal="death" from="." to="Sounds" method="_on_enemy_death"]
 [connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
