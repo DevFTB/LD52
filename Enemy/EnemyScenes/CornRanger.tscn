@@ -1,18 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1awlcldvt82l"]
+[gd_scene load_steps=8 format=3 uid="uid://rnthmsbk2wo1"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_pd6ac"]
-[ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_wthgp"]
-[ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="3_ty5cs"]
+[ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_ujnet"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_8hkm4"]
 [ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/Assets/korn.png" id="5_5e3w0"]
 [ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_rflal"]
-[ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="7_ulq0e"]
-[ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="8_ijh11"]
-[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="9_8ewh1"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="10_61kwo"]
 [ext_resource type="Resource" path="res://Enemy/Assets/korn_projectile.tres" id="11_4tndr"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0ihq0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
 animations = [{
 "frames": [ExtResource("5_5e3w0")],
 "loop": true,
@@ -25,77 +20,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
-font_size = 36
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
-radius = 18.0
-height = 78.0
-
-[node name="Enemy" type="Node2D" groups=["enemy"]]
-position = Vector2(0, 32)
-script = ExtResource("1_pd6ac")
+[node name="Enemy" instance=ExtResource("1_ujnet")]
 max_hp = 15
 
-[node name="HitManager" type="Node2D" parent="."]
-script = ExtResource("2_wthgp")
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+layout_mode = 3
 
-[node name="ImpactEffect" parent="HitManager" instance=ExtResource("3_ty5cs")]
+[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("10_61kwo")
+projectile_stats = ExtResource("11_4tndr")
+
+[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot" index="0"]
+one_shot = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
 material = ExtResource("4_8hkm4")
 use_parent_material = true
 position = Vector2(-2, -41)
 scale = Vector2(0.6, 0.6)
-frames = SubResource("SpriteFrames_0ihq0")
+frames = SubResource("SpriteFrames_a5iya")
 animation = &"alive"
-
-[node name="EnemyGUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 80.0
-offset_bottom = 14.363
-script = ExtResource("7_ulq0e")
-metadata/_edit_use_anchors_ = true
-
-[node name="DamageNumber" type="Label" parent="EnemyGUI"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_top = -84.0
-offset_right = 40.0
-offset_bottom = -58.0
-text = "0"
-label_settings = SubResource("LabelSettings_lgit8")
-script = ExtResource("8_ijh11")
-metadata/_edit_use_anchors_ = true
-
-[node name="Pain" type="Timer" parent="EnemyGUI"]
-wait_time = 1.5
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-2, -40)
-collision_layer = 8
-collision_mask = 7
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CapsuleShape2D_61i3l")
-
-[node name="FlashOnHit" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("9_8ewh1")
-sprite = NodePath("../Sprite")
-
-[node name="Attacks" type="Node2D" parent="."]
-
-[node name="ProjectileShoot" type="Node2D" parent="Attacks"]
-script = ExtResource("10_61kwo")
-projectile_stats = ExtResource("11_4tndr")
-
-[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot"]
-one_shot = true
-
-[connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
-[connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
-[connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
-[connection signal="timeout" from="EnemyGUI/Pain" to="." method="_on_pain_timeout"]
