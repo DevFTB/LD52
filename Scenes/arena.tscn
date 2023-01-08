@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dn6kp1v8qdosw"]
+[gd_scene load_steps=29 format=3 uid="uid://dn6kp1v8qdosw"]
 
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
@@ -13,9 +13,15 @@
 [ext_resource type="Resource" uid="uid://bp6lo7vsrhav8" path="res://Player/grim_cheaper_stats.tres" id="7_u0747"]
 [ext_resource type="Script" path="res://Scenes/TheSheepard.gd" id="9_54lqa"]
 [ext_resource type="Texture2D" uid="uid://dcft6naqv8p0i" path="res://Player/the_sheepard.png" id="10_uio0x"]
+[ext_resource type="Script" path="res://Scenes/GrimCheeperSounds.gd" id="12_m3j1o"]
 [ext_resource type="PackedScene" uid="uid://xjahcj7id5nx" path="res://Player/Abilities/sheep_attack.tscn" id="12_tgu0n"]
 [ext_resource type="PackedScene" uid="uid://b8sdmvoo1dmae" path="res://Player/Abilities/sheep_buff.tscn" id="13_ndy3r"]
+[ext_resource type="AudioStream" uid="uid://baltx1qynm02d" path="res://Sounds/chicken ready.wav" id="13_snipk"]
+[ext_resource type="AudioStream" uid="uid://cx2b68t84i237" path="res://Sounds/slice 1.wav" id="14_ev3xl"]
 [ext_resource type="Resource" uid="uid://dwydefp8cr4lw" path="res://Player/the_sheepard_stats.tres" id="15_njtfh"]
+[ext_resource type="AudioStream" uid="uid://dklk8npeopwmr" path="res://Sounds/slice 2.wav" id="15_noo6p"]
+[ext_resource type="AudioStream" uid="uid://3xra0dscbnmm" path="res://Sounds/slice 3.wav" id="16_pyl6y"]
+[ext_resource type="AudioStream" uid="uid://bxu8ku4d4dj6f" path="res://Sounds/super slice.wav" id="17_pt3a0"]
 
 [sub_resource type="Animation" id="Animation_0dauk"]
 resource_name = "LevelStart"
@@ -144,6 +150,26 @@ one_shot = true
 [node name="FlashOnHit" type="Node" parent="Players/GrimCheaper"]
 script = ExtResource("6_k8gt7")
 
+[node name="GrimCheeperSounds" type="Node2D" parent="Players/GrimCheaper"]
+script = ExtResource("12_m3j1o")
+
+[node name="ReadySound" type="AudioStreamPlayer" parent="Players/GrimCheaper/GrimCheeperSounds"]
+stream = ExtResource("13_snipk")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
+stream = ExtResource("14_ev3xl")
+
+[node name="AttackSound2" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
+stream = ExtResource("15_noo6p")
+
+[node name="AttackSound3" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
+stream = ExtResource("16_pyl6y")
+
+[node name="SkillSound" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
+stream = ExtResource("17_pt3a0")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
+
 [node name="TheSheepard" type="Node2D" parent="Players" groups=["player"]]
 texture_filter = 1
 position = Vector2(1339, 505)
@@ -197,8 +223,10 @@ script = ExtResource("6_k8gt7")
 
 [node name="Buffs" type="Node2D" parent="Players/TheSheepard"]
 
+[connection signal="attack_used" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSounds" method="_on_grim_cheaper_attack_used"]
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/FlashOnHit" method="_on_health_changed"]
+[connection signal="skill_used" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSounds" method="_on_grim_cheaper_skill_used"]
 [connection signal="stats_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
 [connection signal="timeout" from="Players/GrimCheaper/AttackTimer" to="Players/GrimCheaper" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Players/GrimCheaper/SkillTimer" to="Players/GrimCheaper" method="_on_skill_timer_timeout"]

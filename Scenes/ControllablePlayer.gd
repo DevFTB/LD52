@@ -18,6 +18,8 @@ var direction : Vector2 = Vector2.ZERO
 signal stats_changed(hp, atk, atk_speed, move_speed)
 signal health_changed(new_health, difference, should_display)
 signal death
+signal skill_used
+signal attack_used
 
 # Called when the node enters the scene tree for the first time.
 
@@ -85,7 +87,8 @@ func get_skill_damage():
 
 func do_attack():
 	var new_attack = normal_attack.instantiate()
-
+	emit_signal("attack_used")
+	
 	new_attack.set_damage(get_attack_damage())
 	new_attack.damage_callback = on_attack_damage
 	
@@ -99,8 +102,8 @@ func do_attack():
 
 func do_skill():
 	var new_skill = skill.instantiate()
+	emit_signal("skill_used")
 
-	
 	new_skill.set_damage(get_attack_damage())
 	new_skill.damage_callback = on_attack_damage
 	

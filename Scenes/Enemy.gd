@@ -5,6 +5,11 @@ extends Node2D
 @export var attack_range : float = 1
 @export var player_attack : float = 1
 
+#sound files export vars below
+
+@export var hitSound : AudioStreamPlayer2D
+@export var deathSound : AudioStreamPlayer2D
+
 @onready var health = max_hp
 
 var is_dead = false

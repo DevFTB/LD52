@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cacu63y5yuf2t"
+path="res://.godot/imported/pig skill.wav-3a5382a0f34e3c010dbe354e8b12f18c.sample"
+
+[deps]
+
+source_file="res://Sounds/pig skill.wav"
+dest_files=["res://.godot/imported/pig skill.wav-3a5382a0f34e3c010dbe354e8b12f18c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

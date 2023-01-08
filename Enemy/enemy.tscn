@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xj0dkwgp4dak"]
+[gd_scene load_steps=19 format=3 uid="uid://xj0dkwgp4dak"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_hiw8e"]
 [ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_3tym0"]
@@ -10,7 +10,11 @@
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jfuxr"]
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_fgrfn"]
 [ext_resource type="Script" path="res://Enemy/ProjectileShoot.gd" id="8_i7f5s"]
-[ext_resource type="Resource" path="res://Enemy/korn_projectile.tres" id="9_kqmrm"]
+[ext_resource type="Resource" uid="uid://bxnprj3gow0u4" path="res://Enemy/korn_projectile.tres" id="9_kqmrm"]
+[ext_resource type="Script" path="res://Enemy/Node2D.gd" id="12_i2mig"]
+[ext_resource type="AudioStream" uid="uid://f3m74mv86atu" path="res://Sounds/Enemy/enemy hit 1.wav" id="13_a452g"]
+[ext_resource type="AudioStream" uid="uid://dnoa3vvuj2a1r" path="res://Sounds/Enemy/enemy hit 2.wav" id="14_cgqsh"]
+[ext_resource type="AudioStream" uid="uid://hjjhtvrhso1a" path="res://Sounds/Enemy/enemy hit 3.wav" id="15_4uwl6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ihq0"]
 animations = [{
@@ -60,6 +64,7 @@ script = ExtResource("4_n0s1c")
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -90,7 +95,25 @@ projectile_stats = ExtResource("9_kqmrm")
 [node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot"]
 one_shot = true
 
+[node name="Sounds" type="Node2D" parent="."]
+script = ExtResource("12_i2mig")
+
+[node name="Hit Sound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("13_a452g")
+max_polyphony = 5
+
+[node name="Hit Sound2" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("14_cgqsh")
+max_polyphony = 5
+
+[node name="Hit Sound3" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("15_4uwl6")
+max_polyphony = 5
+
+[node name="Death Sound" type="AudioStreamPlayer2D" parent="Sounds"]
+
 [connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
+[connection signal="health_changed" from="." to="Sounds" method="_on_enemy_health_changed"]
 [connection signal="timeout" from="EnemyGUI/Pain" to="." method="_on_pain_timeout"]
