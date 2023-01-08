@@ -239,18 +239,19 @@ func recalculate_stats():
 # ai stuff here
 func process_ai(delta):
 	if nearest_enemy:
+		# todo: enforce player separation
 		var enemy_pos = nearest_enemy.global_position
 
 		direction.x = 0
-		if enemy_pos.x > global_position.x:
+		if enemy_pos.x > global_position.x + 1:
 			direction.x = 1
-		if enemy_pos.x < global_position.x:
+		if enemy_pos.x < global_position.x - 1:
 			direction.x = -1
 		direction.y = 0
 
-		if enemy_pos.y > global_position.y:
+		if enemy_pos.y > global_position.y + 1:
 			direction.y = 1
-		if enemy_pos.y < global_position.y:
+		if enemy_pos.y < global_position.y - 1:
 			direction.y = -1
 
 		# todo: use range or make it smarter with skills
