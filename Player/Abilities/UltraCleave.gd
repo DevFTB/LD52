@@ -18,6 +18,7 @@ func set_damage(damage):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	super._process(delta)
 	if finished:
 		if $Attacks.get_child_count() == 0:
 			queue_free()
