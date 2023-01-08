@@ -80,8 +80,9 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_61i3l")
 
-[node name="FlashOnHit" type="Node" parent="."]
+[node name="FlashOnHit" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_dmm08")
+sprite = NodePath("../Sprite")
 
 [node name="Attacks" type="Node2D" parent="."]
 
