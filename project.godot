@@ -9,19 +9,37 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "RefCounted",
+"class": &"BuffStats",
+"language": &"GDScript",
+"path": "res://Player/Abilities/BuffStats.gd"
+}, {
 "base": "Resource",
 "class": &"EnemyGroup",
 "language": &"GDScript",
 "path": "res://Enemy/EnemyGroup.gd"
 }, {
 "base": "Resource",
+"class": &"PlayerStats",
+"language": &"GDScript",
+"path": "res://Player/PlayerStats.gd"
+}, {
+"base": "Resource",
 "class": &"ProjectileStats",
 "language": &"GDScript",
 "path": "res://Enemy/ProjectileStats.gd"
+}, {
+"base": "Resource",
+"class": &"Stat",
+"language": &"GDScript",
+"path": "res://Player/Stat.gd"
 }]
 _global_script_class_icons={
+"BuffStats": "",
 "EnemyGroup": "",
-"ProjectileStats": ""
+"PlayerStats": "",
+"ProjectileStats": "",
+"Stat": ""
 }
 
 [application]
@@ -34,6 +52,7 @@ config/icon="res://icon.svg"
 [display]
 
 window/size/viewport_height=704
+window/stretch/mode="viewport"
 
 [input]
 
@@ -69,3 +88,7 @@ skill={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Player Attack"
 2d_physics/layer_4="Enemy"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -19,8 +19,7 @@ func _process(delta):
 func set_details(direction, projectile_stats):
 	self.direction = direction
 	projectile = projectile_stats
-	#$print(str(global_position) + ", " + str(position))
-	print(direction)
+
 	rotation = direction.angle()
 
 

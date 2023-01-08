@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://xjahcj7id5nx"]
+
+[ext_resource type="Script" path="res://Scenes/AoEAttack.gd" id="1_nr4h5"]
+[ext_resource type="Texture2D" uid="uid://dcs0jkbi36es4" path="res://Player/Abilities/sheep_na/1.png" id="2_vqylc"]
+[ext_resource type="Texture2D" uid="uid://cxwbw635k43k8" path="res://Player/Abilities/sheep_na/2.png" id="3_3huuj"]
+
+[sub_resource type="Curve2D" id="Curve2D_g2k4n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -151, 0)
+}
+point_count = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7wta1"]
+animations = [{
+"frames": [ExtResource("2_vqylc"), ExtResource("3_3huuj")],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="SheepAttack" type="Node2D"]
+script = ExtResource("1_nr4h5")
+duration = 0.33
+move = true
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, -9.53674e-07)
+curve = SubResource("Curve2D_g2k4n")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotation = 3.14159
+scale = Vector2(1.2, 1.2)
+
+[node name="Cleave" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+texture_filter = 1
+frames = SubResource("SpriteFrames_7wta1")
+playing = true
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-66, -4)
+polygon = PackedVector2Array(103, -20, 48, -28, -1, -24, -27, -27, -47, -23, -74, -17, -90, 5, -82, 28, -49, 35, -27, 40, -2, 39, 50, 42, 104, 28)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

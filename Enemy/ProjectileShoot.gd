@@ -8,7 +8,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AttackTimer.wait_time = 1.0 / attack_frequency
-	print(projectile_stats)
+
 	pass # Replace with function body.
 
 
@@ -22,7 +22,7 @@ func attack():
 	if target_pos != null:
 		var new_projectile = projectile.instantiate()
 		var direction = (target_pos - global_position).normalized()
-		print("Target pos: " + str(target_pos) + ", direction: " + str(direction)  + ", GLOBAL POS: " + str(global_position))
+
 		new_projectile.set_details(direction, projectile_stats)
 		
 		add_child(new_projectile)

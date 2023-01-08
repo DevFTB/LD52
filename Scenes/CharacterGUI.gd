@@ -15,6 +15,6 @@ func _on_health_changed(new_health, difference, should_display):
 	pass # Replace with function body.
 
 
-func _on_grim_cheaper_stats_changed(hp):
+func _on_grim_cheaper_stats_changed(hp, atk, atk_speed, move_speed):
 	$HealthBar.max_value = hp
 	pass # Replace with function body.

@@ -18,16 +18,11 @@ func _process(delta):
 
 func start_animation(new_value):
 	if current_tween != null:
-		print('killing')
 		current_tween.kill()
 		on_animation_end()
 	
 	text = str(new_value)
 	current_tween = get_tree().create_tween()
-
-	
-	print(starting_position)
-	print(destination)
 
 	current_tween.set_parallel(true)
 	current_tween.tween_property(self, "position", destination, animation_duration).from(starting_position)
@@ -35,6 +30,5 @@ func start_animation(new_value):
 	current_tween.tween_callback(self.on_animation_end)
 
 func on_animation_end():
-	print("ended")
 	current_tween = null
 
