@@ -11,7 +11,7 @@ extends Node2D
 
 var direction : Vector2 = Vector2.ZERO
 
-var can_use_skill = true
+
 
 signal stats_changed(hp)
 signal health_changed(new_health, difference, should_display)
@@ -20,6 +20,15 @@ signal death
 var normal_attack = preload("res://Player/Abilities/cleave.tscn")
 var skill = preload("res://Player/Abilities/ultra_cleave.tscn")
 # Called when the node enters the scene tree for the first time.
+
+var enabled = false
+var can_use_skill = true
+var is_dead = false
+
+var controlled = true
+
+var level_width = null
+
 func _ready():
 	emit_signal("stats_changed", hp)
 	emit_signal("health_changed", health, 0, false)
@@ -27,18 +36,43 @@ func _ready():
 	pass # Replace with function body.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += direction.normalized() * movement_speed * delta
-	pass
+	if enabled and not is_dead:
+		position += direction.normalized() * movement_speed * delta
+		pass
 
 func modify_health(modification):
-	health += modification
-	if health < 0:
-		die()
-	emit_signal("health_changed", health, modification, true)
+	if not is_dead and enabled:
+		health += modification
+		if health < 0:
+			die()
+		emit_signal("health_changed", health, modification, true)
 
 func die():
-	print("death")
 	emit_signal("death")
+	is_dead = true 
+	disable()
+
+	if level_width != null:
+		var tween = get_tree().create_tween()
+		var destination = Vector2(level_width + 150, position.y + (randi() % 150))
+		var duration = ((level_width + 150) - position.x) / (movement_speed * 1.5)
+		tween.tween_property(self, "position", destination, duration).from_current()
+	pass
+
+
+	
+func enable():
+	enabled = true
+	can_use_skill = true
+	$AttackTimer.start()
+	pass
+	
+func disable():
+	enabled = false
+	$AttackTimer.stop()
+	$SkillTimer.stop()
+	
+	# relinquish user control
 	pass
 
 func do_attack(attack):
@@ -52,35 +86,37 @@ func do_attack(attack):
 	pass
 	
 func _input(event):
-	if event is InputEventKey:
-		if event.is_action_pressed("move_up"):
-			direction.y -= 1
-		if event.is_action_released("move_up"):
-			direction.y += 1
+	if controlled:
+		if event is InputEventKey:
+			if event.is_action_pressed("move_up"):
+				direction.y -= 1
+			if event.is_action_released("move_up"):
+				direction.y += 1
+				
+			if event.is_action_pressed("move_down"):
+				direction.y += 1
+			if event.is_action_released("move_down"):
+				direction.y -= 1
+				
+			if event.is_action_pressed("move_left"):
+				direction.x -= 1
+			if event.is_action_released("move_left"):
+				direction.x += 1
+				
+			if event.is_action_pressed("move_right"):
+				direction.x += 1
+			if event.is_action_released("move_right"):
+				direction.x -= 1
 			
-		if event.is_action_pressed("move_down"):
-			direction.y += 1
-		if event.is_action_released("move_down"):
-			direction.y -= 1
-			
-		if event.is_action_pressed("move_left"):
-			direction.x -= 1
-		if event.is_action_released("move_left"):
-			direction.x += 1
-			
-		if event.is_action_pressed("move_right"):
-			direction.x += 1
-		if event.is_action_released("move_right"):
-			direction.x -= 1
-		
-		if event.is_action_pressed("skill") and can_use_skill:
-			do_attack(skill)
-			can_use_skill = false
-			$SkillTimer.start()
+			if event.is_action_pressed("skill") and can_use_skill and not is_dead:
+				do_attack(skill)
+				can_use_skill = false
+				$SkillTimer.start()
 	pass
 
 
 func _on_attack_timer_timeout():
+	
 	do_attack(normal_attack)
 	pass # Replace with function body.
 
@@ -91,3 +127,10 @@ func _on_skill_timer_timeout():
 
 func get_sprite():
 	return $Sprite
+
+func walk_on(level_width, edge_offset, duration):
+	self.level_width = level_width
+	var tween = get_tree().create_tween()
+	var destination = Vector2(level_width - edge_offset, position.y)
+	tween.tween_property(self, "position", destination, duration).from_current()
+	

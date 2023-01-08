@@ -10,11 +10,17 @@ config_version=5
 
 _global_script_classes=[{
 "base": "Resource",
+"class": &"EnemyGroup",
+"language": &"GDScript",
+"path": "res://Enemy/EnemyGroup.gd"
+}, {
+"base": "Resource",
 "class": &"ProjectileStats",
 "language": &"GDScript",
 "path": "res://Enemy/ProjectileStats.gd"
 }]
 _global_script_class_icons={
+"EnemyGroup": "",
 "ProjectileStats": ""
 }
 

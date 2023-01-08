@@ -8,6 +8,7 @@ extends Node2D
 @onready var health = max_hp
 
 var is_dead = false
+var enabled = false
 
 signal health_changed(new_health, difference, should_display)
 signal death
@@ -28,7 +29,7 @@ func enable_attack(index):
 	can_attack[index] = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not is_dead:
+	if not is_dead and enabled:
 		var available_attack = can_attack.find(true)
 		if available_attack != -1:
 			attack(available_attack)
@@ -47,6 +48,14 @@ func die():
 	emit_signal("death")
 	$Sprite.play("dead")    
 	is_dead = true
+	pass
+
+func enable():
+	enabled = true
+	pass
+	
+func disable():
+	enabled = false
 	pass
 
 

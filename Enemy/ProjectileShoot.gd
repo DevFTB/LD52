@@ -19,18 +19,23 @@ func _process(delta):
 func attack():
 	var target_pos = get_target_position()
 	
-	var new_projectile = projectile.instantiate()
-	var direction = (target_pos - global_position).normalized()
-	print("Target pos: " + str(target_pos) + ", direction: " + str(direction)  + ", GLOBAL POS: " + str(global_position))
-	new_projectile.set_details(direction, projectile_stats)
-	
-	add_child(new_projectile)
-	
-	$AttackTimer.start()
+	if target_pos != null:
+		var new_projectile = projectile.instantiate()
+		var direction = (target_pos - global_position).normalized()
+		print("Target pos: " + str(target_pos) + ", direction: " + str(direction)  + ", GLOBAL POS: " + str(global_position))
+		new_projectile.set_details(direction, projectile_stats)
+		
+		add_child(new_projectile)
+		
+		$AttackTimer.start()
 	pass
 
-func get_target_position() -> Vector2:
-	var player = get_tree().get_first_node_in_group("player")
-
-	return player.global_position
+func get_target_position() :
+	var players = get_tree().get_nodes_in_group("player").filter(func(x): return not x.is_dead and x.enabled)
+	
+	if players.size() > 0:
+		var selected = players[randi() % players.size()]
+		return selected.global_position
+	else:
+		return null
 	pass

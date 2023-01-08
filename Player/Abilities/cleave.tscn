@@ -3,33 +3,33 @@
 [ext_resource type="Script" path="res://Scenes/AoEAttack.gd" id="1_dc3g1"]
 [ext_resource type="Texture2D" uid="uid://dwbfw7t1ml3m5" path="res://Player/Abilities/cleave.png" id="2_yxpoh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pv2ya"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7vj2"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqn01"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_30yfe"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqsyv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8m43"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jx6e7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p65e"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_42d73"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5hpr"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5h0j0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sbtb"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ie1fe"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fkv6b"]
 animations = [{
-"frames": [SubResource("AtlasTexture_pv2ya"), SubResource("AtlasTexture_aqn01"), SubResource("AtlasTexture_mqsyv"), SubResource("AtlasTexture_jx6e7"), SubResource("AtlasTexture_42d73"), SubResource("AtlasTexture_5h0j0")],
+"frames": [SubResource("AtlasTexture_e7vj2"), SubResource("AtlasTexture_30yfe"), SubResource("AtlasTexture_u8m43"), SubResource("AtlasTexture_2p65e"), SubResource("AtlasTexture_m5hpr"), SubResource("AtlasTexture_8sbtb")],
 "loop": true,
 "name": &"default",
 "speed": 18.0
@@ -42,7 +42,7 @@ duration = 0.33
 [node name="Cleave" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.2, 1.2)
-frames = SubResource("SpriteFrames_ie1fe")
+frames = SubResource("SpriteFrames_fkv6b")
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
