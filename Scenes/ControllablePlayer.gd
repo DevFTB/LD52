@@ -30,16 +30,44 @@ var level_width = null
 
 var buffs : Dictionary = {}
 
+var nearest_enemy = null
+var _find_enemy_timer = null
+var find_enemy_timeout = 0.25
+
 func _ready():
 	emit_signal("stats_changed", hp, atk, atk_speed, move_speed)
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()
-	pass # Replace with function body.
+	
+	# start find enemy timer
+	_find_enemy_timer = Timer.new()
+	add_child(_find_enemy_timer)
+	_find_enemy_timer.timeout.connect(_find_enemy_timeout)
+	_find_enemy_timer.set_wait_time(find_enemy_timeout)
+	_find_enemy_timer.set_one_shot(false)
+	_find_enemy_timer.start()
+	
+func get_nearest_enemy():
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	if len(enemies) == 0:
+		return null
+	
+	var nearest_enemy = enemies[0]
+	for enemy in enemies:
+		if enemy.global_position.distance_to(global_position) < \
+		nearest_enemy.global_position.distance_to(global_position):
+			nearest_enemy = enemy
+	
+	return nearest_enemy
+	
+func _find_enemy_timeout():
+	nearest_enemy = get_nearest_enemy()
  
 func _process(delta):
+	if enabled and not is_dead and not controlled:
+		process_ai(delta)
 	if enabled and not is_dead:
 		position += direction.normalized() * move_speed * 100 * delta
-		pass
 
 func modify_health(modification):
 	if not is_dead and enabled:
@@ -203,3 +231,32 @@ func recalculate_stats():
 	
 	$AttackTimer.wait_time = 1.0 / atk_speed
 	$SkillTimer.wait_time = player_stats.get_skill_cooldown()
+	
+	
+# ai stuff here
+func process_ai(delta):
+	if nearest_enemy:
+		var enemy_pos = nearest_enemy.global_position
+
+		direction.x = 0
+		if enemy_pos.x > global_position.x:
+			direction.x = 1
+		if enemy_pos.x < global_position.x:
+			direction.x = -1
+		direction.y = 0
+
+		if enemy_pos.y > global_position.y:
+			direction.y = 1
+		if enemy_pos.y < global_position.y:
+			direction.y = -1
+
+		# todo: use range or make it smarter with skills
+		if can_use_skill and not is_dead:
+			do_skill()
+			can_use_skill = false
+			$SkillTimer.start()
+	
+	
+	
+
+	
