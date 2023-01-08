@@ -2,8 +2,14 @@ extends Node2D
 
 @export var enemy_name : String = "Enemy"
 @export var max_hp : int = 20
-@export var attack_range : float = 1
-@export var player_attack : float = 1
+#@export var attack_range : float = 1
+#@export var player_attack : float = 1
+#@export var is_melee : bool = false
+
+#sound files export vars below
+
+@export var hitSound : AudioStreamPlayer2D
+@export var deathSound : AudioStreamPlayer2D
 
 @onready var health = max_hp
 
@@ -37,7 +43,7 @@ func _process(delta):
 
 func modify_health(modification):
 	if not is_dead:
-		health += modification
+		health = min(health + modification, max_hp)
 		
 		if health < 0:
 			die()

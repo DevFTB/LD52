@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmxx8wf4jf6fs"]
+
+[ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_xg7fb"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_klilr"]
+[ext_resource type="Texture2D" uid="uid://c2ukhurkkq77d" path="res://Enemy/Assets/sunkorn.png" id="5_86pxd"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_hphm2"]
+[ext_resource type="Script" path="res://Enemy/Scripts/AOEHeal.gd" id="10_2t7ue"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlmlp"]
+animations = [{
+"frames": [ExtResource("5_86pxd")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("6_hphm2")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[node name="Enemy2" instance=ExtResource("1_xg7fb")]
+max_hp = 30
+
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+offset_top = 0.0
+offset_bottom = 26.0
+
+[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
+
+[node name="AOEHeal" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("10_2t7ue")
+
+[node name="AttackTimer" type="Timer" parent="Attacks/AOEHeal" index="0"]
+one_shot = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
+material = ExtResource("4_klilr")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_tlmlp")
+animation = &"alive"

@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://bf21dvyk6qugq"]
+
+[ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_u5u4g"]
+[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="2_aomld"]
+[ext_resource type="Resource" uid="uid://b3t0ehvbos3da" path="res://Enemy/Assets/purplerose_projectile.tres" id="3_pl3sn"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_e543j"]
+[ext_resource type="Texture2D" uid="uid://cxk6grvy3764u" path="res://Enemy/Assets/purplerosekorn.png" id="5_eeqw3"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_orfk6"]
+[ext_resource type="Script" path="res://Enemy/Scripts/AOEDeathExplosion.gd" id="7_4uiwf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
+animations = [{
+"frames": [ExtResource("5_eeqw3")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("6_orfk6")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[node name="Enemy" instance=ExtResource("1_u5u4g")]
+max_hp = 600
+
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+layout_mode = 0
+offset_top = 0.0
+offset_bottom = 26.0
+
+[node name="HealthBar" parent="EnemyGUI" index="1"]
+layout_mode = 1
+
+[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
+
+[node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("2_aomld")
+projectile_stats = ExtResource("3_pl3sn")
+
+[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot" index="0"]
+one_shot = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
+material = ExtResource("4_e543j")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_a5iya")
+animation = &"alive"
+
+[node name="DeathExplosion" type="Node2D" parent="." index="6"]
+script = ExtResource("7_4uiwf")
+
+[connection signal="death" from="." to="DeathExplosion" method="_on_enemy_death"]

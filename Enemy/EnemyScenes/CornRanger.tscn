@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://rnthmsbk2wo1"]
+
+[ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_ujnet"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_8hkm4"]
+[ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/Assets/korn.png" id="5_5e3w0"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_rflal"]
+[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="10_61kwo"]
+[ext_resource type="Resource" path="res://Enemy/Assets/korn_projectile.tres" id="11_4tndr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
+animations = [{
+"frames": [ExtResource("5_5e3w0")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("6_rflal")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[node name="Enemy" instance=ExtResource("1_ujnet")]
+max_hp = 15
+
+[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
+
+[node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("10_61kwo")
+projectile_stats = ExtResource("11_4tndr")
+
+[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot" index="0"]
+one_shot = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
+material = ExtResource("4_8hkm4")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_a5iya")
+animation = &"alive"

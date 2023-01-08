@@ -6,6 +6,8 @@ extends Node2D
 @export var difficulty_level :  int = 12
 
 @onready var players  = get_tree().get_nodes_in_group("player")
+
+
 var controlled_player_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,27 +54,21 @@ func enable_entities():
 	pass
 
 func select_enemy_groups(difficulty_level) -> Array[EnemyGroup]:
-	var difficulties = spawnable_groups.map(func(g): return g.difficulty_level)
-	
 	var diff_total = 0
 	
 	var groups = []
 	while diff_total < difficulty_level:
 		var group_diff_limit = difficulty_level - diff_total
-		var amount_lower_than_limit = difficulties.filter(func(d): return d <= group_diff_limit).size()
+		var valid_spawnable_groups = spawnable_groups.filter(func(g) : return g.difficulty_level <= group_diff_limit)
+		var amount_lower_than_limit = len(valid_spawnable_groups)
 		
 		if amount_lower_than_limit == 0:
 			break
 	
 		var selection = randi() % amount_lower_than_limit
 		
-		var j = 0
-		for i in range(difficulties.size()):
-			if difficulties[i] <= group_diff_limit:
-				if j == selection:
-					groups.append(spawnable_groups[i])
-					diff_total += difficulties[i]
-				j+=1
+		groups.append(valid_spawnable_groups[selection])
+		diff_total += valid_spawnable_groups[selection].difficulty_level
 	
 	return groups
 
@@ -110,3 +106,8 @@ func _input(event):
 			controlled_player_index = players.find(new_player)
 			
 			print(new_player.name)
+			
+
+
+func _on_grim_cheaper_control_changed(controlled):
+	pass # Replace with function body.

@@ -23,6 +23,8 @@ signal used_attack(cd)
 signal used_skill(cd)
 signal control_changed(controlled)
 signal death
+signal skill_used
+signal attack_used
 
 # Called when the node enters the scene tree for the first time.
 var enabled = false
@@ -136,7 +138,8 @@ func on_anim_end():
 func do_attack():
 	$AnimatedSprite.play("attack")
 	var new_attack = normal_attack.instantiate()
-
+	emit_signal("attack_used")
+	
 	new_attack.set_damage(get_attack_damage())
 	new_attack.damage_callback = on_attack_damage
 	new_attack.source_player = self
@@ -152,6 +155,7 @@ func do_attack():
 
 func do_skill():
 	var new_skill = skill.instantiate()
+	emit_signal("skill_used")
 
 	new_skill.set_damage(get_attack_damage())
 	new_skill.damage_callback = on_attack_damage

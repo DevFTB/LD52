@@ -15,9 +15,14 @@ _global_script_classes=[{
 "path": "res://Player/Abilities/BuffStats.gd"
 }, {
 "base": "Resource",
+"class": &"CleaveStats",
+"language": &"GDScript",
+"path": "res://Enemy/Scripts/CleaveStats.gd"
+}, {
+"base": "Resource",
 "class": &"EnemyGroup",
 "language": &"GDScript",
-"path": "res://Enemy/EnemyGroup.gd"
+"path": "res://Enemy/Scripts/EnemyGroup.gd"
 }, {
 "base": "Node2D",
 "class": &"PlayerAttack",
@@ -32,7 +37,7 @@ _global_script_classes=[{
 "base": "Resource",
 "class": &"ProjectileStats",
 "language": &"GDScript",
-"path": "res://Enemy/ProjectileStats.gd"
+"path": "res://Enemy/Scripts/ProjectileStats.gd"
 }, {
 "base": "Resource",
 "class": &"Stat",
@@ -41,6 +46,7 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "BuffStats": "",
+"CleaveStats": "",
 "EnemyGroup": "",
 "PlayerAttack": "",
 "PlayerStats": "",
