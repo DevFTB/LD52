@@ -34,6 +34,8 @@ var nearest_enemy = null
 var _find_enemy_timer = null
 var find_enemy_timeout = 0.25
 
+@export var ai_stopping_range = 20
+
 func _ready():
 	emit_signal("stats_changed", hp, atk, atk_speed, move_speed)
 	emit_signal("health_changed", health, 0, false)
@@ -48,7 +50,8 @@ func _ready():
 	_find_enemy_timer.start()
 	
 func get_nearest_enemy():
-	var enemies = get_tree().get_nodes_in_group("enemy")
+	var enemies = get_tree().get_nodes_in_group("enemy").filter(func (e): return not e.is_dead)
+	
 	if len(enemies) == 0:
 		return null
 	
@@ -66,7 +69,7 @@ func _find_enemy_timeout():
 func _process(delta):
 	if enabled and not is_dead and not controlled:
 		process_ai(delta)
-	if enabled and not is_dead:
+	elif enabled and not is_dead and controlled:
 		position += direction.normalized() * move_speed * 100 * delta
 
 func modify_health(modification):
@@ -255,6 +258,9 @@ func process_ai(delta):
 			do_skill()
 			can_use_skill = false
 			$SkillTimer.start()
+		
+		if global_position.distance_to(enemy_pos) > ai_stopping_range:
+			position += direction.normalized() * move_speed * 100 * delta
 	
 	
 	
