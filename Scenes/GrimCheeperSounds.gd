@@ -1,15 +1,21 @@
 extends Node2D
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var rng = RandomNumberGenerator.new()
+var hitRandom = 1
 
 
-func _on_the_sheepard_skill_used():
-	$SkillSound.play()
+func _on_grim_cheaper_attack_used():
+	rng.randomize()
+	hitRandom = rng.randi_range(1,3)
+	if hitRandom == 1 :
+		$"AttackSound".play()
+	if hitRandom == 2 :
+		$"AttackSound2".play()
+	if hitRandom == 3 :
+		$"AttackSound3".play()
 
-func _on_the_sheepard_attack_used():
-	$AttackSound.play()
 
-func _on_the_sheepard_death():
+func _on_grim_cheaper_death():
 	$DeathSound.play()
+
+func _on_grim_cheaper_skill_used():
+	$SkillSound.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dn6kp1v8qdosw"]
+[gd_scene load_steps=33 format=3 uid="uid://dn6kp1v8qdosw"]
 
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://dklk8npeopwmr" path="res://Sounds/slice 2.wav" id="15_noo6p"]
 [ext_resource type="AudioStream" uid="uid://3xra0dscbnmm" path="res://Sounds/slice 3.wav" id="16_pyl6y"]
 [ext_resource type="AudioStream" uid="uid://bxu8ku4d4dj6f" path="res://Sounds/super slice.wav" id="17_pt3a0"]
+[ext_resource type="Script" path="res://Scenes/SheeperdSounds.gd" id="23_53vl4"]
 [ext_resource type="AudioStream" uid="uid://ddjxh8676c0uo" path="res://Sounds/sheep ready.wav" id="23_r7ext"]
 [ext_resource type="AudioStream" uid="uid://c57uxmi5e7u32" path="res://Sounds/sheep attack.wav" id="24_xgs6o"]
 [ext_resource type="AudioStream" uid="uid://qhn0tqa6hoh6" path="res://Sounds/sheep skill.wav" id="25_23b4h"]
@@ -127,6 +128,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/GrimCheaper/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -161,12 +163,15 @@ stream = ExtResource("13_snipk")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
 stream = ExtResource("14_ev3xl")
+volume_db = -3.0
 
 [node name="AttackSound2" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
 stream = ExtResource("15_noo6p")
+volume_db = -3.0
 
 [node name="AttackSound3" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
 stream = ExtResource("16_pyl6y")
+volume_db = -3.0
 
 [node name="SkillSound" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
 stream = ExtResource("17_pt3a0")
@@ -197,6 +202,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/TheSheepard/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -227,14 +233,14 @@ script = ExtResource("6_k8gt7")
 [node name="Buffs" type="Node2D" parent="Players/TheSheepard"]
 
 [node name="SheeperdSounds" type="Node2D" parent="Players/TheSheepard"]
-script = ExtResource("12_m3j1o")
+script = ExtResource("23_53vl4")
 
 [node name="ReadySound" type="AudioStreamPlayer" parent="Players/TheSheepard/SheeperdSounds"]
 stream = ExtResource("23_r7ext")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="Players/TheSheepard/SheeperdSounds"]
 stream = ExtResource("24_xgs6o")
-volume_db = -3.0
+volume_db = -5.0
 
 [node name="SkillSound" type="AudioStreamPlayer2D" parent="Players/TheSheepard/SheeperdSounds"]
 stream = ExtResource("25_23b4h")
@@ -242,6 +248,7 @@ stream = ExtResource("25_23b4h")
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="Players/TheSheepard/SheeperdSounds"]
 
 [connection signal="attack_used" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSounds" method="_on_grim_cheaper_attack_used"]
+[connection signal="death" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSounds" method="_on_grim_cheaper_death"]
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/FlashOnHit" method="_on_health_changed"]
 [connection signal="skill_used" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSounds" method="_on_grim_cheaper_skill_used"]
