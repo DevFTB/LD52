@@ -23,9 +23,6 @@ animations = [{
 [node name="Enemy" instance=ExtResource("1_ms5u3")]
 max_hp = 450
 
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 1
-
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
 

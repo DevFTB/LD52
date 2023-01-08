@@ -43,7 +43,7 @@ func _process(delta):
 
 func modify_health(modification):
 	if not is_dead:
-		health += modification
+		health = min(health + modification, max_hp)
 		
 		if health < 0:
 			die()
