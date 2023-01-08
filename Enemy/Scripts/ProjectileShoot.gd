@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var projectile = preload("res://Enemy/projectile.tscn")
+@export var projectile = preload("res://Enemy/AttackScenes/projectile.tscn")
 @export var projectile_stats: ProjectileStats
 
 @export var attack_frequency = 0.5

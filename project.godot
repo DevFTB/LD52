@@ -17,7 +17,7 @@ _global_script_classes=[{
 "base": "Resource",
 "class": &"EnemyGroup",
 "language": &"GDScript",
-"path": "res://Enemy/EnemyGroup.gd"
+"path": "res://Enemy/Scripts/EnemyGroup.gd"
 }, {
 "base": "Resource",
 "class": &"PlayerStats",
@@ -27,7 +27,7 @@ _global_script_classes=[{
 "base": "Resource",
 "class": &"ProjectileStats",
 "language": &"GDScript",
-"path": "res://Enemy/ProjectileStats.gd"
+"path": "res://Enemy/Scripts/ProjectileStats.gd"
 }, {
 "base": "Resource",
 "class": &"Stat",

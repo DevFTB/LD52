@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dna0b5w73ci03"
-path="res://.godot/imported/dead_korn.png-0ea52ff7dfce4bd10f5768eae08e259a.ctex"
+path="res://.godot/imported/dead_korn.png-62a247cdebe090c6ef36980221452347.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/dead_korn.png"
-dest_files=["res://.godot/imported/dead_korn.png-0ea52ff7dfce4bd10f5768eae08e259a.ctex"]
+source_file="res://Enemy/Assets/dead_korn.png"
+dest_files=["res://.godot/imported/dead_korn.png-62a247cdebe090c6ef36980221452347.ctex"]
 
 [params]
 

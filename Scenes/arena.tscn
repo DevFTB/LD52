@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
 [ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
 [ext_resource type="Texture2D" uid="uid://bgduad68wqtvd" path="res://Level/level.png" id="2_mbeb0"]
-[ext_resource type="Resource" uid="uid://bgnb4tj2arm41" path="res://Level/EnemyGroups/group2.tres" id="3_211vp"]
+[ext_resource type="Resource" path="res://Level/EnemyGroups/group2.tres" id="3_211vp"]
 [ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="4_grhpe"]
 [ext_resource type="Script" path="res://Scenes/GrimCheaper.gd" id="4_vjqr2"]
 [ext_resource type="PackedScene" uid="uid://bq32vdiv30t2u" path="res://Player/Abilities/cleave.tscn" id="5_qpn1t"]

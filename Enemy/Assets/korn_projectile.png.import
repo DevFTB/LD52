@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d053fjmqpv0gu"
-path="res://.godot/imported/korn_projectile.png-a8c942e49027e802a5c821d3a0ea3fb6.ctex"
+path="res://.godot/imported/korn_projectile.png-eb7f02a6621e288ee206b17fdce30922.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/korn_projectile.png"
-dest_files=["res://.godot/imported/korn_projectile.png-a8c942e49027e802a5c821d3a0ea3fb6.ctex"]
+source_file="res://Enemy/Assets/korn_projectile.png"
+dest_files=["res://.godot/imported/korn_projectile.png-eb7f02a6621e288ee206b17fdce30922.ctex"]
 
 [params]
 
