@@ -128,7 +128,6 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/GrimCheaper/CharacterGUI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -202,7 +201,6 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/TheSheepard/CharacterGUI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -240,7 +238,7 @@ stream = ExtResource("23_r7ext")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="Players/TheSheepard/SheeperdSounds"]
 stream = ExtResource("24_xgs6o")
-volume_db = -5.0
+volume_db = -7.0
 
 [node name="SkillSound" type="AudioStreamPlayer2D" parent="Players/TheSheepard/SheeperdSounds"]
 stream = ExtResource("25_23b4h")
