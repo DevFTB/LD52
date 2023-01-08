@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cl0m2omuae7rn"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dioi8ehgcxgbs"]
 
-[ext_resource type="PackedScene" uid="uid://cv8mx0js8ys2" path="res://Level/EnemyGroups/group4.tscn" id="1_pb7ci"]
+[ext_resource type="PackedScene" uid="uid://rxj5or3ry6oe" path="res://Level/EnemyGroups/group4.tscn" id="1_pb7ci"]
 [ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="2_eh0kr"]
 
 [resource]

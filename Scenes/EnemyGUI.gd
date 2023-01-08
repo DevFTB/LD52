@@ -21,6 +21,5 @@ func _on_health_changed(new_health, difference, should_display):
 		$HealthBar.visible = false
 	else:
 		$HealthBar.visible = true
-		print("log", new_health, max_health)
 		$HealthBar.value = round((new_health/max_health) * 100)
 			
