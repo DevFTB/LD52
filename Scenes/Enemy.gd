@@ -58,7 +58,6 @@ func disable():
 	enabled = false
 	pass
 
-
 func _on_pain_timeout():
 	modify_health(-1)
 	pass # Replace with function body.

@@ -43,6 +43,7 @@ func _process(delta):
 func modify_health(modification):
 	if not is_dead and enabled:
 		health += modification
+		health = min(hp, health)
 		if health < 0:
 			die()
 		emit_signal("health_changed", health, modification, true)
@@ -58,8 +59,6 @@ func die():
 		var duration = ((level_width + 150) - position.x) / (movement_speed * 1.5)
 		tween.tween_property(self, "position", destination, duration).from_current()
 	pass
-
-
 	
 func enable():
 	enabled = true
@@ -79,12 +78,15 @@ func do_attack(attack):
 	var new_attack = attack.instantiate()
 	$Attack.add_child(new_attack)
 	
+	new_attack.damage_callback = on_attack_damage
+	
 	var rot_angle = Vector2.LEFT.angle_to(direction.normalized())
 	print(rot_angle)
 	new_attack.position = Vector2(-50, 0).rotated(rot_angle)
 	new_attack.rotation = rot_angle
 	pass
-	
+func on_attack_damage(damage):
+	pass
 func _input(event):
 	if controlled:
 		if event is InputEventKey:
@@ -114,12 +116,9 @@ func _input(event):
 				$SkillTimer.start()
 	pass
 
-
 func _on_attack_timer_timeout():
-	
 	do_attack(normal_attack)
 	pass # Replace with function body.
-
 
 func _on_skill_timer_timeout():
 	can_use_skill = true

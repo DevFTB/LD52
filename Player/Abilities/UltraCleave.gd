@@ -8,6 +8,8 @@ var amount_active = 0
 
 var finished = false
 var timer = 0
+
+var damage_callback = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -29,6 +31,8 @@ func spawn():
 	if amount_active < max_amount:
 		print("inst")
 		var new_cleave = cleave_attack.instantiate()
+		
+		new_cleave.damage_callback = damage_callback
 		
 		var reference_child = $Points.get_child(amount_active)
 		new_cleave.position = reference_child.position
