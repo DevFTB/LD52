@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjfjnoewptiqv"]
+
+[ext_resource type="Texture2D" uid="uid://dbtcnjk6g35p3" path="res://Items/item_shop_mockup.png" id="1_uovsa"]
+
+[node name="item_shop" type="Node2D"]
+
+[node name="ItemShopMockup" type="Sprite2D" parent="."]
+position = Vector2(576, 352)
+texture = ExtResource("1_uovsa")
