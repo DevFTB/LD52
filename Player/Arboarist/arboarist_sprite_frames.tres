@@ -1,6 +1,39 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cah4huhysak2j"]
+[gd_resource type="SpriteFrames" load_steps=19 format=3 uid="uid://cah4huhysak2j"]
 
 [ext_resource type="Texture2D" uid="uid://cbjvao6r8tor5" path="res://Player/Arboarist/arboarist_walk.png" id="1_hopjt"]
+[ext_resource type="Texture2D" uid="uid://dxqmtib2140lf" path="res://Player/Arboarist/arboarist_attack.png" id="1_v62y1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu33f"]
+atlas = ExtResource("1_v62y1")
+region = Rect2(0, 0, 290, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo2qy"]
+atlas = ExtResource("1_v62y1")
+region = Rect2(290, 0, 290, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kypn5"]
+atlas = ExtResource("1_v62y1")
+region = Rect2(580, 0, 290, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd0j5"]
+atlas = ExtResource("1_v62y1")
+region = Rect2(870, 0, 290, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebnwl"]
+atlas = ExtResource("1_v62y1")
+region = Rect2(1160, 0, 290, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxc3e"]
+atlas = ExtResource("1_v62y1")
+region = Rect2(1450, 0, 290, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu5jm"]
+atlas = ExtResource("1_v62y1")
+region = Rect2(1740, 0, 290, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv8n8"]
+atlas = ExtResource("1_v62y1")
+region = Rect2(2030, 0, 290, 170)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gggs1"]
 atlas = ExtResource("1_hopjt")
@@ -36,10 +69,10 @@ region = Rect2(768, 0, 128, 128)
 
 [resource]
 animations = [{
-"frames": [SubResource("AtlasTexture_gggs1")],
+"frames": [SubResource("AtlasTexture_wu33f"), SubResource("AtlasTexture_jo2qy"), SubResource("AtlasTexture_kypn5"), SubResource("AtlasTexture_wd0j5"), SubResource("AtlasTexture_ebnwl"), SubResource("AtlasTexture_gxc3e"), SubResource("AtlasTexture_uu5jm"), SubResource("AtlasTexture_gv8n8")],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [SubResource("AtlasTexture_gggs1"), SubResource("AtlasTexture_qtdla"), SubResource("AtlasTexture_houm3"), SubResource("AtlasTexture_cc4wi"), SubResource("AtlasTexture_q0gkv"), SubResource("AtlasTexture_ckv7k"), SubResource("AtlasTexture_pfnos"), SubResource("AtlasTexture_ogpwd")],
 "loop": true,

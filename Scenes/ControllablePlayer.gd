@@ -21,6 +21,7 @@ signal stats_changed(hp, atk, atk_speed, move_speed, dmg_reduction, skill_cooldo
 signal health_changed(new_health, difference, should_display)
 signal used_attack(cd)
 signal used_skill(cd)
+signal control_changed(controlled)
 signal death
 
 # Called when the node enters the scene tree for the first time.
@@ -267,10 +268,12 @@ func enable_control():
 	controlled = true
 	direction = Vector2.ZERO
 	buffer = true
+	emit_signal("control_changed", controlled)
 	
 func disable_control():
 	controlled= false
 	direction = Vector2.ZERO
+	emit_signal("control_changed", controlled)
 
 func recalculate_stats():
 	var total = BuffStats.new()

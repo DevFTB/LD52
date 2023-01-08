@@ -651,6 +651,7 @@ layer_1/tile_data = PackedInt32Array(17, 1, 1, 0, 1, 1, 16, 1, 1, 15, 1, 1, 14, 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Players" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="GrimCheaper" type="Node2D" parent="Players" groups=["player"]]
 texture_filter = 1

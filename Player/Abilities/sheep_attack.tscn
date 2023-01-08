@@ -15,7 +15,7 @@ animations = [{
 "frames": [ExtResource("2_vqylc"), ExtResource("3_3huuj")],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 15.0
 }]
 
 [node name="SheepAttack" type="Node2D"]
@@ -33,7 +33,9 @@ scale = Vector2(1.2, 1.2)
 
 [node name="Cleave" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
 texture_filter = 1
+position = Vector2(2.5, -15)
 rotation = 3.24457
+scale = Vector2(0.6, 0.6)
 frames = SubResource("SpriteFrames_7wta1")
 playing = true
 flip_h = true

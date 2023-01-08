@@ -25,6 +25,7 @@ func _ready():
 	player.health_changed.connect(update_health)
 	player.used_attack.connect(on_used_attack)
 	player.used_skill.connect(on_used_skill)
+	player.control_changed.connect(on_control_changed)
 	
 	$Details/Abilities/Attack/AttackCDBar.visible = false
 	$Details/Abilities/Skill/SkillCDBar.visible = false
@@ -45,6 +46,12 @@ func _process(delta):
 			$Details/Abilities/Skill/SkillIcon.modulate = Color.WHITE
 		else:
 			$Details/Abilities/Skill/SkillCDBar.value = skill_timer
+	pass
+func on_control_changed(controlled):
+	if controlled:
+		$Details/PlayerName.modulate = Color.YELLOW_GREEN
+	else:
+		$Details/PlayerName.modulate = Color.WHITE
 	pass
 	
 func _on_player_stats_changed(hp, atk, atk_speed, move_speed, dmg_reduction, skill_cooldown):
