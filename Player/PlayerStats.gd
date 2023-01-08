@@ -1,6 +1,8 @@
 extends Resource
 class_name PlayerStats
 
+@export var player_name = "Player"
+
 var items = []
 var level = 1
 
@@ -28,6 +30,9 @@ func add_item(item):
 func remove_item(item):
 	items.remove(item)
 	items.remove_buff(self)
+
+func get_player_name():
+	return player_name
 
 func get_hp(multiplier = 1):
 	return hp.get_effective_value(level, multiplier)

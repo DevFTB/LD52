@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var projectile : ProjectileStats
+@onready var dist_travelled = 0
 
 var direction = null
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +15,9 @@ func _ready():
 func _process(delta):
 	if direction != null and projectile != null:
 		position += direction * projectile.speed * delta
-	pass
+		dist_travelled += (direction * projectile.speed * delta).length()
+		if dist_travelled > projectile.range:
+			queue_free()
 
 func set_details(direction, projectile_stats):
 	self.direction = direction
@@ -25,6 +28,7 @@ func set_details(direction, projectile_stats):
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent().is_in_group("player"):
+		print("projectile damage "  + str(projectile.damage))
 		area.get_parent().modify_health(-projectile.damage)
 		queue_free()
 	pass # Replace with function body.

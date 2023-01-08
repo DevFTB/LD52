@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dna0b5w73ci03"
-path="res://.godot/imported/dead_korn.png-0ea52ff7dfce4bd10f5768eae08e259a.ctex"
+uid="uid://bns4f8f0l5n7a"
+path="res://.godot/imported/portrait_cover.png-c2e6157da9a362caf08011ee02099f36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/dead_korn.png"
-dest_files=["res://.godot/imported/dead_korn.png-0ea52ff7dfce4bd10f5768eae08e259a.ctex"]
+source_file="res://Player/UI/portrait_cover.png"
+dest_files=["res://.godot/imported/portrait_cover.png-c2e6157da9a362caf08011ee02099f36.ctex"]
 
 [params]
 
