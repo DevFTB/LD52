@@ -1,15 +1,23 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://6xd720ibxlu0"]
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://6xd720ibxlu0"]
 
-[ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="1_rdgtx"]
+[ext_resource type="Texture2D" uid="uid://cbgytfw8g6tdf" path="res://Player/GrimCheaper/gc_walk.png" id="2_a0vhg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_414p1"]
+atlas = ExtResource("2_a0vhg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gxa3"]
+atlas = ExtResource("2_a0vhg")
+region = Rect2(128, 0, 128, 128)
 
 [resource]
 animations = [{
-"frames": [ExtResource("1_rdgtx")],
+"frames": [SubResource("AtlasTexture_414p1")],
 "loop": true,
 "name": &"attack",
 "speed": 5.0
 }, {
-"frames": [ExtResource("1_rdgtx")],
+"frames": [SubResource("AtlasTexture_414p1"), SubResource("AtlasTexture_7gxa3")],
 "loop": true,
 "name": &"walk",
 "speed": 5.0

@@ -1,0 +1,48 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cah4huhysak2j"]
+
+[ext_resource type="Texture2D" uid="uid://cbjvao6r8tor5" path="res://Player/Arboarist/arboarist_walk.png" id="1_hopjt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gggs1"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtdla"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_houm3"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4wi"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0gkv"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckv7k"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfnos"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogpwd"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(768, 0, 128, 128)
+
+[resource]
+animations = [{
+"frames": [SubResource("AtlasTexture_gggs1")],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_gggs1"), SubResource("AtlasTexture_qtdla"), SubResource("AtlasTexture_houm3"), SubResource("AtlasTexture_cc4wi"), SubResource("AtlasTexture_q0gkv"), SubResource("AtlasTexture_ckv7k"), SubResource("AtlasTexture_pfnos"), SubResource("AtlasTexture_ogpwd")],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]

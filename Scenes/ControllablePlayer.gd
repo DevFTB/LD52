@@ -13,6 +13,8 @@ extends Node2D
 @onready var atk_speed = player_stats.get_atk_speed()
 @onready var move_speed = player_stats.get_move_speed()
 
+var dmg_reduction = 0
+
 var direction : Vector2 = Vector2.ZERO
 
 signal stats_changed(hp, atk, atk_speed, move_speed)
@@ -24,6 +26,7 @@ var enabled = false
 var can_use_skill = true
 var is_dead = false
 var controlled = false
+
 
 var level_width = null
 
@@ -44,7 +47,8 @@ func _process(delta):
 
 func modify_health(modification):
 	if not is_dead and enabled:
-		health += modification
+		if modification < 0:
+			health += modification * 1 - min(dmg_reduction, 1)
 		health = min(hp, health)
 		if health < 0:
 			die()
@@ -94,6 +98,7 @@ func do_attack():
 
 	new_attack.set_damage(get_attack_damage())
 	new_attack.damage_callback = on_attack_damage
+	new_attack.source_player = self
 	
 	modify_attack(new_attack)
 
@@ -108,6 +113,7 @@ func do_skill():
 
 	new_skill.set_damage(get_attack_damage())
 	new_skill.damage_callback = on_attack_damage
+	new_skill.source_player = self
 	
 	modify_skill(new_skill)
 	
@@ -137,26 +143,31 @@ func do_combat(attack, damage):
 	
 func on_attack_damage(damage):
 	pass
-	
+
+var buffer = false
 func _input(event):
-	if controlled:
+	if controlled and not is_dead:
 		if event is InputEventKey:
+			if not event.pressed and buffer:
+				buffer = false
+				return
+			if event.pressed and buffer:
+				buffer= false
+			
 			if event.is_action_pressed("move_up"):
 				direction.y -= 1
-			if event.is_action_released("move_up"):
-				direction.y += 1
-				
 			if event.is_action_pressed("move_down"):
+				direction.y += 1
+			if event.is_action_pressed("move_left"):
+				direction.x -= 1
+			if event.is_action_pressed("move_right"):
+				direction.x += 1
+			
+			if event.is_action_released("move_up"):
 				direction.y += 1
 			if event.is_action_released("move_down"):
 				direction.y -= 1
-				
-			if event.is_action_pressed("move_left"):
-				direction.x -= 1
 			if event.is_action_released("move_left"):
-				direction.x += 1
-				
-			if event.is_action_pressed("move_right"):
 				direction.x += 1
 			if event.is_action_released("move_right"):
 				direction.x -= 1
@@ -199,6 +210,15 @@ func remove_buff(time_key):
 	buffs.erase(time_key)
 	
 	recalculate_stats()
+
+func enable_control():
+	controlled = true
+	direction = Vector2.ZERO
+	buffer = true
+	
+func disable_control():
+	controlled= false
+	direction = Vector2.ZERO
 
 func recalculate_stats():
 	var total = BuffStats.new()

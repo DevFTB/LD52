@@ -14,7 +14,7 @@ func _ready():
 	for player in players:
 		player.death.connect(func(): on_player_death(player))
 
-	players[controlled_player_index].controlled =true
+	players[controlled_player_index].enable_control()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,13 +78,15 @@ func select_enemy_groups(difficulty_level) -> Array[EnemyGroup]:
 
 func on_player_death(player):
 	if player.controlled:
-		player.controlled = false
+		player.disable_control()
 		
 		controlled_player_index = -1
 		for p in players:
-			if not p.is_dead:
-				p.controlled = true
+			if not p.is_dead and p != player:
+				p.enable_control()
+				print(p.name)
 				controlled_player_index = players.find(p)
+				break
 		
 		if controlled_player_index == -1:
 			lose_round()	
@@ -95,6 +97,16 @@ func lose_round():
 func _input(event):
 	if event is InputEventKey:
 		if event.is_action_released("switch_player"):
-			players[controlled_player_index].controlled = false
-			controlled_player_index = (controlled_player_index + 1) % players.size()
-			players[controlled_player_index].controlled = true
+			var valid_players = players.filter(func(p): return not p.is_dead and p.enabled)
+			
+			if valid_players.size() == 0:
+				controlled_player_index = -1
+				return
+			
+			players[controlled_player_index].disable_control()
+			controlled_player_index = (controlled_player_index + 1) % valid_players.size()
+			var new_player = valid_players[controlled_player_index]
+			new_player.enable_control()
+			controlled_player_index = players.find(new_player)
+			
+			print(new_player.name)

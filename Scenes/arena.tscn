@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dn6kp1v8qdosw"]
+[gd_scene load_steps=39 format=3 uid="uid://ch0um0qfy57rk"]
 
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
 [ext_resource type="Texture2D" uid="uid://bgduad68wqtvd" path="res://Level/level.png" id="2_mbeb0"]
@@ -16,6 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://b8sdmvoo1dmae" path="res://Player/Abilities/sheep_buff.tscn" id="13_ndy3r"]
 [ext_resource type="Resource" uid="uid://dwydefp8cr4lw" path="res://Player/the_sheepard_stats.tres" id="15_njtfh"]
 [ext_resource type="SpriteFrames" uid="uid://ce0sksbp1b1io" path="res://Player/Sheepard/sheepard_frames.tres" id="16_ixy2y"]
+[ext_resource type="PackedScene" uid="uid://damqr88nxwy6a" path="res://Player/Arboarist/spin.tscn" id="17_8ahuv"]
+[ext_resource type="Script" path="res://Scenes/Arboarist.gd" id="17_mc5g8"]
+[ext_resource type="SpriteFrames" uid="uid://cah4huhysak2j" path="res://Player/Arboarist/arboarist_sprite_frames.tres" id="18_dfsx4"]
+[ext_resource type="PackedScene" uid="uid://cep38mpyaw3j1" path="res://Player/Arboarist/boar_shield.tscn" id="19_76w3q"]
+[ext_resource type="Script" path="res://Player/Stat.gd" id="20_ifu6p"]
+[ext_resource type="Script" path="res://Player/PlayerStats.gd" id="21_m4u31"]
 
 [sub_resource type="Animation" id="Animation_0dauk"]
 resource_name = "LevelStart"
@@ -62,8 +68,65 @@ tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_ssi7g")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
-radius = 24.0
-height = 72.0
+radius = 38.0
+height = 102.0
+
+[sub_resource type="Resource" id="Resource_1svkk"]
+script = ExtResource("20_ifu6p")
+base_value = 6.0
+level_bonus = 2.0
+
+[sub_resource type="Resource" id="Resource_g7ort"]
+script = ExtResource("20_ifu6p")
+base_value = 0.6
+level_bonus = 0.5
+
+[sub_resource type="Resource" id="Resource_4st0b"]
+script = ExtResource("20_ifu6p")
+base_value = 1.5
+level_bonus = 0.15
+
+[sub_resource type="Resource" id="Resource_bepct"]
+script = ExtResource("20_ifu6p")
+base_value = 30.0
+level_bonus = 2.0
+
+[sub_resource type="Resource" id="Resource_4l1dr"]
+script = ExtResource("20_ifu6p")
+base_value = 1.0
+level_bonus = 0.05
+
+[sub_resource type="Resource" id="Resource_wrn2r"]
+script = ExtResource("20_ifu6p")
+base_value = 0.1
+level_bonus = 0.02
+
+[sub_resource type="Resource" id="Resource_3y7j6"]
+script = ExtResource("20_ifu6p")
+base_value = 20.0
+level_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_lu75e"]
+script = ExtResource("20_ifu6p")
+base_value = 5.0
+level_bonus = 0.2
+
+[sub_resource type="Resource" id="Resource_ohxd4"]
+script = ExtResource("20_ifu6p")
+base_value = 0.4
+level_bonus = 0.02
+
+[sub_resource type="Resource" id="Resource_gxlbg"]
+script = ExtResource("21_m4u31")
+hp = SubResource("Resource_bepct")
+atk = SubResource("Resource_1svkk")
+atk_speed = SubResource("Resource_g7ort")
+move_speed = SubResource("Resource_4l1dr")
+attack_scaling = SubResource("Resource_4st0b")
+skill_scaling = SubResource("Resource_ohxd4")
+skill_cooldown = SubResource("Resource_3y7j6")
+skill_duration = SubResource("Resource_lu75e")
+passive = SubResource("Resource_wrn2r")
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_l5hyt")
@@ -120,6 +183,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/GrimCheaper/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -159,7 +223,7 @@ player_stats = ExtResource("15_njtfh")
 material = ExtResource("6_cb21j")
 use_parent_material = true
 frames = ExtResource("16_ixy2y")
-animation = &"attack"
+animation = &"walk"
 flip_h = true
 
 [node name="CharacterGUI" type="Control" parent="Players/TheSheepard"]
@@ -172,6 +236,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/TheSheepard/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -202,6 +267,64 @@ sprite = NodePath("../AnimatedSprite")
 
 [node name="Buffs" type="Node2D" parent="Players/TheSheepard"]
 
+[node name="Arboarist" type="Node2D" parent="Players" groups=["player"]]
+visible = false
+texture_filter = 1
+position = Vector2(1301, 153)
+script = ExtResource("17_mc5g8")
+normal_attack = ExtResource("17_8ahuv")
+skill = ExtResource("19_76w3q")
+player_stats = SubResource("Resource_gxlbg")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Players/Arboarist"]
+material = ExtResource("6_cb21j")
+use_parent_material = true
+frames = ExtResource("18_dfsx4")
+animation = &"walk"
+frame = 1
+flip_h = true
+
+[node name="CharacterGUI" type="Control" parent="Players/Arboarist"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -53.0
+offset_top = 62.0
+offset_right = 50.237
+offset_bottom = 76.363
+script = ExtResource("4_grhpe")
+
+[node name="HealthBar" type="ProgressBar" parent="Players/Arboarist/CharacterGUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.14441e-05
+offset_bottom = 12.637
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="Players/Arboarist"]
+position = Vector2(1, 12)
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/Arboarist/Area2D"]
+shape = SubResource("CapsuleShape2D_61i3l")
+
+[node name="Attack" type="Node2D" parent="Players/Arboarist"]
+
+[node name="AttackTimer" type="Timer" parent="Players/Arboarist"]
+wait_time = 2.0
+
+[node name="SkillTimer" type="Timer" parent="Players/Arboarist"]
+one_shot = true
+
+[node name="FlashOnHit" type="Node" parent="Players/Arboarist" node_paths=PackedStringArray("sprite")]
+script = ExtResource("6_k8gt7")
+sprite = NodePath("../AnimatedSprite")
+
+[node name="Buffs" type="Node2D" parent="Players/Arboarist"]
+
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/FlashOnHit" method="_on_health_changed"]
 [connection signal="stats_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
@@ -212,3 +335,8 @@ sprite = NodePath("../AnimatedSprite")
 [connection signal="stats_changed" from="Players/TheSheepard" to="Players/TheSheepard/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
 [connection signal="timeout" from="Players/TheSheepard/AttackTimer" to="Players/TheSheepard" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Players/TheSheepard/SkillTimer" to="Players/TheSheepard" method="_on_skill_timer_timeout"]
+[connection signal="health_changed" from="Players/Arboarist" to="Players/Arboarist/CharacterGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="Players/Arboarist" to="Players/Arboarist/FlashOnHit" method="_on_health_changed"]
+[connection signal="stats_changed" from="Players/Arboarist" to="Players/Arboarist/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
+[connection signal="timeout" from="Players/Arboarist/AttackTimer" to="Players/Arboarist" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Players/Arboarist/SkillTimer" to="Players/Arboarist" method="_on_skill_timer_timeout"]
