@@ -19,3 +19,8 @@ func _on_grim_cheaper_death():
 
 func _on_grim_cheaper_skill_used():
 	$SkillSound.play()
+
+
+func _on_grim_cheaper_control_changed(controlled):
+	if controlled == true :
+		$ReadySound.play() # Replace with function body.

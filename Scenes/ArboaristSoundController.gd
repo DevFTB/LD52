@@ -5,15 +5,19 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _on_the_sheepard_skill_used():
+func _on_arboarist_skill_used():
 	$SkillSound.play()
 
-func _on_the_sheepard_attack_used():
-	$AttackSound.play()
 
-func _on_the_sheepard_death():
+func _on_arboarist_death():
 	$DeathSound.play()
 
-func _on_the_sheepard_control_changed(controlled):
+
+func _on_arboarist_attack_used():
+	$AttackSound.play()
+
+
+
+func _on_arboarist_control_changed(controlled):
 	if controlled == true :
 		$ReadySound.play()
