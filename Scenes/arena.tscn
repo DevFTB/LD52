@@ -14,8 +14,6 @@
 [ext_resource type="SpriteFrames" uid="uid://6xd720ibxlu0" path="res://Player/GrimCheaper/grim_cheaper_frames.tres" id="9_buh30"]
 [ext_resource type="PackedScene" uid="uid://xjahcj7id5nx" path="res://Player/Abilities/sheep_attack.tscn" id="12_tgu0n"]
 [ext_resource type="PackedScene" uid="uid://b8sdmvoo1dmae" path="res://Player/Abilities/sheep_buff.tscn" id="13_ndy3r"]
-[ext_resource type="AudioStream" uid="uid://baltx1qynm02d" path="res://Sounds/chicken ready.wav" id="13_snipk"]
-[ext_resource type="AudioStream" uid="uid://cx2b68t84i237" path="res://Sounds/slice 1.wav" id="14_ev3xl"]
 [ext_resource type="Resource" uid="uid://dwydefp8cr4lw" path="res://Player/the_sheepard_stats.tres" id="15_njtfh"]
 [ext_resource type="SpriteFrames" uid="uid://ce0sksbp1b1io" path="res://Player/Sheepard/sheepard_frames.tres" id="16_ixy2y"]
 [ext_resource type="PackedScene" uid="uid://damqr88nxwy6a" path="res://Player/Arboarist/spin.tscn" id="17_8ahuv"]
@@ -689,29 +687,6 @@ one_shot = true
 script = ExtResource("6_k8gt7")
 sprite = NodePath("../AnimatedSprite")
 
-[node name="GrimCheeperSounds" type="Node2D" parent="Players/GrimCheaper"]
-script = ExtResource("12_m3j1o")
-
-[node name="ReadySound" type="AudioStreamPlayer" parent="Players/GrimCheaper/GrimCheeperSounds"]
-stream = ExtResource("13_snipk")
-
-[node name="AttackSound" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
-stream = ExtResource("14_ev3xl")
-volume_db = -3.0
-
-[node name="AttackSound2" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
-stream = ExtResource("15_noo6p")
-volume_db = -3.0
-
-[node name="AttackSound3" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
-stream = ExtResource("16_pyl6y")
-volume_db = -3.0
-
-[node name="SkillSound" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
-stream = ExtResource("17_pt3a0")
-
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="Players/GrimCheaper/GrimCheeperSounds"]
-
 [node name="TheSheepard" type="Node2D" parent="Players" groups=["player"]]
 texture_filter = 1
 position = Vector2(1339, 505)
@@ -825,15 +800,11 @@ sprite = NodePath("../AnimatedSprite")
 
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/FlashOnHit" method="_on_health_changed"]
-[connection signal="skill_used" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSounds" method="_on_grim_cheaper_skill_used"]
 [connection signal="stats_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
 [connection signal="timeout" from="Players/GrimCheaper/AttackTimer" to="Players/GrimCheaper" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Players/GrimCheaper/SkillTimer" to="Players/GrimCheaper" method="_on_skill_timer_timeout"]
-[connection signal="attack_used" from="Players/TheSheepard" to="Players/TheSheepard/SheeperdSounds" method="_on_the_sheepard_attack_used"]
-[connection signal="death" from="Players/TheSheepard" to="Players/TheSheepard/SheeperdSounds" method="_on_the_sheepard_death"]
 [connection signal="health_changed" from="Players/TheSheepard" to="Players/TheSheepard/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Players/TheSheepard" to="Players/TheSheepard/FlashOnHit" method="_on_health_changed"]
-[connection signal="skill_used" from="Players/TheSheepard" to="Players/TheSheepard/SheeperdSounds" method="_on_the_sheepard_skill_used"]
 [connection signal="stats_changed" from="Players/TheSheepard" to="Players/TheSheepard/CharacterGUI" method="_on_grim_cheaper_stats_changed"]
 [connection signal="timeout" from="Players/TheSheepard/AttackTimer" to="Players/TheSheepard" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Players/TheSheepard/SkillTimer" to="Players/TheSheepard" method="_on_skill_timer_timeout"]
