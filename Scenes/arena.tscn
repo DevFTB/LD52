@@ -1,7 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dn6kp1v8qdosw"]
 
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
-[ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="2_ixflb"]
 [ext_resource type="Texture2D" uid="uid://bgduad68wqtvd" path="res://Level/level.png" id="2_mbeb0"]
 [ext_resource type="Resource" uid="uid://bgnb4tj2arm41" path="res://Level/EnemyGroups/group2.tres" id="3_211vp"]
 [ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="4_grhpe"]
@@ -12,10 +11,11 @@
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_k8gt7"]
 [ext_resource type="Resource" uid="uid://bp6lo7vsrhav8" path="res://Player/grim_cheaper_stats.tres" id="7_u0747"]
 [ext_resource type="Script" path="res://Scenes/TheSheepard.gd" id="9_54lqa"]
-[ext_resource type="Texture2D" uid="uid://dcft6naqv8p0i" path="res://Player/the_sheepard.png" id="10_uio0x"]
+[ext_resource type="SpriteFrames" uid="uid://6xd720ibxlu0" path="res://Player/GrimCheaper/grim_cheaper_frames.tres" id="9_buh30"]
 [ext_resource type="PackedScene" uid="uid://xjahcj7id5nx" path="res://Player/Abilities/sheep_attack.tscn" id="12_tgu0n"]
 [ext_resource type="PackedScene" uid="uid://b8sdmvoo1dmae" path="res://Player/Abilities/sheep_buff.tscn" id="13_ndy3r"]
 [ext_resource type="Resource" uid="uid://dwydefp8cr4lw" path="res://Player/the_sheepard_stats.tres" id="15_njtfh"]
+[ext_resource type="SpriteFrames" uid="uid://ce0sksbp1b1io" path="res://Player/Sheepard/sheepard_frames.tres" id="16_ixy2y"]
 
 [sub_resource type="Animation" id="Animation_0dauk"]
 resource_name = "LevelStart"
@@ -70,6 +70,7 @@ script = ExtResource("1_l5hyt")
 spawnable_groups = [ExtResource("3_211vp")]
 spawnable_area = Rect2(0, 200, 700, 400)
 level_size = Vector2(1152, 704)
+difficulty_level = 6
 
 [node name="LevelStart" type="AnimationPlayer" parent="."]
 libraries = {
@@ -102,10 +103,11 @@ normal_attack = ExtResource("5_qpn1t")
 skill = ExtResource("6_dydb5")
 player_stats = ExtResource("7_u0747")
 
-[node name="Sprite" type="Sprite2D" parent="Players/GrimCheaper"]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Players/GrimCheaper"]
 material = ExtResource("6_cb21j")
 use_parent_material = true
-texture = ExtResource("2_ixflb")
+frames = ExtResource("9_buh30")
+animation = &"attack"
 flip_h = true
 
 [node name="CharacterGUI" type="Control" parent="Players/GrimCheaper"]
@@ -118,6 +120,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/GrimCheaper/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -141,8 +144,9 @@ wait_time = 2.0
 [node name="SkillTimer" type="Timer" parent="Players/GrimCheaper"]
 one_shot = true
 
-[node name="FlashOnHit" type="Node" parent="Players/GrimCheaper"]
+[node name="FlashOnHit" type="Node" parent="Players/GrimCheaper" node_paths=PackedStringArray("sprite")]
 script = ExtResource("6_k8gt7")
+sprite = NodePath("../AnimatedSprite")
 
 [node name="TheSheepard" type="Node2D" parent="Players" groups=["player"]]
 texture_filter = 1
@@ -152,10 +156,11 @@ normal_attack = ExtResource("12_tgu0n")
 skill = ExtResource("13_ndy3r")
 player_stats = ExtResource("15_njtfh")
 
-[node name="Sprite" type="Sprite2D" parent="Players/TheSheepard"]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Players/TheSheepard"]
 material = ExtResource("6_cb21j")
 use_parent_material = true
-texture = ExtResource("10_uio0x")
+frames = ExtResource("16_ixy2y")
+animation = &"attack"
 flip_h = true
 
 [node name="CharacterGUI" type="Control" parent="Players/TheSheepard"]
@@ -168,6 +173,7 @@ offset_bottom = 76.363
 script = ExtResource("4_grhpe")
 
 [node name="HealthBar" type="ProgressBar" parent="Players/TheSheepard/CharacterGUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -192,8 +198,9 @@ wait_time = 2.0
 [node name="SkillTimer" type="Timer" parent="Players/TheSheepard"]
 one_shot = true
 
-[node name="FlashOnHit" type="Node" parent="Players/TheSheepard"]
+[node name="FlashOnHit" type="Node" parent="Players/TheSheepard" node_paths=PackedStringArray("sprite")]
 script = ExtResource("6_k8gt7")
+sprite = NodePath("../AnimatedSprite")
 
 [node name="Buffs" type="Node2D" parent="Players/TheSheepard"]
 

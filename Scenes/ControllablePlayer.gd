@@ -31,9 +31,11 @@ var level_width = null
 var buffs : Dictionary = {}
 
 func _ready():
+	$AnimatedSprite.animation_finished.connect(on_anim_end)
 	emit_signal("stats_changed", hp, atk, atk_speed, move_speed)
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()
+	$AnimatedSprite.play("walk")
 	pass # Replace with function body.
  
 func _process(delta):
@@ -64,7 +66,7 @@ func die():
 func enable():
 	enabled = true
 	can_use_skill = true
-	
+	$AnimatedSprite.play("walk")
 	$AttackTimer.start()
 	$SkillTimer.start()
 	pass
@@ -82,8 +84,13 @@ func get_attack_damage():
 	
 func get_skill_damage():
 	return player_stats.get_skill_damage(atk)
+	
+func on_anim_end():
+	
+	pass
 
 func do_attack():
+	$AnimatedSprite.play("attack")
 	var new_attack = normal_attack.instantiate()
 
 	new_attack.set_damage(get_attack_damage())
@@ -100,7 +107,6 @@ func do_attack():
 func do_skill():
 	var new_skill = skill.instantiate()
 
-	
 	new_skill.set_damage(get_attack_damage())
 	new_skill.damage_callback = on_attack_damage
 	
@@ -111,6 +117,7 @@ func do_skill():
 	new_skill.rotation = rot_angle
 
 	$Attack.add_child(new_skill)
+
 func modify_attack(attack):
 	pass
 

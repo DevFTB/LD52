@@ -1,0 +1,16 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://6xd720ibxlu0"]
+
+[ext_resource type="Texture2D" uid="uid://bi50q13x21lsr" path="res://Player/grim_cheaper.png" id="1_rdgtx"]
+
+[resource]
+animations = [{
+"frames": [ExtResource("1_rdgtx")],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [ExtResource("1_rdgtx")],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
