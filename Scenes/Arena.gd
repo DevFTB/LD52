@@ -107,3 +107,7 @@ func _input(event):
 			
 			print(new_player.name)
 			
+
+
+func _on_grim_cheaper_control_changed(controlled):
+	pass # Replace with function body.
