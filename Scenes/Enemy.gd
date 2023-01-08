@@ -2,8 +2,8 @@ extends Node2D
 
 @export var enemy_name : String = "Enemy"
 @export var max_hp : int = 20
-@export var attack_range : float = 1
-@export var player_attack : float = 1
+#@export var attack_range : float = 1
+#@export var player_attack : float = 1
 #@export var is_melee : bool = false
 
 @onready var health = max_hp

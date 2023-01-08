@@ -37,7 +37,7 @@ height = 78.0
 [node name="Enemy" type="Node2D" groups=["enemy"]]
 position = Vector2(0, 32)
 script = ExtResource("1_pd6ac")
-max_hp = 8
+max_hp = 15
 
 [node name="HitManager" type="Node2D" parent="."]
 script = ExtResource("2_wthgp")
@@ -89,6 +89,7 @@ script = ExtResource("9_8ewh1")
 [node name="ProjectileShoot" type="Node2D" parent="Attacks"]
 script = ExtResource("10_61kwo")
 projectile_stats = ExtResource("11_4tndr")
+attack_frequency = 2.0
 
 [node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot"]
 one_shot = true

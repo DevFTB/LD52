@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bsvdbmr6gb7yr"]
+[gd_scene load_steps=15 format=3 uid="uid://bsvdbmr6gb7yr"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_adodi"]
 [ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_02my6"]
@@ -9,8 +9,8 @@
 [ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="7_ad2jl"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="8_dltbl"]
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="9_isss3"]
+[ext_resource type="Resource" uid="uid://nxq5xcpdl3vw" path="res://Enemy/Assets/pumpkin_cleave.tres" id="11_1ker7"]
 [ext_resource type="Script" path="res://Enemy/Scripts/EnemyCleaveAttack.gd" id="12_pfos0"]
-[ext_resource type="Script" path="res://Enemy/Scripts/CleaveStats.gd" id="13_dbkiy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ihq0"]
 animations = [{
@@ -34,16 +34,10 @@ outline_color = Color(0, 0, 0, 1)
 radius = 18.0
 height = 78.0
 
-[sub_resource type="Resource" id="Resource_d7bts"]
-script = ExtResource("13_dbkiy")
-damage = 3.0
-range = 128.0
-size = 128.0
-
 [node name="Enemy" type="Node2D" groups=["enemy"]]
 position = Vector2(0, 32)
 script = ExtResource("1_adodi")
-max_hp = 8
+max_hp = 50
 
 [node name="HitManager" type="Node2D" parent="."]
 script = ExtResource("2_02my6")
@@ -94,7 +88,8 @@ script = ExtResource("9_isss3")
 
 [node name="CleaveAttack" type="Node2D" parent="Attacks"]
 script = ExtResource("12_pfos0")
-cleave_stats = SubResource("Resource_d7bts")
+cleave_stats = ExtResource("11_1ker7")
+attack_frequency = 3.0
 
 [node name="AttackTimer" type="Timer" parent="Attacks/CleaveAttack"]
 one_shot = true

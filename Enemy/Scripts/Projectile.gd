@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var projectile : ProjectileStats
+@onready var dist_travelled = 0
 
 var direction = null
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +15,9 @@ func _ready():
 func _process(delta):
 	if direction != null and projectile != null:
 		position += direction * projectile.speed * delta
-	pass
+		dist_travelled += (direction * projectile.speed * delta).length()
+		if dist_travelled > projectile.range:
+			queue_free()
 
 func set_details(direction, projectile_stats):
 	self.direction = direction
