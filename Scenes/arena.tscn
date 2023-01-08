@@ -253,7 +253,6 @@ libraries = {
 [node name="TopWall" type="Node2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(-4, 23)
 tile_set = SubResource("TileSet_8kn6x")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 65553, 1, 0, 131089, 1, 0, 196625, 1, 0, 262161, 1, 0, 393233, 1, 0, 458769, 65537, 0, 524305, 1, 0, 589841, 1, 0, 655377, 1, 0, 655376, 1, 0, 655375, 1, 0, 655374, 1, 0, 655373, 1, 0, 655372, 1, 0, 655371, 1, 0, 655370, 1, 0, 655369, 1, 0, 655368, 1, 0, 655367, 1, 0, 655366, 1, 0, 655365, 1, 0, 655364, 1, 0, 655363, 1, 0, 655362, 1, 0, 655361, 1, 0, 655360, 1, 0, 589824, 65537, 0, 524288, 1, 0, 458752, 65537, 0, 393216, 1, 0, 327680, 1, 0, 262144, 1, 0, 196608, 1, 0, 131072, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 65537, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 65537, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 65549, 65537, 0, 65550, 1, 0, 65551, 1, 0, 65552, 1, 0, 131088, 196609, 0, 131087, 131073, 0, 131086, 65537, 0, 131085, 1, 0, 131082, 1, 0, 131081, 1, 0, 131080, 196609, 0, 131079, 131073, 0, 131078, 1, 0, 131077, 1, 0, 131076, 1, 0, 131075, 1, 0, 131074, 327681, 1, 131073, 1, 0, 196609, 1, 0, 196610, 65537, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 262145, 0, 196617, 65537, 0, 196621, 1, 0, 196618, 1, 0, 196622, 1, 0, 262156, 1, 0, 196624, 458753, 0, 458768, 1, 0, 524304, 1, 0, 589840, 1, 0, 589831, 65537, 0, 589830, 1, 0, 589829, 1, 0, 589826, 1, 0, 589825, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 65537, 0, 589835, 262145, 0, 589836, 327681, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 524303, 327681, 1, 458766, 1, 0, 393230, 1, 0, 262159, 131073, 0, 393231, 65537, 0, 458767, 65537, 0, 327694, 1, 0, 262158, 1, 0, 327693, 1, 0, 393229, 1, 0, 458765, 65537, 0, 524300, 196609, 0, 458764, 1, 0, 393228, 1, 0, 327692, 1, 0, 458763, 1, 0, 524299, 131073, 0, 262157, 1, 0, 524301, 1, 0, 393226, 1, 0, 327690, 327681, 1, 262154, 65537, 0, 458762, 65537, 0, 524298, 1, 0, 458761, 1, 0, 327691, 65537, 0, 393225, 1, 0, 327689, 1, 0, 262153, 1, 0, 458760, 1, 0, 524297, 1, 0, 262152, 1, 0, 327688, 65537, 0, 393224, 1, 0, 524296, 1, 0, 458759, 327681, 0, 393223, 196609, 0, 327687, 1, 0, 262151, 1, 0, 524295, 1, 0, 262150, 65537, 0, 327686, 1, 0, 393222, 131073, 0, 458757, 1, 0, 524293, 1, 0, 393221, 65537, 0, 327685, 1, 0, 262149, 1, 0, 458758, 262145, 0, 524294, 1, 0, 393219, 1, 0, 458755, 1, 0, 458756, 65537, 0, 393220, 1, 0, 327682, 1, 0, 393218, 1, 0, 458754, 1, 0, 524290, 1, 0, 262146, 1, 0, 524289, 1, 0, 458753, 1, 0, 393217, 1, 0, 327681, 65537, 0, 262145, 1, 0, 131084, 327681, 1, 524291, 327681, 1, 327684, 327681, 1, 262148, 1, 0, 262147, 1, 0, 327683, 1, 0, 524292, 1, 0, 589828, 65537, 0, 589827, 1, 0, 262155, 1, 0, 196619, 1, 0, 131083, 1, 0, 196620, 1, 0, 196623, 262145, 0, 327695, 262145, 0, 327696, 327681, 1, 262160, 327681, 0, 327697, 1, 0, 393232, 1, 0, 524302, 1, 0, 196616, 327681, 0, 393227, 1, 0)
@@ -513,8 +512,8 @@ volume_db = 5.0
 
 [connection signal="attack_used" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSound" method="_on_grim_cheaper_attack_used"]
 [connection signal="control_changed" from="Players/GrimCheaper" to="." method="_on_grim_cheaper_control_changed"]
-[connection signal="control_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSound" method="_on_grim_cheaper_control_changed"]
 [connection signal="control_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]
+[connection signal="control_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSound" method="_on_grim_cheaper_control_changed"]
 [connection signal="death" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSound" method="_on_grim_cheaper_death"]
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Players/GrimCheaper" to="Players/GrimCheaper/FlashOnHit" method="_on_health_changed"]
@@ -523,8 +522,8 @@ volume_db = 5.0
 [connection signal="timeout" from="Players/GrimCheaper/AttackTimer" to="Players/GrimCheaper" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Players/GrimCheaper/SkillTimer" to="Players/GrimCheaper" method="_on_skill_timer_timeout"]
 [connection signal="attack_used" from="Players/TheSheepard" to="Players/TheSheepard/SheephardSound" method="_on_the_sheepard_attack_used"]
-[connection signal="control_changed" from="Players/TheSheepard" to="Players/TheSheepard/SheephardSound" method="_on_the_sheepard_control_changed"]
 [connection signal="control_changed" from="Players/TheSheepard" to="Players/TheSheepard/AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]
+[connection signal="control_changed" from="Players/TheSheepard" to="Players/TheSheepard/SheephardSound" method="_on_the_sheepard_control_changed"]
 [connection signal="death" from="Players/TheSheepard" to="Players/TheSheepard/SheephardSound" method="_on_the_sheepard_death"]
 [connection signal="health_changed" from="Players/TheSheepard" to="Players/TheSheepard/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Players/TheSheepard" to="Players/TheSheepard/FlashOnHit" method="_on_health_changed"]
@@ -533,8 +532,8 @@ volume_db = 5.0
 [connection signal="timeout" from="Players/TheSheepard/AttackTimer" to="Players/TheSheepard" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Players/TheSheepard/SkillTimer" to="Players/TheSheepard" method="_on_skill_timer_timeout"]
 [connection signal="attack_used" from="Players/Arboarist" to="Players/Arboarist/ArboaristSoundController" method="_on_arboarist_attack_used"]
-[connection signal="control_changed" from="Players/Arboarist" to="Players/Arboarist/ArboaristSoundController" method="_on_arboarist_control_changed"]
 [connection signal="control_changed" from="Players/Arboarist" to="Players/Arboarist/AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]
+[connection signal="control_changed" from="Players/Arboarist" to="Players/Arboarist/ArboaristSoundController" method="_on_arboarist_control_changed"]
 [connection signal="death" from="Players/Arboarist" to="Players/Arboarist/ArboaristSoundController" method="_on_arboarist_death"]
 [connection signal="health_changed" from="Players/Arboarist" to="Players/Arboarist/CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="Players/Arboarist" to="Players/Arboarist/FlashOnHit" method="_on_health_changed"]
