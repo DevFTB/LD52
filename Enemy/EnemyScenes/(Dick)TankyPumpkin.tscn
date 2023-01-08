@@ -1,27 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://ct5jx2b62lj8s"]
+[gd_scene load_steps=16 format=3 uid="uid://bsvdbmr6gb7yr"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_3v1nr"]
-[ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_8oxj7"]
-[ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="3_33jit"]
-[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_f33mt"]
-[ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/Assets/korn.png" id="5_5o0pd"]
-[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_4dmkr"]
-[ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="7_h53nb"]
-[ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="8_c3meo"]
-[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="9_7u6h5"]
-[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="10_lfq42"]
-[ext_resource type="Resource" path="res://Enemy/Assets/korn_projectile.tres" id="11_7pxhd"]
-[ext_resource type="Script" path="res://Enemy/Scripts/EnemyCleaveAttack.gd" id="12_5o3cv"]
-[ext_resource type="Script" path="res://Enemy/Scripts/CleaveStats.gd" id="13_vufv5"]
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_adodi"]
+[ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_02my6"]
+[ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="3_bruju"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_tfhal"]
+[ext_resource type="Texture2D" uid="uid://tbcffgpog888" path="res://Enemy/Assets/dickorn.png" id="5_n581q"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_d4yqt"]
+[ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="7_ad2jl"]
+[ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="8_dltbl"]
+[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="9_isss3"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyCleaveAttack.gd" id="12_pfos0"]
+[ext_resource type="Script" path="res://Enemy/Scripts/CleaveStats.gd" id="13_dbkiy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ihq0"]
 animations = [{
-"frames": [ExtResource("5_5o0pd")],
+"frames": [ExtResource("5_n581q")],
 "loop": true,
 "name": &"alive",
 "speed": 5.0
 }, {
-"frames": [ExtResource("6_4dmkr")],
+"frames": [ExtResource("6_d4yqt")],
 "loop": true,
 "name": &"dead",
 "speed": 5.0
@@ -37,23 +35,23 @@ radius = 18.0
 height = 78.0
 
 [sub_resource type="Resource" id="Resource_d7bts"]
-script = ExtResource("13_vufv5")
+script = ExtResource("13_dbkiy")
 damage = 3.0
 range = 128.0
 size = 128.0
 
 [node name="Enemy" type="Node2D" groups=["enemy"]]
 position = Vector2(0, 32)
-script = ExtResource("1_3v1nr")
+script = ExtResource("1_adodi")
 max_hp = 8
 
 [node name="HitManager" type="Node2D" parent="."]
-script = ExtResource("2_8oxj7")
+script = ExtResource("2_02my6")
 
-[node name="ImpactEffect" parent="HitManager" instance=ExtResource("3_33jit")]
+[node name="ImpactEffect" parent="HitManager" instance=ExtResource("3_bruju")]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-material = ExtResource("4_f33mt")
+material = ExtResource("4_tfhal")
 use_parent_material = true
 position = Vector2(-2, -41)
 scale = Vector2(0.6, 0.6)
@@ -65,7 +63,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 80.0
 offset_bottom = 14.363
-script = ExtResource("7_h53nb")
+script = ExtResource("7_ad2jl")
 metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
@@ -75,7 +73,7 @@ offset_right = 40.0
 offset_bottom = -58.0
 text = "0"
 label_settings = SubResource("LabelSettings_lgit8")
-script = ExtResource("8_c3meo")
+script = ExtResource("8_dltbl")
 metadata/_edit_use_anchors_ = true
 
 [node name="Pain" type="Timer" parent="EnemyGUI"]
@@ -90,19 +88,12 @@ collision_mask = 7
 shape = SubResource("CapsuleShape2D_61i3l")
 
 [node name="FlashOnHit" type="Node" parent="."]
-script = ExtResource("9_7u6h5")
+script = ExtResource("9_isss3")
 
 [node name="Attacks" type="Node2D" parent="."]
 
-[node name="ProjectileShoot" type="Node2D" parent="Attacks"]
-script = ExtResource("10_lfq42")
-projectile_stats = ExtResource("11_7pxhd")
-
-[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot"]
-one_shot = true
-
 [node name="CleaveAttack" type="Node2D" parent="Attacks"]
-script = ExtResource("12_5o3cv")
+script = ExtResource("12_pfos0")
 cleave_stats = SubResource("Resource_d7bts")
 
 [node name="AttackTimer" type="Timer" parent="Attacks/CleaveAttack"]
