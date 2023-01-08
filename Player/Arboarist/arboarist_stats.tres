@@ -1,0 +1,61 @@
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://c2y7maiuusio3"]
+
+[ext_resource type="Script" path="res://Player/Stat.gd" id="1_uv1bu"]
+[ext_resource type="Script" path="res://Player/PlayerStats.gd" id="2_nd1oh"]
+
+[sub_resource type="Resource" id="Resource_fs2lm"]
+script = ExtResource("1_uv1bu")
+base_value = 5.0
+level_bonus = 1.0
+
+[sub_resource type="Resource" id="Resource_vxh08"]
+script = ExtResource("1_uv1bu")
+base_value = 1.0
+level_bonus = 0.05
+
+[sub_resource type="Resource" id="Resource_qywa1"]
+script = ExtResource("1_uv1bu")
+base_value = 1.0
+level_bonus = 0.1
+
+[sub_resource type="Resource" id="Resource_v5mv7"]
+script = ExtResource("1_uv1bu")
+base_value = 20.0
+level_bonus = 2.0
+
+[sub_resource type="Resource" id="Resource_tbqgq"]
+script = ExtResource("1_uv1bu")
+base_value = 1.0
+level_bonus = 0.05
+
+[sub_resource type="Resource" id="Resource_xckjw"]
+script = ExtResource("1_uv1bu")
+base_value = 1.1
+level_bonus = 0.02
+
+[sub_resource type="Resource" id="Resource_ykyx2"]
+script = ExtResource("1_uv1bu")
+base_value = 25.0
+level_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_me4gs"]
+script = ExtResource("1_uv1bu")
+base_value = 5.0
+level_bonus = 0.5
+
+[sub_resource type="Resource" id="Resource_15pc4"]
+script = ExtResource("1_uv1bu")
+base_value = 1.1
+level_bonus = 0.02
+
+[resource]
+script = ExtResource("2_nd1oh")
+hp = SubResource("Resource_v5mv7")
+atk = SubResource("Resource_fs2lm")
+atk_speed = SubResource("Resource_vxh08")
+move_speed = SubResource("Resource_tbqgq")
+attack_scaling = SubResource("Resource_qywa1")
+skill_scaling = SubResource("Resource_15pc4")
+skill_cooldown = SubResource("Resource_ykyx2")
+skill_duration = SubResource("Resource_me4gs")
+passive = SubResource("Resource_xckjw")

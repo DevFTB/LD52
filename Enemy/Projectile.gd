@@ -25,6 +25,7 @@ func set_details(direction, projectile_stats):
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent().is_in_group("player"):
+		print("projectile damage "  + str(projectile.damage))
 		area.get_parent().modify_health(-projectile.damage)
 		queue_free()
 	pass # Replace with function body.

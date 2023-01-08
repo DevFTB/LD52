@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cep38mpyaw3j1"]
+
+[ext_resource type="Script" path="res://Player/Arboarist/BoarShield.gd" id="1_vcmuy"]
+
+[node name="BoarShield" type="Node2D"]
+script = ExtResource("1_vcmuy")
+player_duration = null
