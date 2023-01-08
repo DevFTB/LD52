@@ -1,39 +1,58 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq32vdiv30t2u"]
+[gd_scene load_steps=13 format=3 uid="uid://bq32vdiv30t2u"]
 
 [ext_resource type="Script" path="res://Scenes/AoEAttack.gd" id="1_dc3g1"]
+[ext_resource type="Material" uid="uid://bxl88exctoeqk" path="res://Shaders/cleave.tres" id="1_r0ij3"]
 [ext_resource type="Texture2D" uid="uid://dwbfw7t1ml3m5" path="res://Player/Abilities/cleave.png" id="2_yxpoh"]
+[ext_resource type="Shader" path="res://Player/Abilities/cleaveOutline.gdshader" id="4_mxjmw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_702rj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hvuq"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpmp8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u17u5"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebroh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbh20"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxmkb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtsun"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0yqa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_to1lt"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jwdy8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6exn"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rgsca"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kiakd"]
 animations = [{
-"frames": [SubResource("AtlasTexture_702rj"), SubResource("AtlasTexture_cpmp8"), SubResource("AtlasTexture_ebroh"), SubResource("AtlasTexture_rxmkb"), SubResource("AtlasTexture_c0yqa"), SubResource("AtlasTexture_jwdy8")],
+"frames": [SubResource("AtlasTexture_1hvuq"), SubResource("AtlasTexture_u17u5"), SubResource("AtlasTexture_xbh20"), SubResource("AtlasTexture_jtsun"), SubResource("AtlasTexture_to1lt"), SubResource("AtlasTexture_r6exn")],
 "loop": true,
 "name": &"default",
 "speed": 18.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21w0k"]
+shader = ExtResource("4_mxjmw")
+shader_parameter/DonutMaskCenter = Vector2(0, 0.5)
+shader_parameter/DonutMaskSize = null
+shader_parameter/DonutMaskThickness = 2.0
+shader_parameter/OutlineWidth = 3.052
+shader_parameter/OutlinePixelSize = 5.438
+shader_parameter/UseRainbowColorOutline = false
+shader_parameter/RainbowColorLightOffset = 0.417
+shader_parameter/RainbowColorSinFrequency = 0.558
+shader_parameter/OutlineUseNoise = true
+shader_parameter/NoiseBlockSize = 5.0
+shader_parameter/NoiseMaxLineWidth = 50.0
+shader_parameter/NoiseMinLineWidth = 15.0
+shader_parameter/NoiseFreq = 1.0
+shader_parameter/BackgroundColor = Color(0.654902, 0.0745098, 0.317647, 1)
 
 [node name="Cleave" type="Node2D"]
 script = ExtResource("1_dc3g1")
@@ -41,9 +60,17 @@ duration = 0.33
 
 [node name="Cleave" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = ExtResource("1_r0ij3")
 scale = Vector2(1.2, 1.2)
-frames = SubResource("SpriteFrames_rgsca")
+frames = SubResource("SpriteFrames_kiakd")
 playing = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_21w0k")
+offset_left = -51.0
+offset_top = -74.0
+offset_right = 60.0
+offset_bottom = 78.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4

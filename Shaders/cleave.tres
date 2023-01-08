@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bxl88exctoeqk"]
+
+[ext_resource type="Shader" path="res://Player/Abilities/cleave.gdshader" id="1_jf7dp"]
+
+[resource]
+shader = ExtResource("1_jf7dp")
+shader_parameter/intensity = 50
+shader_parameter/precision = 0.02
+shader_parameter/flipColors = false
+shader_parameter/outline_color = Color(0.415686, 0.0627451, 0, 1)
+shader_parameter/outline_color_2 = Color(0.682353, 0.678431, 0, 1)
+shader_parameter/use_outline_uv = true
+shader_parameter/useTexture = false

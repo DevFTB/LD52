@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbbpi6rv063u3"
+path="res://.godot/imported/death sound 6.wav-9237fda6af6ee05bc4cd9a7e71596251.sample"
+
+[deps]
+
+source_file="res://Sounds/Enemy/death sound 6.wav"
+dest_files=["res://.godot/imported/death sound 6.wav-9237fda6af6ee05bc4cd9a7e71596251.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

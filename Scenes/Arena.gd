@@ -6,6 +6,8 @@ extends Node2D
 @export var difficulty_level :  int = 12
 
 @onready var players  = get_tree().get_nodes_in_group("player")
+
+
 var controlled_player_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -104,3 +106,4 @@ func _input(event):
 			controlled_player_index = players.find(new_player)
 			
 			print(new_player.name)
+			
