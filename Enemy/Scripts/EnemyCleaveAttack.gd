@@ -30,15 +30,23 @@ func attack():
 		new_cleave.position = Vector2(-50, 0).rotated(rot_angle)
 		new_cleave.rotation = rot_angle
 		
-		add_child(new_cleave)
+		var scale_factor = cleave_stats.size / cleave_stats.range
+		new_cleave.scale = Vector2(scale_factor, scale_factor)
 		
-		$AttackTimer.start()
+		add_child(new_cleave)
+	
+	## todo: make it so enemy instantly attacks when player comes into range
+	# todo: make it so enemy timer for melee attacks begin when player comes into range (channelling)
+	$AttackTimer.start()
 	
 func modify_attack(attack):
 	pass
 
 func get_target_position() :
 	var players = get_tree().get_nodes_in_group("player").filter(func(x): return not x.is_dead and x.enabled)
+	# get in range players only
+	players = players.filter(func(p): return p.global_position.distance_to(global_position) < cleave_stats.range)
+	
 	
 	if len(players) == 0:
 		return null
@@ -46,7 +54,7 @@ func get_target_position() :
 	var nearest_player = players[0]
 	for player in players:
 		if player.global_position.distance_to(global_position) < \
-		player.global_position.distance_to(global_position):
+		nearest_player.global_position.distance_to(global_position):
 			nearest_player = player
 			
 	return nearest_player.global_position

@@ -39,6 +39,8 @@ height = 78.0
 [sub_resource type="Resource" id="Resource_d7bts"]
 script = ExtResource("13_vufv5")
 damage = 3.0
+range = 128.0
+size = 128.0
 
 [node name="Enemy" type="Node2D" groups=["enemy"]]
 position = Vector2(0, 32)
@@ -68,6 +70,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
