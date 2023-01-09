@@ -9,7 +9,6 @@ var direction = null
 func _ready():
 	if projectile != null:
 		if projectile.mult_textures:
-			print("hi")
 			var rng = RandomNumberGenerator.new()
 			rng.randomize()
 			var mult_text = projectile.mult_textures
