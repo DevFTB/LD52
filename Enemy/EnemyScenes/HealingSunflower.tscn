@@ -31,7 +31,8 @@ sprite = NodePath("../Sprite")
 
 [node name="AOEHeal" type="Node2D" parent="Attacks" index="0"]
 script = ExtResource("10_2t7ue")
-heal_amount = 6
+attack_frequency = 1.0
+heal_amount = 2
 
 [node name="AttackTimer" type="Timer" parent="Attacks/AOEHeal" index="0"]
 one_shot = true

@@ -83,6 +83,17 @@ func _process(delta):
 	if enabled and not is_dead and not controlled:
 		process_ai(delta)
 	elif enabled and not is_dead and controlled:
+		var new_direction = Vector2.ZERO
+		if Input.is_action_pressed("move_up"):
+			new_direction += Vector2.UP
+		if Input.is_action_pressed("move_down"):
+			new_direction += Vector2.DOWN
+		if Input.is_action_pressed("move_left"):
+			new_direction += Vector2.LEFT
+		if Input.is_action_pressed("move_right"):
+			new_direction += Vector2.RIGHT
+		direction =  new_direction
+		
 		position += direction.normalized() * move_speed * 100 * delta
 
 func modify_health(modification):
@@ -224,25 +235,25 @@ func _input(event):
 				do_walk()
 			if event.pressed and buffer:
 				buffer= false
-			
-			if event.is_action_pressed("move_up"):
-				direction.y -= 1
-			if event.is_action_pressed("move_down"):
-				direction.y += 1
-			if event.is_action_pressed("move_left"):
-				direction.x -= 1
-			if event.is_action_pressed("move_right"):
-				direction.x += 1
-			
-			if event.is_action_released("move_up"):
-				direction.y += 1
-			if event.is_action_released("move_down"):
-				direction.y -= 1
-			if event.is_action_released("move_left"):
-				direction.x += 1
-			if event.is_action_released("move_right"):
-				direction.x -= 1
-			
+#
+#			if event.is_action_pressed("move_up"):
+#				direction.y -= 1
+#			if event.is_action_pressed("move_down"):
+#				direction.y += 1
+#			if event.is_action_pressed("move_left"):
+#				direction.x -= 1
+#			if event.is_action_pressed("move_right"):
+#				direction.x += 1
+#
+#			if event.is_action_released("move_up"):
+#				direction.y += 1
+#			if event.is_action_released("move_down"):
+#				direction.y -= 1
+#			if event.is_action_released("move_left"):
+#				direction.x += 1
+#			if event.is_action_released("move_right"):
+#				direction.x -= 1
+#
 			if event.is_action_pressed("skill"):
 				if can_use_skill and not is_dead:
 					do_skill()
@@ -321,9 +332,9 @@ func process_ai(delta):
 		var enemy_pos = nearest_enemy.global_position
 
 		direction.x = 0
-		if enemy_pos.x > global_position.x + 1:
+		if enemy_pos.x > global_position.x + 64:
 			direction.x = 1
-		if enemy_pos.x < global_position.x - 1:
+		if enemy_pos.x < global_position.x - 64:
 			direction.x = -1
 		direction.y = 0
 

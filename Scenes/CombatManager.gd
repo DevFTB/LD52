@@ -50,12 +50,16 @@ func return_to_market():
 func start_next_arena():
 	current_round += 1
 	if current_round >= arenas.size():
-		campaign.current_zone_index += 1 
-		$AnimationPlayer.play("Fail")
+		campaign.current_zone_index += 1
+		var tween = get_tree().create_tween()
+		tween.tween_property($Arenas, "position", Vector2(0, 0), 5)
+		tween.tween_callback(func(): $AnimationPlayer.play("Fail"))
+		
 	else:
 		arenas[current_round].start_arena()
 		emit_signal("on_arena_changed", current_round, current_zone)
-		print(get_viewport_rect())
+	print(current_round)
+	print("out of" + str(arenas.size()))
 	pass
 
 func on_arena_finished(round):
