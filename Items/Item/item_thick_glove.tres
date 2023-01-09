@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_4e28i"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_n3jcj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqjlw"]
 atlas = ExtResource("1_qwo5m")
 region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="Resource" id="Resource_vhkbq"]
+[sub_resource type="Resource" id="Resource_7jp43"]
 script = ExtResource("3_n3jcj")
 hp = 0.0
 atk = 2.5
@@ -20,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_4e28i")
 item_name = "Thick Glove"
-icon = SubResource("AtlasTexture_yym8y")
+icon = SubResource("AtlasTexture_xqjlw")
 rarity = 0
-stats = SubResource("Resource_vhkbq")
+stats = SubResource("Resource_7jp43")
 cost = 5

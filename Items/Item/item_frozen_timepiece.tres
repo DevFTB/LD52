@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_w6wbf"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_sk3kp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x46s"]
 atlas = ExtResource("1_4pwde")
 region = Rect2(0, 128, 32, 32)
 
-[sub_resource type="Resource" id="Resource_ljmog"]
+[sub_resource type="Resource" id="Resource_pisey"]
 script = ExtResource("3_sk3kp")
 hp = 500.0
 atk = 0.0
@@ -20,7 +20,7 @@ skill_cooldown = 20.0
 [resource]
 script = ExtResource("2_w6wbf")
 item_name = "Frozen Timepiece"
-icon = SubResource("AtlasTexture_jqar4")
+icon = SubResource("AtlasTexture_7x46s")
 rarity = 3
-stats = SubResource("Resource_ljmog")
+stats = SubResource("Resource_pisey")
 cost = 210

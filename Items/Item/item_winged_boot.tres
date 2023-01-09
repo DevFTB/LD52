@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_kf2v0"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_my0kn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjdad"]
 atlas = ExtResource("1_h3bh7")
 region = Rect2(128, 32, 32, 32)
 
-[sub_resource type="Resource" id="Resource_vhkbq"]
+[sub_resource type="Resource" id="Resource_bqe71"]
 script = ExtResource("3_my0kn")
 hp = 50.0
 atk = 0.0
@@ -20,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_kf2v0")
 item_name = "Winged Boots"
-icon = SubResource("AtlasTexture_yym8y")
+icon = SubResource("AtlasTexture_bjdad")
 rarity = 1
-stats = SubResource("Resource_vhkbq")
+stats = SubResource("Resource_bqe71")
 cost = 15

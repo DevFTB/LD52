@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_l8doq"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_yoi45"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1raj"]
 atlas = ExtResource("1_vlod2")
 region = Rect2(96, 32, 32, 32)
 
-[sub_resource type="Resource" id="Resource_vhkbq"]
+[sub_resource type="Resource" id="Resource_lddd6"]
 script = ExtResource("3_yoi45")
 hp = 0.0
 atk = 0.0
@@ -20,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_l8doq")
 item_name = "Sturdy Boots"
-icon = SubResource("AtlasTexture_yym8y")
+icon = SubResource("AtlasTexture_m1raj")
 rarity = 0
-stats = SubResource("Resource_vhkbq")
+stats = SubResource("Resource_lddd6")
 cost = 5

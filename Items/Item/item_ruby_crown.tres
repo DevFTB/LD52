@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_b137x"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_ipma8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1h2cm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3w0n"]
 atlas = ExtResource("1_qg54b")
 region = Rect2(96, 64, 32, 32)
 
-[sub_resource type="Resource" id="Resource_grrok"]
+[sub_resource type="Resource" id="Resource_k1xl7"]
 script = ExtResource("3_ipma8")
 hp = 100.0
 atk = 10.0
@@ -20,7 +20,7 @@ skill_cooldown = 10.0
 [resource]
 script = ExtResource("2_b137x")
 item_name = "Ruby Crown"
-icon = SubResource("AtlasTexture_1h2cm")
+icon = SubResource("AtlasTexture_c3w0n")
 rarity = 2
-stats = SubResource("Resource_grrok")
+stats = SubResource("Resource_k1xl7")
 cost = 84

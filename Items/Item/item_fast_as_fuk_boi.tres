@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_q5vkd"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_j1vxn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5dc4"]
 atlas = ExtResource("1_n3l14")
 region = Rect2(128, 128, 32, 32)
 
-[sub_resource type="Resource" id="Resource_vhkbq"]
+[sub_resource type="Resource" id="Resource_qf3j1"]
 script = ExtResource("3_j1vxn")
 hp = 0.0
 atk = 0.0
@@ -20,7 +20,7 @@ skill_cooldown = 45.0
 [resource]
 script = ExtResource("2_q5vkd")
 item_name = "Fast as fuk boi"
-icon = SubResource("AtlasTexture_yym8y")
+icon = SubResource("AtlasTexture_s5dc4")
 rarity = 4
-stats = SubResource("Resource_vhkbq")
+stats = SubResource("Resource_qf3j1")
 cost = 690

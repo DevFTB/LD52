@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_kkhrm"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_58o2y"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qis23"]
 atlas = ExtResource("1_kodt4")
 region = Rect2(96, 128, 32, 32)
 
-[sub_resource type="Resource" id="Resource_ljmog"]
+[sub_resource type="Resource" id="Resource_yf3ib"]
 script = ExtResource("3_58o2y")
 hp = 1000.0
 atk = 100.0
@@ -20,7 +20,7 @@ skill_cooldown = 50.0
 [resource]
 script = ExtResource("2_kkhrm")
 item_name = "Meaning of Life"
-icon = SubResource("AtlasTexture_jqar4")
+icon = SubResource("AtlasTexture_qis23")
 rarity = 4
-stats = SubResource("Resource_ljmog")
+stats = SubResource("Resource_yf3ib")
 cost = 920

@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_sywly"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_wqu2y"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1h2cm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2b1j"]
 atlas = ExtResource("1_q7u6b")
 region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="Resource" id="Resource_grrok"]
+[sub_resource type="Resource" id="Resource_k0o8c"]
 script = ExtResource("3_wqu2y")
 hp = 0.0
 atk = 0.0
@@ -20,7 +20,7 @@ skill_cooldown = 10.0
 [resource]
 script = ExtResource("2_sywly")
 item_name = "Spare Tools"
-icon = SubResource("AtlasTexture_1h2cm")
+icon = SubResource("AtlasTexture_t2b1j")
 rarity = 1
-stats = SubResource("Resource_grrok")
+stats = SubResource("Resource_k0o8c")
 cost = 20

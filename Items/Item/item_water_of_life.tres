@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_obher"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_s2mfu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i16t7"]
 atlas = ExtResource("1_5c6my")
 region = Rect2(128, 96, 32, 32)
 
-[sub_resource type="Resource" id="Resource_ljmog"]
+[sub_resource type="Resource" id="Resource_efrt7"]
 script = ExtResource("3_s2mfu")
 hp = 0.0
 atk = 80.0
@@ -20,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_obher")
 item_name = "Water of Life"
-icon = SubResource("AtlasTexture_jqar4")
+icon = SubResource("AtlasTexture_i16t7")
 rarity = 3
-stats = SubResource("Resource_ljmog")
+stats = SubResource("Resource_efrt7")
 cost = 180

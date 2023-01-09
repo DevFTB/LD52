@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_lrv52"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_cnavs"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eij5x"]
 atlas = ExtResource("1_m8fwr")
 region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="Resource" id="Resource_wp5um"]
+[sub_resource type="Resource" id="Resource_pnenm"]
 script = ExtResource("3_cnavs")
 hp = 150.0
 atk = 10.0
@@ -20,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_lrv52")
 item_name = "Emergency Food"
-icon = SubResource("AtlasTexture_jqar4")
+icon = SubResource("AtlasTexture_eij5x")
 rarity = 2
-stats = SubResource("Resource_wp5um")
+stats = SubResource("Resource_pnenm")
 cost = 54

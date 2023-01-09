@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_6bayi"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_flna3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1h2cm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_85kes"]
 atlas = ExtResource("1_m42dx")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="Resource" id="Resource_grrok"]
+[sub_resource type="Resource" id="Resource_ausmm"]
 script = ExtResource("3_flna3")
 hp = 0.0
 atk = 0.0
@@ -20,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_6bayi")
 item_name = "Gardening Manual"
-icon = SubResource("AtlasTexture_1h2cm")
+icon = SubResource("AtlasTexture_85kes")
 rarity = 1
-stats = SubResource("Resource_grrok")
+stats = SubResource("Resource_ausmm")
 cost = 10

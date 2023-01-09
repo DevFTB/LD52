@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_m4v23"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_l1qil"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxdwp"]
 atlas = ExtResource("1_6qbdt")
 region = Rect2(64, 128, 32, 32)
 
-[sub_resource type="Resource" id="Resource_ljmog"]
+[sub_resource type="Resource" id="Resource_f5hdi"]
 script = ExtResource("3_l1qil")
 hp = 200.0
 atk = 20.0
@@ -20,7 +20,7 @@ skill_cooldown = 10.0
 [resource]
 script = ExtResource("2_m4v23")
 item_name = "Dreamy Bouquet"
-icon = SubResource("AtlasTexture_jqar4")
+icon = SubResource("AtlasTexture_hxdwp")
 rarity = 3
-stats = SubResource("Resource_ljmog")
+stats = SubResource("Resource_f5hdi")
 cost = 180

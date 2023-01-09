@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_dt7s2"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_udanw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1h2cm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u67fl"]
 atlas = ExtResource("1_8ofnx")
 region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="Resource" id="Resource_grrok"]
+[sub_resource type="Resource" id="Resource_v4ftx"]
 script = ExtResource("3_udanw")
 hp = 0.0
 atk = 10.0
@@ -20,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_dt7s2")
 item_name = "Trusty Herbicide"
-icon = SubResource("AtlasTexture_1h2cm")
+icon = SubResource("AtlasTexture_u67fl")
 rarity = 1
-stats = SubResource("Resource_grrok")
+stats = SubResource("Resource_v4ftx")
 cost = 10

@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_0njph"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_fi8od"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhtuf"]
 atlas = ExtResource("1_njem3")
 region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="Resource" id="Resource_wp5um"]
+[sub_resource type="Resource" id="Resource_novxi"]
 script = ExtResource("3_fi8od")
 hp = 0.0
 atk = 0.0
@@ -20,7 +20,7 @@ skill_cooldown = 15.0
 [resource]
 script = ExtResource("2_0njph")
 item_name = " Onsen Ticket"
-icon = SubResource("AtlasTexture_jqar4")
+icon = SubResource("AtlasTexture_hhtuf")
 rarity = 2
-stats = SubResource("Resource_wp5um")
+stats = SubResource("Resource_novxi")
 cost = 66

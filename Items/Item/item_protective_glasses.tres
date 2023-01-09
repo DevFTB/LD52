@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_apj6a"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_qy8ah"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pgg8"]
 atlas = ExtResource("1_a0hr5")
 region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="Resource" id="Resource_wp5um"]
+[sub_resource type="Resource" id="Resource_oo4ut"]
 script = ExtResource("3_qy8ah")
 hp = 200.0
 atk = 0.0
@@ -20,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_apj6a")
 item_name = "Protective Glasses"
-icon = SubResource("AtlasTexture_jqar4")
+icon = SubResource("AtlasTexture_0pgg8")
 rarity = 2
-stats = SubResource("Resource_wp5um")
+stats = SubResource("Resource_oo4ut")
 cost = 54
