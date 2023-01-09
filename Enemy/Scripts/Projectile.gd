@@ -4,10 +4,17 @@ extends Node2D
 @onready var dist_travelled = 0
 
 var direction = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if projectile != null:
-		$Sprite2D.texture = projectile.texture
+		if projectile.mult_textures:
+			var rng = RandomNumberGenerator.new()
+			rng.randomize()
+			var mult_text = projectile.mult_textures
+			$Sprite2D.texture = mult_text.get_frame_texture(randi_range(0, mult_text.frames - 1))
+		else:
+			$Sprite2D.texture = projectile.texture
 	pass # Replace with function body.
 
 

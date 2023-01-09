@@ -1,0 +1,172 @@
+[gd_scene load_steps=27 format=3 uid="uid://iw425p5lff88"]
+
+[ext_resource type="Script" path="res://Scenes/Arboarist.gd" id="1_u6v5u"]
+[ext_resource type="PackedScene" uid="uid://damqr88nxwy6a" path="res://Player/Arboarist/spin.tscn" id="2_ob17p"]
+[ext_resource type="PackedScene" uid="uid://cep38mpyaw3j1" path="res://Player/Arboarist/boar_shield.tscn" id="3_7accb"]
+[ext_resource type="Script" path="res://Player/Stat.gd" id="4_18ipx"]
+[ext_resource type="Script" path="res://Player/PlayerStats.gd" id="5_oi7ow"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="6_pk8j6"]
+[ext_resource type="SpriteFrames" uid="uid://cah4huhysak2j" path="res://Player/Arboarist/arboarist_sprite_frames.tres" id="7_uhcxh"]
+[ext_resource type="SpriteFrames" uid="uid://cqqhtmsf7jtyc" path="res://Player/UI/player_selected_arrow_frames.tres" id="8_usgje"]
+[ext_resource type="Script" path="res://Scenes/SelectedPlayerArrow.gd" id="9_lmce8"]
+[ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="10_mb2mn"]
+[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="11_ccewt"]
+[ext_resource type="Script" path="res://Scenes/ArboaristSoundController.gd" id="12_8n4dy"]
+[ext_resource type="AudioStream" uid="uid://cacu63y5yuf2t" path="res://Sounds/pig skill.wav" id="13_x3epa"]
+[ext_resource type="AudioStream" uid="uid://c1cl5idmsu84j" path="res://Sounds/chainsaw.wav" id="14_ldo7y"]
+[ext_resource type="AudioStream" uid="uid://dt13geey6c80m" path="res://Sounds/pig ready.wav" id="15_lqvwc"]
+
+[sub_resource type="Resource" id="Resource_1svkk"]
+script = ExtResource("4_18ipx")
+base_value = 6.0
+level_bonus = 2.0
+
+[sub_resource type="Resource" id="Resource_g7ort"]
+script = ExtResource("4_18ipx")
+base_value = 0.6
+level_bonus = 0.5
+
+[sub_resource type="Resource" id="Resource_4st0b"]
+script = ExtResource("4_18ipx")
+base_value = 1.5
+level_bonus = 0.15
+
+[sub_resource type="Resource" id="Resource_bepct"]
+script = ExtResource("4_18ipx")
+base_value = 30.0
+level_bonus = 2.0
+
+[sub_resource type="Resource" id="Resource_4l1dr"]
+script = ExtResource("4_18ipx")
+base_value = 1.0
+level_bonus = 0.05
+
+[sub_resource type="Resource" id="Resource_wrn2r"]
+script = ExtResource("4_18ipx")
+base_value = 0.1
+level_bonus = 0.02
+
+[sub_resource type="Resource" id="Resource_3y7j6"]
+script = ExtResource("4_18ipx")
+base_value = 20.0
+level_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_lu75e"]
+script = ExtResource("4_18ipx")
+base_value = 5.0
+level_bonus = 0.2
+
+[sub_resource type="Resource" id="Resource_ohxd4"]
+script = ExtResource("4_18ipx")
+base_value = 0.4
+level_bonus = 0.02
+
+[sub_resource type="Resource" id="Resource_gxlbg"]
+script = ExtResource("5_oi7ow")
+player_name = "The Arboarist"
+hp = SubResource("Resource_bepct")
+atk = SubResource("Resource_1svkk")
+atk_speed = SubResource("Resource_g7ort")
+move_speed = SubResource("Resource_4l1dr")
+attack_scaling = SubResource("Resource_4st0b")
+skill_scaling = SubResource("Resource_ohxd4")
+skill_cooldown = SubResource("Resource_3y7j6")
+skill_duration = SubResource("Resource_lu75e")
+passive = SubResource("Resource_wrn2r")
+level_log_base = 1.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
+radius = 38.0
+height = 102.0
+
+[node name="Arboarist" type="Node2D" groups=["player"]]
+texture_filter = 1
+script = ExtResource("1_u6v5u")
+normal_attack = ExtResource("2_ob17p")
+skill = ExtResource("3_7accb")
+player_stats = SubResource("Resource_gxlbg")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = ExtResource("6_pk8j6")
+use_parent_material = true
+frames = ExtResource("7_uhcxh")
+animation = &"walk"
+frame = 1
+flip_h = true
+
+[node name="SelectedPlayerArrow" type="AnimatedSprite2D" parent="AnimatedSprite"]
+visible = false
+texture_filter = 1
+position = Vector2(1, -85)
+frames = ExtResource("8_usgje")
+playing = true
+script = ExtResource("9_lmce8")
+
+[node name="CharacterGUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -53.0
+offset_top = 62.0
+offset_right = 50.237
+offset_bottom = 76.363
+script = ExtResource("10_mb2mn")
+
+[node name="HealthBar" type="ProgressBar" parent="CharacterGUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.14441e-05
+offset_bottom = 12.637
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, 12)
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_61i3l")
+
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="SkillTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FlashOnHit" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("11_ccewt")
+sprite = NodePath("../AnimatedSprite")
+
+[node name="Buffs" type="Node2D" parent="."]
+
+[node name="ArboaristSoundController" type="Node2D" parent="."]
+script = ExtResource("12_8n4dy")
+
+[node name="SkillSound" type="AudioStreamPlayer2D" parent="ArboaristSoundController"]
+stream = ExtResource("13_x3epa")
+volume_db = 5.0
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="ArboaristSoundController"]
+stream = ExtResource("14_ldo7y")
+volume_db = 5.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="ArboaristSoundController"]
+
+[node name="ReadySound" type="AudioStreamPlayer2D" parent="ArboaristSoundController"]
+stream = ExtResource("15_lqvwc")
+volume_db = 5.0
+
+[connection signal="attack_used" from="." to="ArboaristSoundController" method="_on_arboarist_attack_used"]
+[connection signal="control_changed" from="." to="AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]
+[connection signal="control_changed" from="." to="ArboaristSoundController" method="_on_arboarist_control_changed"]
+[connection signal="death" from="." to="ArboaristSoundController" method="_on_arboarist_death"]
+[connection signal="health_changed" from="." to="CharacterGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
+[connection signal="skill_used" from="." to="ArboaristSoundController" method="_on_arboarist_skill_used"]
+[connection signal="stats_changed" from="." to="CharacterGUI" method="_on_grim_cheaper_stats_changed"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

@@ -4,55 +4,55 @@
 [ext_resource type="Script" path="res://Player/PlayerStats.gd" id="1_vbqsq"]
 [ext_resource type="Script" path="res://Items/Inventory.gd" id="2_omc8f"]
 
-[sub_resource type="Resource" id="Resource_gp1ws"]
+[sub_resource type="Resource" id="Resource_rvvkq"]
 script = ExtResource("1_fgg5f")
 base_value = 5.0
 level_bonus = 1.0
 
-[sub_resource type="Resource" id="Resource_m6nid"]
+[sub_resource type="Resource" id="Resource_dg5rk"]
 script = ExtResource("1_fgg5f")
 base_value = 0.5
 level_bonus = 0.05
 
-[sub_resource type="Resource" id="Resource_r0sps"]
+[sub_resource type="Resource" id="Resource_ctqqk"]
 script = ExtResource("1_fgg5f")
 base_value = 1.0
 level_bonus = 0.1
 
-[sub_resource type="Resource" id="Resource_i3k8i"]
+[sub_resource type="Resource" id="Resource_ignel"]
 script = ExtResource("1_fgg5f")
 base_value = 15.0
 level_bonus = 1.0
 
-[sub_resource type="Resource" id="Resource_sppcj"]
+[sub_resource type="Resource" id="Resource_74doj"]
 script = ExtResource("2_omc8f")
 
-[sub_resource type="Resource" id="Resource_fnxlu"]
+[sub_resource type="Resource" id="Resource_rqlay"]
 script = ExtResource("1_fgg5f")
 base_value = 4.0
 level_bonus = 1.0
 
-[sub_resource type="Resource" id="Resource_i8emu"]
+[sub_resource type="Resource" id="Resource_u2n5y"]
 script = ExtResource("1_fgg5f")
 base_value = 1.0
 level_bonus = 0.05
 
-[sub_resource type="Resource" id="Resource_pi00y"]
+[sub_resource type="Resource" id="Resource_ryoko"]
 script = ExtResource("1_fgg5f")
 base_value = 0.1
 level_bonus = 0.025
 
-[sub_resource type="Resource" id="Resource_tc37u"]
+[sub_resource type="Resource" id="Resource_xhoy1"]
 script = ExtResource("1_fgg5f")
 base_value = 10.0
 level_bonus = -0.2
 
-[sub_resource type="Resource" id="Resource_5kwi5"]
+[sub_resource type="Resource" id="Resource_acubo"]
 script = ExtResource("1_fgg5f")
 base_value = 1.0
 level_bonus = 0.1
 
-[sub_resource type="Resource" id="Resource_5sdj0"]
+[sub_resource type="Resource" id="Resource_clof0"]
 script = ExtResource("1_fgg5f")
 base_value = 3.0
 level_bonus = 1.0
@@ -60,14 +60,15 @@ level_bonus = 1.0
 [resource]
 script = ExtResource("1_vbqsq")
 player_name = "Grim Cheaper"
-hp = SubResource("Resource_i3k8i")
-atk = SubResource("Resource_gp1ws")
-atk_speed = SubResource("Resource_m6nid")
-move_speed = SubResource("Resource_i8emu")
-attack_scaling = SubResource("Resource_r0sps")
-skill_scaling = SubResource("Resource_5sdj0")
-skill_cooldown = SubResource("Resource_tc37u")
-skill_duration = SubResource("Resource_5kwi5")
-passive = SubResource("Resource_pi00y")
-inventory = SubResource("Resource_sppcj")
-inventory_size = SubResource("Resource_fnxlu")
+hp = SubResource("Resource_ignel")
+atk = SubResource("Resource_rvvkq")
+atk_speed = SubResource("Resource_dg5rk")
+move_speed = SubResource("Resource_u2n5y")
+attack_scaling = SubResource("Resource_ctqqk")
+skill_scaling = SubResource("Resource_clof0")
+skill_cooldown = SubResource("Resource_xhoy1")
+skill_duration = SubResource("Resource_acubo")
+passive = SubResource("Resource_ryoko")
+inventory = SubResource("Resource_74doj")
+inventory_size = SubResource("Resource_rqlay")
+level_log_base = 1.5

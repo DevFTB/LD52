@@ -79,7 +79,6 @@ height = 332.54
 
 [node name="Enemy2" type="Node2D" groups=["enemy"]]
 visible = false
-position = Vector2(0, 96)
 scale = Vector2(3, 3)
 script = ExtResource("1_uxdwq")
 max_hp = 8
@@ -245,6 +244,7 @@ stream = ExtResource("18_ac0tl")
 stream = ExtResource("19_pofx7")
 
 [connection signal="death" from="." to="EnemyAudioManager" method="_on_enemy_death"]
+[connection signal="enable_changed" from="." to="EnemyGUI" method="_on_enemy_2_enable_changed"]
 [connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" method="_on_enemy_2_health_changed"]
