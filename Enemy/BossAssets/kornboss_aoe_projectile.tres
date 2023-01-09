@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bjbl7nvw24ran"]
+
+[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileStats.gd" id="1_m3oi4"]
+[ext_resource type="Texture2D" uid="uid://d053fjmqpv0gu" path="res://Enemy/Assets/korn_projectile.png" id="2_wbed3"]
+
+[resource]
+script = ExtResource("1_m3oi4")
+damage = 30.0
+speed = 100.0
+range = 1000.0
+texture = ExtResource("2_wbed3")
