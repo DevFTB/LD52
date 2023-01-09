@@ -26,13 +26,18 @@ animations = [{
 scale = Vector2(1, 1)
 max_hp = 4000
 
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
+material = ExtResource("2_lq30u")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_wxrlx")
+animation = &"alive"
+
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
 layout_mode = 3
 
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 3
-
-[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+[node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
 
 [node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
@@ -51,11 +56,3 @@ attack_frequency = 0.067
 
 [node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot2" index="0"]
 one_shot = true
-
-[node name="Sprite" type="AnimatedSprite2D" parent="." index="6"]
-material = ExtResource("2_lq30u")
-use_parent_material = true
-position = Vector2(-2, -41)
-scale = Vector2(0.6, 0.6)
-frames = SubResource("SpriteFrames_wxrlx")
-animation = &"alive"

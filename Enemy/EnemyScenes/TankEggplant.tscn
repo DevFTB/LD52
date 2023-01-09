@@ -23,7 +23,15 @@ animations = [{
 [node name="Enemy2" instance=ExtResource("1_7uwrw")]
 max_hp = 450
 
-[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
+material = ExtResource("4_25iuw")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_ue4xy")
+animation = &"alive"
+
+[node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
 
 [node name="CleaveAttack" type="Node2D" parent="Attacks" index="0"]
@@ -33,11 +41,3 @@ attack_frequency = 0.33
 
 [node name="AttackTimer" type="Timer" parent="Attacks/CleaveAttack" index="0"]
 one_shot = true
-
-[node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
-material = ExtResource("4_25iuw")
-use_parent_material = true
-position = Vector2(-2, -41)
-scale = Vector2(0.6, 0.6)
-frames = SubResource("SpriteFrames_ue4xy")
-animation = &"alive"

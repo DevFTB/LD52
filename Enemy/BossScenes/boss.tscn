@@ -122,6 +122,8 @@ stream = ExtResource("18_ac0tl")
 [node name="DeathSound9" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
 stream = ExtResource("19_pofx7")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="death" from="." to="EnemyAudioManager" method="_on_enemy_death"]
 [connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]

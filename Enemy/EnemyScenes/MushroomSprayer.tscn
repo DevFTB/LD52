@@ -20,7 +20,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy2" instance=ExtResource("1_wtbql")]
+[node name="Enemy4" instance=ExtResource("1_wtbql")]
 max_hp = 300
 
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
