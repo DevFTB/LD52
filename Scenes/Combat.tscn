@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhkuvtiux4tx1"]
+[gd_scene load_steps=25 format=3 uid="uid://dhkuvtiux4tx1"]
 
 [ext_resource type="Script" path="res://Scenes/CombatManager.gd" id="1_bxrym"]
-[ext_resource type="Resource" uid="uid://yiwcdwlchuae" path="res://Level/scream_of_the_crop.tres" id="2_fnmak"]
+[ext_resource type="Resource" uid="uid://n4s1ye8n0khq" path="res://Level/scream_of_the_crop.tres" id="2_t1cnq"]
 [ext_resource type="PackedScene" uid="uid://b02pf55ugd8qu" path="res://Player/GrimCheaper/grim_cheaper.tscn" id="3_qvlhy"]
 [ext_resource type="PackedScene" uid="uid://c5wxpr4ntdxom" path="res://Player/the_sheepard.tscn" id="4_nnji7"]
 [ext_resource type="PackedScene" uid="uid://iw425p5lff88" path="res://Player/Arboarist/arboarist.tscn" id="5_yklqs"]
+[ext_resource type="Resource" uid="uid://c2y7maiuusio3" path="res://Player/Arboarist/arboarist_stats.tres" id="6_dps4h"]
 [ext_resource type="PackedScene" uid="uid://bs50o0b1v3s5r" path="res://Player/UI/BottomPlayerGUI.tscn" id="7_n6x56"]
 [ext_resource type="Texture2D" uid="uid://bakk28guwmqm0" path="res://Player/Sheepard/sp_portrait.png" id="8_288w5"]
 [ext_resource type="Texture2D" uid="uid://dfyuuo8mdnc20" path="res://Player/UI/portrait_cover_sp.png" id="9_37yot"]
@@ -106,7 +107,7 @@ _data = {
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_bxrym")
-campaign = ExtResource("2_fnmak")
+campaign = ExtResource("2_t1cnq")
 
 [node name="Arenas" type="Node2D" parent="."]
 
@@ -121,6 +122,7 @@ position = Vector2(1280, 338)
 
 [node name="Arboarist" parent="Arenas/Players" instance=ExtResource("5_yklqs")]
 position = Vector2(1288, 148)
+player_stats = ExtResource("6_dps4h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

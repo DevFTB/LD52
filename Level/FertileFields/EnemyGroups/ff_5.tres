@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c44m8qamvwsfh"]
+
+[ext_resource type="PackedScene" path="res://Level/FertileFields/EnemyGroups/ff_5.tscn" id="1_hvo3q"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="2_kyjux"]
+
+[resource]
+script = ExtResource("2_kyjux")
+enemy_scene = ExtResource("1_hvo3q")
+number_of_enemies = 12
+difficulty_level = 3

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dlu0cl3bfrs51"]
+
+[ext_resource type="PackedScene" uid="uid://cs8nu21y4xtqm" path="res://Level/RancidRanch/EnemyGroups/rr_2.tscn" id="1_04nfh"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_ae2lq"]
+
+[resource]
+script = ExtResource("1_ae2lq")
+enemy_scene = ExtResource("1_04nfh")
+number_of_enemies = 4
+difficulty_level = 1

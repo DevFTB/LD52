@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://col3y78h68wy4"]
+
+[ext_resource type="PackedScene" uid="uid://joihhtxfmiew" path="res://Enemy/EnemyScenes/SoulsuckingEggplant.tscn" id="1_tqevx"]
+[ext_resource type="PackedScene" uid="uid://bf21dvyk6qugq" path="res://Enemy/EnemyScenes/DPSPurpleRose.tscn" id="2_t0f40"]
+[ext_resource type="PackedScene" uid="uid://d21vuwtjxm2rw" path="res://Enemy/EnemyScenes/TankEggplant.tscn" id="3_smmna"]
+
+[node name="nn_5" type="Node2D"]
+
+[node name="Enemy4" parent="." instance=ExtResource("1_tqevx")]
+position = Vector2(-87, -4)
+
+[node name="Enemy5" parent="." instance=ExtResource("1_tqevx")]
+position = Vector2(46, -39)
+
+[node name="Enemy6" parent="." instance=ExtResource("1_tqevx")]
+position = Vector2(22, 53)
+
+[node name="Enemy7" parent="." instance=ExtResource("2_t0f40")]
+position = Vector2(-39, -98)
+
+[node name="Enemy8" parent="." instance=ExtResource("2_t0f40")]
+position = Vector2(123, -99)
+
+[node name="Enemy9" parent="." instance=ExtResource("2_t0f40")]
+position = Vector2(129, 17)
+
+[node name="Enemy10" parent="." instance=ExtResource("2_t0f40")]
+position = Vector2(-97, 109)
+
+[node name="Enemy11" parent="." instance=ExtResource("2_t0f40")]
+position = Vector2(-219, -20)
+
+[node name="Enemy12" parent="." instance=ExtResource("3_smmna")]
+position = Vector2(46, 113)
+
+[node name="Enemy13" parent="." instance=ExtResource("3_smmna")]
+position = Vector2(188, 88)
+
+[node name="Enemy14" parent="." instance=ExtResource("3_smmna")]
+position = Vector2(220, -50)
+
+[node name="Enemy15" parent="." instance=ExtResource("3_smmna")]
+position = Vector2(38, -147)
+
+[node name="Enemy16" parent="." instance=ExtResource("3_smmna")]
+position = Vector2(-149, -88)
+
+[node name="Enemy17" parent="." instance=ExtResource("3_smmna")]
+position = Vector2(-200, 58)

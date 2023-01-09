@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://buv1xm2rnqvg4"]
+
+[ext_resource type="PackedScene" uid="uid://bf21dvyk6qugq" path="res://Enemy/EnemyScenes/DPSPurpleRose.tscn" id="1_teqnk"]
+[ext_resource type="PackedScene" uid="uid://joihhtxfmiew" path="res://Enemy/EnemyScenes/SoulsuckingEggplant.tscn" id="2_juv0v"]
+[ext_resource type="PackedScene" uid="uid://d21vuwtjxm2rw" path="res://Enemy/EnemyScenes/TankEggplant.tscn" id="3_bjy86"]
+
+[node name="nn_6" type="Node2D"]
+
+[node name="Enemy7" parent="." instance=ExtResource("1_teqnk")]
+position = Vector2(-123, -96)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_teqnk")]
+position = Vector2(-126, -7)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_teqnk")]
+position = Vector2(85, -97)
+
+[node name="Enemy10" parent="." instance=ExtResource("1_teqnk")]
+position = Vector2(104, -4)
+
+[node name="Enemy4" parent="." instance=ExtResource("2_juv0v")]
+position = Vector2(-5, 60)
+
+[node name="Enemy5" parent="." instance=ExtResource("2_juv0v")]
+position = Vector2(-9, -23)
+
+[node name="Enemy11" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(-243, 17)
+
+[node name="Enemy12" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(-195, 107)
+
+[node name="Enemy13" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(-105, 182)
+
+[node name="Enemy14" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(-3, 223)
+
+[node name="Enemy15" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(131, 179)
+
+[node name="Enemy16" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(192, 109)
+
+[node name="Enemy17" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(260, 2)
+
+[node name="Enemy18" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(-268, -105)
+
+[node name="Enemy19" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(-202, -237)
+
+[node name="Enemy20" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(-51, -276)
+
+[node name="Enemy21" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(90, -256)
+
+[node name="Enemy22" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(205, -171)
+
+[node name="Enemy23" parent="." instance=ExtResource("3_bjy86")]
+position = Vector2(273, -86)
+
+[node name="Enemy6" parent="." instance=ExtResource("2_juv0v")]
+position = Vector2(-27, -142)

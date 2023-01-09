@@ -12,8 +12,8 @@ region = Rect2(96, 64, 32, 32)
 script = ExtResource("3_ipma8")
 hp = 100.0
 atk = 10.0
-atk_speed = 10.0
-move_speed = 10.0
+atk_speed = 0.1
+move_speed = 0.1
 dmg_reduction = 0.0
 skill_cooldown = 10.0
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7ifvxfsvjya0"]
+
+[ext_resource type="PackedScene" uid="uid://b000mhbd6rw2f" path="res://Enemy/EnemyScenes/DirtyShrub.tscn" id="1_as8bl"]
+
+[node name="rr_1" type="Node2D"]
+position = Vector2(-8, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("1_as8bl")]
+position = Vector2(27, -139)
+
+[node name="Enemy2" parent="." instance=ExtResource("1_as8bl")]
+position = Vector2(-171, 7)
+
+[node name="Enemy3" parent="." instance=ExtResource("1_as8bl")]
+position = Vector2(168, 26)
+
+[node name="Enemy4" parent="." instance=ExtResource("1_as8bl")]
+position = Vector2(8, 150)

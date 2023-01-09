@@ -1,0 +1,41 @@
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://dp58sk7mh6kxg"]
+
+[ext_resource type="Resource" uid="uid://3odxxw1tq6wf" path="res://Level/FertileFields/EnemyGroups/ff_boss.tres" id="1_bbpvc"]
+[ext_resource type="Script" path="res://Level/Zone.gd" id="2_o8r60"]
+[ext_resource type="Resource" uid="uid://d1ygy7fmdae35" path="res://Level/FertileFields/EnemyGroups/ff_1.tres" id="2_p2pew"]
+[ext_resource type="PackedScene" uid="uid://ch0um0qfy57rk" path="res://Scenes/arena.tscn" id="3_0t57x"]
+[ext_resource type="Resource" uid="uid://dpid7o3noeta2" path="res://Level/FertileFields/EnemyGroups/ff_2.tres" id="3_y5poy"]
+[ext_resource type="Resource" uid="uid://c1ovs62r1k4tf" path="res://Level/FertileFields/EnemyGroups/ff_3.tres" id="4_543eb"]
+[ext_resource type="Resource" uid="uid://cv03ivk3h3f05" path="res://Level/FertileFields/EnemyGroups/ff_4.tres" id="5_ybaoj"]
+[ext_resource type="Resource" uid="uid://c44m8qamvwsfh" path="res://Level/FertileFields/EnemyGroups/ff_5.tres" id="6_xtdfp"]
+[ext_resource type="Resource" uid="uid://crslwya3pgyer" path="res://Level/FertileFields/EnemyGroups/ff_6.tres" id="7_3nqd2"]
+
+[resource]
+script = ExtResource("2_o8r60")
+zone_name = "Fertile Fields"
+enemies = [ExtResource("2_p2pew"), ExtResource("3_y5poy"), ExtResource("4_543eb"), ExtResource("5_ybaoj"), ExtResource("6_xtdfp"), ExtResource("7_3nqd2")]
+zone_scenes = [ExtResource("3_0t57x")]
+boss_group = ExtResource("1_bbpvc")
+difficulty_levels = [1, 2, 4, 8]
+shop_slot_1 = {
+0: 1.0,
+1: 0.0,
+2: 0.0,
+3: 0.0,
+4: 0.0
+}
+shop_slot_2 = {
+0: 0.9,
+1: 0.1,
+2: 0,
+3: 0,
+4: 0
+}
+shop_slot_3 = {
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+}
+currency_multiplier = 1

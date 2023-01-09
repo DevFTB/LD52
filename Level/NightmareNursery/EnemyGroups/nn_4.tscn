@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://j24e0noc3vn5"]
+
+[ext_resource type="PackedScene" uid="uid://bf21dvyk6qugq" path="res://Enemy/EnemyScenes/DPSPurpleRose.tscn" id="1_oifpr"]
+[ext_resource type="PackedScene" uid="uid://d21vuwtjxm2rw" path="res://Enemy/EnemyScenes/TankEggplant.tscn" id="2_kfr50"]
+
+[node name="nn_4" type="Node2D"]
+
+[node name="Enemy7" parent="." instance=ExtResource("1_oifpr")]
+position = Vector2(50, -32)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_oifpr")]
+position = Vector2(42, 71)
+
+[node name="Enemy9" parent="." instance=ExtResource("2_kfr50")]
+position = Vector2(-105, 20)
+
+[node name="Enemy10" parent="." instance=ExtResource("2_kfr50")]
+position = Vector2(-57, -109)
+
+[node name="Enemy11" parent="." instance=ExtResource("2_kfr50")]
+position = Vector2(89, -136)
+
+[node name="Enemy12" parent="." instance=ExtResource("2_kfr50")]
+position = Vector2(193, -70)
+
+[node name="Enemy13" parent="." instance=ExtResource("2_kfr50")]
+position = Vector2(195, 65)
+
+[node name="Enemy14" parent="." instance=ExtResource("2_kfr50")]
+position = Vector2(-22, 129)

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3f76nd8ukafv"]
+
+[ext_resource type="PackedScene" uid="uid://xa57avbolc3p" path="res://Enemy/BossScenes/CornBoss.tscn" id="1_4eill"]
+[ext_resource type="PackedScene" uid="uid://rnthmsbk2wo1" path="res://Enemy/EnemyScenes/CornRanger.tscn" id="2_hg3mu"]
+[ext_resource type="PackedScene" uid="uid://dmxx8wf4jf6fs" path="res://Enemy/EnemyScenes/HealingSunflower.tscn" id="3_5yj3o"]
+[ext_resource type="PackedScene" uid="uid://kfumsr3f8apc" path="res://Enemy/EnemyScenes/WatermelonChan.tscn" id="4_u2dnm"]
+
+[node name="ff_boss" type="Node2D"]
+
+[node name="Enemy2" parent="." instance=ExtResource("1_4eill")]
+position = Vector2(-6, -28)
+
+[node name="Enemy7" parent="." instance=ExtResource("2_hg3mu")]
+position = Vector2(-267, 20)
+
+[node name="Enemy8" parent="." instance=ExtResource("2_hg3mu")]
+position = Vector2(-226, 81)
+
+[node name="Enemy9" parent="." instance=ExtResource("2_hg3mu")]
+position = Vector2(203, 14)
+
+[node name="Enemy10" parent="." instance=ExtResource("2_hg3mu")]
+position = Vector2(213, 90)
+
+[node name="Enemy6" parent="." instance=ExtResource("3_5yj3o")]
+position = Vector2(-321, 83)
+
+[node name="Enemy11" parent="." instance=ExtResource("3_5yj3o")]
+position = Vector2(303, 55)
+
+[node name="Enemy12" parent="." instance=ExtResource("4_u2dnm")]
+position = Vector2(-251, 162)
+
+[node name="Enemy13" parent="." instance=ExtResource("4_u2dnm")]
+position = Vector2(-67, 174)
+
+[node name="Enemy14" parent="." instance=ExtResource("4_u2dnm")]
+position = Vector2(151, 181)

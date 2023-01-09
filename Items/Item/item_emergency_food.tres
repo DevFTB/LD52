@@ -13,7 +13,7 @@ script = ExtResource("3_cnavs")
 hp = 150.0
 atk = 10.0
 atk_speed = 0.0
-move_speed = 5.0
+move_speed = 0.05
 dmg_reduction = 0.0
 skill_cooldown = 0.0
 

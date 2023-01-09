@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs8nu21y4xtqm"]
+
+[ext_resource type="PackedScene" uid="uid://c74s3t1dimubd" path="res://Enemy/EnemyScenes/MushroomSprayer.tscn" id="1_7atik"]
+[ext_resource type="PackedScene" uid="uid://b000mhbd6rw2f" path="res://Enemy/EnemyScenes/DirtyShrub.tscn" id="2_tydcc"]
+
+[node name="rr_2" type="Node2D"]
+
+[node name="Enemy7" parent="." instance=ExtResource("1_7atik")]
+position = Vector2(-58, -25)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_7atik")]
+position = Vector2(64, 1)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_7atik")]
+position = Vector2(-54, 144)
+
+[node name="Enemy" parent="." instance=ExtResource("2_tydcc")]
+position = Vector2(-7, 50)

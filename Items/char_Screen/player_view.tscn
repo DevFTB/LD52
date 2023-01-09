@@ -183,9 +183,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = 19.0
+offset_top = 12.0
 offset_right = 112.0
-offset_bottom = 115.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
@@ -308,15 +308,26 @@ offset_top = 64.0
 offset_right = 224.0
 offset_bottom = 96.0
 
+[node name="BagLabel" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -25.0
+offset_right = 70.0
+offset_bottom = 1.0
+grow_vertical = 0
+text = "Bag: 0/6"
+
 [node name="CandidateSelect" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
-offset_top = 155.0
+offset_top = 148.0
 offset_right = -6.0
-offset_bottom = -20.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 

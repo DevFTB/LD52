@@ -1,13 +1,13 @@
-[gd_resource type="Resource" load_steps=23 format=3 uid="uid://yiwcdwlchuae"]
+[gd_resource type="Resource" load_steps=23 format=3 uid="uid://n4s1ye8n0khq"]
 
 [ext_resource type="Script" path="res://Level/GameProgression.gd" id="1_4uaqg"]
 [ext_resource type="Resource" uid="uid://bwasd4ps82hnm" path="res://Items/Item/item_boomstick.tres" id="1_vnmcx"]
 [ext_resource type="Resource" uid="uid://ctpaon6fssk76" path="res://Items/Item/item_daisy_crown.tres" id="2_34yye"]
 [ext_resource type="Resource" uid="uid://bgp0wbq3rbux2" path="res://Items/Item/item_water_of_life.tres" id="2_g1jym"]
-[ext_resource type="Resource" uid="uid://dp58sk7mh6kxg" path="res://Level/Zones/fertile_fields.tres" id="2_s4loq"]
-[ext_resource type="Resource" uid="uid://h2coi30ifsqp" path="res://Level/Zones/rancid_ranch.tres" id="3_g5w7o"]
+[ext_resource type="Resource" uid="uid://dp58sk7mh6kxg" path="res://Level/FertileFields/fertile_fields.tres" id="2_s4loq"]
+[ext_resource type="Resource" uid="uid://h2coi30ifsqp" path="res://Level/RancidRanch/rancid_ranch.tres" id="3_g5w7o"]
 [ext_resource type="Resource" uid="uid://dyyfc1dxk8ehm" path="res://Items/Item/item_frozen_timepiece.tres" id="3_o24a0"]
-[ext_resource type="Resource" uid="uid://bifpfksqm2hg4" path="res://Level/Zones/nightmare_nursery.tres" id="4_gmiv7"]
+[ext_resource type="Resource" uid="uid://bifpfksqm2hg4" path="res://Level/NightmareNursery/nightmare_nursery.tres" id="4_gmiv7"]
 [ext_resource type="Resource" uid="uid://bcof15tislqvx" path="res://Items/Item/item_protective_glasses.tres" id="4_kfrmf"]
 [ext_resource type="Resource" uid="uid://fcu07hf8j0mo" path="res://Items/Item/item_gardening_manual.tres" id="7_2lp1e"]
 [ext_resource type="Script" path="res://Items/Inventory.gd" id="7_qdwaa"]
@@ -22,12 +22,12 @@
 [ext_resource type="Resource" uid="uid://cwg8r5dpfabja" path="res://Items/Item/item_peer_reviewed_essay.tres" id="19_epr2f"]
 [ext_resource type="Resource" uid="uid://cpntqt12nq7tp" path="res://Items/Item/item_winged_boot.tres" id="20_mmqh1"]
 
-[sub_resource type="Resource" id="Resource_m2lna"]
+[sub_resource type="Resource" id="Resource_xkaou"]
 script = ExtResource("7_qdwaa")
 
 [resource]
 script = ExtResource("1_4uaqg")
 zones = [ExtResource("2_s4loq"), ExtResource("3_g5w7o"), ExtResource("4_gmiv7")]
 items = [ExtResource("1_vnmcx"), ExtResource("2_34yye"), ExtResource("8_1kv1l"), ExtResource("9_srgme"), ExtResource("17_0cds1"), ExtResource("3_o24a0"), ExtResource("7_2lp1e"), ExtResource("8_1kv1l"), ExtResource("9_srgme"), ExtResource("19_epr2f"), ExtResource("11_g3827"), ExtResource("4_kfrmf"), ExtResource("13_gvvr6"), ExtResource("14_imseh"), ExtResource("15_l4xdm"), ExtResource("17_grkbs"), ExtResource("17_grkbs"), ExtResource("20_mmqh1"), ExtResource("2_g1jym"), ExtResource("20_mmqh1")]
-stash = SubResource("Resource_m2lna")
+stash = SubResource("Resource_xkaou")
 starting_money = 15
