@@ -1,8 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://xjahcj7id5nx"]
+[gd_scene load_steps=9 format=3 uid="uid://xjahcj7id5nx"]
 
 [ext_resource type="Script" path="res://Scenes/AoEAttack.gd" id="1_nr4h5"]
+[ext_resource type="Script" path="res://Player/Abilities/SheepScale.gd" id="2_uuu47"]
 [ext_resource type="Texture2D" uid="uid://dcs0jkbi36es4" path="res://Player/Abilities/sheep_na/1.png" id="2_vqylc"]
 [ext_resource type="Texture2D" uid="uid://cxwbw635k43k8" path="res://Player/Abilities/sheep_na/2.png" id="3_3huuj"]
+
+[sub_resource type="Animation" id="Animation_bqdd7"]
+resource_name = "SheepSize"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Cleave:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 0.307786),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.4, 0.4), Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qa8p6"]
+_data = {
+"SheepSize": SubResource("Animation_bqdd7")
+}
 
 [sub_resource type="Curve2D" id="Curve2D_g2k4n"]
 _data = {
@@ -23,6 +44,12 @@ script = ExtResource("1_nr4h5")
 move = true
 duration = 0.33
 
+[node name="SheepScale" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qa8p6")
+}
+script = ExtResource("2_uuu47")
+
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(0, -9.53674e-07)
 curve = SubResource("Curve2D_g2k4n")
@@ -35,7 +62,7 @@ scale = Vector2(1.2, 1.2)
 texture_filter = 1
 position = Vector2(2.5, -15)
 rotation = 3.24457
-scale = Vector2(0.6, 0.6)
+scale = Vector2(1e-05, 1e-05)
 frames = SubResource("SpriteFrames_7wta1")
 playing = true
 flip_h = true
