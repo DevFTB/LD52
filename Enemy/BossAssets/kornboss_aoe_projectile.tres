@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_m3oi4")
-damage = 30.0
+damage = 5.0
 speed = 100.0
 range = 1000.0
 texture = ExtResource("2_wbed3")
