@@ -156,6 +156,7 @@ texture_pressed = SubResource("AtlasTexture_ka7rs")
 texture_hover = SubResource("AtlasTexture_hhntb")
 
 [node name="Info" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -338,6 +339,7 @@ animation = &"attack"
 playing = true
 
 [node name="Page4" type="Control" parent="Info/Pages"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

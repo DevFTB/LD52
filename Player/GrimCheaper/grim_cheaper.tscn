@@ -57,6 +57,7 @@ script = ExtResource("9_4flb4")
 
 [node name="HealthBar" type="ProgressBar" parent="CharacterGUI"]
 visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

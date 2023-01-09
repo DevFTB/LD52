@@ -313,10 +313,6 @@ func process_ai(delta):
 			direction.y = 1
 		if enemy_pos.y < global_position.y - 1:
 			direction.y = -1
-		
-		if direction.length() > 0:
-			if $AnimatedSprite.animation != "walk":
-				$AnimatedSprite.play("walk")
 
 		# todo: use range or make it smarter with skills
 		if can_use_skill and not is_dead:

@@ -41,7 +41,7 @@ _data = {
 z_index = -2
 script = ExtResource("1_nxk6a")
 spawnable_groups = [ExtResource("2_dr8n6")]
-spawnable_area = Rect2(0, 200, 700, 400)
+spawnable_area = Rect2(100, 100, 500, 300)
 level_size = Vector2(1152, 704)
 difficulty_level = 6
 
