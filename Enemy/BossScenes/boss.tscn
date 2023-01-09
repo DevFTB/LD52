@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://cw60n741n5xbh"]
+[gd_scene load_steps=32 format=3 uid="uid://cw60n741n5xbh"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_uxdwq"]
 [ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_mcu3c"]
 [ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="3_2bufq"]
 [ext_resource type="Script" path="res://Enemy/Scripts/BossGUI.gd" id="4_anaig"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jvy4g"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="6_6u113"]
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_b0d2p"]
 [ext_resource type="Theme" uid="uid://chfnev2av5hq" path="res://Enemy/BossAssets/healthbar_theme.tres" id="6_gtanp"]
 [ext_resource type="Theme" uid="uid://ct21butfrkec1" path="res://UI/UI_theme.tres" id="6_unf27"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://1veonjc4ryh" path="res://Enemy/BossAssets/hp_bar_empty.png" id="8_mn5ye"]
 [ext_resource type="AudioStream" uid="uid://dnoa3vvuj2a1r" path="res://Sounds/Enemy/enemy hit 2.wav" id="9_dcx2x"]
 [ext_resource type="Texture2D" uid="uid://h4betidm3s7t" path="res://Enemy/BossAssets/hp_bar_full.png" id="9_swrmq"]
+[ext_resource type="Script" path="res://Enemy/BossScenes/HealthBar.gd" id="9_t5nqb"]
 [ext_resource type="AudioStream" uid="uid://hjjhtvrhso1a" path="res://Sounds/Enemy/enemy hit 3.wav" id="10_q4qw3"]
 [ext_resource type="AudioStream" uid="uid://c8u45ggoqxdmk" path="res://Sounds/Enemy/death sound 1.wav" id="11_dkyjj"]
 [ext_resource type="AudioStream" uid="uid://ck7aui2x8ki53" path="res://Sounds/Enemy/death sound 2.wav" id="12_1r82l"]
@@ -28,6 +30,48 @@
 font_size = 36
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_4tlaq"]
+resource_name = "HealthBarShake"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(10, 5), Vector2(-5, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xfqul"]
+_data = {
+"HealthBarShake": SubResource("Animation_4tlaq")
+}
+
+[sub_resource type="Animation" id="Animation_yh7k6"]
+resource_name = "HealthBarFlash"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:use_parent_material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jocff"]
+_data = {
+"HealthBarFlash": SubResource("Animation_yh7k6")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_635ns"]
 radius = 123.78
@@ -86,15 +130,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
-offset_left = 274.0
-offset_right = 878.0
-offset_bottom = 60.0
+material = ExtResource("6_6u113")
+use_parent_material = true
+layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("6_gtanp")
 value = 50.0
 rounded = true
 texture_under = ExtResource("8_mn5ye")
 texture_progress = ExtResource("9_swrmq")
+script = ExtResource("9_t5nqb")
 
 [node name="HealthPercentage" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
 visible = false
@@ -127,6 +172,16 @@ grow_vertical = 2
 theme = ExtResource("6_unf27")
 horizontal_alignment = 1
 uppercase = true
+
+[node name="HealthBarShake" type="AnimationPlayer" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
+libraries = {
+"": SubResource("AnimationLibrary_xfqul")
+}
+
+[node name="HealthBarFlash" type="AnimationPlayer" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
+libraries = {
+"": SubResource("AnimationLibrary_jocff")
+}
 
 [node name="Pain" type="Timer" parent="EnemyGUI"]
 wait_time = 1.5
@@ -187,6 +242,7 @@ stream = ExtResource("19_pofx7")
 [connection signal="death" from="." to="EnemyAudioManager" method="_on_enemy_death"]
 [connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="." to="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" method="_on_enemy_2_health_changed"]
 [connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
 [connection signal="health_changed" from="." to="EnemyAudioManager" method="_on_enemy_health_changed"]
 [connection signal="timeout" from="EnemyGUI/Pain" to="." method="_on_pain_timeout"]

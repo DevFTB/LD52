@@ -70,6 +70,28 @@ frames = SubResource("SpriteFrames_wxrlx")
 animation = &"alive"
 playing = true
 
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+layout_mode = 3
+
+[node name="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control" index="0"]
+layout_mode = 3
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="HealthBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer" index="0"]
+layout_mode = 3
+offset_left = 274.0
+offset_right = 878.0
+offset_bottom = 60.0
+
+[node name="HealthPercentage" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="0"]
+layout_mode = 3
+
+[node name="BossName" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="1"]
+layout_mode = 3
+
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
 

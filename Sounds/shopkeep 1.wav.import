@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgwo161tvuxo8"
+path="res://.godot/imported/shopkeep 1.wav-285dd3311fdd774ece1dd0c37fa63149.sample"
+
+[deps]
+
+source_file="res://Sounds/shopkeep 1.wav"
+dest_files=["res://.godot/imported/shopkeep 1.wav-285dd3311fdd774ece1dd0c37fa63149.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
