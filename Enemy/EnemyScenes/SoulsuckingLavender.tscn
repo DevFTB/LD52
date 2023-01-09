@@ -25,12 +25,8 @@ animations = [{
 max_hp = 1200
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 0
 offset_top = 0.0
 offset_bottom = 26.0
-
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 1
 
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
