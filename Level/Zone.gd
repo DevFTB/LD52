@@ -4,6 +4,9 @@ class_name Zone
 @export var zone_name = "Zone"
 @export var enemies : Array[EnemyGroup] = []
 @export var zone_scenes : Array[PackedScene] = []
+
+@export var boss_group : EnemyGroup
+
 @export var difficulty_levels : Array[int] = []
 
 const default_shop_slot = {

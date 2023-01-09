@@ -6,7 +6,6 @@ var slow_buff_name = "dirtydirtyslow"
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent().is_in_group("player"):
-		print("projectile damage "  + str(projectile.damage))
 		area.get_parent().modify_health(-projectile.damage)
 		
 		var hit_player = area.get_parent()

@@ -6,7 +6,4 @@
 position = Vector2(-37, 1)
 
 [node name="Enemy2" parent="." instance=ExtResource("1_bjpnw")]
-visible = true
 position = Vector2(20, 88)
-
-[connection signal="health_changed" from="Enemy2" to="Enemy2/FlashOnHit" method="_on_health_changed" flags=18]

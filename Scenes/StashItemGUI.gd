@@ -33,7 +33,6 @@ func _on_mouse_exited():
 
 func on_gui_input(event):
 	if event is InputEventMouseButton:
-		print(str(event is InputEventMouseButton) + ", " + str(event.button_index == MOUSE_BUTTON_LEFT) + ", " + str(event.pressed))
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if char_mode and item != null:
 				shop.set_player_candidate_item(item)

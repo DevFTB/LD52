@@ -9,8 +9,6 @@ var finished = false
 var amount_active = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(global_position)
-	print(duration / float(max_amount))
 	pass # Replace with function body.
 
 func set_damage(damage):

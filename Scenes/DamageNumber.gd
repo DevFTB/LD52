@@ -21,7 +21,7 @@ func start_animation(new_value):
 		current_tween.kill()
 		on_animation_end()
 	
-	text = str(new_value)
+	text = str(floor(new_value))
 	current_tween = get_tree().create_tween()
 
 	current_tween.set_parallel(true)
