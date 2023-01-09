@@ -29,9 +29,6 @@ layout_mode = 3
 offset_top = 0.0
 offset_bottom = 26.0
 
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 3
-
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
 
