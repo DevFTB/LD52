@@ -38,7 +38,7 @@ region = Rect2(128, 0, 128, 128)
 [resource]
 animations = [{
 "frames": [SubResource("AtlasTexture_unc7j"), SubResource("AtlasTexture_h4gmi"), SubResource("AtlasTexture_lxklu"), SubResource("AtlasTexture_tfum8"), SubResource("AtlasTexture_ji00s"), SubResource("AtlasTexture_5ho54")],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 10.0
 }, {

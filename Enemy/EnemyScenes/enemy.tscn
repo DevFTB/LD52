@@ -81,7 +81,6 @@ script = ExtResource("9_7u6h5")
 sprite = NodePath("")
 
 [node name="Attacks" type="Node2D" parent="."]
-position = Vector2(0, -32)
 
 [node name="EnemyAudioManager" type="Node2D" parent="."]
 script = ExtResource("7_4f53u")

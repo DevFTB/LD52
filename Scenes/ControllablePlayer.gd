@@ -13,6 +13,7 @@ extends Node2D
 @onready var atk_speed = player_stats.get_atk_speed()
 @onready var move_speed = player_stats.get_move_speed()
 
+
 var dmg_reduction = 0
 
 var direction : Vector2 = Vector2.ZERO
@@ -25,6 +26,7 @@ signal control_changed(controlled)
 signal death
 signal skill_used
 signal attack_used
+
 
 # Called when the node enters the scene tree for the first time.
 var enabled = false
@@ -49,6 +51,7 @@ func _ready():
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()
 	$AnimatedSprite.play("walk")
+
 	pass # Replace with function body.
 	
 	# start find enemy timer
@@ -132,14 +135,16 @@ func get_skill_damage():
 	return player_stats.get_skill_damage(atk)
 	
 func on_anim_end():
-	
+	do_walk()
 	pass
+
+func do_walk():
+	$AnimatedSprite.play("walk")
 
 func do_attack():
 	$AnimatedSprite.play("attack")
 	var new_attack = normal_attack.instantiate()
 	emit_signal("attack_used")
-	
 	new_attack.set_damage(get_attack_damage())
 	new_attack.damage_callback = on_attack_damage
 	new_attack.source_player = self

@@ -10,7 +10,7 @@ level_bonus = 1.0
 
 [sub_resource type="Resource" id="Resource_vxh08"]
 script = ExtResource("1_uv1bu")
-base_value = 1.0
+base_value = 0.5
 level_bonus = 0.05
 
 [sub_resource type="Resource" id="Resource_qywa1"]
@@ -50,6 +50,7 @@ level_bonus = 0.02
 
 [resource]
 script = ExtResource("2_nd1oh")
+player_name = "Player"
 hp = SubResource("Resource_v5mv7")
 atk = SubResource("Resource_fs2lm")
 atk_speed = SubResource("Resource_vxh08")
