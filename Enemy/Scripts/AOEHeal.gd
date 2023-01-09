@@ -26,12 +26,12 @@ func heal(amount, range):
 	filter(func(e): return not e.is_dead and e.enabled).\
 	filter(func(e): return e.global_position.distance_to(global_position) < range)
 	
-	rng.randomize()
-	randomPitch = rng.randf_range(0.8,1.2)
-	$HealSound.play()
-	$HealSound.set_pitch_scale(randomPitch)
-	
 	
 	for e in enemies:
 		e.modify_health(amount)
+		if amount > 0 :
+			rng.randomize()
+			randomPitch = rng.randf_range(0.8,1.2)
+			$HealSound.play()
+			$HealSound.set_pitch_scale(randomPitch)
 	

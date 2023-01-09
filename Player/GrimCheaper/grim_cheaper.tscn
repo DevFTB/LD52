@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b02pf55ugd8qu"]
+[gd_scene load_steps=23 format=3 uid="uid://b02pf55ugd8qu"]
 
 [ext_resource type="Script" path="res://Scenes/GrimCheaper.gd" id="1_pxi04"]
 [ext_resource type="PackedScene" uid="uid://bq32vdiv30t2u" path="res://Player/Abilities/cleave.tscn" id="2_8htio"]
@@ -16,10 +16,22 @@
 [ext_resource type="AudioStream" uid="uid://3xra0dscbnmm" path="res://Sounds/slice 3.wav" id="14_5mjkd"]
 [ext_resource type="AudioStream" uid="uid://bxu8ku4d4dj6f" path="res://Sounds/super slice.wav" id="15_rohqv"]
 [ext_resource type="AudioStream" uid="uid://baltx1qynm02d" path="res://Sounds/chicken ready.wav" id="16_3xeq2"]
+[ext_resource type="Texture2D" uid="uid://b2yt7x2y7nl5q" path="res://Player/Misc Assets/Sparkle1.png" id="17_gwbx4"]
+[ext_resource type="Texture2D" uid="uid://cr4kasrat2weh" path="res://Player/Misc Assets/Sparkle3.png" id="18_n3jpd"]
+[ext_resource type="Texture2D" uid="uid://b23q05cal3c6i" path="res://Player/Misc Assets/Sparkle4.png" id="19_1btb3"]
+[ext_resource type="Texture2D" uid="uid://c4dfps71y8cr8" path="res://Player/Misc Assets/Sparkle2.png" id="20_vuoa8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
 radius = 38.0
 height = 102.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fmr2f"]
+animations = [{
+"frames": [ExtResource("17_gwbx4"), ExtResource("18_n3jpd"), ExtResource("19_1btb3"), ExtResource("20_vuoa8"), ExtResource("18_n3jpd")],
+"loop": true,
+"name": &"sparkle",
+"speed": 5.0
+}]
 
 [node name="GrimCheaper" type="Node2D" groups=["player"]]
 texture_filter = 1
@@ -55,6 +67,7 @@ script = ExtResource("9_4flb4")
 
 [node name="HealthBar" type="ProgressBar" parent="CharacterGUI"]
 visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -101,6 +114,13 @@ stream = ExtResource("15_rohqv")
 
 [node name="ReadySound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
 stream = ExtResource("16_3xeq2")
+
+[node name="Sparkle" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, 16)
+frames = SubResource("SpriteFrames_fmr2f")
+animation = &"sparkle"
+playing = true
 
 [connection signal="attack_used" from="." to="GrimCheeperSound" method="_on_grim_cheaper_attack_used"]
 [connection signal="control_changed" from="." to="AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]

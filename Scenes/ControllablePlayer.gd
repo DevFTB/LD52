@@ -26,6 +26,8 @@ signal control_changed(controlled)
 signal death
 signal skill_used
 signal attack_used
+signal buff_applied
+signal buff_removed
 
 
 # Called when the node enters the scene tree for the first time.
@@ -253,6 +255,8 @@ func apply_buff(buff: BuffStats, duration: float) -> void:
 	get_tree().create_timer(duration).timeout.connect(callback)
 	
 	print("apply buff on " + name + " with id " +str(buff_id))
+	emit_signal("buff_applied")
+	$Sparkle.set_visible(true)
 	recalculate_stats()
 	
 	var timer =  Timer.new()
@@ -264,6 +268,8 @@ func apply_buff(buff: BuffStats, duration: float) -> void:
 
 func remove_buff(key):
 	print("removing buff from " + name  + " with id " + str(key))
+	$Sparkle.set_visible(false)
+	emit_signal("buff_removed")
 	var buff = buffs[key]
 	buffs.erase(key)
 	

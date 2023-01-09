@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbij8rr4abd6a"]
+[gd_scene load_steps=21 format=3 uid="uid://bbij8rr4abd6a"]
 
 [ext_resource type="Script" path="res://Scenes/TheSheepard.gd" id="1_ycxsl"]
 [ext_resource type="PackedScene" uid="uid://xjahcj7id5nx" path="res://Player/Abilities/sheep_attack.tscn" id="2_klsp6"]
@@ -14,10 +14,22 @@
 [ext_resource type="AudioStream" uid="uid://qhn0tqa6hoh6" path="res://Sounds/sheep skill.wav" id="12_pugwk"]
 [ext_resource type="AudioStream" uid="uid://c57uxmi5e7u32" path="res://Sounds/sheep attack.wav" id="13_q0pen"]
 [ext_resource type="AudioStream" uid="uid://ddjxh8676c0uo" path="res://Sounds/sheep ready.wav" id="14_sfq2d"]
+[ext_resource type="Texture2D" uid="uid://b2yt7x2y7nl5q" path="res://Player/Misc Assets/Sparkle1.png" id="15_o34lk"]
+[ext_resource type="Texture2D" uid="uid://cr4kasrat2weh" path="res://Player/Misc Assets/Sparkle3.png" id="16_ud4nb"]
+[ext_resource type="Texture2D" uid="uid://b23q05cal3c6i" path="res://Player/Misc Assets/Sparkle4.png" id="17_fahkd"]
+[ext_resource type="Texture2D" uid="uid://c4dfps71y8cr8" path="res://Player/Misc Assets/Sparkle2.png" id="17_xqwk2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
 radius = 38.0
 height = 102.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6wnx"]
+animations = [{
+"frames": [ExtResource("15_o34lk"), ExtResource("16_ud4nb"), ExtResource("17_fahkd"), ExtResource("17_xqwk2"), ExtResource("16_ud4nb")],
+"loop": true,
+"name": &"sparkle",
+"speed": 5.0
+}]
 
 [node name="TheSheepard" type="Node2D" groups=["player"]]
 texture_filter = 1
@@ -53,7 +65,6 @@ script = ExtResource("9_63850")
 
 [node name="HealthBar" type="ProgressBar" parent="CharacterGUI"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -98,6 +109,13 @@ stream = ExtResource("13_q0pen")
 [node name="ReadySound" type="AudioStreamPlayer2D" parent="SheephardSound"]
 stream = ExtResource("14_sfq2d")
 volume_db = 15.0
+
+[node name="Sparkle" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, 16)
+frames = SubResource("SpriteFrames_x6wnx")
+animation = &"sparkle"
+playing = true
 
 [connection signal="attack_used" from="." to="SheephardSound" method="_on_the_sheepard_attack_used"]
 [connection signal="control_changed" from="." to="AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]

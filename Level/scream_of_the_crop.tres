@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=3]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://c7gh3h2gel3ot"]
 
 [ext_resource type="Script" path="res://Level/GameProgression.gd" id="1_4uaqg"]
 [ext_resource type="Resource" uid="uid://dp58sk7mh6kxg" path="res://Level/Zones/fertile_fields.tres" id="2_s4loq"]

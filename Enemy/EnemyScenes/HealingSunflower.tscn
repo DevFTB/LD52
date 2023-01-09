@@ -24,12 +24,8 @@ animations = [{
 max_hp = 30
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 0
 offset_top = 0.0
 offset_bottom = 26.0
-
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 1
 
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
@@ -44,7 +40,7 @@ one_shot = true
 
 [node name="HealSound" type="AudioStreamPlayer2D" parent="Attacks/AOEHeal" index="1"]
 stream = ExtResource("3_r1beb")
-volume_db = -5.0
+volume_db = -2.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
 material = ExtResource("4_klilr")

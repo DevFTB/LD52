@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://iw425p5lff88"]
+[gd_scene load_steps=32 format=3 uid="uid://iw425p5lff88"]
 
 [ext_resource type="Script" path="res://Scenes/Arboarist.gd" id="1_u6v5u"]
 [ext_resource type="PackedScene" uid="uid://damqr88nxwy6a" path="res://Player/Arboarist/spin.tscn" id="2_ob17p"]
@@ -15,6 +15,10 @@
 [ext_resource type="AudioStream" uid="uid://cacu63y5yuf2t" path="res://Sounds/pig skill.wav" id="13_x3epa"]
 [ext_resource type="AudioStream" uid="uid://c1cl5idmsu84j" path="res://Sounds/chainsaw.wav" id="14_ldo7y"]
 [ext_resource type="AudioStream" uid="uid://dt13geey6c80m" path="res://Sounds/pig ready.wav" id="15_lqvwc"]
+[ext_resource type="Texture2D" uid="uid://b2yt7x2y7nl5q" path="res://Player/Misc Assets/Sparkle1.png" id="16_nmuwx"]
+[ext_resource type="Texture2D" uid="uid://cr4kasrat2weh" path="res://Player/Misc Assets/Sparkle3.png" id="17_ofa3a"]
+[ext_resource type="Texture2D" uid="uid://b23q05cal3c6i" path="res://Player/Misc Assets/Sparkle4.png" id="18_nrhsl"]
+[ext_resource type="Texture2D" uid="uid://c4dfps71y8cr8" path="res://Player/Misc Assets/Sparkle2.png" id="19_bg7qe"]
 
 [sub_resource type="Resource" id="Resource_1svkk"]
 script = ExtResource("4_18ipx")
@@ -78,6 +82,14 @@ level_log_base = 1.5
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
 radius = 38.0
 height = 102.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ya131"]
+animations = [{
+"frames": [ExtResource("16_nmuwx"), ExtResource("17_ofa3a"), ExtResource("18_nrhsl"), ExtResource("19_bg7qe"), ExtResource("17_ofa3a")],
+"loop": true,
+"name": &"sparkle",
+"speed": 5.0
+}]
 
 [node name="Arboarist" type="Node2D" groups=["player"]]
 texture_filter = 1
@@ -159,6 +171,13 @@ volume_db = 5.0
 [node name="ReadySound" type="AudioStreamPlayer2D" parent="ArboaristSoundController"]
 stream = ExtResource("15_lqvwc")
 volume_db = 5.0
+
+[node name="Sparkle" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, 16)
+frames = SubResource("SpriteFrames_ya131")
+animation = &"sparkle"
+playing = true
 
 [connection signal="attack_used" from="." to="ArboaristSoundController" method="_on_arboarist_attack_used"]
 [connection signal="control_changed" from="." to="AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]

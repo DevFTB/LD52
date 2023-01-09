@@ -15,3 +15,5 @@ func _on_health_changed(new_health, difference, should_display):
 	if should_display:
 		flash()
 	pass
+	
+
