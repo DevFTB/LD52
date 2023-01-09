@@ -27,7 +27,7 @@ color_ramp = SubResource("GradientTexture1D_2pu4n")
 [sub_resource type="CircleShape2D" id="CircleShape2D_7jpjx"]
 radius = 7.0
 
-[node name="Projectile" type="Node2D"]
+[node name="Projectile2" type="Node2D"]
 script = ExtResource("1_ego0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

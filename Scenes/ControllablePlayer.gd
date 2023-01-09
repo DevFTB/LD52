@@ -80,9 +80,9 @@ func _find_enemy_timeout():
 	nearest_enemy = get_nearest_enemy()
  
 func _process(delta):
-	if enabled and not is_dead and not controlled:
-		process_ai(delta)
-	elif enabled and not is_dead and controlled:
+#	if enabled and not is_dead and not controlled:
+#		process_ai(delta)
+#	elif enabled and not is_dead and controlled:
 		position += direction.normalized() * move_speed * 100 * delta
 
 func modify_health(modification):

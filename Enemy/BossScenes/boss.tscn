@@ -1,14 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://cw60n741n5xbh"]
+[gd_scene load_steps=26 format=3 uid="uid://cw60n741n5xbh"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_uxdwq"]
 [ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_mcu3c"]
 [ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="3_2bufq"]
-[ext_resource type="Script" path="res://Scenes/EnemyGUI.gd" id="4_qahv5"]
+[ext_resource type="Script" path="res://Enemy/Scripts/BossGUI.gd" id="4_anaig"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jvy4g"]
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_b0d2p"]
+[ext_resource type="Theme" uid="uid://4qhhl5r0prfu" path="res://Enemy/BossAssets/healthbar_theme.tres" id="6_gtanp"]
+[ext_resource type="Theme" uid="uid://ct21butfrkec1" path="res://UI/UI_theme.tres" id="6_unf27"]
 [ext_resource type="Script" path="res://Enemy/Scripts/EnemySoundManager.gd" id="7_qn5me"]
 [ext_resource type="AudioStream" uid="uid://f3m74mv86atu" path="res://Sounds/Enemy/enemy hit 1.wav" id="8_avc41"]
+[ext_resource type="Texture2D" uid="uid://1veonjc4ryh" path="res://Enemy/BossAssets/hp_bar_empty.png" id="8_mn5ye"]
 [ext_resource type="AudioStream" uid="uid://dnoa3vvuj2a1r" path="res://Sounds/Enemy/enemy hit 2.wav" id="9_dcx2x"]
+[ext_resource type="Texture2D" uid="uid://h4betidm3s7t" path="res://Enemy/BossAssets/hp_bar_full.png" id="9_swrmq"]
 [ext_resource type="AudioStream" uid="uid://hjjhtvrhso1a" path="res://Sounds/Enemy/enemy hit 3.wav" id="10_q4qw3"]
 [ext_resource type="AudioStream" uid="uid://c8u45ggoqxdmk" path="res://Sounds/Enemy/death sound 1.wav" id="11_dkyjj"]
 [ext_resource type="AudioStream" uid="uid://ck7aui2x8ki53" path="res://Sounds/Enemy/death sound 2.wav" id="12_1r82l"]
@@ -30,6 +34,7 @@ radius = 123.78
 height = 332.54
 
 [node name="Enemy2" type="Node2D" groups=["enemy"]]
+visible = false
 position = Vector2(0, 96)
 scale = Vector2(3, 3)
 script = ExtResource("1_uxdwq")
@@ -45,11 +50,12 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 80.0
 offset_bottom = 14.363
-script = ExtResource("4_qahv5")
+script = ExtResource("4_anaig")
 metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -58,13 +64,56 @@ label_settings = SubResource("LabelSettings_lgit8")
 script = ExtResource("5_jvy4g")
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" type="ProgressBar" parent="EnemyGUI"]
+[node name="CanvasLayer" type="CanvasLayer" parent="EnemyGUI"]
+
+[node name="Control" type="Control" parent="EnemyGUI/CanvasLayer"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 12.637
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_gtanp")
+value = 50.0
+rounded = true
+texture_under = ExtResource("8_mn5ye")
+texture_progress = ExtResource("9_swrmq")
+
+[node name="HealthPercentage" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -8.5
+offset_right = 0.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_unf27")
+horizontal_alignment = 1
+
+[node name="BossName" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_unf27")
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Pain" type="Timer" parent="EnemyGUI"]
 wait_time = 1.5

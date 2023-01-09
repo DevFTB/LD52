@@ -22,12 +22,23 @@ animations = [{
 
 [node name="Enemy2" instance=ExtResource("1_krkvr")]
 scale = Vector2(1, 1)
+enemy_name = "Violent Grass"
 max_hp = 100000
 
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 1
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
+material = ExtResource("6_vt7el")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_wxrlx")
+animation = &"alive"
 
-[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+layout_mode = 3
+offset_top = 0.0
+offset_bottom = 26.0
+
+[node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
 
 [node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
@@ -38,14 +49,6 @@ projectile_stats = ExtResource("3_in0s2")
 one_shot = true
 
 [node name="ExhaustedTimer" type="Timer" parent="Attacks/ProjectileShoot" index="1"]
-
-[node name="Sprite" type="AnimatedSprite2D" parent="." index="6"]
-material = ExtResource("6_vt7el")
-use_parent_material = true
-position = Vector2(-2, -41)
-scale = Vector2(0.6, 0.6)
-frames = SubResource("SpriteFrames_wxrlx")
-animation = &"alive"
 
 [connection signal="health_changed" from="." to="Attacks/ProjectileShoot" method="check_super_mode"]
 [connection signal="timeout" from="Attacks/ProjectileShoot/ExhaustedTimer" to="Attacks/ProjectileShoot" method="exhaust"]
