@@ -23,19 +23,18 @@ var skill_level = 1
 var passive_level = 1
 @export var passive : Stat = null
 
+@export var inventory = Inventory.new()
+
 func add_item(item):
-	if items.has(item):
-		items[item] += 1
-	else:
-		items[item] = 1
+	inventory.add(item)
 	recalculate_item_bonuses()
 	
+	pass
+
 func remove_item(item):
-	if items.has(item):
-		items[item] -= 1
-		if items[item] == 0:
-			items.erase(item)
+	inventory.remove(item)
 	recalculate_item_bonuses()
+	pass
 	
 func recalculate_item_bonuses():
 	var total = items.keys().reduce(func(accum, stats): return stats.stack_with(accum), BuffStats.new())
@@ -84,7 +83,7 @@ func get_attack_damage(atk):
 func get_skill_damage(atk):
 	return atk * get_skill_scaling()
 	
-func _init(p_hp = null, p_a = null, p_as = null, p_ms = null, p_nas = null, p_ss = null, p_sc = null, p_sd = null, p_p = null):
+func _init(p_hp = null, p_a = null, p_as = null, p_ms = null, p_nas = null, p_ss = null, p_sc = null, p_sd = null, p_p = null, p_i = null):
 	hp = p_hp
 	atk = p_a
 	atk_speed = p_as
@@ -94,4 +93,5 @@ func _init(p_hp = null, p_a = null, p_as = null, p_ms = null, p_nas = null, p_ss
 	skill_duration = p_sd
 	skill_cooldown = p_sc
 	passive = p_p
+	inventory = p_i
 	

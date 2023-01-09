@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://vi5h2br0s7qu"]
+
+[ext_resource type="Script" path="res://Level/GameProgression.gd" id="1_4uaqg"]
+[ext_resource type="Resource" uid="uid://ctpaon6fssk76" path="res://Items/Item/item_daisy_crown.tres" id="1_tif35"]
+[ext_resource type="Resource" uid="uid://bgp0wbq3rbux2" path="res://Items/Item/item_frozen_timepiece.tres" id="2_g1jym"]
+[ext_resource type="Resource" uid="uid://dp58sk7mh6kxg" path="res://Level/Zones/fertile_fields.tres" id="2_s4loq"]
+[ext_resource type="Resource" uid="uid://h2coi30ifsqp" path="res://Level/Zones/rancid_ranch.tres" id="3_g5w7o"]
+[ext_resource type="Resource" uid="uid://fcu07hf8j0mo" path="res://Items/Item/item_gardening_manual.tres" id="3_la833"]
+[ext_resource type="Resource" uid="uid://bifpfksqm2hg4" path="res://Level/Zones/nightmare_nursery.tres" id="4_gmiv7"]
+[ext_resource type="Resource" uid="uid://ul7xw2ss4us3" path="res://Items/Item/item_pitchfork.tres" id="4_x6nom"]
+[ext_resource type="Resource" uid="uid://bdwydbbciwrov" path="res://Items/Item/item_protective_glasses.tres" id="5_npncp"]
+[ext_resource type="Script" path="res://Items/Inventory.gd" id="7_qdwaa"]
+
+[sub_resource type="Resource" id="Resource_83nts"]
+script = ExtResource("7_qdwaa")
+
+[resource]
+script = ExtResource("1_4uaqg")
+zones = [ExtResource("2_s4loq"), ExtResource("3_g5w7o"), ExtResource("4_gmiv7")]
+items = [ExtResource("1_tif35"), ExtResource("2_g1jym"), ExtResource("3_la833"), ExtResource("4_x6nom"), ExtResource("5_npncp")]
+stash = SubResource("Resource_83nts")

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://ctpaon6fssk76"]
+
+[ext_resource type="Texture2D" uid="uid://casgcgwhawukl" path="res://Items/items.png" id="1_sbnfx"]
+[ext_resource type="Script" path="res://Items/Item.gd" id="1_ypxjv"]
+[ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_puxyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
+atlas = ExtResource("1_sbnfx")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="Resource" id="Resource_vhkbq"]
+script = ExtResource("3_puxyt")
+hp = 25.0
+atk = 0.0
+atk_speed = 0.0
+move_speed = 0.0
+dmg_reduction = 0.0
+skill_cooldown = 0.0
+
+[resource]
+script = ExtResource("1_ypxjv")
+item_name = "Daisy Crown"
+icon = SubResource("AtlasTexture_yym8y")
+rarity = 0
+stats = SubResource("Resource_vhkbq")
+cost = 5

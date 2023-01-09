@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://ul7xw2ss4us3"]
+
+[ext_resource type="Script" path="res://Items/Item.gd" id="1_5xkpo"]
+[ext_resource type="Texture2D" uid="uid://casgcgwhawukl" path="res://Items/items.png" id="1_wmvcr"]
+[ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_6am7n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wocem"]
+atlas = ExtResource("1_wmvcr")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="Resource" id="Resource_81ddv"]
+script = ExtResource("3_6am7n")
+hp = 0.0
+atk = 5.0
+atk_speed = 0.0
+move_speed = 0.0
+dmg_reduction = 0.0
+skill_cooldown = 0.0
+
+[resource]
+script = ExtResource("1_5xkpo")
+item_name = "Pitchfork"
+icon = SubResource("AtlasTexture_wocem")
+rarity = 0
+stats = SubResource("Resource_81ddv")
+cost = 5

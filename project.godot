@@ -25,9 +25,24 @@ _global_script_classes=[{
 "path": "res://Enemy/Scripts/EnemyGroup.gd"
 }, {
 "base": "Resource",
+"class": &"GameProgression",
+"language": &"GDScript",
+"path": "res://Level/GameProgression.gd"
+}, {
+"base": "Resource",
+"class": &"Inventory",
+"language": &"GDScript",
+"path": "res://Items/Inventory.gd"
+}, {
+"base": "Resource",
 "class": &"Item",
 "language": &"GDScript",
 "path": "res://Items/Item.gd"
+}, {
+"base": "Resource",
+"class": &"ItemBuffStats",
+"language": &"GDScript",
+"path": "res://Items/ItemBuffStats.gd"
 }, {
 "base": "Node2D",
 "class": &"PlayerAttack",
@@ -48,16 +63,25 @@ _global_script_classes=[{
 "class": &"Stat",
 "language": &"GDScript",
 "path": "res://Player/Stat.gd"
+}, {
+"base": "Resource",
+"class": &"Zone",
+"language": &"GDScript",
+"path": "res://Level/Zone.gd"
 }]
 _global_script_class_icons={
 "BuffStats": "",
 "CleaveStats": "",
 "EnemyGroup": "",
+"GameProgression": "",
+"Inventory": "",
 "Item": "",
+"ItemBuffStats": "",
 "PlayerAttack": "",
 "PlayerStats": "",
 "ProjectileStats": "",
-"Stat": ""
+"Stat": "",
+"Zone": ""
 }
 
 [application]

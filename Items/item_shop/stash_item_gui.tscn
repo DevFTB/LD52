@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dye833wt1o4e3"]
+
+[ext_resource type="Script" path="res://Scenes/StashItemGUI.gd" id="1_t045k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_auvjv"]
+font_size = 28
+font_color = Color(0.937255, 0.917647, 0.941176, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Item" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_t045k")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemAmount" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_auvjv")
+horizontal_alignment = 2
+vertical_alignment = 2
