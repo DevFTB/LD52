@@ -4,6 +4,8 @@ class_name PlayerStats
 @export var player_name = "Player"
 
 var level = 1
+var unused_skill_points = 0
+var xp = 0
 
 @export var hp : Stat = null
 @export var atk : Stat = null
@@ -38,7 +40,7 @@ func remove_item(item):
 	pass
 
 func can_add_to_inventory():
-	return inventory.get_amount_stored() < inventory_size.get_effective_value(level)
+	return inventory.get_amount_stored() < inventory_size.get_effective_value(get_level())
 	pass
 
 var item_accumulate = func(accum, item, items):
@@ -58,20 +60,32 @@ func recalculate_item_bonuses():
 	
 	pass
 
+@export var level_log_base = 1.5
+func get_level() -> int:
+	return floor(log(xp)/log(level_log_base))
+
+func gain_xp(xp):
+	var current_level = get_level()
+	self.xp += xp
+	var new_level =get_level()
+	
+	if new_level > current_level:
+		unused_skill_points += new_level - current_level
+	
 func get_player_name():
 	return player_name
 
 func get_hp(multiplier = 1):
-	return hp.get_effective_value(level, multiplier)
+	return hp.get_effective_value(get_level(), multiplier)
 	
 func get_atk(multiplier = 1):
-	return atk.get_effective_value(level, multiplier)
+	return atk.get_effective_value(get_level(), multiplier)
 
 func get_atk_speed(multiplier = 1):
-	return atk_speed.get_effective_value(level, multiplier)
+	return atk_speed.get_effective_value(get_level(), multiplier)
 
 func get_move_speed(multiplier = 1):
-	return move_speed.get_effective_value(level, multiplier)
+	return move_speed.get_effective_value(get_level(), multiplier)
 	
 func get_attack_scaling(multiplier= 1):
 	return attack_scaling.get_effective_value(attack_level)

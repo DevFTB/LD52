@@ -7,6 +7,10 @@ extends Node2D
 
 @onready var players  = get_tree().get_nodes_in_group("player")
 
+var enemies = []
+var xp_gained = 0
+
+var amount_of_dead_enemies = 0
 
 var controlled_player_index = 0
 # Called when the node enters the scene tree for the first time.
@@ -27,6 +31,13 @@ func start_arena():
 	$LevelStart.play("LevelStart")
 	pass
 
+func end_arena():
+	var total_xp = enemies.reduce(func(accum,en): return accum + en.xp_on_death, 0)
+	for player in players:
+		player.player_stats.gain_xp(total_xp)
+		
+	# move to next arena
+	
 func walk_on_players(duration):
 	var players = get_tree().get_nodes_in_group("player")
 	for player in players:
@@ -40,6 +51,11 @@ func spawn_enemies():
 	
 		var instance = eg.enemy_scene.instantiate()
 		instance.position = spawn_point
+		
+		enemies.append_array(instance.get_children())
+		
+		for en in instance.get_children():
+			en.death.connect(on_enemy_death)
 		
 		$Enemies.add_child(instance)
 	pass
@@ -108,6 +124,12 @@ func _input(event):
 			print(new_player.name)
 			
 
+func on_enemy_death():
+	amount_of_dead_enemies += 1
+	
+	if amount_of_dead_enemies == enemies.size():
+		end_arena()
+	pass
 
 func _on_grim_cheaper_control_changed(controlled):
 	pass # Replace with function body.
