@@ -10,7 +10,7 @@ func apply_level_bonus(bonus):
 	level_bonus += bonus
 
 func apply_item_modifier(modifier):
-	item_modifier += modifier
+	item_modifier = modifier
 
 func get_effective_value(level, multiplier = 1) -> float:
 	return (base_value + (level_bonus * (level - 1)) + item_modifier) * multiplier

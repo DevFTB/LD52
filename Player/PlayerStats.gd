@@ -3,7 +3,8 @@ class_name PlayerStats
 
 @export var player_name = "Player"
 
-var items = []
+var items = {}
+
 var level = 1
 
 @export var hp : Stat = null
@@ -23,13 +24,29 @@ var passive_level = 1
 @export var passive : Stat = null
 
 func add_item(item):
-	items.append(item)
-	
-	item.apply_buff(self)
+	if items.has(item):
+		items[item] += 1
+	else:
+		items[item] = 1
+	recalculate_item_bonuses()
 	
 func remove_item(item):
-	items.remove(item)
-	items.remove_buff(self)
+	if items.has(item):
+		items[item] -= 1
+		if items[item] == 0:
+			items.erase(item)
+	recalculate_item_bonuses()
+	
+func recalculate_item_bonuses():
+	var total = items.keys().reduce(func(accum, stats): return stats.stack_with(accum), BuffStats.new())
+	
+	hp.apply_item_modifier(total.hp) 
+	atk.apply_item_modifier(total.atk)
+	atk_speed.apply_item_modifier(total.atk_speed)
+	skill_cooldown.apply_item_modifier(total.skill_cooldown)
+	move_speed.apply_item_modifier(total.move_speed)
+	
+	pass
 
 func get_player_name():
 	return player_name

@@ -9,7 +9,7 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "RefCounted",
+"base": "Resource",
 "class": &"BuffStats",
 "language": &"GDScript",
 "path": "res://Player/Abilities/BuffStats.gd"
@@ -23,6 +23,11 @@ _global_script_classes=[{
 "class": &"EnemyGroup",
 "language": &"GDScript",
 "path": "res://Enemy/Scripts/EnemyGroup.gd"
+}, {
+"base": "Resource",
+"class": &"Item",
+"language": &"GDScript",
+"path": "res://Items/Item.gd"
 }, {
 "base": "Node2D",
 "class": &"PlayerAttack",
@@ -48,6 +53,7 @@ _global_script_class_icons={
 "BuffStats": "",
 "CleaveStats": "",
 "EnemyGroup": "",
+"Item": "",
 "PlayerAttack": "",
 "PlayerStats": "",
 "ProjectileStats": "",
