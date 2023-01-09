@@ -72,7 +72,17 @@ func get_nearest_enemy():
 			nearest_enemy = enemy
 	
 	return nearest_enemy
+
+func get_random_enemy():
+	var enemies = get_tree().get_nodes_in_group("enemy").filter(func (e): return not e.is_dead)
 	
+	if len(enemies) == 0:
+		return null
+		
+	return enemies[randi() % enemies.size()]
+	return
+	pass
+
 func _find_enemy_timeout():
 	nearest_enemy = get_nearest_enemy()
  
@@ -101,7 +111,9 @@ func _process(delta):
 func modify_health(modification):
 	if not is_dead and enabled:
 		if modification < 0:
+			
 			var delta =  modification * (1 - min(dmg_reduction, 1))
+			print('My name is ' + name + ". Delta :" + str(delta) + " , " + str(modification))
 			health += delta
 		else:
 			health += modification
@@ -286,6 +298,9 @@ func process_ai(delta):
 	if nearest_enemy:
 		# todo: enforce player separation
 		var enemy_pos = nearest_enemy.global_position
+		
+		var players = get_tree().get_nodes_in_group("players")
+		var friendlies = players.filter(func(x): return x != self)
 
 		direction.x = 0
 		if enemy_pos.x > global_position.x + 64:
@@ -298,7 +313,7 @@ func process_ai(delta):
 			direction.y = 1
 		if enemy_pos.y < global_position.y - 1:
 			direction.y = -1
-			
+		
 		if direction.length() > 0:
 			if $AnimatedSprite.animation != "walk":
 				$AnimatedSprite.play("walk")
