@@ -6,21 +6,21 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
 atlas = ExtResource("1_kodt4")
-region = Rect2(64, 128, 32, 32)
+region = Rect2(96, 128, 32, 32)
 
 [sub_resource type="Resource" id="Resource_ljmog"]
 script = ExtResource("3_58o2y")
-hp = 200.0
-atk = 20.0
-atk_speed = 20.0
-move_speed = 20.0
+hp = 1000.0
+atk = 100.0
+atk_speed = 50.0
+move_speed = 30.0
 dmg_reduction = 0.0
-skill_cooldown = 10.0
+skill_cooldown = 50.0
 
 [resource]
 script = ExtResource("2_kkhrm")
-item_name = "Dreamy Bouquet"
+item_name = "Meaning of Life"
 icon = SubResource("AtlasTexture_jqar4")
-rarity = 3
+rarity = 4
 stats = SubResource("Resource_ljmog")
-cost = 180
+cost = 920

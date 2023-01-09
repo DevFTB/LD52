@@ -4,23 +4,23 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_dt7s2"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_udanw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h2cm"]
 atlas = ExtResource("1_8ofnx")
-region = Rect2(128, 32, 32, 32)
+region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="Resource" id="Resource_vhkbq"]
+[sub_resource type="Resource" id="Resource_grrok"]
 script = ExtResource("3_udanw")
-hp = 50.0
-atk = 0.0
+hp = 0.0
+atk = 10.0
 atk_speed = 0.0
-move_speed = 5.0
+move_speed = 0.0
 dmg_reduction = 0.0
 skill_cooldown = 0.0
 
 [resource]
 script = ExtResource("2_dt7s2")
-item_name = "Winged Boots"
-icon = SubResource("AtlasTexture_yym8y")
+item_name = "Trusty Herbicide"
+icon = SubResource("AtlasTexture_1h2cm")
 rarity = 1
-stats = SubResource("Resource_vhkbq")
-cost = 15
+stats = SubResource("Resource_grrok")
+cost = 10

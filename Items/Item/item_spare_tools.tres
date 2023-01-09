@@ -6,21 +6,21 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1h2cm"]
 atlas = ExtResource("1_q7u6b")
-region = Rect2(32, 64, 32, 32)
+region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="Resource" id="Resource_grrok"]
 script = ExtResource("3_wqu2y")
 hp = 0.0
 atk = 0.0
-atk_speed = 10.0
+atk_speed = 0.0
 move_speed = 0.0
 dmg_reduction = 0.0
-skill_cooldown = 0.0
+skill_cooldown = 10.0
 
 [resource]
 script = ExtResource("2_sywly")
-item_name = "Gardening Manual"
+item_name = "Spare Tools"
 icon = SubResource("AtlasTexture_1h2cm")
 rarity = 1
 stats = SubResource("Resource_grrok")
-cost = 10
+cost = 20

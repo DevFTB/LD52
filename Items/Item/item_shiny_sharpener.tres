@@ -1,26 +1,26 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://28xcdjsemg7r"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bdwydbbciwrov"]
 
 [ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_a1tci"]
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_3ceq7"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_mc6u8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1h2cm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
 atlas = ExtResource("1_a1tci")
-region = Rect2(96, 64, 32, 32)
+region = Rect2(128, 64, 32, 32)
 
-[sub_resource type="Resource" id="Resource_grrok"]
+[sub_resource type="Resource" id="Resource_wp5um"]
 script = ExtResource("3_mc6u8")
-hp = 100.0
-atk = 10.0
-atk_speed = 10.0
-move_speed = 10.0
+hp = 0.0
+atk = 25.0
+atk_speed = 20.0
+move_speed = 0.0
 dmg_reduction = 0.0
-skill_cooldown = 10.0
+skill_cooldown = 0.0
 
 [resource]
 script = ExtResource("2_3ceq7")
-item_name = "Ruby Crown"
-icon = SubResource("AtlasTexture_1h2cm")
+item_name = "Shiny Sharpener"
+icon = SubResource("AtlasTexture_jqar4")
 rarity = 2
-stats = SubResource("Resource_grrok")
-cost = 84
+stats = SubResource("Resource_wp5um")
+cost = 54

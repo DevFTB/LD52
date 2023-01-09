@@ -1,14 +1,12 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bgp0wbq3rbux2"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dyyfc1dxk8ehm"]
 
+[ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_4pwde"]
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_w6wbf"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_sk3kp"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fb154"]
-load_path = "res://.godot/imported/items.png-2619dfc0de3a9b8a69ac381b50c4611a.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
-atlas = SubResource("CompressedTexture2D_fb154")
-region = Rect2(128, 96, 32, 32)
+atlas = ExtResource("1_4pwde")
+region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="Resource" id="Resource_ljmog"]
 script = ExtResource("3_sk3kp")
@@ -17,7 +15,7 @@ atk = 0.0
 atk_speed = 0.0
 move_speed = 0.0
 dmg_reduction = 0.0
-skill_cooldown = 28.0
+skill_cooldown = 20.0
 
 [resource]
 script = ExtResource("2_w6wbf")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cbe487yc4r8qg"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dnqhfbgg8b0fe"]
 
 [ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_qwo5m"]
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_4e28i"]
@@ -6,20 +6,20 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
 atlas = ExtResource("1_qwo5m")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="Resource" id="Resource_vhkbq"]
 script = ExtResource("3_n3jcj")
-hp = 25.0
-atk = 0.0
-atk_speed = 0.0
+hp = 0.0
+atk = 2.5
+atk_speed = 2.5
 move_speed = 0.0
 dmg_reduction = 0.0
 skill_cooldown = 0.0
 
 [resource]
 script = ExtResource("2_4e28i")
-item_name = "Daisy Crown"
+item_name = "Thick Glove"
 icon = SubResource("AtlasTexture_yym8y")
 rarity = 0
 stats = SubResource("Resource_vhkbq")
