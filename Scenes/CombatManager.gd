@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@export var campaign : GameProgression
 @onready var current_zone = campaign.get_current_zone()
 var current_round = -1
 var arenas = []
@@ -20,10 +20,10 @@ func start_zone():
 		var arena = spawn_arena(i)
 		arenas.append(arena)
 		$Arenas.add_child(arena)
-		
-		
+		play_music()
 		
 	start_next_arena()
+	
 
 func spawn_arena(round):
 	var zs = current_zone.zone_scenes
@@ -73,11 +73,19 @@ func return_to_market():
 
 func start_next_arena():
 	current_round += 1
-
 	arenas[current_round].start_arena()
 	emit_signal("on_arena_changed", current_round, current_zone)
+	$RoundWin.play()
 	pass
 
 func on_arena_finished(round):
 	switch_arena()
 	pass
+
+func play_music():
+	if current_zone.zone_name == "Fertile Fields":	
+		$music1.play()
+	if current_zone.zone_name == "Rancid Ranch":
+		$music2.play()
+	if current_zone.zone_name == "Nightmare Nursery":
+		$music3.play()
