@@ -9,7 +9,7 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "RefCounted",
+"base": "Resource",
 "class": &"BuffStats",
 "language": &"GDScript",
 "path": "res://Player/Abilities/BuffStats.gd"
@@ -23,6 +23,26 @@ _global_script_classes=[{
 "class": &"EnemyGroup",
 "language": &"GDScript",
 "path": "res://Enemy/Scripts/EnemyGroup.gd"
+}, {
+"base": "Resource",
+"class": &"GameProgression",
+"language": &"GDScript",
+"path": "res://Level/GameProgression.gd"
+}, {
+"base": "Resource",
+"class": &"Inventory",
+"language": &"GDScript",
+"path": "res://Items/Inventory.gd"
+}, {
+"base": "Resource",
+"class": &"Item",
+"language": &"GDScript",
+"path": "res://Items/Item.gd"
+}, {
+"base": "Resource",
+"class": &"ItemBuffStats",
+"language": &"GDScript",
+"path": "res://Items/ItemBuffStats.gd"
 }, {
 "base": "Node2D",
 "class": &"PlayerAttack",
@@ -43,15 +63,25 @@ _global_script_classes=[{
 "class": &"Stat",
 "language": &"GDScript",
 "path": "res://Player/Stat.gd"
+}, {
+"base": "Resource",
+"class": &"Zone",
+"language": &"GDScript",
+"path": "res://Level/Zone.gd"
 }]
 _global_script_class_icons={
 "BuffStats": "",
 "CleaveStats": "",
 "EnemyGroup": "",
+"GameProgression": "",
+"Inventory": "",
+"Item": "",
+"ItemBuffStats": "",
 "PlayerAttack": "",
 "PlayerStats": "",
 "ProjectileStats": "",
-"Stat": ""
+"Stat": "",
+"Zone": ""
 }
 
 [application]
@@ -96,6 +126,17 @@ skill={
 switch_player={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"unicode":0,"echo":false,"script":null)
+]
+}
+deselect={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"pressed":false,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"unicode":0,"echo":false,"script":null)
+]
+}
+remove_item={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
 ]
 }
 

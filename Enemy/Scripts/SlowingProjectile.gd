@@ -12,7 +12,7 @@ func _on_area_2d_area_entered(area):
 		var hit_player = area.get_parent()
 		var buffs = hit_player.buffs.values()
 		if not buffs.any(func (b): return b.name == slow_buff_name):
-			var new_buff = BuffStats.new(1, 1, 1, slow_amount, 0, slow_buff_name)
+			var new_buff = BuffStats.new(1, 1, 1, slow_amount, 0, 1.0, slow_buff_name)
 			hit_player.apply_buff(new_buff, slow_time)
 		
 		

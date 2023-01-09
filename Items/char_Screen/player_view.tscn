@@ -1,0 +1,182 @@
+[gd_scene load_steps=5 format=3 uid="uid://ipchlkw56jbt"]
+
+[ext_resource type="Script" path="res://Scenes/ShopPlayerView.gd" id="1_wrr77"]
+[ext_resource type="Resource" uid="uid://bp6lo7vsrhav8" path="res://Player/grim_cheaper_stats.tres" id="2_2nvbi"]
+[ext_resource type="Texture2D" uid="uid://x8vrjqjjm5i7" path="res://Player/GrimCheaper/gc_portrait.png" id="3_08ujf"]
+[ext_resource type="PackedScene" uid="uid://dtf7qldq0jtem" path="res://Items/char_Screen/char_item_gui.tscn" id="4_j2cv7"]
+
+[node name="PlayerView" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+mouse_filter = 1
+script = ExtResource("1_wrr77")
+player_stats = ExtResource("2_2nvbi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -127.0
+offset_right = 65.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_08ujf")
+
+[node name="InventoryDisplay" type="GridContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 19.0
+offset_right = 112.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 7
+
+[node name="Control" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Control2" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+
+[node name="Control3" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 64.0
+offset_right = 96.0
+offset_bottom = 32.0
+
+[node name="Control4" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 96.0
+offset_right = 128.0
+offset_bottom = 32.0
+
+[node name="Control5" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 128.0
+offset_right = 160.0
+offset_bottom = 32.0
+
+[node name="Control6" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 160.0
+offset_right = 192.0
+offset_bottom = 32.0
+
+[node name="Control7" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 192.0
+offset_right = 224.0
+offset_bottom = 32.0
+
+[node name="Control8" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 64.0
+
+[node name="Control9" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Control10" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 64.0
+
+[node name="Control11" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 96.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 64.0
+
+[node name="Control12" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 128.0
+offset_top = 32.0
+offset_right = 160.0
+offset_bottom = 64.0
+
+[node name="Control13" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 64.0
+
+[node name="Control14" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 192.0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 64.0
+
+[node name="Control15" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_top = 64.0
+offset_right = 32.0
+offset_bottom = 96.0
+
+[node name="Control16" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 96.0
+
+[node name="Control17" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 96.0
+
+[node name="Control18" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 96.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 96.0
+
+[node name="Control19" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 160.0
+offset_bottom = 96.0
+
+[node name="Control20" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 160.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 96.0
+
+[node name="Control21" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 224.0
+offset_bottom = 96.0
+
+[node name="CandidateSelect" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = -6.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CandidateSelect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Click to add"
+
+[connection signal="pressed" from="CandidateSelect/Button" to="." method="_on_button_pressed"]
