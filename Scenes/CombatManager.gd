@@ -46,8 +46,8 @@ func spawn_arena(round):
 	return instance
 
 func switch_arena():
-	current_round += 1
-	if current_round >= arenas.size():
+
+	if current_round == arenas.size() - 1:
 		campaign.current_zone_index += 1
 		var tween = get_tree().create_tween()
 		tween.tween_property($Arenas, "position", Vector2(0, 0), 5)
@@ -71,8 +71,7 @@ func return_to_market():
 	pass
 
 func start_next_arena():
-
-
+	current_round += 1
 	arenas[current_round].start_arena()
 	emit_signal("on_arena_changed", current_round, current_zone)
 	pass

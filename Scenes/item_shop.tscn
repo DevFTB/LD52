@@ -76,7 +76,6 @@ min_blink_period = 5.0
 max_blink_period = 9.0
 
 [node name="TextureRect2" type="TextureRect" parent="ItemShopGUI"]
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -95,7 +94,7 @@ position = Vector2(576, 352)
 texture = ExtResource("1_uovsa")
 
 [node name="LeftButtons" type="Control" parent="ItemShopGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -106,13 +105,11 @@ offset_bottom = -95.0
 grow_vertical = 0
 
 [node name="Currency" type="TextureRect" parent="ItemShopGUI/LeftButtons"]
-layout_mode = 0
 offset_right = 168.0
 offset_bottom = 48.0
 texture = ExtResource("2_fnyvg")
 
 [node name="CurrencyLabel" type="Label" parent="ItemShopGUI/LeftButtons/Currency"]
-layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -129,7 +126,6 @@ label_settings = SubResource("LabelSettings_jx6hc")
 horizontal_alignment = 1
 
 [node name="NextStageButton" type="TextureButton" parent="ItemShopGUI"]
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -146,7 +142,7 @@ texture_pressed = ExtResource("9_55xr3")
 texture_hover = ExtResource("10_lweei")
 
 [node name="StashTable" type="Control" parent="ItemShopGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -160,7 +156,7 @@ grow_vertical = 0
 
 [node name="StashItems" type="Control" parent="ItemShopGUI/StashTable"]
 custom_minimum_size = Vector2(0, 136)
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 6.0
@@ -171,7 +167,6 @@ script = ExtResource("13_spbq6")
 
 [node name="TopRow" type="HBoxContainer" parent="ItemShopGUI/StashTable/StashItems"]
 custom_minimum_size = Vector2(640, 64)
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -182,7 +177,6 @@ grow_horizontal = 2
 
 [node name="BottomRow" type="HBoxContainer" parent="ItemShopGUI/StashTable/StashItems"]
 custom_minimum_size = Vector2(640, 64)
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -196,7 +190,6 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="ItemShopGUI/StashTable/StashItems"]
 visible = false
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -213,7 +206,6 @@ label_settings = SubResource("LabelSettings_gibru")
 horizontal_alignment = 1
 
 [node name="CharacterButton" type="TextureButton" parent="ItemShopGUI"]
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -230,7 +222,7 @@ texture_pressed = SubResource("AtlasTexture_6wycr")
 texture_hover = SubResource("AtlasTexture_vourc")
 
 [node name="Shop" type="Control" parent="ItemShopGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -241,7 +233,6 @@ offset_bottom = 258.0
 grow_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ItemShopGUI/Shop"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -250,21 +241,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Control" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
-layout_mode = 2
+offset_right = 176.0
+offset_bottom = 181.0
 tooltip_path = NodePath("../../../../Tooltip")
 
 [node name="Control2" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
-layout_mode = 2
+offset_left = 180.0
+offset_right = 356.0
+offset_bottom = 181.0
 tooltip_path = NodePath("../../../../Tooltip")
 slot = 1
 
 [node name="Control3" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
-layout_mode = 2
+offset_left = 360.0
+offset_right = 537.0
+offset_bottom = 181.0
 tooltip_path = NodePath("../../../../Tooltip")
 slot = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ItemShopGUI/Shop"]
-layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 22.0
@@ -276,7 +271,9 @@ alignment = 1
 
 [node name="RefreshButton" type="TextureButton" parent="ItemShopGUI/Shop/VBoxContainer"]
 custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
+offset_top = 40.0
+offset_right = 48.0
+offset_bottom = 88.0
 texture_normal = ExtResource("14_tnwo6")
 texture_pressed = ExtResource("15_x72jh")
 texture_hover = ExtResource("16_qjm4o")
@@ -284,11 +281,12 @@ stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="ItemShopGUI/Shop/VBoxContainer"]
 custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
+offset_top = 92.0
+offset_right = 48.0
+offset_bottom = 140.0
 texture = ExtResource("17_11rv8")
 
 [node name="Label" type="Label" parent="ItemShopGUI/Shop/VBoxContainer/TextureRect"]
-layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -302,7 +300,7 @@ text = "2
 label_settings = SubResource("LabelSettings_0666r")
 
 [node name="TextBox" type="Control" parent="ItemShopGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -316,13 +314,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="ItemShopGUI/TextBox"]
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("18_27y1b")
 
 [node name="TextBox2" type="Control" parent="ItemShopGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -336,13 +333,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="ItemShopGUI/TextBox2"]
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("18_27y1b")
 
 [node name="SpeechLabel" type="Label" parent="ItemShopGUI/TextBox2"]
-layout_mode = 0
 offset_left = 35.0
 offset_top = 44.0
 offset_right = 610.0
@@ -367,7 +362,6 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="CharacterScreen"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -377,7 +371,6 @@ texture = ExtResource("20_4dui6")
 ignore_texture_size = true
 
 [node name="PlayerViews" type="HBoxContainer" parent="CharacterScreen"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -391,18 +384,18 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerView" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
-layout_mode = 2
 
 [node name="PlayerView2" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
-layout_mode = 2
+offset_left = 243.0
+offset_right = 482.0
 player_stats = ExtResource("26_h2x05")
 
 [node name="PlayerView3" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
-layout_mode = 2
+offset_left = 486.0
+offset_right = 725.0
 player_stats = ExtResource("27_8ox7v")
 
 [node name="Label" type="Label" parent="CharacterScreen"]
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -428,13 +421,11 @@ mouse_filter = 1
 script = ExtResource("19_foh7c")
 
 [node name="TextureRect" type="TextureRect" parent="Tooltip"]
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("20_4dui6")
 
 [node name="Name" type="Label" parent="Tooltip"]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -446,7 +437,6 @@ grow_horizontal = 2
 text = "Item Name"
 
 [node name="Label" type="Label" parent="Tooltip"]
-layout_mode = 0
 offset_left = 15.0
 offset_top = 47.0
 offset_right = 70.0

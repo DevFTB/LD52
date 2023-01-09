@@ -5,55 +5,55 @@
 [ext_resource type="Script" path="res://Items/Inventory.gd" id="2_y83xv"]
 [ext_resource type="Texture2D" uid="uid://bakk28guwmqm0" path="res://Player/Sheepard/sp_portrait.png" id="3_lnl1j"]
 
-[sub_resource type="Resource" id="Resource_ig4f1"]
+[sub_resource type="Resource" id="Resource_lqj00"]
 script = ExtResource("1_lga22")
 base_value = 5.0
 level_bonus = 1.0
 
-[sub_resource type="Resource" id="Resource_ddrgp"]
+[sub_resource type="Resource" id="Resource_6rf3q"]
 script = ExtResource("1_lga22")
 base_value = 1.0
 level_bonus = 0.05
 
-[sub_resource type="Resource" id="Resource_3ev0r"]
+[sub_resource type="Resource" id="Resource_dvvhq"]
 script = ExtResource("1_lga22")
 base_value = 1.0
 level_bonus = 0.1
 
-[sub_resource type="Resource" id="Resource_utoco"]
+[sub_resource type="Resource" id="Resource_hu3t6"]
 script = ExtResource("1_lga22")
 base_value = 20.0
 level_bonus = 2.0
 
-[sub_resource type="Resource" id="Resource_orh6m"]
+[sub_resource type="Resource" id="Resource_l1e6e"]
 script = ExtResource("2_y83xv")
 
-[sub_resource type="Resource" id="Resource_mm0jc"]
+[sub_resource type="Resource" id="Resource_hh70t"]
 script = ExtResource("1_lga22")
 base_value = 4.0
 level_bonus = 1.0
 
-[sub_resource type="Resource" id="Resource_7kyvr"]
+[sub_resource type="Resource" id="Resource_f00pf"]
 script = ExtResource("1_lga22")
 base_value = 1.0
 level_bonus = 0.05
 
-[sub_resource type="Resource" id="Resource_usd61"]
+[sub_resource type="Resource" id="Resource_fr3xq"]
 script = ExtResource("1_lga22")
 base_value = 1.1
 level_bonus = 0.02
 
-[sub_resource type="Resource" id="Resource_kjixu"]
+[sub_resource type="Resource" id="Resource_tblb0"]
 script = ExtResource("1_lga22")
 base_value = 25.0
 level_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_sepht"]
+[sub_resource type="Resource" id="Resource_ecj6h"]
 script = ExtResource("1_lga22")
 base_value = 5.0
 level_bonus = 0.5
 
-[sub_resource type="Resource" id="Resource_u5ixy"]
+[sub_resource type="Resource" id="Resource_ay6k0"]
 script = ExtResource("1_lga22")
 base_value = 1.1
 level_bonus = 0.02
@@ -62,15 +62,15 @@ level_bonus = 0.02
 script = ExtResource("1_x3t8u")
 player_name = "The Sheepherd"
 player_portrait = ExtResource("3_lnl1j")
-hp = SubResource("Resource_utoco")
-atk = SubResource("Resource_ig4f1")
-atk_speed = SubResource("Resource_ddrgp")
-move_speed = SubResource("Resource_7kyvr")
-attack_scaling = SubResource("Resource_3ev0r")
-skill_scaling = SubResource("Resource_u5ixy")
-skill_cooldown = SubResource("Resource_kjixu")
-skill_duration = SubResource("Resource_sepht")
-passive = SubResource("Resource_usd61")
-inventory = SubResource("Resource_orh6m")
-inventory_size = SubResource("Resource_mm0jc")
+hp = SubResource("Resource_hu3t6")
+atk = SubResource("Resource_lqj00")
+atk_speed = SubResource("Resource_6rf3q")
+move_speed = SubResource("Resource_f00pf")
+attack_scaling = SubResource("Resource_dvvhq")
+skill_scaling = SubResource("Resource_ay6k0")
+skill_cooldown = SubResource("Resource_tblb0")
+skill_duration = SubResource("Resource_ecj6h")
+passive = SubResource("Resource_fr3xq")
+inventory = SubResource("Resource_l1e6e")
+inventory_size = SubResource("Resource_hh70t")
 level_log_base = 1.5
