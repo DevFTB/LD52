@@ -395,9 +395,13 @@ grow_vertical = 2
 [node name="PlayerView" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
 
 [node name="PlayerView2" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
+offset_left = 243.0
+offset_right = 482.0
 player_stats = ExtResource("26_h2x05")
 
 [node name="PlayerView3" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
+offset_left = 486.0
+offset_right = 725.0
 player_stats = ExtResource("27_8ox7v")
 
 [node name="Label" type="Label" parent="CharacterScreen"]

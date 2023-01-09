@@ -87,7 +87,7 @@ animations = [{
 visible = true
 scale = Vector2(1, 1)
 enemy_name = "Corn-o-cope-ia"
-max_hp = 4000
+max_hp = 3500
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
 material = ExtResource("2_lq30u")
