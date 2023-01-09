@@ -1,14 +1,13 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dp58sk7mh6kxg"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dp58sk7mh6kxg"]
 
 [ext_resource type="Script" path="res://Level/Zone.gd" id="1_obxwr"]
 [ext_resource type="Resource" uid="uid://dioi8ehgcxgbs" path="res://Level/EnemyGroups/group4.tres" id="2_ixlud"]
 [ext_resource type="PackedScene" uid="uid://ch0um0qfy57rk" path="res://Scenes/arena.tscn" id="2_stssl"]
-[ext_resource type="Resource" uid="uid://oecoev00ju04" path="res://Level/EnemyGroups/group3.tres" id="3_a54pb"]
 
 [resource]
 script = ExtResource("1_obxwr")
 zone_name = "Fertile Fields"
-enemies = [ExtResource("3_a54pb"), ExtResource("2_ixlud")]
+enemies = [ExtResource("2_ixlud")]
 zone_scenes = [ExtResource("2_stssl")]
 difficulty_levels = [8, 16, 32, 64, 128]
 shop_slot_1 = {

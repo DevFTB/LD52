@@ -71,3 +71,4 @@ skill_duration = SubResource("Resource_me4gs")
 passive = SubResource("Resource_xckjw")
 inventory = SubResource("Resource_jrcyo")
 inventory_size = SubResource("Resource_8223m")
+level_log_base = 1.5

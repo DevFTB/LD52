@@ -262,10 +262,11 @@ func get_sprite():
 	return $Sprite
 
 func walk_on(destination_x, duration):
-	self.level_width = 1152
-	var tween = get_tree().create_tween()
-	var destination = Vector2(destination_x - 100, position.y)
-	tween.tween_property(self, "global_position", destination, duration).from_current()
+	if not is_dead:
+		self.level_width = 1152
+		var tween = get_tree().create_tween()
+		var destination = Vector2(destination_x - 100, position.y)
+		tween.tween_property(self, "global_position", destination, duration).from_current()
 
 
 func apply_buff(buff: BuffStats, duration: float) -> void:

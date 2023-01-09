@@ -15,6 +15,7 @@ var amount_of_dead_enemies = 0
 var controlled_player_index = 0
 
 signal arena_finished
+signal arena_lost
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -109,6 +110,7 @@ func on_player_death(player):
 			lose_round()	
 	pass
 func lose_round():
+	emit_signal("arena_lost")
 	pass
 	
 func _input(event):

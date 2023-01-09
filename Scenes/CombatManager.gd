@@ -29,7 +29,7 @@ func spawn_arena(round):
 	instance.position.x = -1152 * round
 	
 	instance.arena_finished.connect(func(): on_arena_finished(round))
-	
+	instance.arena_lost.connect(on_arena_lost)
 	return instance
 
 func switch_arena():
@@ -38,12 +38,24 @@ func switch_arena():
 	tween.tween_property($Arenas, "position", destination, 4)
 	tween.tween_callback(start_next_arena)
 	pass
+	
+func on_arena_lost():
+	$AnimationPlayer.play("Fail")
+	pass
+
+func return_to_market():
+	get_tree().change_scene_to_file("res://Scenes/item_shop.tscn")
+	pass
 
 func start_next_arena():
 	current_round += 1
-	arenas[current_round].start_arena()
-	emit_signal("on_arena_changed", current_round, current_zone)
-	print(get_viewport_rect())
+	if current_round >= arenas.size():
+		campaign.current_zone_index += 1 
+		$AnimationPlayer.play("Fail")
+	else:
+		arenas[current_round].start_arena()
+		emit_signal("on_arena_changed", current_round, current_zone)
+		print(get_viewport_rect())
 	pass
 
 func on_arena_finished(round):

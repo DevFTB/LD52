@@ -105,3 +105,8 @@ func remove_item_from_player(player_stats: PlayerStats, item: Item):
 func _input(event):
 	if event.is_action_pressed("deselect") and candidate_item != null:
 		candidate_item = null
+
+
+func _on_next_stage_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Combat.tscn")
+	pass # Replace with function body.

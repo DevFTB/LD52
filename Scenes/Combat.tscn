@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhkuvtiux4tx1"]
+[gd_scene load_steps=24 format=3 uid="uid://dhkuvtiux4tx1"]
 
 [ext_resource type="Script" path="res://Scenes/CombatManager.gd" id="1_bxrym"]
 [ext_resource type="Resource" uid="uid://vi5h2br0s7qu" path="res://Level/scream_of_the_crop.tres" id="2_i8kis"]
@@ -21,6 +21,88 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ungtp"]
 font_size = 24
 font_color = Color(0.698039, 1, 0.717647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5hyr0"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_c4wg0"]
+font_size = 20
+
+[sub_resource type="Animation" id="Animation_at382"]
+resource_name = "Fail"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/GUI/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"return_to_market"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/GUI/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_g1cfm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/GUI/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/GUI/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2phc"]
+_data = {
+"Fail": SubResource("Animation_at382"),
+"RESET": SubResource("Animation_g1cfm")
+}
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_bxrym")
@@ -141,6 +223,50 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("16_8kn7c")
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0196078, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/GUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.5
+offset_top = -35.0
+offset_right = 239.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "That's all for today... "
+label_settings = SubResource("LabelSettings_5hyr0")
+
+[node name="Label2" type="Label" parent="CanvasLayer/GUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = 36.0
+offset_right = 241.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Returning to the market"
+label_settings = SubResource("LabelSettings_c4wg0")
+horizontal_alignment = 1
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
@@ -149,5 +275,10 @@ current = true
 stream = ExtResource("15_r3sid")
 volume_db = -6.0
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h2phc")
+}
 
 [connection signal="on_arena_changed" from="." to="CanvasLayer/GUI/Banner/LevelName" method="_on_combat_on_arena_changed"]

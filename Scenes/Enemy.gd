@@ -2,7 +2,7 @@ extends Node2D
 
 @export var enemy_name : String = "Enemy"
 @export var max_hp : int = 20
-@export var xp_on_death : int = 20
+@export var xp_on_death : int = 1
 
 #@export var attack_range : float = 1
 #@export var player_attack : float = 1
@@ -56,6 +56,7 @@ func die():
 	emit_signal("death")
 	$Sprite.play("dead")    
 	is_dead = true
+	disable()
 	pass
 
 func enable():
