@@ -71,3 +71,4 @@ skill_duration = SubResource("Resource_acubo")
 passive = SubResource("Resource_ryoko")
 inventory = SubResource("Resource_74doj")
 inventory_size = SubResource("Resource_rqlay")
+level_log_base = 1.5

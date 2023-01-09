@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtx431y46bwo2"]
+
+[ext_resource type="PackedScene" uid="uid://cw60n741n5xbh" path="res://Enemy/BossScenes/boss.tscn" id="1_u7cbb"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="2_v5kh2"]
+[ext_resource type="Texture2D" uid="uid://m4qeg207uutr" path="res://Enemy/BossAssets/sprite_sheet_king_potato.png" id="3_4vy7s"]
+[ext_resource type="Script" path="res://Enemy/Scripts/PotatoSweep.gd" id="5_hc8bb"]
+[ext_resource type="Texture2D" uid="uid://bvr50uoh6un2l" path="res://Enemy/BossAssets/corn_boss_DED.png" id="5_xmqay"]
+[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="6_3jrhj"]
+[ext_resource type="Resource" uid="uid://cljm6gj3jjpk2" path="res://Enemy/BossAssets/kornboss_projectile.tres" id="7_mbsmg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6jnm"]
+atlas = ExtResource("3_4vy7s")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqtfj"]
+atlas = ExtResource("3_4vy7s")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2ppp"]
+atlas = ExtResource("3_4vy7s")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k6ir"]
+atlas = ExtResource("3_4vy7s")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wxrlx"]
+animations = [{
+"frames": [SubResource("AtlasTexture_h6jnm"), SubResource("AtlasTexture_iqtfj"), SubResource("AtlasTexture_k2ppp"), SubResource("AtlasTexture_3k6ir")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("5_xmqay")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[node name="Enemy2" instance=ExtResource("1_u7cbb")]
+visible = true
+scale = Vector2(1, 1)
+enemy_name = "King Potato"
+max_hp = 25000
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
+material = ExtResource("2_v5kh2")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_wxrlx")
+animation = &"alive"
+playing = true
+
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+layout_mode = 0
+
+[node name="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control" index="0"]
+layout_mode = 1
+
+[node name="HealthBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="HealthPercentage" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="0"]
+layout_mode = 1
+
+[node name="BossName" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="1"]
+layout_mode = 1
+
+[node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
+
+[node name="PotatoSweep" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("5_hc8bb")
+attack_frequency = 0.05
+
+[node name="AttackTimer" type="Timer" parent="Attacks/PotatoSweep" index="0"]
+one_shot = true
+
+[node name="ProjectileShoot" type="Node2D" parent="Attacks" index="1"]
+script = ExtResource("6_3jrhj")
+projectile_stats = ExtResource("7_mbsmg")
+attack_frequency = 0.25
+
+[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot" index="0"]
+one_shot = true

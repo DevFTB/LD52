@@ -1,0 +1,16 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://057um2y7b35q"]
+
+[ext_resource type="Texture2D" uid="uid://b26gj1yrlxvkd" path="res://Enemy/Assets/korn_projectiles_img/kornproj1.png" id="1_w6l8l"]
+[ext_resource type="Texture2D" uid="uid://bbdif5d1q8kp" path="res://Enemy/Assets/korn_projectiles_img/kornproj2.png" id="2_yrhrv"]
+[ext_resource type="Texture2D" uid="uid://brnyehwranbbi" path="res://Enemy/Assets/korn_projectiles_img/kornproj3.png" id="3_cwx2n"]
+[ext_resource type="Texture2D" uid="uid://byatgqx8qtclp" path="res://Enemy/Assets/korn_projectiles_img/kornproj4.png" id="4_kktf6"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_w6l8l")
+frame_1/texture = ExtResource("2_yrhrv")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_cwx2n")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_kktf6")
+frame_3/duration = 1.0
