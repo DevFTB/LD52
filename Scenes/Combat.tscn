@@ -135,7 +135,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerGUI2" type="Control" parent="CanvasLayer/GUI"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -148,6 +148,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/PlayerGUI2"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -158,6 +159,7 @@ grow_vertical = 2
 color = Color(0.0156863, 0.0666667, 0.0313726, 0.396078)
 
 [node name="PlayerGUI" type="HBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -166,20 +168,15 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("7_n6x56")]
-offset_right = 199.0
+layout_mode = 2
 player_path = NodePath("../../../../../Arenas/Players/GrimCheaper")
 
 [node name="Control4" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
 custom_minimum_size = Vector2(30, 0)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 203.0
-offset_right = 233.0
-offset_bottom = 106.0
+layout_mode = 2
 
 [node name="Control2" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("7_n6x56")]
-offset_left = 237.0
-offset_right = 436.0
+layout_mode = 2
 player_path = NodePath("../../../../../Arenas/Players/TheSheepard")
 player_icon = ExtResource("8_288w5")
 player_border = ExtResource("9_37yot")
@@ -188,15 +185,10 @@ skill_icon = ExtResource("11_l6vma")
 
 [node name="Control5" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
 custom_minimum_size = Vector2(30, 0)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 440.0
-offset_right = 470.0
-offset_bottom = 106.0
+layout_mode = 2
 
 [node name="Control3" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("7_n6x56")]
-offset_left = 474.0
-offset_right = 674.0
+layout_mode = 2
 player_path = NodePath("../../../../../Arenas/Players/Arboarist")
 player_icon = ExtResource("12_xknwm")
 player_border = ExtResource("13_3n0ay")
@@ -204,6 +196,7 @@ attack_icon = ExtResource("14_akems")
 skill_icon = ExtResource("15_4y8ua")
 
 [node name="Banner" type="TextureRect" parent="CanvasLayer/GUI"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -214,6 +207,7 @@ grow_horizontal = 2
 texture = ExtResource("15_7mke0")
 
 [node name="LevelName" type="Label" parent="CanvasLayer/GUI/Banner"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -234,6 +228,7 @@ script = ExtResource("16_8kn7c")
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI"]
 visible = false
 modulate = Color(1, 1, 1, 0)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -242,6 +237,7 @@ grow_vertical = 2
 color = Color(0, 0.0196078, 0, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer/GUI/ColorRect"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -257,6 +253,7 @@ text = "That's all for today... "
 label_settings = SubResource("LabelSettings_5hyr0")
 
 [node name="Label2" type="Label" parent="CanvasLayer/GUI/ColorRect"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
