@@ -101,4 +101,4 @@ layer_1/tile_data = PackedInt32Array(17, 1, 1, 0, 1, 1, 16, 1, 1, 15, 1, 1, 14, 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="BossSpawnPoint" type="Node2D" parent="."]
-position = Vector2(565, 148)
+position = Vector2(543, 289)
