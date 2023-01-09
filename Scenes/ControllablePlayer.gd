@@ -17,7 +17,7 @@ extends Node2D
 var dmg_reduction = 0
 
 var direction : Vector2 = Vector2.ZERO
-var facing  : Vector2 = Vector2.ZERO
+var facing : Vector2 = Vector2.ZERO
 signal stats_changed(hp, atk, atk_speed, move_speed, dmg_reduction, skill_cooldown)
 signal health_changed(new_health, difference, should_display)
 signal used_attack(cd)
@@ -26,7 +26,6 @@ signal control_changed(controlled)
 signal death
 signal skill_used
 signal attack_used
-
 
 # Called when the node enters the scene tree for the first time.
 var enabled = false
@@ -46,7 +45,6 @@ var find_enemy_timeout = 0.25
 @export var ai_stopping_range = 20
 
 func _ready():
-	$AnimatedSprite.animation_finished.connect(on_anim_end)
 	emit_signal("stats_changed", hp, atk, atk_speed, move_speed, dmg_reduction, player_stats.get_skill_cooldown())
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()

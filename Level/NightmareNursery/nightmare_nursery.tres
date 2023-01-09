@@ -1,0 +1,40 @@
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://bifpfksqm2hg4"]
+
+[ext_resource type="Script" path="res://Level/Zone.gd" id="1_1gsls"]
+[ext_resource type="Resource" uid="uid://dmeapv24yf64" path="res://Level/NightmareNursery/EnemyGroups/nn_boss.tres" id="1_plah1"]
+[ext_resource type="Resource" uid="uid://236jne1aabiw" path="res://Level/NightmareNursery/EnemyGroups/nn_1.tres" id="2_6wnw6"]
+[ext_resource type="Resource" uid="uid://c2dknpjqkmrol" path="res://Level/NightmareNursery/EnemyGroups/nn_2.tres" id="3_47cnj"]
+[ext_resource type="Resource" uid="uid://bt2h1kc3rrv8o" path="res://Level/NightmareNursery/EnemyGroups/nn_3.tres" id="4_jg5hv"]
+[ext_resource type="Resource" uid="uid://cpt4l5aexeqmu" path="res://Level/NightmareNursery/EnemyGroups/nn_4.tres" id="5_p6l78"]
+[ext_resource type="Resource" uid="uid://cpatw5q77ta2y" path="res://Level/NightmareNursery/EnemyGroups/nn_5.tres" id="6_xydx8"]
+[ext_resource type="Resource" uid="uid://b5byu5gmkjpsm" path="res://Level/NightmareNursery/EnemyGroups/nn_6.tres" id="7_b3yfq"]
+
+[resource]
+script = ExtResource("1_1gsls")
+zone_name = "Nightmare Nursery"
+enemies = [ExtResource("2_6wnw6"), ExtResource("3_47cnj"), ExtResource("4_jg5hv"), ExtResource("5_p6l78"), ExtResource("6_xydx8"), ExtResource("7_b3yfq")]
+zone_scenes = []
+boss_group = ExtResource("1_plah1")
+difficulty_levels = [1, 2, 4, 8]
+shop_slot_1 = {
+0: 0.0,
+1: 0.69,
+2: 0.25,
+3: 0.05,
+4: 0.01
+}
+shop_slot_2 = {
+0: 0.0,
+1: 0.19,
+2: 0.5,
+3: 0.3,
+4: 0.01
+}
+shop_slot_3 = {
+0: 0.0,
+1: 0.0,
+2: 0.48,
+3: 0.5,
+4: 0.02
+}
+currency_multiplier = 3

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d1ygy7fmdae35"]
+
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_0vqck"]
+[ext_resource type="PackedScene" uid="uid://duo1uovfmkc86" path="res://Level/FertileFields/EnemyGroups/ff_1.tscn" id="1_fume0"]
+
+[resource]
+script = ExtResource("1_0vqck")
+enemy_scene = ExtResource("1_fume0")
+number_of_enemies = 4
+difficulty_level = 1

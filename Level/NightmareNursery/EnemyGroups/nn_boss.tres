@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dmeapv24yf64"]
+
+[ext_resource type="PackedScene" uid="uid://cplid8orhuhl5" path="res://Level/NightmareNursery/EnemyGroups/nn_boss.tscn" id="1_lk5ls"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="2_wcnom"]
+
+[resource]
+script = ExtResource("2_wcnom")
+enemy_scene = ExtResource("1_lk5ls")
+number_of_enemies = 8
+difficulty_level = 1

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cplid8orhuhl5"]
+
+[ext_resource type="PackedScene" uid="uid://b7ts27rpt2h21" path="res://Enemy/BossScenes/ViolentGrassBoss.tscn" id="1_pu7kt"]
+[ext_resource type="PackedScene" uid="uid://d21vuwtjxm2rw" path="res://Enemy/EnemyScenes/TankEggplant.tscn" id="2_f4xdv"]
+
+[node name="nn_boss" type="Node2D"]
+
+[node name="Enemy2" parent="." instance=ExtResource("1_pu7kt")]
+position = Vector2(0, -49)
+
+[node name="Enemy7" parent="." instance=ExtResource("2_f4xdv")]
+position = Vector2(-201, -12)
+
+[node name="Enemy8" parent="." instance=ExtResource("2_f4xdv")]
+position = Vector2(-147, 103)
+
+[node name="Enemy9" parent="." instance=ExtResource("2_f4xdv")]
+position = Vector2(19, 150)
+
+[node name="Enemy10" parent="." instance=ExtResource("2_f4xdv")]
+position = Vector2(-261, 70)
+
+[node name="Enemy11" parent="." instance=ExtResource("2_f4xdv")]
+position = Vector2(226, 69)
+
+[node name="Enemy12" parent="." instance=ExtResource("2_f4xdv")]
+position = Vector2(180, -21)
+
+[node name="Enemy13" parent="." instance=ExtResource("2_f4xdv")]
+position = Vector2(150, 120)

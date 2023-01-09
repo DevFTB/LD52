@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://3odxxw1tq6wf"]
+
+[ext_resource type="PackedScene" uid="uid://d3f76nd8ukafv" path="res://Level/FertileFields/EnemyGroups/ff_boss.tscn" id="1_fksqf"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="2_tkbhl"]
+
+[resource]
+script = ExtResource("2_tkbhl")
+enemy_scene = ExtResource("1_fksqf")
+number_of_enemies = 10
+difficulty_level = 1

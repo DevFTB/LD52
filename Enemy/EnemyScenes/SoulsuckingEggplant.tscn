@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://joihhtxfmiew"]
+
+[ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_f56st"]
+[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="2_4u4dv"]
+[ext_resource type="Resource" uid="uid://dw8h2puig65pe" path="res://Enemy/Assets/lavender_projectile.tres" id="3_3eww2"]
+[ext_resource type="PackedScene" uid="uid://vgfjoagjbwu0" path="res://Enemy/AttackScenes/healingProjectile.tscn" id="3_7d5l3"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_jmtue"]
+[ext_resource type="Texture2D" uid="uid://dj2vkkwm42he5" path="res://Enemy/Assets/lavendarkorn.png" id="5_7unvk"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_st0q2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
+animations = [{
+"frames": [ExtResource("5_7unvk")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("6_st0q2")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[node name="Enemy4" instance=ExtResource("1_f56st")]
+max_hp = 1200
+
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+offset_top = 0.0
+offset_bottom = 26.0
+
+[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
+
+[node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("2_4u4dv")
+projectile = ExtResource("3_7d5l3")
+projectile_stats = ExtResource("3_3eww2")
+
+[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot" index="0"]
+one_shot = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
+material = ExtResource("4_jmtue")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_a5iya")
+animation = &"alive"
