@@ -7,4 +7,4 @@
 script = ExtResource("2_pp2tg")
 enemy_scene = ExtResource("1_dgjxs")
 number_of_enemies = 1
-difficulty_level = 2
+difficulty_level = 1

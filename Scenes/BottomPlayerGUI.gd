@@ -82,7 +82,6 @@ func on_used_skill(cd):
 	$Details/Abilities/Skill/SkillCDBar.value = cd
 	pass
 func update_health(new_health, difference, should_display):
-	print("sdf" + str(new_health))
 	$Details/HealthBar.value = new_health
 
 func update_hp(hp):

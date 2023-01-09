@@ -21,15 +21,15 @@ func _init(p_hp = 0.0, p_atk = 0.0, p_atk_speed = 0.0, p_ms = 0.0, p_dr = 0.0, p
 func generate_description() -> String:
 	var out = ""
 	if hp != 0:
-		out += "HP: " + str(hp)
+		out += "HP: " + str(hp) + "\n"
 	if atk != 0:
-		out += "ATK: " + str(atk)
+		out += "ATK: " + str(atk)+ "\n"
 	if atk_speed != 0:
-		out += "ATK Speed: " + str(atk_speed)
+		out += "ATK Speed: " + str(atk_speed)+ "\n"
 	if move_speed != 0:
-		out += "Move Speed: " + str(move_speed)
+		out += "Move Speed: " + str(move_speed)+ "\n"
 	if dmg_reduction != 0:
-		out += "DMG Reduction: " + str(dmg_reduction)+"%"
+		out += "DMG Reduction: " + str(dmg_reduction)+"%"+ "\n"
 	if skill_cooldown != 0:
-		out += "Skill Cooldown Reduction: " + str(skill_cooldown)+"%"
+		out += "Skill Cooldown Reduction: " + str(skill_cooldown)+"%"+ "\n"
 	return out

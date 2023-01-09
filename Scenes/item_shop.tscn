@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://jfpvwlqrgbgp" path="res://Items/item_shop/item_shop_bg.png" id="1_jjkfc"]
 [ext_resource type="Texture2D" uid="uid://dbtcnjk6g35p3" path="res://Items/item_shop_mockup.png" id="1_uovsa"]
 [ext_resource type="Texture2D" uid="uid://bxmddp6bddpcx" path="res://Items/item_shop/item_shop_cashbar.png" id="2_fnyvg"]
-[ext_resource type="Resource" uid="uid://vi5h2br0s7qu" path="res://Level/scream_of_the_crop.tres" id="2_qx5cf"]
+[ext_resource type="Resource" path="res://Level/scream_of_the_crop.tres" id="2_qx5cf"]
 [ext_resource type="Texture2D" uid="uid://cc8yrqsodujv5" path="res://Items/item_shop/item_shop_counter.png" id="4_6ry8p"]
 [ext_resource type="SpriteFrames" uid="uid://5yu85co5vkr6" path="res://Items/item_shop/scales_sprite_frames.tres" id="7_o0qkb"]
 [ext_resource type="Texture2D" uid="uid://cl2dq2ki7aajm" path="res://Items/item_shop/item_shop_chacter_button-sheet.png" id="7_xc4dn"]

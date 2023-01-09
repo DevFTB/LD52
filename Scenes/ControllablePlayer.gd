@@ -136,7 +136,6 @@ func enable():
 	can_use_skill = true
 	$AttackTimer.start()
 	$SkillTimer.start()
-	print(global_position)
 	pass
 	
 func disable():
@@ -252,7 +251,6 @@ func apply_buff(buff: BuffStats, duration: float) -> void:
 	var callback = func(): remove_buff(buff_id)
 	get_tree().create_timer(duration).timeout.connect(callback)
 	
-	print("apply buff on " + name + " with id " +str(buff_id))
 	recalculate_stats()
 	
 	var timer =  Timer.new()
@@ -263,7 +261,6 @@ func apply_buff(buff: BuffStats, duration: float) -> void:
 	pass
 
 func remove_buff(key):
-	print("removing buff from " + name  + " with id " + str(key))
 	var buff = buffs[key]
 	buffs.erase(key)
 	

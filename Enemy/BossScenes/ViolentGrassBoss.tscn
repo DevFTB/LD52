@@ -103,21 +103,24 @@ frames = SubResource("SpriteFrames_wxrlx")
 animation = &"exhausted"
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 0
+layout_mode = 3
 offset_top = 0.0
 offset_bottom = 26.0
 
 [node name="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control" index="0"]
-layout_mode = 1
+layout_mode = 3
 
 [node name="HealthBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer" index="0"]
-layout_mode = 2
+layout_mode = 3
+offset_left = 274.0
+offset_right = 878.0
+offset_bottom = 60.0
 
 [node name="HealthPercentage" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="0"]
-layout_mode = 1
+layout_mode = 3
 
 [node name="BossName" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="1"]
-layout_mode = 1
+layout_mode = 3
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
@@ -131,6 +134,10 @@ sprite = NodePath("../../Sprite")
 one_shot = true
 
 [node name="ExhaustedTimer" type="Timer" parent="Attacks/ProjectileShoot" index="1"]
+
+[node name="SpawnSprite" parent="." index="6"]
+position = Vector2(7, -48)
+scale = Vector2(3.03516, 3.03516)
 
 [connection signal="health_changed" from="." to="Attacks/ProjectileShoot" method="check_super_mode"]
 [connection signal="timeout" from="Attacks/ProjectileShoot/ExhaustedTimer" to="Attacks/ProjectileShoot" method="exhaust"]

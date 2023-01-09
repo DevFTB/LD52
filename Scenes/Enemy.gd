@@ -26,13 +26,22 @@ var can_attack = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Sprite.visible = false
 	emit_signal("health_changed", health, 0 , false)
 	
 	for child in range($Attacks.get_child_count()):
 		can_attack.append(true)
 		$Attacks.get_child(child).get_node("AttackTimer").timeout.connect(func(): enable_attack(child))
 	
+	$SpawnSprite.play("default")
+	$SpawnSprite.frame_changed.connect(spawn_handler)
+	$SpawnSprite.animation_finished.connect(func(): $SpawnSprite.visible = false)
 	pass # Replace with function body.
+	
+func spawn_handler():
+	if $SpawnSprite.frame == 2:
+		$Sprite.visible = true
+	pass
 func enable_attack(index):
 	can_attack[index] = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,7 +65,6 @@ func modify_health(modification):
 			emit_signal("health_changed", health, difference, true)
 
 func die():
-	print("death")
 	emit_signal("death")
 	$Sprite.play("dead")    
 	is_dead = true

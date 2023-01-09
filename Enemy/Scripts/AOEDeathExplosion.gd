@@ -33,5 +33,4 @@ func apply_damage(amount, range):
 
 
 func do_death():
-	print("death explosion")
 	apply_damage(damage, range)

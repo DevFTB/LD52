@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cw60n741n5xbh"]
+[gd_scene load_steps=33 format=3 uid="uid://cw60n741n5xbh"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_uxdwq"]
 [ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_mcu3c"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://cuoxh547aqkf0" path="res://Sounds/Enemy/death sound 7.wav" id="17_6d0ka"]
 [ext_resource type="AudioStream" uid="uid://cs60wu1q20f0u" path="res://Sounds/Enemy/death sound 8.wav" id="18_ac0tl"]
 [ext_resource type="AudioStream" uid="uid://duo653g2tiu0i" path="res://Sounds/Enemy/death sound 9.wav" id="19_pofx7"]
+[ext_resource type="SpriteFrames" uid="uid://1uldvb3wahcg" path="res://Enemy/Assets/en_spawn_frames.tres" id="26_1365c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
 font_size = 36
@@ -101,6 +102,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -123,6 +125,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -132,9 +135,7 @@ grow_vertical = 2
 [node name="HealthBar" type="TextureProgressBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
 material = ExtResource("6_6u113")
 use_parent_material = true
-offset_left = 274.0
-offset_right = 878.0
-offset_bottom = 60.0
+layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("6_gtanp")
 value = 50.0
@@ -145,6 +146,7 @@ script = ExtResource("9_t5nqb")
 
 [node name="HealthPercentage" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -160,6 +162,7 @@ theme = ExtResource("6_unf27")
 horizontal_alignment = 1
 
 [node name="BossName" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -201,6 +204,10 @@ script = ExtResource("6_b0d2p")
 sprite = NodePath("")
 
 [node name="Attacks" type="Node2D" parent="."]
+
+[node name="SpawnSprite" type="AnimatedSprite2D" parent="."]
+frames = ExtResource("26_1365c")
+playing = true
 
 [node name="EnemyAudioManager" type="Node2D" parent="."]
 script = ExtResource("7_qn5me")

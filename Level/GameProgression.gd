@@ -8,6 +8,8 @@ class_name GameProgression
 var current_zone_index = 0
 var current_money = starting_money
 
+func add_money(amount):
+	current_money += amount
 
 func get_current_zone() -> Zone:
 	return zones[current_zone_index]

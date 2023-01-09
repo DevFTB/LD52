@@ -70,6 +70,9 @@ frames = SubResource("SpriteFrames_wxrlx")
 animation = &"alive"
 playing = true
 
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+layout_mode = 3
+
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
 
@@ -89,3 +92,7 @@ attack_frequency = 0.067
 
 [node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot2" index="0"]
 one_shot = true
+
+[node name="SpawnSprite" parent="." index="6"]
+position = Vector2(14, -39)
+scale = Vector2(3.17969, 3.17969)

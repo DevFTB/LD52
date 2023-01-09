@@ -7,6 +7,8 @@ extends Node2D
 
 @onready var players  = get_tree().get_nodes_in_group("player")
 
+var combat_instance
+
 var enemies = []
 var xp_gained = 0
 
@@ -14,8 +16,11 @@ var amount_of_dead_enemies = 0
 
 var controlled_player_index = 0
 
+var boss_arena = false
+
 signal arena_finished
 signal arena_lost
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -36,9 +41,9 @@ func start_arena():
 func end_arena():
 	var total_xp = enemies.reduce(func(accum,en): return accum + en.xp_on_death, 0)
 	for player in players:
-		player.player_stats.gain_xp(total_xp)
 		player.disable_control()
-		
+	
+	combat_instance.accumulated_xp += total_xp
 		
 	emit_signal("arena_finished")
 		
@@ -51,19 +56,23 @@ func walk_on_players(duration):
 
 func spawn_enemies():
 	var enemy_groups = select_enemy_groups(difficulty_level)
-	
+	var spawn_point  =Vector2.ZERO
+
 	for eg in enemy_groups:
-		var spawn_point = Vector2(randi() % roundi(spawnable_area.size.x), randi() % roundi(spawnable_area.size.y)) + spawnable_area.position
-	
+		if not boss_arena:
+			spawn_point = Vector2(randi() % roundi(spawnable_area.size.x), randi() % roundi(spawnable_area.size.y)) + spawnable_area.position
+		else:
+			spawn_point = $BossSpawnPoint.position
+
 		var instance = eg.enemy_scene.instantiate()
 		instance.position = spawn_point
 		
 		enemies.append_array(instance.get_children())
 		
 		for en in instance.get_children():
-			en.death.connect(on_enemy_death)
+			en.death.connect(func(): on_enemy_death(en))
 		
-		$Enemies.add_child(instance)
+		$Enemies.add_child(instance)	
 	pass
 	
 func enable_entities():
@@ -102,7 +111,6 @@ func on_player_death(player):
 		for p in players:
 			if not p.is_dead and p != player:
 				p.enable_control()
-				print(p.name)
 				controlled_player_index = players.find(p)
 				break
 		
@@ -127,12 +135,11 @@ func _input(event):
 			var new_player = valid_players[controlled_player_index]
 			new_player.enable_control()
 			controlled_player_index = players.find(new_player)
-			
-			print(new_player.name)
-			
 
-func on_enemy_death():
+func on_enemy_death(enemy):
 	amount_of_dead_enemies += 1
+	
+	combat_instance.gain_rewards(enemy)
 	
 	if amount_of_dead_enemies == enemies.size():
 		end_arena()
