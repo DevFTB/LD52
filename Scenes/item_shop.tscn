@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cwi8pxuq5etne"]
+[gd_scene load_steps=41 format=3 uid="uid://cwi8pxuq5etne"]
 
 [ext_resource type="Script" path="res://Scenes/ItemShop.gd" id="1_amji2"]
 [ext_resource type="Texture2D" uid="uid://jfpvwlqrgbgp" path="res://Items/item_shop/item_shop_bg.png" id="1_jjkfc"]
@@ -23,8 +23,17 @@
 [ext_resource type="Script" path="res://Scenes/AnimatedLabel.gd" id="20_0hx07"]
 [ext_resource type="Texture2D" uid="uid://ssdhis7pxbca" path="res://Items/item_shop/tool_tip.png" id="20_4dui6"]
 [ext_resource type="PackedScene" uid="uid://ipchlkw56jbt" path="res://Items/char_Screen/player_view.tscn" id="22_801xu"]
+[ext_resource type="AudioStream" uid="uid://dgwo161tvuxo8" path="res://Sounds/shopkeep 1.wav" id="25_n8ccq"]
 [ext_resource type="Resource" uid="uid://dwydefp8cr4lw" path="res://Player/the_sheepard_stats.tres" id="26_h2x05"]
+[ext_resource type="AudioStream" uid="uid://bgm8j8g5cerh5" path="res://Sounds/shopkeep2.wav" id="26_rntxg"]
+[ext_resource type="AudioStream" uid="uid://cmhp4b2n4jxxx" path="res://Sounds/shopkeep3.wav" id="27_8cuco"]
 [ext_resource type="Resource" uid="uid://c2y7maiuusio3" path="res://Player/Arboarist/arboarist_stats.tres" id="27_8ox7v"]
+[ext_resource type="AudioStream" uid="uid://dnnix0q2w76d2" path="res://Sounds/shopkeep4.wav" id="28_2ubjb"]
+[ext_resource type="AudioStream" uid="uid://bilr4pf6uwfcm" path="res://Sounds/shopkeep 5.wav" id="29_hegki"]
+[ext_resource type="AudioStream" uid="uid://dvwxjdg8bjtj6" path="res://Sounds/click sound effect.wav" id="30_7prlm"]
+[ext_resource type="AudioStream" uid="uid://b00nl3gwwwqio" path="res://Sounds/kaching buy.wav" id="31_rkjlb"]
+[ext_resource type="AudioStream" uid="uid://bhahj6k5b1470" path="res://Sounds/Music/shop.wav" id="32_b1txg"]
+[ext_resource type="AudioStream" uid="uid://kk04imqedygp" path="res://Sounds/rooster death sound.wav" id="33_5f6mx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jx6hc"]
 font_size = 24
@@ -444,9 +453,34 @@ offset_bottom = 99.0
 text = "+2 Atk
 +2 CDR"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
+[node name="ShopkeeperNoise1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_n8ccq")
+
+[node name="ShopkeeperNoise2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_rntxg")
+
+[node name="ShopkeeperNoise3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_8cuco")
+
+[node name="ShopkeeperNoise4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_2ubjb")
+
+[node name="ShopkeeperNoise5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_hegki")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_7prlm")
+
+[node name="BuySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_rkjlb")
+
+[node name="ShopMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_b1txg")
+autoplay = true
+
+[node name="RoosterNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_5f6mx")
+autoplay = true
 
 [connection signal="pressed" from="ItemShopGUI/NextStageButton" to="." method="_on_next_stage_button_pressed"]
 [connection signal="pressed" from="ItemShopGUI/CharacterButton" to="." method="_on_character_button_pressed"]
@@ -454,4 +488,3 @@ autostart = true
 [connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control2" to="." method="_on_buy_pressed"]
 [connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control3" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="ItemShopGUI/Shop/VBoxContainer/RefreshButton" to="." method="_on_refresh_button_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

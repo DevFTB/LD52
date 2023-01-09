@@ -1,11 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://c74s3t1dimubd"]
+[gd_scene load_steps=15 format=3 uid="uid://c74s3t1dimubd"]
 
 [ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_wtbql"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShootCone.gd" id="2_5hjod"]
 [ext_resource type="Resource" uid="uid://b2u7g4bh720ed" path="res://Enemy/Assets/mushroom_projectile.tres" id="3_gaajt"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_bqeef"]
 [ext_resource type="Texture2D" uid="uid://dvdwf1v8dptqt" path="res://Enemy/Assets/mushroomkorn.png" id="5_80rjb"]
-[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_ycjkt"]
+[ext_resource type="Texture2D" uid="uid://cgm062vp3fclm" path="res://Enemy/Assets/deathSpriteSheet.png" id="6_gfmin"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnwyg"]
+atlas = ExtResource("6_gfmin")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkc7g"]
+atlas = ExtResource("6_gfmin")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv4cf"]
+atlas = ExtResource("6_gfmin")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7ynm"]
+atlas = ExtResource("6_gfmin")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xobip"]
+atlas = ExtResource("6_gfmin")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd4nl"]
+atlas = ExtResource("6_gfmin")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oesy3"]
+atlas = ExtResource("6_gfmin")
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
 animations = [{
@@ -14,20 +42,14 @@ animations = [{
 "name": &"alive",
 "speed": 5.0
 }, {
-"frames": [ExtResource("6_ycjkt")],
-"loop": true,
+"frames": [SubResource("AtlasTexture_nnwyg"), SubResource("AtlasTexture_pkc7g"), SubResource("AtlasTexture_kv4cf"), SubResource("AtlasTexture_h7ynm"), SubResource("AtlasTexture_xobip"), SubResource("AtlasTexture_sd4nl"), SubResource("AtlasTexture_oesy3")],
+"loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Enemy7" instance=ExtResource("1_wtbql")]
 max_hp = 300
-
-[node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 3
-
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 3
 
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")

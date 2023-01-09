@@ -46,21 +46,24 @@ func disable_candidate_mode():
 func _on_button_pressed():
 	shop.use_candidate(player_stats)
 	pass # Replace with function body.
-
+	$ClickSound.play()
 
 func _on_add_passive_level_button_pressed():
 	player_stats.passive_level_up()
 	update()
+	$ClickSound.play()
 	pass # Replace with function body.
 
 
 func _on_add_attack_level_button_pressed():
 	player_stats.attack_level_up()
 	update()
+	$ClickSound.play()
 	pass # Replace with function body.
 
 
 func _on_add_skill_level_button_pressed():
 	player_stats.skill_level_up()
 	update()
+	$ClickSound.play()
 	pass # Replace with function body.

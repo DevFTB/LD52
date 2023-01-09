@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xa57avbolc3p"]
+[gd_scene load_steps=26 format=3 uid="uid://xa57avbolc3p"]
 
 [ext_resource type="PackedScene" uid="uid://cw60n741n5xbh" path="res://Enemy/BossScenes/boss.tscn" id="1_vqlsb"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="2_lq30u"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dt1kuyc05u7tj" path="res://Enemy/BossAssets/corn_boss.png" id="3_8b42h"]
 [ext_resource type="Texture2D" uid="uid://t730r46qn3tc" path="res://Enemy/BossAssets/sprite_sheet_corncopia.png" id="4_v6v8d"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShootCone.gd" id="4_wd67q"]
-[ext_resource type="Texture2D" uid="uid://bvr50uoh6un2l" path="res://Enemy/BossAssets/corn_boss_DED.png" id="4_wnh3x"]
+[ext_resource type="Texture2D" uid="uid://bjhtrquyypqen" path="res://Enemy/BossAssets/boss_death_sprite_sheet.png" id="5_u3jty"]
 [ext_resource type="Resource" uid="uid://bjbl7nvw24ran" path="res://Enemy/BossAssets/kornboss_aoe_projectile.tres" id="5_xvvlp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vn75"]
@@ -42,6 +42,34 @@ region = Rect2(3584, 0, 512, 512)
 atlas = ExtResource("4_v6v8d")
 region = Rect2(512, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjor5"]
+atlas = ExtResource("5_u3jty")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hpl5"]
+atlas = ExtResource("5_u3jty")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpg0i"]
+atlas = ExtResource("5_u3jty")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fm3l"]
+atlas = ExtResource("5_u3jty")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itr85"]
+atlas = ExtResource("5_u3jty")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exctj"]
+atlas = ExtResource("5_u3jty")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7nfq"]
+atlas = ExtResource("5_u3jty")
+region = Rect2(3072, 0, 512, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxrlx"]
 animations = [{
 "frames": [ExtResource("3_8b42h"), SubResource("AtlasTexture_5vn75"), SubResource("AtlasTexture_4xcln"), SubResource("AtlasTexture_23bvl"), SubResource("AtlasTexture_f4adw"), SubResource("AtlasTexture_3nrun"), SubResource("AtlasTexture_2clmb"), SubResource("AtlasTexture_4uftv"), SubResource("AtlasTexture_47byj")],
@@ -49,8 +77,8 @@ animations = [{
 "name": &"alive",
 "speed": 5.0
 }, {
-"frames": [ExtResource("4_wnh3x")],
-"loop": true,
+"frames": [SubResource("AtlasTexture_tjor5"), SubResource("AtlasTexture_8hpl5"), SubResource("AtlasTexture_kpg0i"), SubResource("AtlasTexture_8fm3l"), SubResource("AtlasTexture_itr85"), SubResource("AtlasTexture_exctj"), SubResource("AtlasTexture_y7nfq")],
+"loop": false,
 "name": &"dead",
 "speed": 5.0
 }]

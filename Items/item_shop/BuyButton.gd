@@ -21,6 +21,7 @@ func set_item(item):
 func _on_buy_button_pressed():
 	if item != null:
 		emit_signal("buy_pressed", item, slot)
+		$Click.play()
 	# TODO
 	pass # Replace with function body.
 

@@ -1,13 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7ts27rpt2h21"]
+[gd_scene load_steps=31 format=3 uid="uid://b7ts27rpt2h21"]
 
 [ext_resource type="PackedScene" uid="uid://cw60n741n5xbh" path="res://Enemy/BossScenes/boss.tscn" id="1_krkvr"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShootViolent.gd" id="2_4c0r5"]
 [ext_resource type="Resource" uid="uid://frpu5fqt6h4j" path="res://Enemy/BossAssets/violent_grass_boss_projectile.tres" id="3_in0s2"]
 [ext_resource type="Texture2D" uid="uid://dru6wp72gnosy" path="res://Enemy/BossAssets/sprite_sheet_bat_1.png" id="3_lfeys"]
+[ext_resource type="Texture2D" uid="uid://bjhtrquyypqen" path="res://Enemy/BossAssets/boss_death_sprite_sheet.png" id="4_ae6p1"]
 [ext_resource type="Texture2D" uid="uid://cc48ym05vlscg" path="res://Enemy/BossAssets/sprite_sheet_bat_enraged.png" id="5_5gnjq"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="6_vt7el"]
 [ext_resource type="Texture2D" uid="uid://blastb6lubt0p" path="res://Enemy/BossAssets/sprite_sheet_bat_exhausted.png" id="6_xsm1j"]
-[ext_resource type="Texture2D" uid="uid://bvr50uoh6un2l" path="res://Enemy/BossAssets/corn_boss_DED.png" id="8_e2xon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4q8h"]
 atlas = ExtResource("3_lfeys")
@@ -32,6 +32,34 @@ region = Rect2(2528, 0, 632, 512)
 [sub_resource type="AtlasTexture" id="AtlasTexture_it4cr"]
 atlas = ExtResource("3_lfeys")
 region = Rect2(3160, 0, 632, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc2p2"]
+atlas = ExtResource("4_ae6p1")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih042"]
+atlas = ExtResource("4_ae6p1")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbsyj"]
+atlas = ExtResource("4_ae6p1")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfplp"]
+atlas = ExtResource("4_ae6p1")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpeik"]
+atlas = ExtResource("4_ae6p1")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg1gu"]
+atlas = ExtResource("4_ae6p1")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cspel"]
+atlas = ExtResource("4_ae6p1")
+region = Rect2(3072, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sh1jb"]
 atlas = ExtResource("5_5gnjq")
@@ -72,8 +100,8 @@ animations = [{
 "name": &"alive",
 "speed": 7.0
 }, {
-"frames": [ExtResource("8_e2xon")],
-"loop": true,
+"frames": [SubResource("AtlasTexture_yc2p2"), SubResource("AtlasTexture_ih042"), SubResource("AtlasTexture_nbsyj"), SubResource("AtlasTexture_wfplp"), SubResource("AtlasTexture_vpeik"), SubResource("AtlasTexture_kg1gu"), SubResource("AtlasTexture_cspel")],
+"loop": false,
 "name": &"dead",
 "speed": 5.0
 }, {
@@ -103,24 +131,21 @@ frames = SubResource("SpriteFrames_wxrlx")
 animation = &"exhausted"
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 3
+layout_mode = 0
 offset_top = 0.0
 offset_bottom = 26.0
 
 [node name="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control" index="0"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="HealthBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer" index="0"]
-layout_mode = 3
-offset_left = 274.0
-offset_right = 878.0
-offset_bottom = 60.0
+layout_mode = 2
 
 [node name="HealthPercentage" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="0"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="BossName" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="1"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")

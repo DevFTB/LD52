@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b02pf55ugd8qu"]
+[gd_scene load_steps=19 format=3 uid="uid://b02pf55ugd8qu"]
 
 [ext_resource type="Script" path="res://Scenes/GrimCheaper.gd" id="1_pxi04"]
 [ext_resource type="PackedScene" uid="uid://bq32vdiv30t2u" path="res://Player/Abilities/cleave.tscn" id="2_77ujy"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cx2b68t84i237" path="res://Sounds/slice 1.wav" id="12_dltgw"]
 [ext_resource type="AudioStream" uid="uid://dklk8npeopwmr" path="res://Sounds/slice 2.wav" id="13_wnv5u"]
 [ext_resource type="AudioStream" uid="uid://3xra0dscbnmm" path="res://Sounds/slice 3.wav" id="14_5mjkd"]
+[ext_resource type="AudioStream" uid="uid://cwcxaumx51673" path="res://Sounds/death bell sound.wav" id="15_r7xed"]
 [ext_resource type="AudioStream" uid="uid://bxu8ku4d4dj6f" path="res://Sounds/super slice.wav" id="15_rohqv"]
 [ext_resource type="AudioStream" uid="uid://baltx1qynm02d" path="res://Sounds/chicken ready.wav" id="16_3xeq2"]
 
@@ -96,6 +97,7 @@ stream = ExtResource("13_wnv5u")
 stream = ExtResource("14_5mjkd")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
+stream = ExtResource("15_r7xed")
 
 [node name="SkillSound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
 stream = ExtResource("15_rohqv")

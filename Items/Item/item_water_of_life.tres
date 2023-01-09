@@ -12,8 +12,8 @@ region = Rect2(128, 96, 32, 32)
 script = ExtResource("3_s2mfu")
 hp = 0.0
 atk = 80.0
-atk_speed = 50.0
-move_speed = -10.0
+atk_speed = 0.5
+move_speed = -0.1
 dmg_reduction = 0.0
 skill_cooldown = 0.0
 

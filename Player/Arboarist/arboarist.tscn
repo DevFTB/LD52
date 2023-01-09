@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://iw425p5lff88"]
+[gd_scene load_steps=28 format=3 uid="uid://iw425p5lff88"]
 
 [ext_resource type="Script" path="res://Scenes/Arboarist.gd" id="1_u6v5u"]
 [ext_resource type="PackedScene" uid="uid://damqr88nxwy6a" path="res://Player/Arboarist/spin.tscn" id="2_ob17p"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scenes/ArboaristSoundController.gd" id="12_8n4dy"]
 [ext_resource type="AudioStream" uid="uid://cacu63y5yuf2t" path="res://Sounds/pig skill.wav" id="13_x3epa"]
 [ext_resource type="AudioStream" uid="uid://c1cl5idmsu84j" path="res://Sounds/chainsaw.wav" id="14_ldo7y"]
+[ext_resource type="AudioStream" uid="uid://cwcxaumx51673" path="res://Sounds/death bell sound.wav" id="15_f0kvt"]
 [ext_resource type="AudioStream" uid="uid://dt13geey6c80m" path="res://Sounds/pig ready.wav" id="15_lqvwc"]
 
 [sub_resource type="Resource" id="Resource_1svkk"]
@@ -156,6 +157,7 @@ stream = ExtResource("14_ldo7y")
 volume_db = 5.0
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="ArboaristSoundController"]
+stream = ExtResource("15_f0kvt")
 
 [node name="ReadySound" type="AudioStreamPlayer2D" parent="ArboaristSoundController"]
 stream = ExtResource("15_lqvwc")
