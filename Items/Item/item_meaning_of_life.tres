@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://b4ickese6384v"]
+
+[ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_kodt4"]
+[ext_resource type="Script" path="res://Items/Item.gd" id="2_kkhrm"]
+[ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_58o2y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+atlas = ExtResource("1_kodt4")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="Resource" id="Resource_ljmog"]
+script = ExtResource("3_58o2y")
+hp = 200.0
+atk = 20.0
+atk_speed = 20.0
+move_speed = 20.0
+dmg_reduction = 0.0
+skill_cooldown = 10.0
+
+[resource]
+script = ExtResource("2_kkhrm")
+item_name = "Dreamy Bouquet"
+icon = SubResource("AtlasTexture_jqar4")
+rarity = 3
+stats = SubResource("Resource_ljmog")
+cost = 180

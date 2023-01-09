@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cwi8pxuq5etne"]
+[gd_scene load_steps=31 format=3 uid="uid://cwi8pxuq5etne"]
 
 [ext_resource type="Script" path="res://Scenes/ItemShop.gd" id="1_amji2"]
 [ext_resource type="Texture2D" uid="uid://jfpvwlqrgbgp" path="res://Items/item_shop/item_shop_bg.png" id="1_jjkfc"]
@@ -28,6 +28,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_jx6hc"]
 font_size = 24
 font_color = Color(0.462745, 1, 0.372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gibru"]
+font_color = Color(0.337255, 0.203922, 0.0901961, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c422n"]
 atlas = ExtResource("7_xc4dn")
@@ -190,6 +193,24 @@ offset_right = 272.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="Label" type="Label" parent="ItemShopGUI/StashTable/StashItems"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -24.0
+offset_right = 128.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Click item, then select player"
+label_settings = SubResource("LabelSettings_gibru")
+horizontal_alignment = 1
+
 [node name="CharacterButton" type="TextureButton" parent="ItemShopGUI"]
 layout_mode = 1
 anchors_preset = 7
@@ -337,7 +358,7 @@ anchor_bottom = 0.5
 offset_left = -399.0
 offset_top = -250.0
 offset_right = 401.0
-offset_bottom = 50.0
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -377,6 +398,22 @@ player_stats = ExtResource("26_h2x05")
 layout_mode = 2
 player_stats = ExtResource("27_8ox7v")
 
+[node name="Label" type="Label" parent="CharacterScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = -50.0
+offset_right = 143.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Dbl Click to remove item from player"
+label_settings = SubResource("LabelSettings_gibru")
+
 [node name="Tooltip" type="Control" parent="." groups=["tooltip"]]
 visible = false
 custom_minimum_size = Vector2(128, 128)
@@ -414,6 +451,7 @@ offset_bottom = 99.0
 text = "+2 Atk
 +2 CDR"
 
+[connection signal="pressed" from="ItemShopGUI/NextStageButton" to="." method="_on_next_stage_button_pressed"]
 [connection signal="pressed" from="ItemShopGUI/CharacterButton" to="." method="_on_character_button_pressed"]
 [connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control" to="." method="_on_buy_pressed"]
 [connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control2" to="." method="_on_buy_pressed"]

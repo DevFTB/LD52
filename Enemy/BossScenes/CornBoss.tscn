@@ -55,11 +55,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy2" instance=ExtResource("1_vqlsb")]
-visible = true
+[node name="Enemy3" instance=ExtResource("1_vqlsb")]
 scale = Vector2(1, 1)
 enemy_name = "Corn-o-cope-ia"
-max_hp = 4000
+max_hp = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
 material = ExtResource("2_lq30u")
@@ -69,6 +68,16 @@ scale = Vector2(0.6, 0.6)
 frames = SubResource("SpriteFrames_wxrlx")
 animation = &"alive"
 playing = true
+
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+offset_top = 0.0
+offset_bottom = 26.0
+
+[node name="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")

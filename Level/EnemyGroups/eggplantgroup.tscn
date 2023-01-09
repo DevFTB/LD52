@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmipb7us4l8cw"]
+
+[ext_resource type="PackedScene" uid="uid://d21vuwtjxm2rw" path="res://Enemy/EnemyScenes/TankEggplant.tscn" id="1_glaqu"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_glaqu")]
+position = Vector2(58, 13)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_glaqu")]
+position = Vector2(60, 75)

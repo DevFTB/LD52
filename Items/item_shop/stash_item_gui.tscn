@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/StashItemGUI.gd" id="1_t045k"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_06hew"]
+[sub_resource type="LabelSettings" id="LabelSettings_srp6b"]
 font_size = 28
 font_color = Color(0.937255, 0.917647, 0.941176, 1)
 outline_size = 2
@@ -31,6 +31,6 @@ offset_left = -40.0
 offset_top = -39.0
 grow_horizontal = 0
 grow_vertical = 0
-label_settings = SubResource("LabelSettings_06hew")
+label_settings = SubResource("LabelSettings_srp6b")
 horizontal_alignment = 2
 vertical_alignment = 2

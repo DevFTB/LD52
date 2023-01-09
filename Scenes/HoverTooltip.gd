@@ -13,6 +13,7 @@ func show_tooltip(item, control: Control):
 	current_control = control
 	if item != null:
 		$Name.text = item.item_name
+		$Label.text = item.stats.generate_description()
 	pass
 	
 func hide_tooltip(control: Control):

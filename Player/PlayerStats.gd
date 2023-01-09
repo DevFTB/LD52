@@ -2,9 +2,9 @@ extends Resource
 class_name PlayerStats
 
 @export var player_name = "Player"
-
+@export var player_portrait : Texture2D
 var level = 1
-var unused_skill_points = 0
+var unused_skill_points = 5
 var xp = 0
 
 @export var hp : Stat = null
@@ -39,6 +39,22 @@ func remove_item(item):
 	recalculate_item_bonuses()
 	pass
 
+func attack_level_up():
+	if unused_skill_points > 0:
+		unused_skill_points -= 1
+		attack_level += 1
+	pass
+	
+func skill_level_up():
+	if unused_skill_points > 0:
+		unused_skill_points -= 1
+		skill_level += 1
+	pass
+func passive_level_up():
+	if unused_skill_points > 0:
+		unused_skill_points -= 1
+		passive_level += 1
+	pass
 func can_add_to_inventory():
 	return inventory.get_amount_stored() < inventory_size.get_effective_value(get_level())
 	pass
@@ -62,7 +78,7 @@ func recalculate_item_bonuses():
 
 @export var level_log_base = 1.5
 func get_level() -> int:
-	return floor(log(xp + 1)/log(level_log_base))
+	return floor((16 + xp) / 28 + 1)
 
 func gain_xp(xp):
 	var current_level = get_level()

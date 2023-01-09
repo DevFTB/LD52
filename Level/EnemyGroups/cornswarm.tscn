@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfmpdeyjx2q2l"]
+
+[ext_resource type="PackedScene" uid="uid://rnthmsbk2wo1" path="res://Enemy/EnemyScenes/CornRanger.tscn" id="1_hd7ni"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_hd7ni")]
+position = Vector2(41, 23)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_hd7ni")]
+position = Vector2(45, 47)
+
+[node name="Enemy11" parent="." instance=ExtResource("1_hd7ni")]
+position = Vector2(16, 32)
+
+[node name="Enemy12" parent="." instance=ExtResource("1_hd7ni")]
+position = Vector2(82, 29)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_hd7ni")]
+position = Vector2(27, 64)
+
+[node name="Enemy10" parent="." instance=ExtResource("1_hd7ni")]
+position = Vector2(65, 68)

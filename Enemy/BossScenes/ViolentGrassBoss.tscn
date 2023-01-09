@@ -125,7 +125,6 @@ sprite = NodePath("../Sprite")
 [node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
 script = ExtResource("2_4c0r5")
 projectile_stats = ExtResource("3_in0s2")
-sprite = NodePath("../../Sprite")
 
 [node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot" index="0"]
 one_shot = true

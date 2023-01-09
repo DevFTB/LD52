@@ -17,7 +17,7 @@ extends Node2D
 var dmg_reduction = 0
 
 var direction : Vector2 = Vector2.ZERO
-
+var facing  : Vector2 = Vector2.ZERO
 signal stats_changed(hp, atk, atk_speed, move_speed, dmg_reduction, skill_cooldown)
 signal health_changed(new_health, difference, should_display)
 signal used_attack(cd)
@@ -51,8 +51,6 @@ func _ready():
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()
 	$AnimatedSprite.play("walk")
-
-	pass # Replace with function body.
 	
 	# start find enemy timer
 	_find_enemy_timer = Timer.new()
@@ -61,6 +59,7 @@ func _ready():
 	_find_enemy_timer.set_wait_time(find_enemy_timeout)
 	_find_enemy_timer.set_one_shot(false)
 	_find_enemy_timer.start()
+	pass # Replace with function body.
 	
 func get_nearest_enemy():
 	var enemies = get_tree().get_nodes_in_group("enemy").filter(func (e): return not e.is_dead)
@@ -83,6 +82,26 @@ func _process(delta):
 	if enabled and not is_dead and not controlled:
 		process_ai(delta)
 	elif enabled and not is_dead and controlled:
+		var new_direction = Vector2.ZERO
+		if Input.is_action_pressed("move_up"):
+			new_direction += Vector2.UP
+		if Input.is_action_pressed("move_down"):
+			new_direction += Vector2.DOWN
+		if Input.is_action_pressed("move_left"):
+			new_direction += Vector2.LEFT
+		if Input.is_action_pressed("move_right"):
+			new_direction += Vector2.RIGHT
+		
+		if $AnimatedSprite.animation != "walk":
+			do_walk()
+		direction =  new_direction
+		
+		if new_direction.length() != 0:
+			$AnimatedSprite.flip_h = direction.x < 0
+			facing = direction
+
+		
+		
 		position += direction.normalized() * move_speed * 100 * delta
 
 func modify_health(modification):
@@ -115,7 +134,6 @@ func die():
 func enable():
 	enabled = true
 	can_use_skill = true
-	$AnimatedSprite.play("walk")
 	$AttackTimer.start()
 	$SkillTimer.start()
 	print(global_position)
@@ -137,22 +155,7 @@ func get_skill_damage():
 	
 func on_anim_end():
 	if direction.x == 0 and direction.y == 0 :
-		do_walk()
-		$AnimatedSprite.stop()
-	else :
-		do_walk()
-	if direction.x < 0:
-		set_flipped_anim_h()
-	if direction.x > 0:
-		unset_flipped_anim_h()
-
-func set_flipped_anim_h():
-	if $AnimatedSprite.is_flipped_h() == false :
-		$AnimatedSprite.set_flip_h(true)
-
-func unset_flipped_anim_h():
-	if $AnimatedSprite.is_flipped_h() == true :
-		$AnimatedSprite.set_flip_h(false)
+		$AnimatedSprite.play("idle")
 
 func do_walk():
 	$AnimatedSprite.play("walk")
@@ -169,7 +172,7 @@ func do_attack():
 
 	$Attack.add_child(new_attack)
 	
-	var rot_angle = Vector2.LEFT.angle_to(direction.normalized())
+	var rot_angle = Vector2.LEFT.angle_to(facing.normalized())
 	new_attack.position = Vector2(-50, 0).rotated(rot_angle)
 	new_attack.rotation = rot_angle
 	emit_signal("used_attack", $AttackTimer.wait_time)
@@ -185,7 +188,7 @@ func do_skill():
 	
 	modify_skill(new_skill)
 	
-	var rot_angle = Vector2.LEFT.angle_to(direction.normalized())
+	var rot_angle = Vector2.LEFT.angle_to(facing.normalized())
 	new_skill.position = Vector2(-50, 0).rotated(rot_angle)
 	new_skill.rotation = rot_angle
 
@@ -213,36 +216,9 @@ func do_combat(attack, damage):
 func on_attack_damage(damage):
 	pass
 
-var buffer = false
 func _input(event):
 	if controlled and not is_dead:
 		if event is InputEventKey:
-			if not event.pressed and buffer:
-				buffer = false
-				return
-			if $AnimatedSprite.is_playing() == false:
-				do_walk()
-			if event.pressed and buffer:
-				buffer= false
-			
-			if event.is_action_pressed("move_up"):
-				direction.y -= 1
-			if event.is_action_pressed("move_down"):
-				direction.y += 1
-			if event.is_action_pressed("move_left"):
-				direction.x -= 1
-			if event.is_action_pressed("move_right"):
-				direction.x += 1
-			
-			if event.is_action_released("move_up"):
-				direction.y += 1
-			if event.is_action_released("move_down"):
-				direction.y -= 1
-			if event.is_action_released("move_left"):
-				direction.x += 1
-			if event.is_action_released("move_right"):
-				direction.x -= 1
-			
 			if event.is_action_pressed("skill"):
 				if can_use_skill and not is_dead:
 					do_skill()
@@ -262,10 +238,12 @@ func get_sprite():
 	return $Sprite
 
 func walk_on(destination_x, duration):
-	self.level_width = 1152
-	var tween = get_tree().create_tween()
-	var destination = Vector2(destination_x - 100, position.y)
-	tween.tween_property(self, "global_position", destination, duration).from_current()
+	if not is_dead:
+		do_walk()
+		self.level_width = 1152
+		var tween = get_tree().create_tween()
+		var destination = Vector2(destination_x - 100, position.y)
+		tween.tween_property(self, "global_position", destination, duration).from_current()
 
 
 func apply_buff(buff: BuffStats, duration: float) -> void:
@@ -294,7 +272,6 @@ func remove_buff(key):
 func enable_control():
 	controlled = true
 	direction = Vector2.ZERO
-	buffer = true
 	emit_signal("control_changed", controlled)
 	
 func disable_control():
@@ -320,9 +297,9 @@ func process_ai(delta):
 		var enemy_pos = nearest_enemy.global_position
 
 		direction.x = 0
-		if enemy_pos.x > global_position.x + 1:
+		if enemy_pos.x > global_position.x + 64:
 			direction.x = 1
-		if enemy_pos.x < global_position.x - 1:
+		if enemy_pos.x < global_position.x - 64:
 			direction.x = -1
 		direction.y = 0
 
@@ -330,6 +307,9 @@ func process_ai(delta):
 			direction.y = 1
 		if enemy_pos.y < global_position.y - 1:
 			direction.y = -1
+			
+		if direction.length() > 0:
+			$AnimatedSprite.play("walk")
 
 		# todo: use range or make it smarter with skills
 		if can_use_skill and not is_dead:

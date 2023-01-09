@@ -91,7 +91,7 @@ material = ExtResource("6_pk8j6")
 use_parent_material = true
 frames = ExtResource("7_uhcxh")
 animation = &"walk"
-frame = 1
+playing = true
 flip_h = true
 
 [node name="SelectedPlayerArrow" type="AnimatedSprite2D" parent="AnimatedSprite"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1wyqcsq5i0eb"]
+
+[ext_resource type="PackedScene" uid="uid://kfumsr3f8apc" path="res://Enemy/EnemyScenes/(Dick)TankyPumpkin.tscn" id="1_25e8g"]
+[ext_resource type="PackedScene" uid="uid://rnthmsbk2wo1" path="res://Enemy/EnemyScenes/CornRanger.tscn" id="2_wxld8"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_25e8g")]
+position = Vector2(-929, 50)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_25e8g")]
+position = Vector2(-913, 99)
+
+[node name="Enemy9" parent="." instance=ExtResource("2_wxld8")]
+position = Vector2(-986, 70)
+
+[node name="Enemy10" parent="." instance=ExtResource("2_wxld8")]
+position = Vector2(-980, 116)

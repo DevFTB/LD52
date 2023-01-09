@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt4o53iecnps4"]
+
+[ext_resource type="PackedScene" uid="uid://d0kpi7dj307wm" path="res://Enemy/EnemyScenes/SlowCactusHeavy.tscn" id="1_im436"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy5" parent="." instance=ExtResource("1_im436")]
+position = Vector2(45, 19)
+
+[node name="Enemy6" parent="." instance=ExtResource("1_im436")]
+position = Vector2(46, 67)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_im436")]
+position = Vector2(3, 49)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_im436")]
+position = Vector2(8, 86)

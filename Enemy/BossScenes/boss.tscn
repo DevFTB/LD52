@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cw60n741n5xbh"]
+[gd_scene load_steps=22 format=3 uid="uid://cw60n741n5xbh"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_uxdwq"]
 [ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_mcu3c"]
@@ -10,21 +10,11 @@
 [ext_resource type="Theme" uid="uid://chfnev2av5hq" path="res://Enemy/BossAssets/healthbar_theme.tres" id="6_gtanp"]
 [ext_resource type="Theme" uid="uid://ct21butfrkec1" path="res://UI/UI_theme.tres" id="6_unf27"]
 [ext_resource type="Script" path="res://Enemy/Scripts/EnemySoundManager.gd" id="7_qn5me"]
-[ext_resource type="AudioStream" uid="uid://f3m74mv86atu" path="res://Sounds/Enemy/enemy hit 1.wav" id="8_avc41"]
 [ext_resource type="Texture2D" uid="uid://1veonjc4ryh" path="res://Enemy/BossAssets/hp_bar_empty.png" id="8_mn5ye"]
-[ext_resource type="AudioStream" uid="uid://dnoa3vvuj2a1r" path="res://Sounds/Enemy/enemy hit 2.wav" id="9_dcx2x"]
 [ext_resource type="Texture2D" uid="uid://h4betidm3s7t" path="res://Enemy/BossAssets/hp_bar_full.png" id="9_swrmq"]
 [ext_resource type="Script" path="res://Enemy/BossScenes/HealthBar.gd" id="9_t5nqb"]
-[ext_resource type="AudioStream" uid="uid://hjjhtvrhso1a" path="res://Sounds/Enemy/enemy hit 3.wav" id="10_q4qw3"]
-[ext_resource type="AudioStream" uid="uid://c8u45ggoqxdmk" path="res://Sounds/Enemy/death sound 1.wav" id="11_dkyjj"]
-[ext_resource type="AudioStream" uid="uid://ck7aui2x8ki53" path="res://Sounds/Enemy/death sound 2.wav" id="12_1r82l"]
-[ext_resource type="AudioStream" uid="uid://cs1r0ppi64ixn" path="res://Sounds/Enemy/death sound 3.wav" id="13_5nbkq"]
-[ext_resource type="AudioStream" uid="uid://ug5r0ve2mjq6" path="res://Sounds/Enemy/death sound 4.wav" id="14_sia3j"]
-[ext_resource type="AudioStream" uid="uid://m3c5447xfkm6" path="res://Sounds/Enemy/death sound 5.wav" id="15_024r6"]
-[ext_resource type="AudioStream" uid="uid://cbbpi6rv063u3" path="res://Sounds/Enemy/death sound 6.wav" id="16_n5hur"]
-[ext_resource type="AudioStream" uid="uid://cuoxh547aqkf0" path="res://Sounds/Enemy/death sound 7.wav" id="17_6d0ka"]
-[ext_resource type="AudioStream" uid="uid://cs60wu1q20f0u" path="res://Sounds/Enemy/death sound 8.wav" id="18_ac0tl"]
-[ext_resource type="AudioStream" uid="uid://duo653g2tiu0i" path="res://Sounds/Enemy/death sound 9.wav" id="19_pofx7"]
+[ext_resource type="AudioStream" uid="uid://cuofke1qwq4pr" path="res://Sounds/boss hit.wav" id="14_xjo33"]
+[ext_resource type="AudioStream" uid="uid://b61sairkeju05" path="res://Sounds/boss death.wav" id="15_ak7rf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
 font_size = 36
@@ -77,8 +67,9 @@ _data = {
 radius = 123.78
 height = 332.54
 
-[node name="Enemy2" type="Node2D" groups=["enemy"]]
+[node name="Enemy3" type="Node2D" groups=["enemy"]]
 visible = false
+position = Vector2(0, 96)
 scale = Vector2(3, 3)
 script = ExtResource("1_uxdwq")
 max_hp = 8
@@ -101,7 +92,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -124,17 +114,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 10.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
 material = ExtResource("6_6u113")
 use_parent_material = true
-layout_mode = 2
+offset_left = 274.0
+offset_right = 878.0
+offset_bottom = 60.0
 size_flags_horizontal = 4
 theme = ExtResource("6_gtanp")
 value = 50.0
@@ -145,7 +140,6 @@ script = ExtResource("9_t5nqb")
 
 [node name="HealthPercentage" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -161,7 +155,6 @@ theme = ExtResource("6_unf27")
 horizontal_alignment = 1
 
 [node name="BossName" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -208,43 +201,42 @@ sprite = NodePath("")
 script = ExtResource("7_qn5me")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("8_avc41")
+stream = ExtResource("14_xjo33")
 
 [node name="HitSound2" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("9_dcx2x")
+stream = ExtResource("14_xjo33")
 
 [node name="HitSound3" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("10_q4qw3")
+stream = ExtResource("14_xjo33")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("11_dkyjj")
+stream = ExtResource("15_ak7rf")
 
 [node name="DeathSound2" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("12_1r82l")
+stream = ExtResource("15_ak7rf")
 
 [node name="DeathSound3" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("13_5nbkq")
+stream = ExtResource("15_ak7rf")
 
 [node name="DeathSound4" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("14_sia3j")
+stream = ExtResource("15_ak7rf")
 
 [node name="DeathSound5" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("15_024r6")
+stream = ExtResource("15_ak7rf")
 
 [node name="DeathSound6" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("16_n5hur")
+stream = ExtResource("15_ak7rf")
 
 [node name="DeathSound7" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("17_6d0ka")
+stream = ExtResource("15_ak7rf")
 
 [node name="DeathSound8" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("18_ac0tl")
+stream = ExtResource("15_ak7rf")
 
 [node name="DeathSound9" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
-stream = ExtResource("19_pofx7")
+stream = ExtResource("15_ak7rf")
 
 [connection signal="death" from="." to="EnemyAudioManager" method="_on_enemy_death"]
-[connection signal="enable_changed" from="." to="EnemyGUI" method="_on_enemy_2_enable_changed"]
 [connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="." to="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" method="_on_enemy_2_health_changed"]

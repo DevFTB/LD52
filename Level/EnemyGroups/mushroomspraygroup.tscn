@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce3yjc2o7jy02"]
+
+[ext_resource type="PackedScene" uid="uid://c74s3t1dimubd" path="res://Enemy/EnemyScenes/MushroomSprayer.tscn" id="1_xhheg"]
+[ext_resource type="PackedScene" uid="uid://d0kpi7dj307wm" path="res://Enemy/EnemyScenes/SlowCactusHeavy.tscn" id="2_worrv"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_xhheg")]
+position = Vector2(35, 37)
+
+[node name="Enemy5" parent="." instance=ExtResource("2_worrv")]
+position = Vector2(95, 40)

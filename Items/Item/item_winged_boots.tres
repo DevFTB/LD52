@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://d3sqdfqpsfgx2"]
+
+[ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_1i11t"]
+[ext_resource type="Script" path="res://Items/Item.gd" id="2_ebapa"]
+[ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_pgjou"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
+atlas = ExtResource("1_1i11t")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="Resource" id="Resource_vhkbq"]
+script = ExtResource("3_pgjou")
+hp = 0.0
+atk = 0.0
+atk_speed = 0.0
+move_speed = 5.0
+dmg_reduction = 0.0
+skill_cooldown = 0.0
+
+[resource]
+script = ExtResource("2_ebapa")
+item_name = "Sturdy Boots"
+icon = SubResource("AtlasTexture_yym8y")
+rarity = 0
+stats = SubResource("Resource_vhkbq")
+cost = 5

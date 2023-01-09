@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmfvyae56fi8b"]
+
+[ext_resource type="PackedScene" uid="uid://bf21dvyk6qugq" path="res://Enemy/EnemyScenes/DPSPurpleRose.tscn" id="1_8ujts"]
+[ext_resource type="PackedScene" uid="uid://d21vuwtjxm2rw" path="res://Enemy/EnemyScenes/TankEggplant.tscn" id="2_ubaa2"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_8ujts")]
+position = Vector2(40, 33)
+
+[node name="Enemy8" parent="." instance=ExtResource("2_ubaa2")]
+position = Vector2(93, 31)
+
+[node name="Enemy9" parent="." instance=ExtResource("2_ubaa2")]
+position = Vector2(83, 111)
+
+[node name="Enemy10" parent="." instance=ExtResource("2_ubaa2")]
+position = Vector2(33, 102)

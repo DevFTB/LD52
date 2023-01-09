@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cahj0eq7mvgbw"]
+
+[ext_resource type="PackedScene" uid="uid://bf21dvyk6qugq" path="res://Enemy/EnemyScenes/DPSPurpleRose.tscn" id="1_00t8u"]
+[ext_resource type="PackedScene" uid="uid://joihhtxfmiew" path="res://Enemy/EnemyScenes/SoulsuckingLavender.tscn" id="2_c7ihn"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_00t8u")]
+position = Vector2(83, 23)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_00t8u")]
+position = Vector2(85, 100)
+
+[node name="Enemy4" parent="." instance=ExtResource("2_c7ihn")]
+position = Vector2(3, 51)
+
+[node name="Enemy5" parent="." instance=ExtResource("2_c7ihn")]
+position = Vector2(11, 129)

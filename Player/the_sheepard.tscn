@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5wxpr4ntdxom"]
+[gd_scene load_steps=16 format=3 uid="uid://bbij8rr4abd6a"]
 
 [ext_resource type="Script" path="res://Scenes/TheSheepard.gd" id="1_ycxsl"]
 [ext_resource type="PackedScene" uid="uid://xjahcj7id5nx" path="res://Player/Abilities/sheep_attack.tscn" id="2_klsp6"]
@@ -31,6 +31,7 @@ material = ExtResource("5_6jeb5")
 use_parent_material = true
 frames = ExtResource("6_4fhra")
 animation = &"walk"
+playing = true
 flip_h = true
 
 [node name="SelectedPlayerArrow" type="AnimatedSprite2D" parent="AnimatedSprite"]

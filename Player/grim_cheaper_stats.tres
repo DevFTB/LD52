@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=15 format=3 uid="uid://bp6lo7vsrhav8"]
+[gd_resource type="Resource" load_steps=16 format=3 uid="uid://bp6lo7vsrhav8"]
 
 [ext_resource type="Script" path="res://Player/Stat.gd" id="1_fgg5f"]
 [ext_resource type="Script" path="res://Player/PlayerStats.gd" id="1_vbqsq"]
 [ext_resource type="Script" path="res://Items/Inventory.gd" id="2_omc8f"]
+[ext_resource type="Texture2D" uid="uid://x8vrjqjjm5i7" path="res://Player/GrimCheaper/gc_portrait.png" id="3_g2mfd"]
 
 [sub_resource type="Resource" id="Resource_rvvkq"]
 script = ExtResource("1_fgg5f")
@@ -60,6 +61,7 @@ level_bonus = 1.0
 [resource]
 script = ExtResource("1_vbqsq")
 player_name = "Grim Cheaper"
+player_portrait = ExtResource("3_g2mfd")
 hp = SubResource("Resource_ignel")
 atk = SubResource("Resource_rvvkq")
 atk_speed = SubResource("Resource_dg5rk")
