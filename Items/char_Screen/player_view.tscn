@@ -1,31 +1,180 @@
-[gd_scene load_steps=5 format=3 uid="uid://ipchlkw56jbt"]
+[gd_scene load_steps=10 format=3 uid="uid://ipchlkw56jbt"]
 
 [ext_resource type="Script" path="res://Scenes/ShopPlayerView.gd" id="1_wrr77"]
 [ext_resource type="Resource" uid="uid://bp6lo7vsrhav8" path="res://Player/grim_cheaper_stats.tres" id="2_2nvbi"]
 [ext_resource type="Texture2D" uid="uid://x8vrjqjjm5i7" path="res://Player/GrimCheaper/gc_portrait.png" id="3_08ujf"]
+[ext_resource type="Texture2D" uid="uid://dfwukuanrugjx" path="res://Items/char_Screen/plus_button1.png" id="4_33n0d"]
 [ext_resource type="PackedScene" uid="uid://dtf7qldq0jtem" path="res://Items/char_Screen/char_item_gui.tscn" id="4_j2cv7"]
+[ext_resource type="Texture2D" uid="uid://1rswg1qlqrrx" path="res://Items/char_Screen/plus_button3.png" id="5_ym0n4"]
+[ext_resource type="Texture2D" uid="uid://cpvfevb8ix83a" path="res://Items/char_Screen/plus_button2.png" id="6_kvld2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2mj2q"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_3d118"]
+font_size = 11
 
 [node name="PlayerView" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 239.0
+offset_bottom = 272.0
 size_flags_horizontal = 3
 mouse_filter = 1
 script = ExtResource("1_wrr77")
 player_stats = ExtResource("2_2nvbi")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.5
-offset_top = -127.0
-offset_right = 65.5
-offset_bottom = 3.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 145.0
 grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -61.5
+offset_right = 96.0
+offset_bottom = 25.5
 grow_vertical = 2
 texture = ExtResource("3_08ujf")
+
+[node name="Control" type="VBoxContainer" parent="Control"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -63.5
+offset_right = -9.0
+offset_bottom = 68.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LevelLabel" type="Label" parent="Control/Control"]
+offset_right = 125.0
+offset_bottom = 20.0
+text = "Level 12"
+label_settings = SubResource("LabelSettings_2mj2q")
+
+[node name="USPLabel" type="Label" parent="Control/Control"]
+offset_top = 24.0
+offset_right = 125.0
+offset_bottom = 44.0
+text = "Skill Points: 1"
+label_settings = SubResource("LabelSettings_2mj2q")
+
+[node name="Attack" type="Control" parent="Control/Control"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 48.0
+offset_right = 125.0
+offset_bottom = 72.0
+
+[node name="AddAttackLevelButton" type="TextureButton" parent="Control/Control/Attack"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = -4.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_33n0d")
+texture_pressed = ExtResource("5_ym0n4")
+texture_hover = ExtResource("6_kvld2")
+
+[node name="Label" type="Label" parent="Control/Control/Attack"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -13.0
+offset_right = 75.0
+offset_bottom = 13.0
+grow_vertical = 2
+text = "Attack:    Lvl 1"
+label_settings = SubResource("LabelSettings_3d118")
+vertical_alignment = 1
+
+[node name="Skill" type="Control" parent="Control/Control"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 76.0
+offset_right = 125.0
+offset_bottom = 100.0
+
+[node name="AddSkillLevelButton" type="TextureButton" parent="Control/Control/Skill"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = -4.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_33n0d")
+texture_pressed = ExtResource("5_ym0n4")
+texture_hover = ExtResource("6_kvld2")
+
+[node name="Label" type="Label" parent="Control/Control/Skill"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -13.0
+offset_right = 75.0
+offset_bottom = 13.0
+grow_vertical = 2
+text = "Skill:        Lvl 1"
+label_settings = SubResource("LabelSettings_3d118")
+vertical_alignment = 1
+
+[node name="Passive" type="Control" parent="Control/Control"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 104.0
+offset_right = 125.0
+offset_bottom = 128.0
+
+[node name="AddPassiveLevelButton" type="TextureButton" parent="Control/Control/Passive"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = -4.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_33n0d")
+texture_pressed = ExtResource("5_ym0n4")
+texture_hover = ExtResource("6_kvld2")
+
+[node name="Label" type="Label" parent="Control/Control/Passive"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -13.0
+offset_right = 75.0
+offset_bottom = 13.0
+grow_vertical = 2
+text = "Passive:  Lvl 1"
+label_settings = SubResource("LabelSettings_3d118")
+vertical_alignment = 1
 
 [node name="InventoryDisplay" type="GridContainer" parent="."]
 anchors_preset = 8
@@ -165,9 +314,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
-offset_top = 8.0
+offset_top = 155.0
 offset_right = -6.0
-offset_bottom = -7.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -179,4 +328,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Click to add"
 
+[connection signal="pressed" from="Control/Control/Attack/AddAttackLevelButton" to="." method="_on_add_attack_level_button_pressed"]
+[connection signal="pressed" from="Control/Control/Skill/AddSkillLevelButton" to="." method="_on_add_skill_level_button_pressed"]
+[connection signal="pressed" from="Control/Control/Passive/AddPassiveLevelButton" to="." method="_on_add_passive_level_button_pressed"]
 [connection signal="pressed" from="CandidateSelect/Button" to="." method="_on_button_pressed"]

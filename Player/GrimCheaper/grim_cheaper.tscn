@@ -32,7 +32,8 @@ player_stats = ExtResource("4_gtjjp")
 material = ExtResource("5_iyqnp")
 use_parent_material = true
 frames = ExtResource("6_0w6y5")
-animation = &"attack"
+animation = &"walk"
+playing = true
 flip_h = true
 
 [node name="SelectedPlayerArrow" type="AnimatedSprite2D" parent="AnimatedSprite"]

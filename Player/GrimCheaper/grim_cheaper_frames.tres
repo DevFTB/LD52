@@ -31,13 +31,13 @@ region = Rect2(925, 0, 185, 185)
 atlas = ExtResource("1_d4s68")
 region = Rect2(1110, 0, 185, 185)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_414p1"]
-atlas = ExtResource("2_a0vhg")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gxa3"]
 atlas = ExtResource("2_a0vhg")
 region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_414p1"]
+atlas = ExtResource("2_a0vhg")
+region = Rect2(0, 0, 128, 128)
 
 [resource]
 animations = [{
@@ -45,6 +45,11 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 10.0
+}, {
+"frames": [SubResource("AtlasTexture_7gxa3")],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }, {
 "frames": [SubResource("AtlasTexture_414p1"), SubResource("AtlasTexture_7gxa3")],
 "loop": true,

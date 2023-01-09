@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=15 format=3 uid="uid://c2y7maiuusio3"]
+[gd_resource type="Resource" load_steps=16 format=3 uid="uid://c2y7maiuusio3"]
 
 [ext_resource type="Script" path="res://Player/Stat.gd" id="1_uv1bu"]
 [ext_resource type="Script" path="res://Items/Inventory.gd" id="2_kfosy"]
 [ext_resource type="Script" path="res://Player/PlayerStats.gd" id="2_nd1oh"]
+[ext_resource type="Texture2D" uid="uid://byupeqxeairry" path="res://Player/Arboarist/ab_portrait.png" id="3_02kag"]
 
 [sub_resource type="Resource" id="Resource_fs2lm"]
 script = ExtResource("1_uv1bu")
@@ -60,6 +61,7 @@ level_bonus = 0.02
 [resource]
 script = ExtResource("2_nd1oh")
 player_name = "Player"
+player_portrait = ExtResource("3_02kag")
 hp = SubResource("Resource_v5mv7")
 atk = SubResource("Resource_fs2lm")
 atk_speed = SubResource("Resource_vxh08")

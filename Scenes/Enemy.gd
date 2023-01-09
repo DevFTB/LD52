@@ -44,12 +44,16 @@ func _process(delta):
 		pass
 
 func modify_health(modification):
+	var old_health = health
 	if not is_dead:
 		health = min(health + modification, max_hp)
 		
 		if health < 0:
 			die()
-		emit_signal("health_changed", health, modification, true)
+			
+		var difference = health - old_health
+		if difference != 0:
+			emit_signal("health_changed", health, difference, true)
 
 func die():
 	print("death")
@@ -57,6 +61,7 @@ func die():
 	$Sprite.play("dead")    
 	is_dead = true
 	disable()
+	
 	pass
 
 func enable():

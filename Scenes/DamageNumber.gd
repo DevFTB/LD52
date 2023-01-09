@@ -26,7 +26,10 @@ func start_animation(new_value):
 
 	current_tween.set_parallel(true)
 	current_tween.tween_property(self, "position", destination, animation_duration).from(starting_position)
-	current_tween.tween_property(self, "modulate", Color(Color.WHITE, 0), animation_duration).from(Color(Color.WHITE, 1))
+	if new_value > 0:
+		current_tween.tween_property(self, "modulate", Color(Color.GREEN, 0), animation_duration).from(Color(Color.WHITE, 1))
+	else:
+		current_tween.tween_property(self, "modulate", Color(Color.WHITE, 0), animation_duration).from(Color(Color.WHITE, 1))
 	current_tween.tween_callback(self.on_animation_end)
 
 func on_animation_end():

@@ -35,6 +35,10 @@ region = Rect2(1740, 0, 290, 170)
 atlas = ExtResource("1_v62y1")
 region = Rect2(2030, 0, 290, 170)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0gkv"]
+atlas = ExtResource("1_hopjt")
+region = Rect2(896, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gggs1"]
 atlas = ExtResource("1_hopjt")
 region = Rect2(512, 0, 128, 128)
@@ -50,10 +54,6 @@ region = Rect2(256, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc4wi"]
 atlas = ExtResource("1_hopjt")
 region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q0gkv"]
-atlas = ExtResource("1_hopjt")
-region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckv7k"]
 atlas = ExtResource("1_hopjt")
@@ -73,6 +73,11 @@ animations = [{
 "loop": true,
 "name": &"attack",
 "speed": 8.0
+}, {
+"frames": [SubResource("AtlasTexture_q0gkv")],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }, {
 "frames": [SubResource("AtlasTexture_gggs1"), SubResource("AtlasTexture_qtdla"), SubResource("AtlasTexture_houm3"), SubResource("AtlasTexture_cc4wi"), SubResource("AtlasTexture_q0gkv"), SubResource("AtlasTexture_ckv7k"), SubResource("AtlasTexture_pfnos"), SubResource("AtlasTexture_ogpwd")],
 "loop": true,

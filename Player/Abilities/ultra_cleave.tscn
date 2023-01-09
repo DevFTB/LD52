@@ -11,19 +11,17 @@ script = ExtResource("1_lv2es")
 position = Vector2(-84, 0)
 
 [node name="Node2D2" type="Node2D" parent="Points"]
-position = Vector2(-40, -52)
+position = Vector2(-83, -17)
 rotation = 1.0472
 
 [node name="Node2D3" type="Node2D" parent="Points"]
-position = Vector2(-40, 54)
+position = Vector2(-84, 18)
 rotation = -1.0472
 
 [node name="Node2D4" type="Node2D" parent="Points"]
-position = Vector2(-73, -31)
-rotation = 0.523599
+position = Vector2(-87, -7)
 
 [node name="Node2D5" type="Node2D" parent="Points"]
-position = Vector2(-72, 37)
-rotation = -0.523599
+position = Vector2(-87, 12)
 
 [node name="Attacks" type="Node2D" parent="."]
