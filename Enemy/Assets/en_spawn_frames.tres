@@ -1,0 +1,19 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://1uldvb3wahcg"]
+
+[ext_resource type="Texture2D" uid="uid://dvkunek62w5nc" path="res://Enemy/Assets/en_spawn/spawn_anim1.png" id="1_wdk8h"]
+[ext_resource type="Texture2D" uid="uid://b422wlrr1mqah" path="res://Enemy/Assets/en_spawn/spawn_anim2.png" id="2_ru4ub"]
+[ext_resource type="Texture2D" uid="uid://lfr1jaeqiqbu" path="res://Enemy/Assets/en_spawn/spawn_anim3.png" id="3_vr57g"]
+[ext_resource type="Texture2D" uid="uid://b5sluekqiwxbm" path="res://Enemy/Assets/en_spawn/spawn_anim4.png" id="4_5c325"]
+[ext_resource type="Texture2D" uid="uid://dxbfx2i3rexmg" path="res://Enemy/Assets/en_spawn/spawn_anim5.png" id="5_336r4"]
+[ext_resource type="Texture2D" uid="uid://chg6yguogg2px" path="res://Enemy/Assets/en_spawn/spawn_anim6.png" id="6_d6rp6"]
+[ext_resource type="Texture2D" uid="uid://cacydrcklf7o" path="res://Enemy/Assets/en_spawn/spawn_anim7.png" id="7_6xqxv"]
+[ext_resource type="Texture2D" uid="uid://b1lrdf3qlkl60" path="res://Enemy/Assets/en_spawn/spawn_anim8.png" id="8_r5a52"]
+[ext_resource type="Texture2D" uid="uid://doiibcv1pxog" path="res://Enemy/Assets/en_spawn/spawn_anim9.png" id="9_vhwx5"]
+
+[resource]
+animations = [{
+"frames": [ExtResource("1_wdk8h"), ExtResource("2_ru4ub"), ExtResource("3_vr57g"), ExtResource("4_5c325"), ExtResource("5_336r4"), ExtResource("6_d6rp6"), ExtResource("7_6xqxv"), ExtResource("8_r5a52"), ExtResource("9_vhwx5")],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]

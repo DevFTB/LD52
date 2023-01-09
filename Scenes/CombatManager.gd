@@ -9,6 +9,9 @@ signal on_arena_changed(round, zone)
 
 func _ready():
 	start_zone()
+	
+func gain_rewards(enemy_killed):
+	campaign.add_money(1 * current_zone.currency_multiplier)
 
 func start_zone():
 	for i in range(current_zone.difficulty_levels.size()):
@@ -23,6 +26,7 @@ func spawn_arena(round):
 	var arena = zs[randi() % zs.size()]
 	
 	var instance = arena.instantiate()
+	instance.combat_instance = self
 	instance.difficulty_level = current_zone.difficulty_levels[round]
 	instance.spawnable_groups = current_zone.enemies
 	

@@ -7,6 +7,8 @@ extends Node2D
 
 @onready var players  = get_tree().get_nodes_in_group("player")
 
+var combat_instance
+
 var enemies = []
 var xp_gained = 0
 
@@ -16,6 +18,7 @@ var controlled_player_index = 0
 
 signal arena_finished
 signal arena_lost
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -61,7 +64,7 @@ func spawn_enemies():
 		enemies.append_array(instance.get_children())
 		
 		for en in instance.get_children():
-			en.death.connect(on_enemy_death)
+			en.death.connect(func(): on_enemy_death(en))
 		
 		$Enemies.add_child(instance)
 	pass
@@ -131,8 +134,10 @@ func _input(event):
 			print(new_player.name)
 			
 
-func on_enemy_death():
+func on_enemy_death(enemy):
 	amount_of_dead_enemies += 1
+	
+	combat_instance.gain_rewards(enemy)
 	
 	if amount_of_dead_enemies == enemies.size():
 		end_arena()

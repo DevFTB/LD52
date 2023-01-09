@@ -29,3 +29,4 @@ shop_slot_3 = {
 3: 0.02,
 4: 0.0
 }
+currency_multiplier = 2

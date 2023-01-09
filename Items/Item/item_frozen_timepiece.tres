@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_w6wbf"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_sk3kp"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fb154"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ifr4v"]
 load_path = "res://.godot/imported/items.png-2619dfc0de3a9b8a69ac381b50c4611a.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
-atlas = SubResource("CompressedTexture2D_fb154")
+[sub_resource type="AtlasTexture" id="AtlasTexture_70bls"]
+atlas = SubResource("CompressedTexture2D_ifr4v")
 region = Rect2(128, 96, 32, 32)
 
-[sub_resource type="Resource" id="Resource_ljmog"]
+[sub_resource type="Resource" id="Resource_o8c5r"]
 script = ExtResource("3_sk3kp")
 hp = 500.0
 atk = 0.0
@@ -22,7 +22,7 @@ skill_cooldown = 28.0
 [resource]
 script = ExtResource("2_w6wbf")
 item_name = "Frozen Timepiece"
-icon = SubResource("AtlasTexture_jqar4")
+icon = SubResource("AtlasTexture_70bls")
 rarity = 3
-stats = SubResource("Resource_ljmog")
+stats = SubResource("Resource_o8c5r")
 cost = 210

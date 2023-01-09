@@ -26,12 +26,12 @@
 [ext_resource type="Resource" uid="uid://cwg8r5dpfabja" path="res://Items/Item/item_water_of_life.tres" id="19_epr2f"]
 [ext_resource type="Resource" uid="uid://d3sqdfqpsfgx2" path="res://Items/Item/item_winged_boots.tres" id="20_mmqh1"]
 
-[sub_resource type="Resource" id="Resource_iexod"]
+[sub_resource type="Resource" id="Resource_m2lna"]
 script = ExtResource("7_qdwaa")
 
 [resource]
 script = ExtResource("1_4uaqg")
 zones = [ExtResource("2_s4loq"), ExtResource("3_g5w7o"), ExtResource("4_gmiv7")]
 items = [ExtResource("1_vnmcx"), ExtResource("2_34yye"), ExtResource("3_o24a0"), ExtResource("4_kfrmf"), ExtResource("5_gkr13"), ExtResource("2_g1jym"), ExtResource("7_2lp1e"), ExtResource("8_1kv1l"), ExtResource("9_srgme"), ExtResource("10_1ye08"), ExtResource("11_g3827"), ExtResource("12_0bdmh"), ExtResource("13_c7iy4"), ExtResource("14_imseh"), ExtResource("15_l4xdm"), ExtResource("16_qe475"), ExtResource("17_0cds1"), ExtResource("18_pdmn3"), ExtResource("19_epr2f"), ExtResource("20_mmqh1")]
-stash = SubResource("Resource_iexod")
+stash = SubResource("Resource_m2lna")
 starting_money = 15

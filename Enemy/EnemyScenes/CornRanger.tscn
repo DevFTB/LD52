@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://pnpsbdlclhg2" path="res://Enemy/Assets/korn.png" id="5_5e3w0"]
 [ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_rflal"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="10_61kwo"]
-[ext_resource type="Resource" path="res://Enemy/Assets/korn_projectile.tres" id="11_4tndr"]
+[ext_resource type="Resource" uid="uid://cbv33phhs5635" path="res://Enemy/Assets/korn_projectile.tres" id="11_4tndr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
 animations = [{
