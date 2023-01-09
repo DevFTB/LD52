@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c2dw31gay8c1e"]
+
+[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileStats.gd" id="2_16aps"]
+[ext_resource type="Texture2D" uid="uid://dhw3m23je5vya" path="res://Enemy/BossAssets/potato_projectile.png" id="2_g7603"]
+
+[resource]
+script = ExtResource("2_16aps")
+damage = 100.0
+speed = 100.0
+range = 500.0
+texture = ExtResource("2_g7603")

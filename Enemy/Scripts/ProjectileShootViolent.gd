@@ -6,6 +6,8 @@ extends Node2D
 @export var attack_frequency = 0.5
 @export var max_attack_frequency = 2
 
+@export var sprite : NodePath
+
 @onready var is_exhausted = false
 @onready var is_super_mode = false
 @onready var current_attack_freq =  attack_frequency
@@ -43,6 +45,7 @@ func attack():
 			$ExhaustedTimer.start()
 		$AttackTimer.wait_time = 1.0 / max_attack_frequency
 	else:
+		get_node(sprite).play("alive")
 		$AttackTimer.wait_time = 1.0 / current_attack_freq
 		current_attack_freq += 0.2
 	$AttackTimer.start()
@@ -63,8 +66,9 @@ func get_target_position() :
 
 func check_super_mode(new_health, difference, should_display):
 	var max_hp = get_parent().get_parent().max_hp
-	if new_health <= max_hp * (3.0/10):
+	if new_health <= max_hp * (3.0/10) and new_health > 0:
 		is_super_mode = true
+		get_node(sprite).play("enraged")
 		is_exhausted = false
 		$AttackTimer.wait_time = 1.0 / max_attack_frequency
 		$AttackTimer.start()
@@ -72,6 +76,7 @@ func check_super_mode(new_health, difference, should_display):
 func exhaust():
 	if not is_super_mode:
 		is_exhausted = true
+		get_node(sprite).play("exhausted")
 		$AttackTimer.wait_time = 5
 		$AttackTimer.start()
 		current_attack_freq = attack_frequency
