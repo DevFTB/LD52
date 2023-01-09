@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cuoxh547aqkf0" path="res://Sounds/Enemy/death sound 7.wav" id="17_d6oo2"]
 [ext_resource type="AudioStream" uid="uid://cs60wu1q20f0u" path="res://Sounds/Enemy/death sound 8.wav" id="18_5ka1v"]
 [ext_resource type="AudioStream" uid="uid://duo653g2tiu0i" path="res://Sounds/Enemy/death sound 9.wav" id="19_cmxcg"]
-[ext_resource type="SpriteFrames" uid="uid://1uldvb3wahcg" path="res://Enemy/Assets/en_spawn_frames.tres" id="20_qekef"]
+[ext_resource type="SpriteFrames" path="res://Enemy/Assets/en_spawn_frames.tres" id="20_qekef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
 font_size = 36
@@ -50,7 +50,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -60,7 +59,6 @@ script = ExtResource("8_c3meo")
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="EnemyGUI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
