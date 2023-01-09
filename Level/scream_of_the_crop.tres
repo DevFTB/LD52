@@ -19,3 +19,4 @@ script = ExtResource("1_4uaqg")
 zones = [ExtResource("2_s4loq"), ExtResource("3_g5w7o"), ExtResource("4_gmiv7")]
 items = [ExtResource("1_tif35"), ExtResource("2_g1jym"), ExtResource("3_la833"), ExtResource("4_x6nom"), ExtResource("5_npncp")]
 stash = SubResource("Resource_83nts")
+starting_money = 15

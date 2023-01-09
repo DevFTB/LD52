@@ -1,0 +1,195 @@
+[gd_scene load_steps=26 format=3 uid="uid://cw60n741n5xbh"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_uxdwq"]
+[ext_resource type="Script" path="res://Scenes/HitManager.gd" id="2_mcu3c"]
+[ext_resource type="PackedScene" uid="uid://dl2ifh2mtykpq" path="res://Particles/HitImpact.tscn" id="3_2bufq"]
+[ext_resource type="Script" path="res://Enemy/Scripts/BossGUI.gd" id="4_anaig"]
+[ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jvy4g"]
+[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_b0d2p"]
+[ext_resource type="Theme" uid="uid://4qhhl5r0prfu" path="res://Enemy/BossAssets/healthbar_theme.tres" id="6_gtanp"]
+[ext_resource type="Theme" uid="uid://ct21butfrkec1" path="res://UI/UI_theme.tres" id="6_unf27"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemySoundManager.gd" id="7_qn5me"]
+[ext_resource type="AudioStream" uid="uid://f3m74mv86atu" path="res://Sounds/Enemy/enemy hit 1.wav" id="8_avc41"]
+[ext_resource type="Texture2D" uid="uid://1veonjc4ryh" path="res://Enemy/BossAssets/hp_bar_empty.png" id="8_mn5ye"]
+[ext_resource type="AudioStream" uid="uid://dnoa3vvuj2a1r" path="res://Sounds/Enemy/enemy hit 2.wav" id="9_dcx2x"]
+[ext_resource type="Texture2D" uid="uid://h4betidm3s7t" path="res://Enemy/BossAssets/hp_bar_full.png" id="9_swrmq"]
+[ext_resource type="AudioStream" uid="uid://hjjhtvrhso1a" path="res://Sounds/Enemy/enemy hit 3.wav" id="10_q4qw3"]
+[ext_resource type="AudioStream" uid="uid://c8u45ggoqxdmk" path="res://Sounds/Enemy/death sound 1.wav" id="11_dkyjj"]
+[ext_resource type="AudioStream" uid="uid://ck7aui2x8ki53" path="res://Sounds/Enemy/death sound 2.wav" id="12_1r82l"]
+[ext_resource type="AudioStream" uid="uid://cs1r0ppi64ixn" path="res://Sounds/Enemy/death sound 3.wav" id="13_5nbkq"]
+[ext_resource type="AudioStream" uid="uid://ug5r0ve2mjq6" path="res://Sounds/Enemy/death sound 4.wav" id="14_sia3j"]
+[ext_resource type="AudioStream" uid="uid://m3c5447xfkm6" path="res://Sounds/Enemy/death sound 5.wav" id="15_024r6"]
+[ext_resource type="AudioStream" uid="uid://cbbpi6rv063u3" path="res://Sounds/Enemy/death sound 6.wav" id="16_n5hur"]
+[ext_resource type="AudioStream" uid="uid://cuoxh547aqkf0" path="res://Sounds/Enemy/death sound 7.wav" id="17_6d0ka"]
+[ext_resource type="AudioStream" uid="uid://cs60wu1q20f0u" path="res://Sounds/Enemy/death sound 8.wav" id="18_ac0tl"]
+[ext_resource type="AudioStream" uid="uid://duo653g2tiu0i" path="res://Sounds/Enemy/death sound 9.wav" id="19_pofx7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgit8"]
+font_size = 36
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_635ns"]
+radius = 123.78
+height = 332.54
+
+[node name="Enemy2" type="Node2D" groups=["enemy"]]
+visible = false
+position = Vector2(0, 96)
+scale = Vector2(3, 3)
+script = ExtResource("1_uxdwq")
+max_hp = 8
+
+[node name="HitManager" type="Node2D" parent="."]
+script = ExtResource("2_mcu3c")
+
+[node name="ImpactEffect" parent="HitManager" instance=ExtResource("3_2bufq")]
+
+[node name="EnemyGUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 14.363
+script = ExtResource("4_anaig")
+health_bar = NodePath("CanvasLayer/Control/VBoxContainer/HealthBar")
+health_percentage = NodePath("CanvasLayer/Control/VBoxContainer/HealthBar/HealthPercentage")
+boss_name = NodePath("CanvasLayer/Control/VBoxContainer/HealthBar/BossName")
+metadata/_edit_use_anchors_ = true
+
+[node name="DamageNumber" type="Label" parent="EnemyGUI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = -84.0
+offset_right = 40.0
+offset_bottom = -58.0
+text = "0"
+label_settings = SubResource("LabelSettings_lgit8")
+script = ExtResource("5_jvy4g")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EnemyGUI"]
+
+[node name="Control" type="Control" parent="EnemyGUI/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_gtanp")
+value = 50.0
+rounded = true
+texture_under = ExtResource("8_mn5ye")
+texture_progress = ExtResource("9_swrmq")
+
+[node name="HealthPercentage" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -8.5
+offset_right = 0.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_unf27")
+horizontal_alignment = 1
+
+[node name="BossName" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -12.5
+offset_right = 576.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_unf27")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Pain" type="Timer" parent="EnemyGUI"]
+wait_time = 1.5
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-2, -40)
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_635ns")
+
+[node name="FlashOnHit" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("6_b0d2p")
+sprite = NodePath("")
+
+[node name="Attacks" type="Node2D" parent="."]
+
+[node name="EnemyAudioManager" type="Node2D" parent="."]
+script = ExtResource("7_qn5me")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("8_avc41")
+
+[node name="HitSound2" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("9_dcx2x")
+
+[node name="HitSound3" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("10_q4qw3")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("11_dkyjj")
+
+[node name="DeathSound2" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("12_1r82l")
+
+[node name="DeathSound3" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("13_5nbkq")
+
+[node name="DeathSound4" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("14_sia3j")
+
+[node name="DeathSound5" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("15_024r6")
+
+[node name="DeathSound6" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("16_n5hur")
+
+[node name="DeathSound7" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("17_6d0ka")
+
+[node name="DeathSound8" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("18_ac0tl")
+
+[node name="DeathSound9" type="AudioStreamPlayer2D" parent="EnemyAudioManager"]
+stream = ExtResource("19_pofx7")
+
+[connection signal="death" from="." to="EnemyAudioManager" method="_on_enemy_death"]
+[connection signal="health_changed" from="." to="HitManager" method="_on_enemy_health_changed"]
+[connection signal="health_changed" from="." to="EnemyGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
+[connection signal="health_changed" from="." to="EnemyAudioManager" method="_on_enemy_health_changed"]
+[connection signal="timeout" from="EnemyGUI/Pain" to="." method="_on_pain_timeout"]

@@ -2,10 +2,19 @@ extends Node2D
 
 @export var damage = 20
 @export var range = 300
+@export var deathDelay :float = 2 #explosion delay
+
+var _death_timer = 5
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _on_enemy_death():
+	_death_timer = Timer.new()
+	add_child(_death_timer)
+	_death_timer.timeout.connect(do_death)
+	_death_timer.set_wait_time(deathDelay)
+	_death_timer.set_one_shot(true)
+	_death_timer.start()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,5 +32,6 @@ func apply_damage(amount, range):
 	
 
 
-func _on_enemy_death():
+func do_death():
+	print("death explosion")
 	apply_damage(damage, range)

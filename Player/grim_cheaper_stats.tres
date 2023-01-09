@@ -11,7 +11,7 @@ level_bonus = 1.0
 
 [sub_resource type="Resource" id="Resource_m6nid"]
 script = ExtResource("1_fgg5f")
-base_value = 1.0
+base_value = 0.5
 level_bonus = 0.05
 
 [sub_resource type="Resource" id="Resource_r0sps"]

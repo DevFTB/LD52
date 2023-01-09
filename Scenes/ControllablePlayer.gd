@@ -13,6 +13,7 @@ extends Node2D
 @onready var atk_speed = player_stats.get_atk_speed()
 @onready var move_speed = player_stats.get_move_speed()
 
+
 var dmg_reduction = 0
 
 var direction : Vector2 = Vector2.ZERO
@@ -25,6 +26,7 @@ signal control_changed(controlled)
 signal death
 signal skill_used
 signal attack_used
+
 
 # Called when the node enters the scene tree for the first time.
 var enabled = false
@@ -49,6 +51,7 @@ func _ready():
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()
 	$AnimatedSprite.play("walk")
+
 	pass # Replace with function body.
 	
 	# start find enemy timer
@@ -77,9 +80,9 @@ func _find_enemy_timeout():
 	nearest_enemy = get_nearest_enemy()
  
 func _process(delta):
-	if enabled and not is_dead and not controlled:
-		process_ai(delta)
-	elif enabled and not is_dead and controlled:
+#	if enabled and not is_dead and not controlled:
+#		process_ai(delta)
+#	elif enabled and not is_dead and controlled:
 		position += direction.normalized() * move_speed * 100 * delta
 
 func modify_health(modification):
@@ -132,14 +135,31 @@ func get_skill_damage():
 	return player_stats.get_skill_damage(atk)
 	
 func on_anim_end():
-	
-	pass
+	if direction.x == 0 and direction.y == 0 :
+		do_walk()
+		$AnimatedSprite.stop()
+	else :
+		do_walk()
+	if direction.x < 0:
+		set_flipped_anim_h()
+	if direction.x > 0:
+		unset_flipped_anim_h()
+
+func set_flipped_anim_h():
+	if $AnimatedSprite.is_flipped_h() == false :
+		$AnimatedSprite.set_flip_h(true)
+
+func unset_flipped_anim_h():
+	if $AnimatedSprite.is_flipped_h() == true :
+		$AnimatedSprite.set_flip_h(false)
+
+func do_walk():
+	$AnimatedSprite.play("walk")
 
 func do_attack():
 	$AnimatedSprite.play("attack")
 	var new_attack = normal_attack.instantiate()
 	emit_signal("attack_used")
-	
 	new_attack.set_damage(get_attack_damage())
 	new_attack.damage_callback = on_attack_damage
 	new_attack.source_player = self
@@ -199,6 +219,8 @@ func _input(event):
 			if not event.pressed and buffer:
 				buffer = false
 				return
+			if $AnimatedSprite.is_playing() == false:
+				do_walk()
 			if event.pressed and buffer:
 				buffer= false
 			

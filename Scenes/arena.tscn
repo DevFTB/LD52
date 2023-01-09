@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ch0um0qfy57rk"]
+[gd_scene load_steps=66 format=3 uid="uid://ch0um0qfy57rk"]
 
 [ext_resource type="Script" path="res://Scenes/Arena.gd" id="1_l5hyt"]
 [ext_resource type="Resource" uid="uid://coh34xecoab8g" path="res://Level/EnemyGroups/group5.tres" id="2_7i6s6"]
@@ -45,6 +45,7 @@
 [ext_resource type="AudioStream" uid="uid://ddjxh8676c0uo" path="res://Sounds/sheep ready.wav" id="41_tcoym"]
 [ext_resource type="Script" path="res://Scenes/ArboaristSoundController.gd" id="46_jrk1k"]
 [ext_resource type="AudioStream" uid="uid://cacu63y5yuf2t" path="res://Sounds/pig skill.wav" id="47_at8tl"]
+[ext_resource type="AudioStream" uid="uid://cjk3oosg2up1m" path="res://Sounds/Music/ld52b.wav" id="48_457o3"]
 [ext_resource type="AudioStream" uid="uid://c1cl5idmsu84j" path="res://Sounds/chainsaw.wav" id="48_fxq07"]
 [ext_resource type="AudioStream" uid="uid://dt13geey6c80m" path="res://Sounds/pig ready.wav" id="51_xghdg"]
 
@@ -508,12 +509,18 @@ volume_db = 5.0
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="Players/Arboarist/ArboaristSoundController"]
 stream = ExtResource("48_fxq07")
+volume_db = 5.0
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="Players/Arboarist/ArboaristSoundController"]
 
 [node name="ReadySound" type="AudioStreamPlayer2D" parent="Players/Arboarist/ArboaristSoundController"]
 stream = ExtResource("51_xghdg")
 volume_db = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("48_457o3")
+volume_db = -6.0
+autoplay = true
 
 [connection signal="attack_used" from="Players/GrimCheaper" to="Players/GrimCheaper/GrimCheeperSound" method="_on_grim_cheaper_attack_used"]
 [connection signal="control_changed" from="Players/GrimCheaper" to="." method="_on_grim_cheaper_control_changed"]
