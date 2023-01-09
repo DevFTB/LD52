@@ -21,7 +21,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy2" instance=ExtResource("1_f56st")]
+[node name="Enemy4" instance=ExtResource("1_f56st")]
 max_hp = 1200
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]

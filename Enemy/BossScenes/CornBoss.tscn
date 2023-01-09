@@ -37,8 +37,6 @@ animation = &"alive"
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
 layout_mode = 3
-offset = null
-animation_duration = null
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")

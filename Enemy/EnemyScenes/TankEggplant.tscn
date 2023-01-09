@@ -20,7 +20,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy2" instance=ExtResource("1_7uwrw")]
+[node name="Enemy7" instance=ExtResource("1_7uwrw")]
 max_hp = 450
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
@@ -30,6 +30,12 @@ position = Vector2(-2, -41)
 scale = Vector2(0.6, 0.6)
 frames = SubResource("SpriteFrames_ue4xy")
 animation = &"alive"
+
+[node name="DamageNumber" parent="EnemyGUI" index="0"]
+layout_mode = 3
+
+[node name="HealthBar" parent="EnemyGUI" index="1"]
+layout_mode = 3
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
