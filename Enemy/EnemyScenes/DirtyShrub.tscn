@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_5oohb"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="2_8www7"]
 [ext_resource type="PackedScene" uid="uid://cbh7j3exvxli8" path="res://Enemy/AttackScenes/slowingProjectile.tscn" id="3_iibl1"]
-[ext_resource type="Resource" path="res://Enemy/Assets/shrub_projectile.tres" id="3_kuqvh"]
+[ext_resource type="Resource" uid="uid://bq7qtftbkynvj" path="res://Enemy/Assets/shrub_projectile.tres" id="3_kuqvh"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_q8k6a"]
 [ext_resource type="Texture2D" uid="uid://bg8e7ao4lvmu1" path="res://Enemy/Assets/shrubkorn.png" id="5_s0sqg"]
 [ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_0buwt"]
