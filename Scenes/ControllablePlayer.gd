@@ -135,8 +135,23 @@ func get_skill_damage():
 	return player_stats.get_skill_damage(atk)
 	
 func on_anim_end():
-	do_walk()
-	pass
+	if direction.x == 0 and direction.y == 0 :
+		do_walk()
+		$AnimatedSprite.stop()
+	else :
+		do_walk()
+	if direction.x < 0:
+		set_flipped_anim_h()
+	if direction.x > 0:
+		unset_flipped_anim_h()
+
+func set_flipped_anim_h():
+	if $AnimatedSprite.is_flipped_h() == false :
+		$AnimatedSprite.set_flip_h(true)
+
+func unset_flipped_anim_h():
+	if $AnimatedSprite.is_flipped_h() == true :
+		$AnimatedSprite.set_flip_h(false)
 
 func do_walk():
 	$AnimatedSprite.play("walk")
@@ -204,6 +219,8 @@ func _input(event):
 			if not event.pressed and buffer:
 				buffer = false
 				return
+			if $AnimatedSprite.is_playing() == false:
+				do_walk()
 			if event.pressed and buffer:
 				buffer= false
 			
