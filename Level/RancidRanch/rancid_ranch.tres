@@ -12,7 +12,7 @@
 
 [resource]
 script = ExtResource("1_buoef")
-zone_name = "Rancid Rancg"
+zone_name = "Rancid Ranch"
 enemies = [ExtResource("2_pupfr"), ExtResource("3_rgq4o"), ExtResource("4_hrtl5"), ExtResource("5_m44fd"), ExtResource("6_mcth4"), ExtResource("7_6v50a")]
 zone_scenes = [ExtResource("9_jucm8")]
 boss_group = ExtResource("1_vor8t")

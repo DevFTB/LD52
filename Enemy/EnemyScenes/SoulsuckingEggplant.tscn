@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://joihhtxfmiew"]
+[gd_scene load_steps=16 format=3 uid="uid://joihhtxfmiew"]
 
 [ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_f56st"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="2_4u4dv"]
@@ -6,7 +6,35 @@
 [ext_resource type="PackedScene" uid="uid://vgfjoagjbwu0" path="res://Enemy/AttackScenes/healingProjectile.tscn" id="3_7d5l3"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_jmtue"]
 [ext_resource type="Texture2D" uid="uid://dj2vkkwm42he5" path="res://Enemy/Assets/lavendarkorn.png" id="5_7unvk"]
-[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_st0q2"]
+[ext_resource type="Texture2D" uid="uid://cgm062vp3fclm" path="res://Enemy/Assets/deathSpriteSheet.png" id="7_mqhar"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5kxp"]
+atlas = ExtResource("7_mqhar")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42mf8"]
+atlas = ExtResource("7_mqhar")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hks1c"]
+atlas = ExtResource("7_mqhar")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l861k"]
+atlas = ExtResource("7_mqhar")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twlwc"]
+atlas = ExtResource("7_mqhar")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6fw5"]
+atlas = ExtResource("7_mqhar")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd4f1"]
+atlas = ExtResource("7_mqhar")
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
 animations = [{
@@ -15,10 +43,10 @@ animations = [{
 "name": &"alive",
 "speed": 5.0
 }, {
-"frames": [ExtResource("6_st0q2")],
-"loop": true,
+"frames": [SubResource("AtlasTexture_l5kxp"), SubResource("AtlasTexture_42mf8"), SubResource("AtlasTexture_hks1c"), SubResource("AtlasTexture_l861k"), SubResource("AtlasTexture_twlwc"), SubResource("AtlasTexture_k6fw5"), SubResource("AtlasTexture_sd4f1")],
+"loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Enemy4" instance=ExtResource("1_f56st")]

@@ -1,12 +1,40 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf21dvyk6qugq"]
+[gd_scene load_steps=16 format=3 uid="uid://bf21dvyk6qugq"]
 
 [ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_u5u4g"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="2_aomld"]
 [ext_resource type="Resource" uid="uid://b3t0ehvbos3da" path="res://Enemy/Assets/purplerose_projectile.tres" id="3_pl3sn"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_e543j"]
 [ext_resource type="Texture2D" uid="uid://cxk6grvy3764u" path="res://Enemy/Assets/purplerosekorn.png" id="5_eeqw3"]
-[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_orfk6"]
+[ext_resource type="Texture2D" uid="uid://cgm062vp3fclm" path="res://Enemy/Assets/deathSpriteSheet.png" id="6_35x5k"]
 [ext_resource type="Script" path="res://Enemy/Scripts/AOEDeathExplosion.gd" id="7_4uiwf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edkrm"]
+atlas = ExtResource("6_35x5k")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7guq"]
+atlas = ExtResource("6_35x5k")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma5up"]
+atlas = ExtResource("6_35x5k")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_177cn"]
+atlas = ExtResource("6_35x5k")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blpe1"]
+atlas = ExtResource("6_35x5k")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa3c4"]
+atlas = ExtResource("6_35x5k")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0dtv"]
+atlas = ExtResource("6_35x5k")
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
 animations = [{
@@ -15,10 +43,10 @@ animations = [{
 "name": &"alive",
 "speed": 5.0
 }, {
-"frames": [ExtResource("6_orfk6")],
-"loop": true,
+"frames": [SubResource("AtlasTexture_edkrm"), SubResource("AtlasTexture_k7guq"), SubResource("AtlasTexture_ma5up"), SubResource("AtlasTexture_177cn"), SubResource("AtlasTexture_blpe1"), SubResource("AtlasTexture_wa3c4"), SubResource("AtlasTexture_j0dtv")],
+"loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Enemy7" instance=ExtResource("1_u5u4g")]

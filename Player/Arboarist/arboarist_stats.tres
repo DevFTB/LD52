@@ -5,55 +5,55 @@
 [ext_resource type="Script" path="res://Player/PlayerStats.gd" id="2_nd1oh"]
 [ext_resource type="Texture2D" uid="uid://byupeqxeairry" path="res://Player/Arboarist/ab_portrait.png" id="3_02kag"]
 
-[sub_resource type="Resource" id="Resource_fs2lm"]
+[sub_resource type="Resource" id="Resource_xjw5m"]
 script = ExtResource("1_uv1bu")
 base_value = 5.0
 level_bonus = 1.0
 
-[sub_resource type="Resource" id="Resource_vxh08"]
+[sub_resource type="Resource" id="Resource_naun3"]
 script = ExtResource("1_uv1bu")
 base_value = 0.5
 level_bonus = 0.05
 
-[sub_resource type="Resource" id="Resource_qywa1"]
+[sub_resource type="Resource" id="Resource_qawuj"]
 script = ExtResource("1_uv1bu")
 base_value = 1.0
 level_bonus = 0.1
 
-[sub_resource type="Resource" id="Resource_v5mv7"]
+[sub_resource type="Resource" id="Resource_gh2di"]
 script = ExtResource("1_uv1bu")
 base_value = 20.0
 level_bonus = 2.0
 
-[sub_resource type="Resource" id="Resource_jrcyo"]
+[sub_resource type="Resource" id="Resource_i2oex"]
 script = ExtResource("2_kfosy")
 
-[sub_resource type="Resource" id="Resource_8223m"]
+[sub_resource type="Resource" id="Resource_guwln"]
 script = ExtResource("1_uv1bu")
 base_value = 4.0
 level_bonus = 1.0
 
-[sub_resource type="Resource" id="Resource_tbqgq"]
+[sub_resource type="Resource" id="Resource_38fop"]
 script = ExtResource("1_uv1bu")
 base_value = 1.0
 level_bonus = 0.05
 
-[sub_resource type="Resource" id="Resource_xckjw"]
+[sub_resource type="Resource" id="Resource_igjef"]
 script = ExtResource("1_uv1bu")
 base_value = 0.1
 level_bonus = 0.02
 
-[sub_resource type="Resource" id="Resource_ykyx2"]
+[sub_resource type="Resource" id="Resource_mab1v"]
 script = ExtResource("1_uv1bu")
 base_value = 25.0
 level_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_me4gs"]
+[sub_resource type="Resource" id="Resource_vjfqp"]
 script = ExtResource("1_uv1bu")
 base_value = 5.0
 level_bonus = 0.5
 
-[sub_resource type="Resource" id="Resource_15pc4"]
+[sub_resource type="Resource" id="Resource_pwvni"]
 script = ExtResource("1_uv1bu")
 base_value = 0.4
 level_bonus = 0.02
@@ -62,15 +62,15 @@ level_bonus = 0.02
 script = ExtResource("2_nd1oh")
 player_name = "Player"
 player_portrait = ExtResource("3_02kag")
-hp = SubResource("Resource_v5mv7")
-atk = SubResource("Resource_fs2lm")
-atk_speed = SubResource("Resource_vxh08")
-move_speed = SubResource("Resource_tbqgq")
-attack_scaling = SubResource("Resource_qywa1")
-skill_scaling = SubResource("Resource_15pc4")
-skill_cooldown = SubResource("Resource_ykyx2")
-skill_duration = SubResource("Resource_me4gs")
-passive = SubResource("Resource_xckjw")
-inventory = SubResource("Resource_jrcyo")
-inventory_size = SubResource("Resource_8223m")
+hp = SubResource("Resource_gh2di")
+atk = SubResource("Resource_xjw5m")
+atk_speed = SubResource("Resource_naun3")
+move_speed = SubResource("Resource_38fop")
+attack_scaling = SubResource("Resource_qawuj")
+skill_scaling = SubResource("Resource_pwvni")
+skill_cooldown = SubResource("Resource_mab1v")
+skill_duration = SubResource("Resource_vjfqp")
+passive = SubResource("Resource_igjef")
+inventory = SubResource("Resource_i2oex")
+inventory_size = SubResource("Resource_guwln")
 level_log_base = 1.5
