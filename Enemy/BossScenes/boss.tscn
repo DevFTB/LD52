@@ -99,7 +99,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -122,7 +121,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -132,7 +130,6 @@ grow_vertical = 2
 [node name="HealthBar" type="TextureProgressBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
 material = ExtResource("6_6u113")
 use_parent_material = true
-layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("6_gtanp")
 value = 50.0
@@ -143,7 +140,6 @@ script = ExtResource("9_t5nqb")
 
 [node name="HealthPercentage" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -159,7 +155,6 @@ theme = ExtResource("6_unf27")
 horizontal_alignment = 1
 
 [node name="BossName" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

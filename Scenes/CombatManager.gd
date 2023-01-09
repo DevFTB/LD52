@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var campaign : GameProgression
+@export var campaign : GameProgression 
 @onready var current_zone = campaign.get_current_zone()
 var current_round = -1
 var arenas = []
@@ -75,10 +75,10 @@ func start_next_arena():
 	current_round += 1
 	arenas[current_round].start_arena()
 	emit_signal("on_arena_changed", current_round, current_zone)
-	$RoundWin.play()
 	pass
 
 func on_arena_finished(round):
+	$RoundWin.play()
 	switch_arena()
 	pass
 

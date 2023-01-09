@@ -4,7 +4,7 @@ class_name PlayerStats
 @export var player_name = "Player"
 @export var player_portrait : Texture2D
 var level = 1
-var unused_skill_points = 5
+var unused_skill_points = 0
 var xp = 0
 
 @export var hp : Stat = null
@@ -26,7 +26,8 @@ var passive_level = 1
 @export var inventory = Inventory.new()
 
 @export var inventory_size : Stat = null
-
+func get_inventory_size():
+	return inventory_size.get_effective_value(level)
 func add_item(item):
 	if can_add_to_inventory():
 		inventory.add(item)
@@ -59,14 +60,13 @@ func can_add_to_inventory():
 	return inventory.get_amount_stored() < inventory_size.get_effective_value(get_level())
 	pass
 
-var item_accumulate = func(accum, item, items):
-	var subtotal = BuffStats.new()
-	for i in range(items[item]):
-		subtotal.stack_with(item)
-	return subtotal.stack_with(accum)
-
 func recalculate_item_bonuses():
-	var total = inventory.items.keys().reduce(func(accum, item): item_accumulate.call(accum, item, inventory.items))
+	var total = ItemBuffStats.new()
+	
+	for item in inventory.items:
+		var amount = inventory.items[item]
+		for i in range(amount):
+			total = total.stack_with(item.stats)
 	
 	hp.apply_item_modifier(total.hp) 
 	atk.apply_item_modifier(total.atk)

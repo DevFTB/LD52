@@ -30,6 +30,9 @@ func _ready():
 	player.death.connect(on_death)
 	$Details/Abilities/Attack/AttackCDBar.visible = false
 	$Details/Abilities/Skill/SkillCDBar.visible = false
+	
+	update_health(player.health, 0 , false)
+	update_hp(player.hp)
 	pass
 	
 func _process(delta):

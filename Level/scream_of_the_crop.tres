@@ -22,12 +22,12 @@
 [ext_resource type="Resource" uid="uid://cwg8r5dpfabja" path="res://Items/Item/item_peer_reviewed_essay.tres" id="19_epr2f"]
 [ext_resource type="Resource" uid="uid://cpntqt12nq7tp" path="res://Items/Item/item_winged_boot.tres" id="20_mmqh1"]
 
-[sub_resource type="Resource" id="Resource_wn3j2"]
+[sub_resource type="Resource" id="Resource_syu7c"]
 script = ExtResource("7_qdwaa")
 
 [resource]
 script = ExtResource("1_4uaqg")
 zones = [ExtResource("2_s4loq"), ExtResource("3_g5w7o"), ExtResource("4_gmiv7")]
 items = [ExtResource("1_vnmcx"), ExtResource("2_34yye"), ExtResource("8_1kv1l"), ExtResource("9_srgme"), ExtResource("17_0cds1"), ExtResource("3_o24a0"), ExtResource("7_2lp1e"), ExtResource("8_1kv1l"), ExtResource("9_srgme"), ExtResource("19_epr2f"), ExtResource("11_g3827"), ExtResource("4_kfrmf"), ExtResource("13_gvvr6"), ExtResource("14_imseh"), ExtResource("15_l4xdm"), ExtResource("17_grkbs"), ExtResource("17_grkbs"), ExtResource("20_mmqh1"), ExtResource("2_g1jym"), ExtResource("20_mmqh1")]
-stash = SubResource("Resource_wn3j2")
+stash = SubResource("Resource_syu7c")
 starting_money = 15

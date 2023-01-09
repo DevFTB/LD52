@@ -59,7 +59,7 @@ animations = [{
 visible = true
 scale = Vector2(1, 1)
 enemy_name = "Corn-o-cope-ia"
-max_hp = 4000
+max_hp = 2500
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
 material = ExtResource("2_lq30u")
@@ -70,8 +70,17 @@ frames = SubResource("SpriteFrames_wxrlx")
 animation = &"alive"
 playing = true
 
-[node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 3
+[node name="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control" index="0"]
+layout_mode = 1
+
+[node name="HealthBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="HealthPercentage" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="0"]
+layout_mode = 1
+
+[node name="BossName" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar" index="1"]
+layout_mode = 1
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")

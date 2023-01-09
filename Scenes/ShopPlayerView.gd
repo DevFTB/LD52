@@ -13,7 +13,7 @@ func update():
 	$Control/Control/Attack/Label.text =  	"Attack:  " + str(player_stats.attack_level)
 	$Control/Control/Skill/Label.text =  	"Skill:   " + str(player_stats.skill_level)
 	$Control/Control/Passive/Label.text =  	"Passive: " + str(player_stats.passive_level)
-	
+	$BagLabel.text = "Bag: " + str(player_stats.inventory.get_amount_stored()) + " / " + str(player_stats.get_inventory_size())
 	var can_upgrade = player_stats.unused_skill_points > 0
 	$Control/Control/Attack/AddAttackLevelButton.visible = can_upgrade
 	$Control/Control/Skill/AddSkillLevelButton.visible = can_upgrade

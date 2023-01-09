@@ -26,14 +26,13 @@ script = ExtResource("1_wrr77")
 player_stats = ExtResource("2_2nvbi")
 
 [node name="Control" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 145.0
 grow_horizontal = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -45,7 +44,6 @@ grow_vertical = 2
 texture = ExtResource("3_08ujf")
 
 [node name="Control" type="VBoxContainer" parent="Control"]
-layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -59,21 +57,19 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="LevelLabel" type="Label" parent="Control/Control"]
-layout_mode = 2
 text = "Level 12"
 label_settings = SubResource("LabelSettings_2mj2q")
 
 [node name="USPLabel" type="Label" parent="Control/Control"]
-layout_mode = 2
 text = "Skill Points: 1"
 label_settings = SubResource("LabelSettings_2mj2q")
 
 [node name="Attack" type="Control" parent="Control/Control"]
 custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 0
 
 [node name="AddAttackLevelButton" type="TextureButton" parent="Control/Control/Attack"]
-layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -90,7 +86,6 @@ texture_pressed = ExtResource("5_ym0n4")
 texture_hover = ExtResource("6_kvld2")
 
 [node name="Label" type="Label" parent="Control/Control/Attack"]
-layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -104,10 +99,10 @@ vertical_alignment = 1
 
 [node name="Skill" type="Control" parent="Control/Control"]
 custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 0
 
 [node name="AddSkillLevelButton" type="TextureButton" parent="Control/Control/Skill"]
-layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -124,7 +119,6 @@ texture_pressed = ExtResource("5_ym0n4")
 texture_hover = ExtResource("6_kvld2")
 
 [node name="Label" type="Label" parent="Control/Control/Skill"]
-layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -138,10 +132,10 @@ vertical_alignment = 1
 
 [node name="Passive" type="Control" parent="Control/Control"]
 custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 0
 
 [node name="AddPassiveLevelButton" type="TextureButton" parent="Control/Control/Passive"]
-layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -158,7 +152,6 @@ texture_pressed = ExtResource("5_ym0n4")
 texture_hover = ExtResource("6_kvld2")
 
 [node name="Label" type="Label" parent="Control/Control/Passive"]
-layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -171,16 +164,15 @@ label_settings = SubResource("LabelSettings_3d118")
 vertical_alignment = 1
 
 [node name="InventoryDisplay" type="GridContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = 19.0
+offset_top = 12.0
 offset_right = 112.0
-offset_bottom = 115.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
@@ -188,82 +180,71 @@ theme_override_constants/v_separation = 0
 columns = 7
 
 [node name="Control" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control2" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control3" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control4" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control5" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control6" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control7" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control8" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control9" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control10" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control11" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control12" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control13" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control14" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control15" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control16" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control17" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control18" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control19" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control20" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
 
 [node name="Control21" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-layout_mode = 2
+
+[node name="BagLabel" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -25.0
+offset_right = 70.0
+offset_bottom = 1.0
+grow_vertical = 0
+text = "Bag: 0/6"
 
 [node name="CandidateSelect" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
-offset_top = 155.0
+offset_top = 148.0
 offset_right = -6.0
-offset_bottom = -20.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="CandidateSelect"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
