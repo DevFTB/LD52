@@ -1,0 +1,33 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://5yu85co5vkr6"]
+
+[ext_resource type="Texture2D" uid="uid://ct8pojymkhu7w" path="res://Items/item_shop/scales_blink.png" id="1_lnplm"]
+[ext_resource type="Texture2D" uid="uid://cwbgulhu8yesq" path="res://Items/item_shop/scales_still.png" id="2_nbq0u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f77jo"]
+atlas = ExtResource("1_lnplm")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfxfu"]
+atlas = ExtResource("1_lnplm")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgx7a"]
+atlas = ExtResource("1_lnplm")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugkbn"]
+atlas = ExtResource("1_lnplm")
+region = Rect2(768, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [SubResource("AtlasTexture_f77jo"), SubResource("AtlasTexture_hfxfu"), SubResource("AtlasTexture_rgx7a"), SubResource("AtlasTexture_ugkbn")],
+"loop": true,
+"name": &"blink",
+"speed": 5.0
+}, {
+"frames": [ExtResource("2_nbq0u")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -1,0 +1,421 @@
+[gd_scene load_steps=30 format=3 uid="uid://cwi8pxuq5etne"]
+
+[ext_resource type="Script" path="res://Scenes/ItemShop.gd" id="1_amji2"]
+[ext_resource type="Texture2D" uid="uid://jfpvwlqrgbgp" path="res://Items/item_shop/item_shop_bg.png" id="1_jjkfc"]
+[ext_resource type="Texture2D" uid="uid://dbtcnjk6g35p3" path="res://Items/item_shop_mockup.png" id="1_uovsa"]
+[ext_resource type="Texture2D" uid="uid://bxmddp6bddpcx" path="res://Items/item_shop/item_shop_cashbar.png" id="2_fnyvg"]
+[ext_resource type="Resource" uid="uid://vi5h2br0s7qu" path="res://Level/scream_of_the_crop.tres" id="2_qx5cf"]
+[ext_resource type="Texture2D" uid="uid://cc8yrqsodujv5" path="res://Items/item_shop/item_shop_counter.png" id="4_6ry8p"]
+[ext_resource type="SpriteFrames" uid="uid://5yu85co5vkr6" path="res://Items/item_shop/scales_sprite_frames.tres" id="7_o0qkb"]
+[ext_resource type="Texture2D" uid="uid://cl2dq2ki7aajm" path="res://Items/item_shop/item_shop_chacter_button-sheet.png" id="7_xc4dn"]
+[ext_resource type="Texture2D" uid="uid://0gbk0jn682m5" path="res://Items/item_shop/item_shop_next_stage_button1.png" id="8_n2e53"]
+[ext_resource type="Script" path="res://Scenes/ScalesShopPerson.gd" id="8_ykn3b"]
+[ext_resource type="Texture2D" uid="uid://bobsgul8k7xdb" path="res://Items/item_shop/item_shop_next_stage_button3.png" id="9_55xr3"]
+[ext_resource type="Texture2D" uid="uid://q4kudkijjeuf" path="res://Items/item_shop/item_shop_next_stage_button2.png" id="10_lweei"]
+[ext_resource type="PackedScene" uid="uid://q457e32bd7kd" path="res://Items/item_shop/buy_button.tscn" id="13_gt15q"]
+[ext_resource type="Script" path="res://Scenes/StashGUI.gd" id="13_spbq6"]
+[ext_resource type="Texture2D" uid="uid://b1pgyv4k58md" path="res://Items/item_shop/reset_shop_button1.png" id="14_tnwo6"]
+[ext_resource type="Texture2D" uid="uid://2xfj4btxfkmn" path="res://Items/item_shop/reset_shop_button3.png" id="15_x72jh"]
+[ext_resource type="Texture2D" uid="uid://bq4eino81ouxl" path="res://Items/item_shop/reset_shop_button2.png" id="16_qjm4o"]
+[ext_resource type="Texture2D" uid="uid://cpyea8qqqojrr" path="res://Items/item_shop/item_shop_reset_button_cost.png" id="17_11rv8"]
+[ext_resource type="Texture2D" uid="uid://dxb6nhl2nl65u" path="res://Items/item_shop/text_box.png" id="18_27y1b"]
+[ext_resource type="Script" path="res://Scenes/HoverTooltip.gd" id="19_foh7c"]
+[ext_resource type="Texture2D" uid="uid://ssdhis7pxbca" path="res://Items/item_shop/tool_tip.png" id="20_4dui6"]
+[ext_resource type="PackedScene" uid="uid://ipchlkw56jbt" path="res://Items/char_Screen/player_view.tscn" id="22_801xu"]
+[ext_resource type="Resource" uid="uid://dwydefp8cr4lw" path="res://Player/the_sheepard_stats.tres" id="26_h2x05"]
+[ext_resource type="Resource" uid="uid://c2y7maiuusio3" path="res://Player/Arboarist/arboarist_stats.tres" id="27_8ox7v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jx6hc"]
+font_size = 24
+font_color = Color(0.462745, 1, 0.372549, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c422n"]
+atlas = ExtResource("7_xc4dn")
+region = Rect2(0, 0, 168, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wycr"]
+atlas = ExtResource("7_xc4dn")
+region = Rect2(336, 0, 168, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vourc"]
+atlas = ExtResource("7_xc4dn")
+region = Rect2(168, 0, 168, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0666r"]
+font_size = 28
+font_color = Color(0.713726, 0.756863, 0.552941, 1)
+
+[node name="ItemShop" type="Node" node_paths=PackedStringArray("slot1", "slot2", "slot3", "currency_label", "stash_gui") groups=["shop"]]
+script = ExtResource("1_amji2")
+game_progression = ExtResource("2_qx5cf")
+slot1 = NodePath("ItemShopGUI/Shop/HBoxContainer/Control")
+slot2 = NodePath("ItemShopGUI/Shop/HBoxContainer/Control2")
+slot3 = NodePath("ItemShopGUI/Shop/HBoxContainer/Control3")
+currency_label = NodePath("ItemShopGUI/LeftButtons/Currency/CurrencyLabel")
+stash_gui = NodePath("ItemShopGUI/StashTable/StashItems")
+
+[node name="ItemShopGUI" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jjkfc")
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="ItemShopGUI"]
+position = Vector2(197, 245)
+scale = Vector2(2, 2)
+frames = ExtResource("7_o0qkb")
+animation = &"blink"
+script = ExtResource("8_ykn3b")
+min_blink_period = 5.0
+max_blink_period = 9.0
+
+[node name="TextureRect2" type="TextureRect" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -330.0
+offset_right = 577.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_6ry8p")
+
+[node name="ItemShopMockup" type="Sprite2D" parent="ItemShopGUI"]
+visible = false
+position = Vector2(576, 352)
+texture = ExtResource("1_uovsa")
+
+[node name="LeftButtons" type="Control" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -219.0
+offset_right = 192.0
+offset_bottom = -95.0
+grow_vertical = 0
+
+[node name="Currency" type="TextureRect" parent="ItemShopGUI/LeftButtons"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 48.0
+texture = ExtResource("2_fnyvg")
+
+[node name="CurrencyLabel" type="Label" parent="ItemShopGUI/LeftButtons/Currency"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -11.0
+offset_right = -4.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "1200"
+label_settings = SubResource("LabelSettings_jx6hc")
+horizontal_alignment = 1
+
+[node name="NextStageButton" type="TextureButton" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -213.0
+offset_right = -38.0
+offset_bottom = -85.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("8_n2e53")
+texture_pressed = ExtResource("9_55xr3")
+texture_hover = ExtResource("10_lweei")
+
+[node name="StashTable" type="Control" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -372.0
+offset_top = -229.0
+offset_right = 396.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StashItems" type="Control" parent="ItemShopGUI/StashTable"]
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_right = 6.0
+offset_bottom = 136.0
+grow_horizontal = 2
+script = ExtResource("13_spbq6")
+
+[node name="TopRow" type="HBoxContainer" parent="ItemShopGUI/StashTable/StashItems"]
+custom_minimum_size = Vector2(640, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_right = 336.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="BottomRow" type="HBoxContainer" parent="ItemShopGUI/StashTable/StashItems"]
+custom_minimum_size = Vector2(640, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -64.0
+offset_right = 272.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CharacterButton" type="TextureButton" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -63.0
+offset_right = 74.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_c422n")
+texture_pressed = SubResource("AtlasTexture_6wycr")
+texture_hover = SubResource("AtlasTexture_vourc")
+
+[node name="Shop" type="Control" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -727.0
+offset_top = 77.0
+offset_right = -88.0
+offset_bottom = 258.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemShopGUI/Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
+layout_mode = 2
+tooltip_path = NodePath("../../../../Tooltip")
+
+[node name="Control2" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
+layout_mode = 2
+tooltip_path = NodePath("../../../../Tooltip")
+slot = 1
+
+[node name="Control3" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
+layout_mode = 2
+tooltip_path = NodePath("../../../../Tooltip")
+slot = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemShopGUI/Shop"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -1.0
+offset_right = 70.0
+offset_bottom = -1.0
+grow_vertical = 2
+alignment = 1
+
+[node name="RefreshButton" type="TextureButton" parent="ItemShopGUI/Shop/VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = ExtResource("14_tnwo6")
+texture_pressed = ExtResource("15_x72jh")
+texture_hover = ExtResource("16_qjm4o")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="ItemShopGUI/Shop/VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("17_11rv8")
+
+[node name="Label" type="Label" parent="ItemShopGUI/Shop/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = 46.0
+grow_horizontal = 0
+text = "2
+"
+label_settings = SubResource("LabelSettings_0666r")
+
+[node name="TextBox" type="Control" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -105.0
+offset_right = 432.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ItemShopGUI/TextBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("18_27y1b")
+
+[node name="TextBox2" type="Control" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -106.0
+offset_right = 432.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ItemShopGUI/TextBox2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("18_27y1b")
+
+[node name="Label" type="Label" parent="ItemShopGUI/TextBox2"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 44.0
+offset_right = 75.0
+offset_bottom = 67.0
+text = "Your mum gey"
+
+[node name="CharacterScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = -250.0
+offset_right = 401.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="CharacterScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_4dui6")
+ignore_texture_size = true
+
+[node name="PlayerViews" type="HBoxContainer" parent="CharacterScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = -138.0
+offset_right = 369.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerView" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
+layout_mode = 2
+
+[node name="PlayerView2" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
+layout_mode = 2
+player_stats = ExtResource("26_h2x05")
+
+[node name="PlayerView3" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
+layout_mode = 2
+player_stats = ExtResource("27_8ox7v")
+
+[node name="Tooltip" type="Control" parent="." groups=["tooltip"]]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 1
+script = ExtResource("19_foh7c")
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("20_4dui6")
+
+[node name="Name" type="Label" parent="Tooltip"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "Item Name"
+
+[node name="Label" type="Label" parent="Tooltip"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 47.0
+offset_right = 70.0
+offset_bottom = 99.0
+text = "+2 Atk
++2 CDR"
+
+[connection signal="pressed" from="ItemShopGUI/CharacterButton" to="." method="_on_character_button_pressed"]
+[connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control" to="." method="_on_buy_pressed"]
+[connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control2" to="." method="_on_buy_pressed"]
+[connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control3" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="ItemShopGUI/Shop/VBoxContainer/RefreshButton" to="." method="_on_refresh_button_pressed"]

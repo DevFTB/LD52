@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dp58sk7mh6kxg"]
+
+[ext_resource type="Script" path="res://Level/Zone.gd" id="1_obxwr"]
+
+[resource]
+script = ExtResource("1_obxwr")
+zone_name = "Zone"
+enemies = null
+zone_scenes = null
+difficulty_levels = null
+shop_slot_1 = {
+0: 1.0,
+1: 0.0,
+2: 0.0,
+3: 0.0,
+4: 0.0
+}
+shop_slot_2 = {
+0: 0.9,
+1: 0.1,
+2: 0,
+3: 0,
+4: 0
+}
+shop_slot_3 = {
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+}
