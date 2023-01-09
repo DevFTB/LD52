@@ -1,17 +1,37 @@
-[gd_resource type="Resource" load_steps=8 format=3]
+[gd_resource type="Resource" load_steps=27 format=3 uid="uid://clqbxc4onvl5x"]
 
 [ext_resource type="Script" path="res://Level/GameProgression.gd" id="1_4uaqg"]
+[ext_resource type="Resource" uid="uid://bwasd4ps82hnm" path="res://Items/Item/item_boomstick.tres" id="1_vnmcx"]
+[ext_resource type="Resource" uid="uid://ctpaon6fssk76" path="res://Items/Item/item_daisy_crown.tres" id="2_34yye"]
+[ext_resource type="Resource" uid="uid://bgp0wbq3rbux2" path="res://Items/Item/item_frozen_timepiece.tres" id="2_g1jym"]
 [ext_resource type="Resource" uid="uid://dp58sk7mh6kxg" path="res://Level/Zones/fertile_fields.tres" id="2_s4loq"]
 [ext_resource type="Resource" uid="uid://h2coi30ifsqp" path="res://Level/Zones/rancid_ranch.tres" id="3_g5w7o"]
+[ext_resource type="Resource" uid="uid://dyyfc1dxk8ehm" path="res://Items/Item/item_dreamy_bouquet.tres" id="3_o24a0"]
 [ext_resource type="Resource" uid="uid://bifpfksqm2hg4" path="res://Level/Zones/nightmare_nursery.tres" id="4_gmiv7"]
+[ext_resource type="Resource" uid="uid://bcof15tislqvx" path="res://Items/Item/item_emergency_food.tres" id="4_kfrmf"]
+[ext_resource type="Resource" uid="uid://dl43wcdxujo3k" path="res://Items/Item/item_fast_as_fuk_boi.tres" id="5_gkr13"]
+[ext_resource type="Resource" uid="uid://fcu07hf8j0mo" path="res://Items/Item/item_gardening_manual.tres" id="7_2lp1e"]
 [ext_resource type="Script" path="res://Items/Inventory.gd" id="7_qdwaa"]
+[ext_resource type="Resource" uid="uid://b4ickese6384v" path="res://Items/Item/item_meaning_of_life.tres" id="8_1kv1l"]
+[ext_resource type="Resource" uid="uid://davo2rjt01kgt" path="res://Items/Item/item_onsen_ticket.tres" id="9_srgme"]
+[ext_resource type="Resource" uid="uid://d0jfebr7yjaiq" path="res://Items/Item/item_peer_review_essay.tres" id="10_1ye08"]
+[ext_resource type="Resource" uid="uid://ul7xw2ss4us3" path="res://Items/Item/item_pitchfork.tres" id="11_g3827"]
+[ext_resource type="Resource" uid="uid://bdwydbbciwrov" path="res://Items/Item/item_protective_glasses.tres" id="12_0bdmh"]
+[ext_resource type="Resource" uid="uid://2goohodnyax4" path="res://Items/Item/item_ruby_crown.tres" id="13_c7iy4"]
+[ext_resource type="Resource" uid="uid://28xcdjsemg7r" path="res://Items/Item/item_shiny_sharpener.tres" id="14_imseh"]
+[ext_resource type="Resource" uid="uid://c5w86jwoa5wa2" path="res://Items/Item/item_spare_tools.tres" id="15_l4xdm"]
+[ext_resource type="Resource" uid="uid://dnqhfbgg8b0fe" path="res://Items/Item/item_sturdy_boots.tres" id="16_qe475"]
+[ext_resource type="Resource" uid="uid://cbe487yc4r8qg" path="res://Items/Item/item_thick_glove.tres" id="17_0cds1"]
+[ext_resource type="Resource" uid="uid://cpntqt12nq7tp" path="res://Items/Item/item_trusty_herbicide.tres" id="18_pdmn3"]
+[ext_resource type="Resource" uid="uid://cwg8r5dpfabja" path="res://Items/Item/item_water_of_life.tres" id="19_epr2f"]
+[ext_resource type="Resource" uid="uid://d3sqdfqpsfgx2" path="res://Items/Item/item_winged_boots.tres" id="20_mmqh1"]
 
-[sub_resource type="Resource" id="Resource_83nts"]
+[sub_resource type="Resource" id="Resource_iexod"]
 script = ExtResource("7_qdwaa")
 
 [resource]
 script = ExtResource("1_4uaqg")
 zones = [ExtResource("2_s4loq"), ExtResource("3_g5w7o"), ExtResource("4_gmiv7")]
-items = []
-stash = SubResource("Resource_83nts")
+items = [ExtResource("1_vnmcx"), ExtResource("2_34yye"), ExtResource("3_o24a0"), ExtResource("4_kfrmf"), ExtResource("5_gkr13"), ExtResource("2_g1jym"), ExtResource("7_2lp1e"), ExtResource("8_1kv1l"), ExtResource("9_srgme"), ExtResource("10_1ye08"), ExtResource("11_g3827"), ExtResource("12_0bdmh"), ExtResource("13_c7iy4"), ExtResource("14_imseh"), ExtResource("15_l4xdm"), ExtResource("16_qe475"), ExtResource("17_0cds1"), ExtResource("18_pdmn3"), ExtResource("19_epr2f"), ExtResource("20_mmqh1")]
+stash = SubResource("Resource_iexod")
 starting_money = 15

@@ -1,14 +1,16 @@
 [gd_resource type="Resource" load_steps=6 format=3 uid="uid://ctpaon6fssk76"]
 
-[ext_resource type="Texture2D" uid="uid://casgcgwhawukl" path="res://Items/items.png" id="1_sbnfx"]
 [ext_resource type="Script" path="res://Items/Item.gd" id="1_ypxjv"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_puxyt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yym8y"]
-atlas = ExtResource("1_sbnfx")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x8cns"]
+load_path = "res://.godot/imported/items.png-2619dfc0de3a9b8a69ac381b50c4611a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwjaw"]
+atlas = SubResource("CompressedTexture2D_x8cns")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="Resource" id="Resource_vhkbq"]
+[sub_resource type="Resource" id="Resource_pbuga"]
 script = ExtResource("3_puxyt")
 hp = 25.0
 atk = 0.0
@@ -20,7 +22,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("1_ypxjv")
 item_name = "Daisy Crown"
-icon = SubResource("AtlasTexture_yym8y")
+icon = SubResource("AtlasTexture_uwjaw")
 rarity = 0
-stats = SubResource("Resource_vhkbq")
+stats = SubResource("Resource_pbuga")
 cost = 5

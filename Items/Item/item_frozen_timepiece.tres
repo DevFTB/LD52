@@ -21,7 +21,7 @@ skill_cooldown = 28.0
 
 [resource]
 script = ExtResource("2_w6wbf")
-item_name = "Pitchfork"
+item_name = "Frozen Timepiece"
 icon = SubResource("AtlasTexture_jqar4")
 rarity = 3
 stats = SubResource("Resource_ljmog")
