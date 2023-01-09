@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://frpu5fqt6h4j"]
 
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileStats.gd" id="1_sl7mb"]
-[ext_resource type="Texture2D" uid="uid://d053fjmqpv0gu" path="res://Enemy/Assets/korn_projectile.png" id="2_dxfoe"]
+[ext_resource type="Texture2D" uid="uid://qmgfhnyr4iq1" path="res://Enemy/BossAssets/bat_projectile.png" id="2_h777m"]
 
 [resource]
 script = ExtResource("1_sl7mb")
 damage = 1.0
 speed = 100.0
 range = 1000.0
-texture = ExtResource("2_dxfoe")
+texture = ExtResource("2_h777m")

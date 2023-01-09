@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://casgcgwhawukl"
-path="res://.godot/imported/items.png-2619dfc0de3a9b8a69ac381b50c4611a.ctex"
+uid="uid://dhw3m23je5vya"
+path="res://.godot/imported/potato_projectile.png-cb5d21bb01c17c0e4a8804f18b732622.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/items.png"
-dest_files=["res://.godot/imported/items.png-2619dfc0de3a9b8a69ac381b50c4611a.ctex"]
+source_file="res://Enemy/BossAssets/potato_projectile.png"
+dest_files=["res://.godot/imported/potato_projectile.png-cb5d21bb01c17c0e4a8804f18b732622.ctex"]
 
 [params]
 
