@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4br5mpbuhdtt"]
+
+[ext_resource type="PackedScene" uid="uid://rm6lo278byg1" path="res://Level/EnemyGroups/4corngroup.tscn" id="1_q38ft"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="2_hil7i"]
+
+[resource]
+script = ExtResource("2_hil7i")
+enemy_scene = ExtResource("1_q38ft")
+number_of_enemies = 2
+difficulty_level = 6

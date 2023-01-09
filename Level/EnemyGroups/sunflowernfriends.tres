@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://by6ac4qxx4fqu"]
+
+[ext_resource type="PackedScene" uid="uid://l5n6v5a5uk0m" path="res://Level/EnemyGroups/sunflowernfriends.tscn" id="1_dr6co"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_iwtuo"]
+
+[resource]
+script = ExtResource("1_iwtuo")
+enemy_scene = ExtResource("1_dr6co")
+number_of_enemies = 2
+difficulty_level = 6

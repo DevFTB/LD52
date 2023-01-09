@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://3fe8aje30h3c"]
+
+[ext_resource type="PackedScene" uid="uid://bvu5uxctxwyb4" path="res://Level/EnemyGroups/1eggplant2pumpkin.tscn" id="1_hnco1"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_k4q8w"]
+
+[resource]
+script = ExtResource("1_k4q8w")
+enemy_scene = ExtResource("1_hnco1")
+number_of_enemies = 2
+difficulty_level = 6

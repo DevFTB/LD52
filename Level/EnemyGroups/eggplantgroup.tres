@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b64j3ai0p01wj"]
+
+[ext_resource type="PackedScene" uid="uid://ckbg4oc3t3f3k" path="res://Level/EnemyGroups/eggplantgroup.tscn" id="1_48nj2"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_ndg17"]
+
+[resource]
+script = ExtResource("1_ndg17")
+enemy_scene = ExtResource("1_48nj2")
+number_of_enemies = 2
+difficulty_level = 6

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://1h6yhr2idu3g"]
+
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_bk2ri"]
+[ext_resource type="PackedScene" uid="uid://coulxlvhyujb5" path="res://Level/EnemyGroups/4Shrubs.tscn" id="1_jlr43"]
+
+[resource]
+script = ExtResource("1_bk2ri")
+enemy_scene = ExtResource("1_jlr43")
+number_of_enemies = 2
+difficulty_level = 6

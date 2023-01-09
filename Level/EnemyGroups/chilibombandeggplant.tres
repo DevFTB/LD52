@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://mo3t4etwoint"]
+
+[ext_resource type="PackedScene" uid="uid://qullv1wxb30g" path="res://Level/EnemyGroups/chilibombandeggplant.tscn" id="1_7v7kq"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_nye2b"]
+
+[resource]
+script = ExtResource("1_nye2b")
+enemy_scene = ExtResource("1_7v7kq")
+number_of_enemies = 2
+difficulty_level = 6

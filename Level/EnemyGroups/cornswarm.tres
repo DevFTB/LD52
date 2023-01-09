@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://i3n5y0ugs4pc"]
+
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_2fjp7"]
+[ext_resource type="PackedScene" uid="uid://mdgyecbys7kd" path="res://Level/EnemyGroups/cornswarm.tscn" id="1_epr43"]
+
+[resource]
+script = ExtResource("1_2fjp7")
+enemy_scene = ExtResource("1_epr43")
+number_of_enemies = 2
+difficulty_level = 6

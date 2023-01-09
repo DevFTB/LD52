@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d0bjaghcekvby"]
+
+[ext_resource type="PackedScene" uid="uid://fwgwqetnhqoo" path="res://Level/EnemyGroups/mushroomspraygroup.tscn" id="1_bkewb"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_ukqyy"]
+
+[resource]
+script = ExtResource("1_ukqyy")
+enemy_scene = ExtResource("1_bkewb")
+number_of_enemies = 2
+difficulty_level = 6

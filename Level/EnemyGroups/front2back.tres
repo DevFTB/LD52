@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c6s0fkfk54nqr"]
+
+[ext_resource type="PackedScene" uid="uid://cryapouvcuyj7" path="res://Level/EnemyGroups/front2back.tscn" id="1_hvwsk"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyGroup.gd" id="1_lsagj"]
+
+[resource]
+script = ExtResource("1_lsagj")
+enemy_scene = ExtResource("1_hvwsk")
+number_of_enemies = 4
+difficulty_level = 6

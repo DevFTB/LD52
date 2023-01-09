@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://rm6lo278byg1"]
+
+[ext_resource type="PackedScene" uid="uid://xa57avbolc3p" path="res://Enemy/BossScenes/CornBoss.tscn" id="1_rdj4t"]
+
+[node name="group1" type="Node2D"]
+position = Vector2(-37, 1)
+
+[node name="Enemy2" parent="." instance=ExtResource("1_rdj4t")]
+visible = true
+position = Vector2(20, 88)
