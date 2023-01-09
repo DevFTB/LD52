@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Enemy/Scripts/BossGUI.gd" id="4_anaig"]
 [ext_resource type="Script" path="res://Scenes/DamageNumber.gd" id="5_jvy4g"]
 [ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="6_b0d2p"]
-[ext_resource type="Theme" uid="uid://4qhhl5r0prfu" path="res://Enemy/BossAssets/healthbar_theme.tres" id="6_gtanp"]
+[ext_resource type="Theme" uid="uid://chfnev2av5hq" path="res://Enemy/BossAssets/healthbar_theme.tres" id="6_gtanp"]
 [ext_resource type="Theme" uid="uid://ct21butfrkec1" path="res://UI/UI_theme.tres" id="6_unf27"]
 [ext_resource type="Script" path="res://Enemy/Scripts/EnemySoundManager.gd" id="7_qn5me"]
 [ext_resource type="AudioStream" uid="uid://f3m74mv86atu" path="res://Sounds/Enemy/enemy hit 1.wav" id="8_avc41"]
@@ -35,7 +35,6 @@ height = 332.54
 
 [node name="Enemy2" type="Node2D" groups=["enemy"]]
 visible = false
-position = Vector2(0, 96)
 scale = Vector2(3, 3)
 script = ExtResource("1_uxdwq")
 max_hp = 8
@@ -58,7 +57,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
@@ -81,7 +79,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EnemyGUI/CanvasLayer/Control"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -89,7 +86,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
+offset_left = 274.0
+offset_right = 878.0
+offset_bottom = 60.0
 size_flags_horizontal = 4
 theme = ExtResource("6_gtanp")
 value = 50.0
@@ -99,7 +98,6 @@ texture_progress = ExtResource("9_swrmq")
 
 [node name="HealthPercentage" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -115,7 +113,6 @@ theme = ExtResource("6_unf27")
 horizontal_alignment = 1
 
 [node name="BossName" type="Label" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer/HealthBar"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
