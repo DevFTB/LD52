@@ -49,19 +49,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageNumber" type="Label" parent="EnemyGUI"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_top = -84.0
 offset_right = 40.0
 offset_bottom = -58.0
 text = "0"
 label_settings = SubResource("LabelSettings_lgit8")
 script = ExtResource("8_c3meo")
-offset = null
-animation_duration = null
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="EnemyGUI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

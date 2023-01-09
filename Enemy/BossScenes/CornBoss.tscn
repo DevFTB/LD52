@@ -1,17 +1,50 @@
-[gd_scene load_steps=10 format=3 uid="uid://xa57avbolc3p"]
+[gd_scene load_steps=19 format=3 uid="uid://xa57avbolc3p"]
 
 [ext_resource type="PackedScene" uid="uid://cw60n741n5xbh" path="res://Enemy/BossScenes/boss.tscn" id="1_vqlsb"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="2_lq30u"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="2_mori0"]
 [ext_resource type="Resource" uid="uid://cljm6gj3jjpk2" path="res://Enemy/BossAssets/kornboss_projectile.tres" id="3_6mme6"]
 [ext_resource type="Texture2D" uid="uid://dt1kuyc05u7tj" path="res://Enemy/BossAssets/corn_boss.png" id="3_8b42h"]
+[ext_resource type="Texture2D" uid="uid://t730r46qn3tc" path="res://Enemy/BossAssets/sprite_sheet_corncopia.png" id="4_v6v8d"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShootCone.gd" id="4_wd67q"]
 [ext_resource type="Texture2D" uid="uid://bvr50uoh6un2l" path="res://Enemy/BossAssets/corn_boss_DED.png" id="4_wnh3x"]
 [ext_resource type="Resource" uid="uid://bjbl7nvw24ran" path="res://Enemy/BossAssets/kornboss_aoe_projectile.tres" id="5_xvvlp"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vn75"]
+atlas = ExtResource("4_v6v8d")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xcln"]
+atlas = ExtResource("4_v6v8d")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23bvl"]
+atlas = ExtResource("4_v6v8d")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4adw"]
+atlas = ExtResource("4_v6v8d")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nrun"]
+atlas = ExtResource("4_v6v8d")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2clmb"]
+atlas = ExtResource("4_v6v8d")
+region = Rect2(3072, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uftv"]
+atlas = ExtResource("4_v6v8d")
+region = Rect2(3584, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47byj"]
+atlas = ExtResource("4_v6v8d")
+region = Rect2(512, 0, 512, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxrlx"]
 animations = [{
-"frames": [ExtResource("3_8b42h")],
+"frames": [ExtResource("3_8b42h"), SubResource("AtlasTexture_5vn75"), SubResource("AtlasTexture_4xcln"), SubResource("AtlasTexture_23bvl"), SubResource("AtlasTexture_f4adw"), SubResource("AtlasTexture_3nrun"), SubResource("AtlasTexture_2clmb"), SubResource("AtlasTexture_4uftv"), SubResource("AtlasTexture_47byj")],
 "loop": true,
 "name": &"alive",
 "speed": 5.0
@@ -34,6 +67,7 @@ position = Vector2(-2, -41)
 scale = Vector2(0.6, 0.6)
 frames = SubResource("SpriteFrames_wxrlx")
 animation = &"alive"
+playing = true
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
 layout_mode = 3
