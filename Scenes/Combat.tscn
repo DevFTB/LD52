@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhkuvtiux4tx1"]
+[gd_scene load_steps=23 format=3 uid="uid://dhkuvtiux4tx1"]
 
 [ext_resource type="Script" path="res://Scenes/CombatManager.gd" id="1_bxrym"]
-[ext_resource type="Resource" uid="uid://clqbxc4onvl5x" path="res://Level/scream_of_the_crop.tres" id="2_i8kis"]
 [ext_resource type="PackedScene" uid="uid://b02pf55ugd8qu" path="res://Player/GrimCheaper/grim_cheaper.tscn" id="3_qvlhy"]
 [ext_resource type="PackedScene" uid="uid://c5wxpr4ntdxom" path="res://Player/the_sheepard.tscn" id="4_nnji7"]
 [ext_resource type="PackedScene" uid="uid://iw425p5lff88" path="res://Player/Arboarist/arboarist.tscn" id="5_yklqs"]
@@ -106,7 +105,6 @@ _data = {
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_bxrym")
-campaign = ExtResource("2_i8kis")
 
 [node name="Arenas" type="Node2D" parent="."]
 
