@@ -66,7 +66,7 @@ func modify_health(modification):
 
 func die():
 	emit_signal("death")
-	$Sprite.play("dead")    
+	$Sprite.play("dead") 
 	is_dead = true
 	disable()
 	

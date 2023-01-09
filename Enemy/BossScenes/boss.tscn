@@ -130,6 +130,9 @@ grow_vertical = 2
 [node name="HealthBar" type="TextureProgressBar" parent="EnemyGUI/CanvasLayer/Control/VBoxContainer"]
 material = ExtResource("6_6u113")
 use_parent_material = true
+offset_left = 274.0
+offset_right = 878.0
+offset_bottom = 60.0
 size_flags_horizontal = 4
 theme = ExtResource("6_gtanp")
 value = 50.0

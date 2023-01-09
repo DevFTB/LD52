@@ -77,7 +77,7 @@ func start_next_arena():
 	emit_signal("on_arena_changed", current_round, current_zone)
 	pass
 
-func on_arena_finished(round):
+func on_arena_finished(round): 
 	$RoundWin.play()
 	switch_arena()
 	pass

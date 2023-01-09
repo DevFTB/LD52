@@ -1,11 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://d21vuwtjxm2rw"]
+[gd_scene load_steps=15 format=3 uid="uid://d21vuwtjxm2rw"]
 
 [ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_7uwrw"]
 [ext_resource type="Script" path="res://Enemy/Scripts/EnemyCleaveAttack.gd" id="2_drqha"]
 [ext_resource type="Resource" uid="uid://dwl8t1kbij4g0" path="res://Enemy/Assets/eggplant_cleave.tres" id="3_o4adb"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_25iuw"]
+[ext_resource type="Texture2D" uid="uid://cgm062vp3fclm" path="res://Enemy/Assets/deathSpriteSheet.png" id="4_yf42x"]
 [ext_resource type="Texture2D" uid="uid://c0xfffdthbr35" path="res://Enemy/Assets/eggkorn.png" id="5_j07j7"]
-[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_8qldd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcn2p"]
+atlas = ExtResource("4_yf42x")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wadf5"]
+atlas = ExtResource("4_yf42x")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gpfi"]
+atlas = ExtResource("4_yf42x")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvvk1"]
+atlas = ExtResource("4_yf42x")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_012qa"]
+atlas = ExtResource("4_yf42x")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mch2"]
+atlas = ExtResource("4_yf42x")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6ckp"]
+atlas = ExtResource("4_yf42x")
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ue4xy"]
 animations = [{
@@ -14,10 +42,10 @@ animations = [{
 "name": &"alive",
 "speed": 5.0
 }, {
-"frames": [ExtResource("6_8qldd")],
-"loop": true,
+"frames": [SubResource("AtlasTexture_hcn2p"), SubResource("AtlasTexture_wadf5"), SubResource("AtlasTexture_6gpfi"), SubResource("AtlasTexture_bvvk1"), SubResource("AtlasTexture_012qa"), SubResource("AtlasTexture_0mch2"), SubResource("AtlasTexture_r6ckp")],
+"loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Enemy7" instance=ExtResource("1_7uwrw")]
@@ -30,12 +58,6 @@ position = Vector2(-2, -41)
 scale = Vector2(0.6, 0.6)
 frames = SubResource("SpriteFrames_ue4xy")
 animation = &"alive"
-
-[node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 3
-
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 3
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")

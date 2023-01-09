@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b000mhbd6rw2f"]
+[gd_scene load_steps=16 format=3 uid="uid://b000mhbd6rw2f"]
 
 [ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_5oohb"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="2_8www7"]
@@ -6,7 +6,35 @@
 [ext_resource type="Resource" uid="uid://bq7qtftbkynvj" path="res://Enemy/Assets/shrub_projectile.tres" id="3_kuqvh"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_q8k6a"]
 [ext_resource type="Texture2D" uid="uid://bg8e7ao4lvmu1" path="res://Enemy/Assets/shrubkorn.png" id="5_s0sqg"]
-[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_0buwt"]
+[ext_resource type="Texture2D" uid="uid://cgm062vp3fclm" path="res://Enemy/Assets/deathSpriteSheet.png" id="7_cqxxp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_137e1"]
+atlas = ExtResource("7_cqxxp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87v3j"]
+atlas = ExtResource("7_cqxxp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfmlj"]
+atlas = ExtResource("7_cqxxp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1duic"]
+atlas = ExtResource("7_cqxxp")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0ksg"]
+atlas = ExtResource("7_cqxxp")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvruw"]
+atlas = ExtResource("7_cqxxp")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abokf"]
+atlas = ExtResource("7_cqxxp")
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
 animations = [{
@@ -15,20 +43,16 @@ animations = [{
 "name": &"alive",
 "speed": 5.0
 }, {
-"frames": [ExtResource("6_0buwt")],
-"loop": true,
+"frames": [SubResource("AtlasTexture_137e1"), SubResource("AtlasTexture_87v3j"), SubResource("AtlasTexture_lfmlj"), SubResource("AtlasTexture_1duic"), SubResource("AtlasTexture_h0ksg"), SubResource("AtlasTexture_qvruw"), SubResource("AtlasTexture_abokf")],
+"loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Enemy" instance=ExtResource("1_5oohb")]
 max_hp = 200
 
-[node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 3
-
 [node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
