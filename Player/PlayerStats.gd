@@ -62,7 +62,7 @@ func recalculate_item_bonuses():
 
 @export var level_log_base = 1.5
 func get_level() -> int:
-	return floor(log(xp)/log(level_log_base))
+	return floor(log(xp + 1)/log(level_log_base))
 
 func gain_xp(xp):
 	var current_level = get_level()

@@ -19,6 +19,7 @@ var is_dead = false
 var enabled = false
 
 signal health_changed(new_health, difference, should_display)
+signal enable_changed(enabled)
 signal death
 
 var can_attack = []
@@ -31,7 +32,6 @@ func _ready():
 		can_attack.append(true)
 		$Attacks.get_child(child).get_node("AttackTimer").timeout.connect(func(): enable_attack(child))
 	
-
 	pass # Replace with function body.
 func enable_attack(index):
 	can_attack[index] = true
@@ -60,10 +60,12 @@ func die():
 
 func enable():
 	enabled = true
+	emit_signal("enable_changed", enabled)
 	pass
 	
 func disable():
 	enabled = false
+	emit_signal("enable_changed", enabled)
 	pass
 
 func _on_pain_timeout():

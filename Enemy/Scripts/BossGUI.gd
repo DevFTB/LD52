@@ -7,12 +7,13 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CanvasLayer.visible = false
 	get_node(boss_name).text = get_parent().enemy_name
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
 
 func _on_health_changed(new_health, difference, should_display):
 	if should_display:
@@ -24,3 +25,8 @@ func _on_health_changed(new_health, difference, should_display):
 	get_node(health_percentage).text = str(round((new_health/max_health) * 100)) + "%"
 
 
+
+
+func _on_enemy_2_enable_changed(enabled):
+	$CanvasLayer.visible = enabled
+	pass # Replace with function body.

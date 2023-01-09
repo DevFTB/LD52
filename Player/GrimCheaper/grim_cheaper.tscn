@@ -1,0 +1,113 @@
+[gd_scene load_steps=18 format=3 uid="uid://b02pf55ugd8qu"]
+
+[ext_resource type="Script" path="res://Scenes/GrimCheaper.gd" id="1_pxi04"]
+[ext_resource type="PackedScene" uid="uid://bq32vdiv30t2u" path="res://Player/Abilities/cleave.tscn" id="2_8htio"]
+[ext_resource type="PackedScene" uid="uid://cqivytgoalyta" path="res://Player/Abilities/ultra_cleave.tscn" id="3_ul1bh"]
+[ext_resource type="Resource" uid="uid://bp6lo7vsrhav8" path="res://Player/grim_cheaper_stats.tres" id="4_gtjjp"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="5_iyqnp"]
+[ext_resource type="SpriteFrames" uid="uid://6xd720ibxlu0" path="res://Player/GrimCheaper/grim_cheaper_frames.tres" id="6_0w6y5"]
+[ext_resource type="SpriteFrames" uid="uid://cqqhtmsf7jtyc" path="res://Player/UI/player_selected_arrow_frames.tres" id="7_5q5al"]
+[ext_resource type="Script" path="res://Scenes/SelectedPlayerArrow.gd" id="8_hx7sj"]
+[ext_resource type="Script" path="res://Scenes/CharacterGUI.gd" id="9_4flb4"]
+[ext_resource type="Script" path="res://Scenes/FlashOnHit.gd" id="10_lgdst"]
+[ext_resource type="Script" path="res://Scenes/GrimCheeperSounds.gd" id="11_mhm0j"]
+[ext_resource type="AudioStream" uid="uid://cx2b68t84i237" path="res://Sounds/slice 1.wav" id="12_dltgw"]
+[ext_resource type="AudioStream" uid="uid://dklk8npeopwmr" path="res://Sounds/slice 2.wav" id="13_wnv5u"]
+[ext_resource type="AudioStream" uid="uid://3xra0dscbnmm" path="res://Sounds/slice 3.wav" id="14_5mjkd"]
+[ext_resource type="AudioStream" uid="uid://bxu8ku4d4dj6f" path="res://Sounds/super slice.wav" id="15_rohqv"]
+[ext_resource type="AudioStream" uid="uid://baltx1qynm02d" path="res://Sounds/chicken ready.wav" id="16_3xeq2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61i3l"]
+radius = 38.0
+height = 102.0
+
+[node name="GrimCheaper" type="Node2D" groups=["player"]]
+texture_filter = 1
+script = ExtResource("1_pxi04")
+normal_attack = ExtResource("2_8htio")
+skill = ExtResource("3_ul1bh")
+player_stats = ExtResource("4_gtjjp")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = ExtResource("5_iyqnp")
+use_parent_material = true
+frames = ExtResource("6_0w6y5")
+animation = &"attack"
+flip_h = true
+
+[node name="SelectedPlayerArrow" type="AnimatedSprite2D" parent="AnimatedSprite"]
+visible = false
+texture_filter = 1
+position = Vector2(1, -69)
+frames = ExtResource("7_5q5al")
+playing = true
+script = ExtResource("8_hx7sj")
+
+[node name="CharacterGUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -53.0
+offset_top = 62.0
+offset_right = 50.237
+offset_bottom = 76.363
+script = ExtResource("9_4flb4")
+
+[node name="HealthBar" type="ProgressBar" parent="CharacterGUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.14441e-05
+offset_bottom = 12.637
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_61i3l")
+
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="SkillTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FlashOnHit" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("10_lgdst")
+sprite = NodePath("../AnimatedSprite")
+
+[node name="GrimCheeperSound" type="Node2D" parent="."]
+script = ExtResource("11_mhm0j")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
+stream = ExtResource("12_dltgw")
+
+[node name="AttackSound2" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
+stream = ExtResource("13_wnv5u")
+
+[node name="AttackSound3" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
+stream = ExtResource("14_5mjkd")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
+
+[node name="SkillSound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
+stream = ExtResource("15_rohqv")
+
+[node name="ReadySound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
+stream = ExtResource("16_3xeq2")
+
+[connection signal="attack_used" from="." to="GrimCheeperSound" method="_on_grim_cheaper_attack_used"]
+[connection signal="control_changed" from="." to="AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]
+[connection signal="control_changed" from="." to="GrimCheeperSound" method="_on_grim_cheaper_control_changed"]
+[connection signal="death" from="." to="GrimCheeperSound" method="_on_grim_cheaper_death"]
+[connection signal="health_changed" from="." to="CharacterGUI" method="_on_health_changed"]
+[connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
+[connection signal="skill_used" from="." to="GrimCheeperSound" method="_on_grim_cheaper_skill_used"]
+[connection signal="stats_changed" from="." to="CharacterGUI" method="_on_grim_cheaper_stats_changed"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

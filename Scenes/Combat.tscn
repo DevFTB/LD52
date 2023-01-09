@@ -1,0 +1,153 @@
+[gd_scene load_steps=19 format=3 uid="uid://dhkuvtiux4tx1"]
+
+[ext_resource type="Script" path="res://Scenes/CombatManager.gd" id="1_bxrym"]
+[ext_resource type="Resource" uid="uid://vi5h2br0s7qu" path="res://Level/scream_of_the_crop.tres" id="2_i8kis"]
+[ext_resource type="PackedScene" uid="uid://b02pf55ugd8qu" path="res://Player/GrimCheaper/grim_cheaper.tscn" id="3_qvlhy"]
+[ext_resource type="PackedScene" uid="uid://c5wxpr4ntdxom" path="res://Player/the_sheepard.tscn" id="4_nnji7"]
+[ext_resource type="PackedScene" uid="uid://iw425p5lff88" path="res://Player/Arboarist/arboarist.tscn" id="5_yklqs"]
+[ext_resource type="PackedScene" uid="uid://bs50o0b1v3s5r" path="res://Player/UI/BottomPlayerGUI.tscn" id="7_n6x56"]
+[ext_resource type="Texture2D" uid="uid://bakk28guwmqm0" path="res://Player/Sheepard/sp_portrait.png" id="8_288w5"]
+[ext_resource type="Texture2D" uid="uid://dfyuuo8mdnc20" path="res://Player/UI/portrait_cover_sp.png" id="9_37yot"]
+[ext_resource type="Texture2D" uid="uid://ctpxc31vgbh67" path="res://Player/Sheepard/sheep attack.png" id="10_b6bur"]
+[ext_resource type="Texture2D" uid="uid://gqtvjrm66sh" path="res://Player/Sheepard/sheep skill.png" id="11_l6vma"]
+[ext_resource type="Texture2D" uid="uid://byupeqxeairry" path="res://Player/Arboarist/ab_portrait.png" id="12_xknwm"]
+[ext_resource type="Texture2D" uid="uid://d4l61rxco2req" path="res://Player/UI/portrait_cover_ab.png" id="13_3n0ay"]
+[ext_resource type="Texture2D" uid="uid://rjuko74ssr4o" path="res://Player/Arboarist/pig attack.png" id="14_akems"]
+[ext_resource type="Texture2D" uid="uid://w0cv7hlnj4rn" path="res://Player/Arboarist/Pig Skill.png" id="15_4y8ua"]
+[ext_resource type="Texture2D" uid="uid://raiiw8pyxs54" path="res://Level/UI/Banner.png" id="15_7mke0"]
+[ext_resource type="AudioStream" uid="uid://cjk3oosg2up1m" path="res://Sounds/Music/ld52b.wav" id="15_r3sid"]
+[ext_resource type="Script" path="res://Scenes/LevelName.gd" id="16_8kn7c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ungtp"]
+font_size = 24
+font_color = Color(0.698039, 1, 0.717647, 1)
+
+[node name="Combat" type="Node2D"]
+script = ExtResource("1_bxrym")
+campaign = ExtResource("2_i8kis")
+
+[node name="Arenas" type="Node2D" parent="."]
+
+[node name="Players" type="Node2D" parent="Arenas"]
+y_sort_enabled = true
+
+[node name="GrimCheaper" parent="Arenas/Players" instance=ExtResource("3_qvlhy")]
+position = Vector2(1256, 494)
+
+[node name="TheSheepard" parent="Arenas/Players" instance=ExtResource("4_nnji7")]
+position = Vector2(1280, 338)
+
+[node name="Arboarist" parent="Arenas/Players" instance=ExtResource("5_yklqs")]
+position = Vector2(1288, 148)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerGUI2" type="Control" parent="CanvasLayer/GUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -337.0
+offset_top = -106.0
+offset_right = 337.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/PlayerGUI2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0666667, 0.0313726, 0.396078)
+
+[node name="PlayerGUI" type="HBoxContainer" parent="CanvasLayer/GUI/PlayerGUI2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("7_n6x56")]
+layout_mode = 2
+player_path = NodePath("../../../../../Arenas/Players/GrimCheaper")
+
+[node name="Control4" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Control2" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("7_n6x56")]
+layout_mode = 2
+player_path = NodePath("../../../../../Arenas/Players/TheSheepard")
+player_icon = ExtResource("8_288w5")
+player_border = ExtResource("9_37yot")
+attack_icon = ExtResource("10_b6bur")
+skill_icon = ExtResource("11_l6vma")
+
+[node name="Control5" type="Control" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Control3" parent="CanvasLayer/GUI/PlayerGUI2/PlayerGUI" instance=ExtResource("7_n6x56")]
+layout_mode = 2
+player_path = NodePath("../../../../../Arenas/Players/Arboarist")
+player_icon = ExtResource("12_xknwm")
+player_border = ExtResource("13_3n0ay")
+attack_icon = ExtResource("14_akems")
+skill_icon = ExtResource("15_4y8ua")
+
+[node name="Banner" type="TextureRect" parent="CanvasLayer/GUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -219.5
+offset_right = 219.5
+offset_bottom = 48.0
+grow_horizontal = 2
+texture = ExtResource("15_7mke0")
+
+[node name="LevelName" type="Label" parent="CanvasLayer/GUI/Banner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.5
+offset_top = -24.5
+offset_right = 198.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fertile Field 1"
+label_settings = SubResource("LabelSettings_ungtp")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("16_8kn7c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_r3sid")
+volume_db = -6.0
+autoplay = true
+
+[connection signal="on_arena_changed" from="." to="CanvasLayer/GUI/Banner/LevelName" method="_on_combat_on_arena_changed"]

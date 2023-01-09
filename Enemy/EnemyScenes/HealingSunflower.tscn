@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmxx8wf4jf6fs"]
 
 [ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_xg7fb"]
+[ext_resource type="Texture2D" uid="uid://b5aghamoc5h6e" path="res://Enemy/Assets/sunflower.png" id="4_578gs"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_klilr"]
-[ext_resource type="Texture2D" uid="uid://c2ukhurkkq77d" path="res://Enemy/Assets/sunkorn.png" id="5_86pxd"]
 [ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_hphm2"]
 [ext_resource type="Script" path="res://Enemy/Scripts/AOEHeal.gd" id="10_2t7ue"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tlmlp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2imp1"]
 animations = [{
-"frames": [ExtResource("5_86pxd")],
+"frames": [ExtResource("4_578gs")],
 "loop": true,
 "name": &"alive",
 "speed": 5.0
@@ -40,5 +40,5 @@ material = ExtResource("4_klilr")
 use_parent_material = true
 position = Vector2(-2, -41)
 scale = Vector2(0.6, 0.6)
-frames = SubResource("SpriteFrames_tlmlp")
-animation = &"alive"
+frames = SubResource("SpriteFrames_2imp1")
+animation = &"dead"

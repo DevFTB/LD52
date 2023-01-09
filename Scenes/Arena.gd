@@ -13,14 +13,10 @@ var xp_gained = 0
 var amount_of_dead_enemies = 0
 
 var controlled_player_index = 0
+
+signal arena_finished
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_arena()
-	
-	for player in players:
-		player.death.connect(func(): on_player_death(player))
-
-	players[controlled_player_index].enable_control()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,20 +24,29 @@ func _process(delta):
 	pass
 
 func start_arena():
+	for player in players:
+		player.death.connect(func(): on_player_death(player))
+		
 	$LevelStart.play("LevelStart")
+	
+	players[controlled_player_index].enable_control()
 	pass
 
 func end_arena():
 	var total_xp = enemies.reduce(func(accum,en): return accum + en.xp_on_death, 0)
 	for player in players:
 		player.player_stats.gain_xp(total_xp)
+		player.disable_control()
+		
+		
+	emit_signal("arena_finished")
 		
 	# move to next arena
 	
 func walk_on_players(duration):
 	var players = get_tree().get_nodes_in_group("player")
 	for player in players:
-		player.walk_on(level_size.x, 100, duration)
+		player.walk_on(global_position.x + level_size.x, duration)
 
 func spawn_enemies():
 	var enemy_groups = select_enemy_groups(difficulty_level)
