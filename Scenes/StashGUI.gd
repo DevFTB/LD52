@@ -18,7 +18,20 @@ func update(inventory: Inventory):
 		if row % 2 == 0:
 			$TopRow.get_child(row / 2).set_item(item, amount)
 		else:
-			$BottomRow.get_child(row - 1 / 2).set_item(item, amount)
+			$BottomRow.get_child((row - 1 )/ 2).set_item(item, amount)
 		
 		row += 1
+	
+	while row < 2 * row_amount:
+		if row % 2 == 0:
+			$TopRow.get_child(row / 2).clear()
+		else:
+			$BottomRow.get_child((row - 1) / 2).clear()
+		row += 1
 	pass
+
+func set_char_mode(char_mode):
+	for child in $TopRow.get_children():
+		child.char_mode = char_mode
+	for child in $BottomRow.get_children():
+		child.char_mode = char_mode

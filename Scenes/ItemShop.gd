@@ -6,6 +6,9 @@ extends Node
 @export var slot3 : Control
 @export var currency_label : Label
 @export var stash_gui: Control
+
+var candidate_item = null
+
 func _ready():
 	regenerate_shop()
 	update_gui()
@@ -65,3 +68,40 @@ func _on_buy_pressed(item, slot):
 				
 				update_gui()
 	pass # Replace with function body.
+
+func update_player_views():
+	for view in $CharacterScreen/PlayerViews.get_children():
+		view.update()
+
+func _on_character_button_pressed():
+	$CharacterScreen.visible = not $CharacterScreen.visible
+	stash_gui.set_char_mode($CharacterScreen.visible)
+	pass # Replace with function body.
+
+func set_player_candidate_item(item: Item):
+	candidate_item = item
+	for view in $CharacterScreen/PlayerViews.get_children():
+		view.enable_candidate_mode()
+	pass
+
+func use_candidate(player_stats):
+	if candidate_item != null:
+		player_stats.inventory.add(candidate_item)
+		game_progression.stash.remove(candidate_item)
+		
+		update_gui()
+		
+	for view in $CharacterScreen/PlayerViews.get_children():
+		view.disable_candidate_mode()
+		
+	candidate_item = null
+		
+func remove_item_from_player(player_stats: PlayerStats, item: Item):
+	player_stats.inventory.remove(item)
+	game_progression.stash.add(item)
+	update_gui()
+	update_player_views()
+	
+func _input(event):
+	if event.is_action_pressed("deselect") and candidate_item != null:
+		candidate_item = null

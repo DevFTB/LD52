@@ -3,8 +3,6 @@ class_name PlayerStats
 
 @export var player_name = "Player"
 
-var items = {}
-
 var level = 1
 
 @export var hp : Stat = null
@@ -25,19 +23,32 @@ var passive_level = 1
 
 @export var inventory = Inventory.new()
 
+@export var inventory_size : Stat = null
+
 func add_item(item):
-	inventory.add(item)
-	recalculate_item_bonuses()
-	
+	if can_add_to_inventory():
+		inventory.add(item)
+		recalculate_item_bonuses()
+		
 	pass
 
 func remove_item(item):
 	inventory.remove(item)
 	recalculate_item_bonuses()
 	pass
-	
+
+func can_add_to_inventory():
+	return inventory.get_amount_stored() < inventory_size.get_effective_value(level)
+	pass
+
+var item_accumulate = func(accum, item, items):
+	var subtotal = BuffStats.new()
+	for i in range(items[item]):
+		subtotal.stack_with(item)
+	return subtotal.stack_with(accum)
+
 func recalculate_item_bonuses():
-	var total = items.keys().reduce(func(accum, stats): return stats.stack_with(accum), BuffStats.new())
+	var total = inventory.items.keys().reduce(func(accum, item): item_accumulate.call(accum, item, inventory.items))
 	
 	hp.apply_item_modifier(total.hp) 
 	atk.apply_item_modifier(total.atk)

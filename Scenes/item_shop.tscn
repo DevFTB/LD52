@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cwi8pxuq5etne"]
+[gd_scene load_steps=30 format=3 uid="uid://cwi8pxuq5etne"]
 
 [ext_resource type="Script" path="res://Scenes/ItemShop.gd" id="1_amji2"]
 [ext_resource type="Texture2D" uid="uid://jfpvwlqrgbgp" path="res://Items/item_shop/item_shop_bg.png" id="1_jjkfc"]
@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://dxb6nhl2nl65u" path="res://Items/item_shop/text_box.png" id="18_27y1b"]
 [ext_resource type="Script" path="res://Scenes/HoverTooltip.gd" id="19_foh7c"]
 [ext_resource type="Texture2D" uid="uid://ssdhis7pxbca" path="res://Items/item_shop/tool_tip.png" id="20_4dui6"]
+[ext_resource type="PackedScene" uid="uid://ipchlkw56jbt" path="res://Items/char_Screen/player_view.tscn" id="22_801xu"]
+[ext_resource type="Resource" uid="uid://dwydefp8cr4lw" path="res://Player/the_sheepard_stats.tres" id="26_h2x05"]
+[ext_resource type="Resource" uid="uid://c2y7maiuusio3" path="res://Player/Arboarist/arboarist_stats.tres" id="27_8ox7v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jx6hc"]
 font_size = 24
@@ -42,7 +45,7 @@ region = Rect2(168, 0, 168, 48)
 font_size = 28
 font_color = Color(0.713726, 0.756863, 0.552941, 1)
 
-[node name="ItemShop" type="Node" node_paths=PackedStringArray("slot1", "slot2", "slot3", "currency_label", "stash_gui")]
+[node name="ItemShop" type="Node" node_paths=PackedStringArray("slot1", "slot2", "slot3", "currency_label", "stash_gui") groups=["shop"]]
 script = ExtResource("1_amji2")
 game_progression = ExtResource("2_qx5cf")
 slot1 = NodePath("ItemShopGUI/Shop/HBoxContainer/Control")
@@ -121,23 +124,7 @@ text = "1200"
 label_settings = SubResource("LabelSettings_jx6hc")
 horizontal_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="ItemShopGUI/LeftButtons"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = -48.0
-offset_right = 81.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = SubResource("AtlasTexture_c422n")
-texture_pressed = SubResource("AtlasTexture_6wycr")
-texture_hover = SubResource("AtlasTexture_vourc")
-
-[node name="TextureButton" type="TextureButton" parent="ItemShopGUI"]
+[node name="NextStageButton" type="TextureButton" parent="ItemShopGUI"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -203,6 +190,23 @@ offset_right = 272.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="CharacterButton" type="TextureButton" parent="ItemShopGUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -63.0
+offset_right = 74.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_c422n")
+texture_pressed = SubResource("AtlasTexture_6wycr")
+texture_hover = SubResource("AtlasTexture_vourc")
+
 [node name="Shop" type="Control" parent="ItemShopGUI"]
 layout_mode = 1
 anchors_preset = 1
@@ -225,16 +229,16 @@ grow_vertical = 2
 
 [node name="Control" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
 layout_mode = 2
-tooltip_path = NodePath("../../../Tooltip")
+tooltip_path = NodePath("../../../../Tooltip")
 
 [node name="Control2" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
 layout_mode = 2
-tooltip_path = NodePath("../../../Tooltip")
+tooltip_path = NodePath("../../../../Tooltip")
 slot = 1
 
 [node name="Control3" parent="ItemShopGUI/Shop/HBoxContainer" instance=ExtResource("13_gt15q")]
 layout_mode = 2
-tooltip_path = NodePath("../../../Tooltip")
+tooltip_path = NodePath("../../../../Tooltip")
 slot = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ItemShopGUI/Shop"]
@@ -323,23 +327,73 @@ offset_right = 75.0
 offset_bottom = 67.0
 text = "Your mum gey"
 
-[node name="Tooltip" type="Control" parent="ItemShopGUI" groups=["tooltip"]]
+[node name="CharacterScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = -250.0
+offset_right = 401.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="CharacterScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_4dui6")
+ignore_texture_size = true
+
+[node name="PlayerViews" type="HBoxContainer" parent="CharacterScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = -138.0
+offset_right = 369.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerView" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
+layout_mode = 2
+
+[node name="PlayerView2" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
+layout_mode = 2
+player_stats = ExtResource("26_h2x05")
+
+[node name="PlayerView3" parent="CharacterScreen/PlayerViews" instance=ExtResource("22_801xu")]
+layout_mode = 2
+player_stats = ExtResource("27_8ox7v")
+
+[node name="Tooltip" type="Control" parent="." groups=["tooltip"]]
 visible = false
 custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 128.0
+offset_bottom = 128.0
 mouse_filter = 1
 script = ExtResource("19_foh7c")
 
-[node name="TextureRect" type="TextureRect" parent="ItemShopGUI/Tooltip"]
+[node name="TextureRect" type="TextureRect" parent="Tooltip"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("20_4dui6")
 
-[node name="Name" type="Label" parent="ItemShopGUI/Tooltip"]
+[node name="Name" type="Label" parent="Tooltip"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -351,7 +405,7 @@ offset_bottom = 30.0
 grow_horizontal = 2
 text = "Item Name"
 
-[node name="Label" type="Label" parent="ItemShopGUI/Tooltip"]
+[node name="Label" type="Label" parent="Tooltip"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 47.0
@@ -360,6 +414,7 @@ offset_bottom = 99.0
 text = "+2 Atk
 +2 CDR"
 
+[connection signal="pressed" from="ItemShopGUI/CharacterButton" to="." method="_on_character_button_pressed"]
 [connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control" to="." method="_on_buy_pressed"]
 [connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control2" to="." method="_on_buy_pressed"]
 [connection signal="buy_pressed" from="ItemShopGUI/Shop/HBoxContainer/Control3" to="." method="_on_buy_pressed"]

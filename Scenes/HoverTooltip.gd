@@ -1,10 +1,11 @@
 extends Control
 
 var current_control = null
+@export var offset = Vector2(10, 10)
 
 func _process(delta):
 	if visible:
-		position = get_viewport().get_mouse_position()
+		position = get_viewport().get_mouse_position() + offset
 	pass
 
 func show_tooltip(item, control: Control):

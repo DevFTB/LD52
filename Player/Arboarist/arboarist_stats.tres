@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=12 format=3 uid="uid://c2y7maiuusio3"]
+[gd_resource type="Resource" load_steps=15 format=3 uid="uid://c2y7maiuusio3"]
 
 [ext_resource type="Script" path="res://Player/Stat.gd" id="1_uv1bu"]
+[ext_resource type="Script" path="res://Items/Inventory.gd" id="2_kfosy"]
 [ext_resource type="Script" path="res://Player/PlayerStats.gd" id="2_nd1oh"]
 
 [sub_resource type="Resource" id="Resource_fs2lm"]
@@ -22,6 +23,14 @@ level_bonus = 0.1
 script = ExtResource("1_uv1bu")
 base_value = 20.0
 level_bonus = 2.0
+
+[sub_resource type="Resource" id="Resource_jrcyo"]
+script = ExtResource("2_kfosy")
+
+[sub_resource type="Resource" id="Resource_8223m"]
+script = ExtResource("1_uv1bu")
+base_value = 4.0
+level_bonus = 1.0
 
 [sub_resource type="Resource" id="Resource_tbqgq"]
 script = ExtResource("1_uv1bu")
@@ -50,6 +59,7 @@ level_bonus = 0.02
 
 [resource]
 script = ExtResource("2_nd1oh")
+player_name = "Player"
 hp = SubResource("Resource_v5mv7")
 atk = SubResource("Resource_fs2lm")
 atk_speed = SubResource("Resource_vxh08")
@@ -59,3 +69,5 @@ skill_scaling = SubResource("Resource_15pc4")
 skill_cooldown = SubResource("Resource_ykyx2")
 skill_duration = SubResource("Resource_me4gs")
 passive = SubResource("Resource_xckjw")
+inventory = SubResource("Resource_jrcyo")
+inventory_size = SubResource("Resource_8223m")

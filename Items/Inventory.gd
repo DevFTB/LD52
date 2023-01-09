@@ -24,3 +24,6 @@ static func move(item: Item, from: Inventory, to: Inventory):
 	
 func get_items():
 	return items.keys
+
+func get_amount_stored() -> int:
+	return items.values().reduce(func(accum, x): return accum + x, 0)
