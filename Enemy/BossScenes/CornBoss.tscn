@@ -24,6 +24,7 @@ animations = [{
 
 [node name="Enemy2" instance=ExtResource("1_vqlsb")]
 scale = Vector2(1, 1)
+enemy_name = "Corn-o-cope-ia"
 max_hp = 4000
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
@@ -36,6 +37,8 @@ animation = &"alive"
 
 [node name="DamageNumber" parent="EnemyGUI" index="0"]
 layout_mode = 3
+offset = null
+animation_duration = null
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")

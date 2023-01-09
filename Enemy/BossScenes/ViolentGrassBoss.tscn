@@ -22,6 +22,7 @@ animations = [{
 
 [node name="Enemy2" instance=ExtResource("1_krkvr")]
 scale = Vector2(1, 1)
+enemy_name = "Violent Grass"
 max_hp = 100000
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="0"]
@@ -36,9 +37,8 @@ animation = &"alive"
 layout_mode = 3
 offset_top = 0.0
 offset_bottom = 26.0
-
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 3
+offset = null
+animation_duration = null
 
 [node name="FlashOnHit" parent="." index="4" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
