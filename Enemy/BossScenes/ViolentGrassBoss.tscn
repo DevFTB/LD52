@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7ts27rpt2h21"]
+
+[ext_resource type="PackedScene" uid="uid://cw60n741n5xbh" path="res://Enemy/BossScenes/boss.tscn" id="1_krkvr"]
+[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShootViolent.gd" id="2_4c0r5"]
+[ext_resource type="Resource" uid="uid://frpu5fqt6h4j" path="res://Enemy/BossAssets/violent_grass_boss_projectile.tres" id="3_in0s2"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="6_vt7el"]
+[ext_resource type="Texture2D" uid="uid://dt1kuyc05u7tj" path="res://Enemy/BossAssets/corn_boss.png" id="7_e7vev"]
+[ext_resource type="Texture2D" uid="uid://bvr50uoh6un2l" path="res://Enemy/BossAssets/corn_boss_DED.png" id="8_e2xon"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wxrlx"]
+animations = [{
+"frames": [ExtResource("7_e7vev")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("8_e2xon")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[node name="Enemy2" instance=ExtResource("1_krkvr")]
+scale = Vector2(1, 1)
+max_hp = 100000
+
+[node name="HealthBar" parent="EnemyGUI" index="1"]
+layout_mode = 1
+
+[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
+
+[node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("2_4c0r5")
+projectile_stats = ExtResource("3_in0s2")
+
+[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot" index="0"]
+one_shot = true
+
+[node name="ExhaustedTimer" type="Timer" parent="Attacks/ProjectileShoot" index="1"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="6"]
+material = ExtResource("6_vt7el")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_wxrlx")
+animation = &"alive"
+
+[connection signal="health_changed" from="." to="Attacks/ProjectileShoot" method="check_super_mode"]
+[connection signal="timeout" from="Attacks/ProjectileShoot/ExhaustedTimer" to="Attacks/ProjectileShoot" method="exhaust"]
