@@ -7,6 +7,8 @@ extends Node
 @export var currency_label : Label
 @export var stash_gui: Control
 
+@export var voice_lines = ["Come browse my wares.", "Quality goods at low prices!", "I keep this for my most prized customers", "Someone acutally gifted these items to me.", "I never expected my food to start fighting back!"]
+
 var candidate_item = null
 
 func _ready():
@@ -86,7 +88,7 @@ func set_player_candidate_item(item: Item):
 
 func use_candidate(player_stats):
 	if candidate_item != null:
-		player_stats.inventory.add(candidate_item)
+		player_stats.add_item(candidate_item)
 		game_progression.stash.remove(candidate_item)
 		
 		update_gui()
@@ -109,4 +111,9 @@ func _input(event):
 
 func _on_next_stage_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Combat.tscn")
+	pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	$ItemShopGUI/TextBox2/SpeechLabel.display_text(voice_lines[randi() % voice_lines.size()])
 	pass # Replace with function body.

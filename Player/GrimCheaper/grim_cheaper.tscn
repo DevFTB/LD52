@@ -102,13 +102,5 @@ stream = ExtResource("15_rohqv")
 [node name="ReadySound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
 stream = ExtResource("16_3xeq2")
 
-[connection signal="attack_used" from="." to="GrimCheeperSound" method="_on_grim_cheaper_attack_used"]
-[connection signal="control_changed" from="." to="AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]
-[connection signal="control_changed" from="." to="GrimCheeperSound" method="_on_grim_cheaper_control_changed"]
-[connection signal="death" from="." to="GrimCheeperSound" method="_on_grim_cheaper_death"]
-[connection signal="health_changed" from="." to="CharacterGUI" method="_on_health_changed"]
-[connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
-[connection signal="skill_used" from="." to="GrimCheeperSound" method="_on_grim_cheaper_skill_used"]
-[connection signal="stats_changed" from="." to="CharacterGUI" method="_on_grim_cheaper_stats_changed"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

@@ -40,7 +40,7 @@ level_bonus = 0.05
 
 [sub_resource type="Resource" id="Resource_xckjw"]
 script = ExtResource("1_uv1bu")
-base_value = 1.1
+base_value = 0.1
 level_bonus = 0.02
 
 [sub_resource type="Resource" id="Resource_ykyx2"]
@@ -55,7 +55,7 @@ level_bonus = 0.5
 
 [sub_resource type="Resource" id="Resource_15pc4"]
 script = ExtResource("1_uv1bu")
-base_value = 1.1
+base_value = 0.4
 level_bonus = 0.02
 
 [resource]
