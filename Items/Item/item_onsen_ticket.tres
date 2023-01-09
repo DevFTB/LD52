@@ -4,23 +4,23 @@
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_0njph"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_fi8od"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhtuf"]
 atlas = ExtResource("1_njem3")
-region = Rect2(32, 96, 32, 32)
+region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="Resource" id="Resource_wp5um"]
+[sub_resource type="Resource" id="Resource_novxi"]
 script = ExtResource("3_fi8od")
-hp = 150.0
-atk = 10.0
-atk_speed = 0.0
-move_speed = 5.0
+hp = 0.0
+atk = 0.0
+atk_speed = 25.0
+move_speed = 0.0
 dmg_reduction = 0.0
-skill_cooldown = 0.0
+skill_cooldown = 15.0
 
 [resource]
 script = ExtResource("2_0njph")
-item_name = "Emergency Food"
-icon = SubResource("AtlasTexture_jqar4")
+item_name = " Onsen Ticket"
+icon = SubResource("AtlasTexture_hhtuf")
 rarity = 2
-stats = SubResource("Resource_wp5um")
-cost = 54
+stats = SubResource("Resource_novxi")
+cost = 66

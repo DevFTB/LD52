@@ -1,26 +1,26 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cwg8r5dpfabja"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bgp0wbq3rbux2"]
 
 [ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_5c6my"]
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_obher"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_s2mfu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i16t7"]
 atlas = ExtResource("1_5c6my")
-region = Rect2(64, 128, 32, 32)
+region = Rect2(128, 96, 32, 32)
 
-[sub_resource type="Resource" id="Resource_ljmog"]
+[sub_resource type="Resource" id="Resource_efrt7"]
 script = ExtResource("3_s2mfu")
-hp = 200.0
-atk = 20.0
-atk_speed = 20.0
-move_speed = 20.0
+hp = 0.0
+atk = 80.0
+atk_speed = 50.0
+move_speed = -10.0
 dmg_reduction = 0.0
-skill_cooldown = 10.0
+skill_cooldown = 0.0
 
 [resource]
 script = ExtResource("2_obher")
-item_name = "Dreamy Bouquet"
-icon = SubResource("AtlasTexture_jqar4")
+item_name = "Water of Life"
+icon = SubResource("AtlasTexture_i16t7")
 rarity = 3
-stats = SubResource("Resource_ljmog")
+stats = SubResource("Resource_efrt7")
 cost = 180

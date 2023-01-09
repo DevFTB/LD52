@@ -1,16 +1,14 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bdwydbbciwrov"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bcof15tislqvx"]
 
+[ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_a0hr5"]
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_apj6a"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_qy8ah"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dg2wb"]
-load_path = "res://.godot/imported/items.png-2619dfc0de3a9b8a69ac381b50c4611a.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mj455"]
-atlas = SubResource("CompressedTexture2D_dg2wb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pgg8"]
+atlas = ExtResource("1_a0hr5")
 region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="Resource" id="Resource_eavft"]
+[sub_resource type="Resource" id="Resource_oo4ut"]
 script = ExtResource("3_qy8ah")
 hp = 200.0
 atk = 0.0
@@ -21,8 +19,8 @@ skill_cooldown = 0.0
 
 [resource]
 script = ExtResource("2_apj6a")
-item_name = "Pitchfork"
-icon = SubResource("AtlasTexture_mj455")
+item_name = "Protective Glasses"
+icon = SubResource("AtlasTexture_0pgg8")
 rarity = 2
-stats = SubResource("Resource_eavft")
+stats = SubResource("Resource_oo4ut")
 cost = 54

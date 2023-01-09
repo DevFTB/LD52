@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cwg8r5dpfabja"]
+
+[ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_2mqp1"]
+[ext_resource type="Script" path="res://Items/Item.gd" id="2_uouqs"]
+[ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_obh3o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poow8"]
+atlas = ExtResource("1_2mqp1")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="Resource" id="Resource_o7vt4"]
+script = ExtResource("3_obh3o")
+hp = 0.0
+atk = 0.0
+atk_speed = 0.0
+move_speed = 15.0
+dmg_reduction = 0.0
+skill_cooldown = 20.0
+
+[resource]
+script = ExtResource("2_uouqs")
+item_name = "Peer Reviewed Essay"
+icon = SubResource("AtlasTexture_poow8")
+rarity = 2
+stats = SubResource("Resource_o7vt4")
+cost = 66

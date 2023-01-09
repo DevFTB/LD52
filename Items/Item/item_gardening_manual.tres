@@ -1,16 +1,14 @@
 [gd_resource type="Resource" load_steps=6 format=3 uid="uid://fcu07hf8j0mo"]
 
+[ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_m42dx"]
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_6bayi"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_flna3"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_455tp"]
-load_path = "res://.godot/imported/items.png-2619dfc0de3a9b8a69ac381b50c4611a.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbb5m"]
-atlas = SubResource("CompressedTexture2D_455tp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_85kes"]
+atlas = ExtResource("1_m42dx")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="Resource" id="Resource_lnn2q"]
+[sub_resource type="Resource" id="Resource_ausmm"]
 script = ExtResource("3_flna3")
 hp = 0.0
 atk = 0.0
@@ -22,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("2_6bayi")
 item_name = "Gardening Manual"
-icon = SubResource("AtlasTexture_bbb5m")
+icon = SubResource("AtlasTexture_85kes")
 rarity = 1
-stats = SubResource("Resource_lnn2q")
+stats = SubResource("Resource_ausmm")
 cost = 10

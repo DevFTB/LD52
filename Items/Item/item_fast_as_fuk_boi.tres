@@ -1,26 +1,26 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dl43wcdxujo3k"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cbe487yc4r8qg"]
 
 [ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_n3l14"]
 [ext_resource type="Script" path="res://Items/Item.gd" id="2_q5vkd"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_j1vxn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqar4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5dc4"]
 atlas = ExtResource("1_n3l14")
-region = Rect2(96, 128, 32, 32)
+region = Rect2(128, 128, 32, 32)
 
-[sub_resource type="Resource" id="Resource_ljmog"]
+[sub_resource type="Resource" id="Resource_qf3j1"]
 script = ExtResource("3_j1vxn")
-hp = 1000.0
-atk = 100.0
-atk_speed = 50.0
-move_speed = 30.0
+hp = 0.0
+atk = 0.0
+atk_speed = 100.0
+move_speed = 155.0
 dmg_reduction = 0.0
-skill_cooldown = 50.0
+skill_cooldown = 45.0
 
 [resource]
 script = ExtResource("2_q5vkd")
-item_name = "Meaning of Life"
-icon = SubResource("AtlasTexture_jqar4")
+item_name = "Fast as fuk boi"
+icon = SubResource("AtlasTexture_s5dc4")
 rarity = 4
-stats = SubResource("Resource_ljmog")
+stats = SubResource("Resource_qf3j1")
 cost = 690

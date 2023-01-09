@@ -1,16 +1,14 @@
 [gd_resource type="Resource" load_steps=6 format=3 uid="uid://ul7xw2ss4us3"]
 
 [ext_resource type="Script" path="res://Items/Item.gd" id="1_5xkpo"]
+[ext_resource type="Texture2D" uid="uid://be8ujvpf5yoih" path="res://Items/image.png" id="1_pirax"]
 [ext_resource type="Script" path="res://Items/ItemBuffStats.gd" id="3_6am7n"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tkaw8"]
-load_path = "res://.godot/imported/items.png-2619dfc0de3a9b8a69ac381b50c4611a.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2uyg3"]
-atlas = SubResource("CompressedTexture2D_tkaw8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0i2h"]
+atlas = ExtResource("1_pirax")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="Resource" id="Resource_oxhvy"]
+[sub_resource type="Resource" id="Resource_5nu16"]
 script = ExtResource("3_6am7n")
 hp = 0.0
 atk = 5.0
@@ -22,7 +20,7 @@ skill_cooldown = 0.0
 [resource]
 script = ExtResource("1_5xkpo")
 item_name = "Pitchfork"
-icon = SubResource("AtlasTexture_2uyg3")
+icon = SubResource("AtlasTexture_b0i2h")
 rarity = 0
-stats = SubResource("Resource_oxhvy")
+stats = SubResource("Resource_5nu16")
 cost = 5
