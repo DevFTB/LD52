@@ -8,6 +8,6 @@
 script = ExtResource("1_nggbi")
 damage = 5.0
 speed = 100.0
-range = 1000.0
+range = 500.0
 texture = ExtResource("2_46uap")
 mult_textures = ExtResource("1_rgybx")
