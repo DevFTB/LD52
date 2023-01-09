@@ -16,6 +16,7 @@ func get_current_zone() -> Zone:
 
 func change_to_next_zone():
 	current_zone_index += 1
+	
 
 	
 func _init(p_z = [], p_i = [], p_s = Inventory.new()):

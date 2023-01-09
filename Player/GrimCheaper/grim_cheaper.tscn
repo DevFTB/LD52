@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://b02pf55ugd8qu"]
 
 [ext_resource type="Script" path="res://Scenes/GrimCheaper.gd" id="1_pxi04"]
-[ext_resource type="PackedScene" uid="uid://bq32vdiv30t2u" path="res://Player/Abilities/cleave.tscn" id="2_8htio"]
-[ext_resource type="PackedScene" uid="uid://cqivytgoalyta" path="res://Player/Abilities/ultra_cleave.tscn" id="3_ul1bh"]
-[ext_resource type="Resource" uid="uid://bp6lo7vsrhav8" path="res://Player/grim_cheaper_stats.tres" id="4_gtjjp"]
+[ext_resource type="PackedScene" uid="uid://bq32vdiv30t2u" path="res://Player/Abilities/cleave.tscn" id="2_77ujy"]
+[ext_resource type="PackedScene" uid="uid://cqivytgoalyta" path="res://Player/Abilities/ultra_cleave.tscn" id="3_5a4eg"]
+[ext_resource type="Resource" uid="uid://bp6lo7vsrhav8" path="res://Player/grim_cheaper_stats.tres" id="4_6ixoq"]
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="5_iyqnp"]
 [ext_resource type="SpriteFrames" uid="uid://6xd720ibxlu0" path="res://Player/GrimCheaper/grim_cheaper_frames.tres" id="6_0w6y5"]
 [ext_resource type="SpriteFrames" uid="uid://cqqhtmsf7jtyc" path="res://Player/UI/player_selected_arrow_frames.tres" id="7_5q5al"]
@@ -24,9 +24,10 @@ height = 102.0
 [node name="GrimCheaper" type="Node2D" groups=["player"]]
 texture_filter = 1
 script = ExtResource("1_pxi04")
-normal_attack = ExtResource("2_8htio")
-skill = ExtResource("3_ul1bh")
-player_stats = ExtResource("4_gtjjp")
+normal_attack = ExtResource("2_77ujy")
+skill = ExtResource("3_5a4eg")
+player_stats = ExtResource("4_6ixoq")
+ai_modulo = -1
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("5_iyqnp")
@@ -102,5 +103,8 @@ stream = ExtResource("15_rohqv")
 [node name="ReadySound" type="AudioStreamPlayer2D" parent="GrimCheeperSound"]
 stream = ExtResource("16_3xeq2")
 
+[connection signal="control_changed" from="." to="AnimatedSprite/SelectedPlayerArrow" method="_on_player_control_changed"]
+[connection signal="health_changed" from="." to="CharacterGUI" method="_on_health_changed"]
+[connection signal="stats_changed" from="." to="CharacterGUI" method="_on_stats_changed"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

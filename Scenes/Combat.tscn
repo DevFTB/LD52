@@ -123,6 +123,7 @@ position = Vector2(1280, 338)
 [node name="Arboarist" parent="Arenas/Players" instance=ExtResource("5_yklqs")]
 position = Vector2(1288, 148)
 player_stats = ExtResource("6_dps4h")
+ai_modulo = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

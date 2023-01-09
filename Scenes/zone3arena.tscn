@@ -75,7 +75,7 @@ pattern_0 = SubResource("TileMapPattern_tn2fb")
 z_index = -2
 script = ExtResource("1_ifhbu")
 spawnable_groups = [ExtResource("2_ve0ol")]
-spawnable_area = Rect2(0, 200, 700, 400)
+spawnable_area = Rect2(100, 100, 700, 300)
 level_size = Vector2(1152, 704)
 difficulty_level = 6
 

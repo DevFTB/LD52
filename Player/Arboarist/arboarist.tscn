@@ -85,6 +85,7 @@ script = ExtResource("1_u6v5u")
 normal_attack = ExtResource("2_ob17p")
 skill = ExtResource("3_7accb")
 player_stats = SubResource("Resource_gxlbg")
+ai_modulo = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("6_pk8j6")
@@ -113,7 +114,6 @@ script = ExtResource("10_mb2mn")
 
 [node name="HealthBar" type="ProgressBar" parent="CharacterGUI"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -168,6 +168,6 @@ volume_db = 5.0
 [connection signal="health_changed" from="." to="CharacterGUI" method="_on_health_changed"]
 [connection signal="health_changed" from="." to="FlashOnHit" method="_on_health_changed"]
 [connection signal="skill_used" from="." to="ArboaristSoundController" method="_on_arboarist_skill_used"]
-[connection signal="stats_changed" from="." to="CharacterGUI" method="_on_grim_cheaper_stats_changed"]
+[connection signal="stats_changed" from="." to="CharacterGUI" method="_on_stats_changed"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]
