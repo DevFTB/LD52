@@ -54,6 +54,11 @@ func switch_arena():
 		var tween = get_tree().create_tween()
 		tween.tween_property($Arenas, "position", Vector2(0, 0), 5)
 		tween.tween_callback(func(): $AnimationPlayer.play("Fail"))
+		
+		if campaign.current_zone_index == campaign.zones.size():
+			get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+			pass
+		
 	else:
 		var tween = get_tree().create_tween()
 		var destination = $Arenas.position + Vector2(1152, 0)
@@ -69,6 +74,7 @@ func on_arena_lost():
 func return_to_market():
 	for player in $Arenas/Players.get_children():
 		player.player_stats.gain_xp(accumulated_xp)
+	
 	get_tree().change_scene_to_file("res://Scenes/item_shop.tscn")
 	pass
 

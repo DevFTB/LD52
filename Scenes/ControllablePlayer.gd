@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var normal_attack : PackedScene 
-
 @export var skill : PackedScene
 
 @export var player_stats: PlayerStats
@@ -13,6 +12,7 @@ extends Node2D
 @onready var atk_speed = player_stats.get_atk_speed()
 @onready var move_speed = player_stats.get_move_speed()
 
+@export var ai_modulo = 0
 
 var dmg_reduction = 0
 
@@ -297,15 +297,15 @@ func recalculate_stats():
 func process_ai(delta):
 	if nearest_enemy:
 		# todo: enforce player separation
-		var enemy_pos = nearest_enemy.global_position
+		var enemy_pos = nearest_enemy.global_position  + Vector2(20, 0).rotated(ai_modulo * PI/3)
 		
 		var players = get_tree().get_nodes_in_group("players")
 		var friendlies = players.filter(func(x): return x != self)
 
 		direction.x = 0
-		if enemy_pos.x > global_position.x + 64:
+		if enemy_pos.x > global_position.x + 1:
 			direction.x = 1
-		if enemy_pos.x < global_position.x - 64:
+		if enemy_pos.x < global_position.x - 1:
 			direction.x = -1
 		direction.y = 0
 

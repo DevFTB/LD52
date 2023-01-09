@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbuyqlvuuqo1q"]
+
+[ext_resource type="Script" path="res://Scenes/GameOver.gd" id="1_vef87"]
+[ext_resource type="Texture2D" uid="uid://b45stc1oqnoad" path="res://UI/plus_button1.png" id="2_pu5q1"]
+[ext_resource type="Texture2D" uid="uid://y1wohq04ne3" path="res://UI/plus_button3.png" id="3_jlcci"]
+[ext_resource type="Texture2D" uid="uid://dfcie1ctdt3o5" path="res://UI/plus_button2.png" id="4_1eio4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3d67j"]
+font_size = 96
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_vef87")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129412, 0.215686, 0.12549, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -187.0
+offset_right = 232.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Win!!!"
+label_settings = SubResource("LabelSettings_3d67j")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -681.0
+offset_top = 343.0
+offset_right = -455.0
+offset_bottom = 569.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_pu5q1")
+texture_pressed = ExtResource("3_jlcci")
+texture_hover = ExtResource("4_1eio4")
+stretch_mode = 0

@@ -1,0 +1,447 @@
+[gd_scene load_steps=39 format=3 uid="uid://crqmuupf5ermw"]
+
+[ext_resource type="Texture2D" uid="uid://ba33dlbjl3h3x" path="res://UI/MainMenu/menu_concept.png" id="1_ucyrn"]
+[ext_resource type="Script" path="res://UI/MainMenu/MainMenu.gd" id="2_6a075"]
+[ext_resource type="Texture2D" uid="uid://dk1vqr36ioanf" path="res://UI/MainMenu/button_normal.png" id="2_hmeyv"]
+[ext_resource type="Texture2D" uid="uid://dpw02gwi41mir" path="res://UI/MainMenu/button_pressed.png" id="3_blcou"]
+[ext_resource type="Texture2D" uid="uid://bska2d2a15uqe" path="res://UI/MainMenu/button_hovered.png" id="4_cfo6b"]
+[ext_resource type="Texture2D" uid="uid://pvwm5wf2dupt" path="res://UI/MainMenu/info_bg.png" id="6_rojx0"]
+[ext_resource type="Texture2D" uid="uid://b45stc1oqnoad" path="res://UI/plus_button1.png" id="6_se72m"]
+[ext_resource type="Texture2D" uid="uid://y1wohq04ne3" path="res://UI/plus_button3.png" id="7_8sxgm"]
+[ext_resource type="Texture2D" uid="uid://dfcie1ctdt3o5" path="res://UI/plus_button2.png" id="8_lsm2a"]
+[ext_resource type="Texture2D" uid="uid://cwb7mh30qeolw" path="res://UI/MainMenu/info_char.png" id="10_3k1qm"]
+[ext_resource type="Texture2D" uid="uid://d4gvew7gjhx5m" path="res://Player/GrimCheaper/gc_attack.png" id="11_8q7bs"]
+[ext_resource type="Texture2D" uid="uid://cbgytfw8g6tdf" path="res://Player/GrimCheaper/gc_walk.png" id="12_0oviq"]
+[ext_resource type="SpriteFrames" uid="uid://ce0sksbp1b1io" path="res://Player/Sheepard/sheepard_frames.tres" id="13_fy3v5"]
+[ext_resource type="SpriteFrames" uid="uid://cah4huhysak2j" path="res://Player/Arboarist/arboarist_sprite_frames.tres" id="14_njfqa"]
+[ext_resource type="Texture2D" uid="uid://bfh3uyen7utfy" path="res://UI/MainMenu/arrow_button_normal.png" id="15_qg5hj"]
+[ext_resource type="Texture2D" uid="uid://qs7jta5otldr" path="res://UI/MainMenu/arrow_button_pressed.png" id="16_y3oh0"]
+[ext_resource type="Texture2D" uid="uid://cw7ya5jn2bq4c" path="res://UI/MainMenu/arrow_button_hovered.png" id="17_q4d1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kffb7"]
+atlas = ExtResource("2_hmeyv")
+region = Rect2(279, 370.5, 573, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7nxt"]
+atlas = ExtResource("3_blcou")
+region = Rect2(279, 370, 573, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e34rh"]
+atlas = ExtResource("4_cfo6b")
+region = Rect2(279, 370, 573, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pccb0"]
+atlas = ExtResource("2_hmeyv")
+region = Rect2(279, 480, 573, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu6gr"]
+atlas = ExtResource("3_blcou")
+region = Rect2(279, 480, 573, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdqf2"]
+atlas = ExtResource("4_cfo6b")
+region = Rect2(279, 480, 573, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjk2h"]
+atlas = ExtResource("2_hmeyv")
+region = Rect2(279, 590.5, 573, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka7rs"]
+atlas = ExtResource("3_blcou")
+region = Rect2(279, 590.5, 573, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhntb"]
+atlas = ExtResource("4_cfo6b")
+region = Rect2(279, 590.5, 573, 102)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uxivd"]
+font_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bftnj"]
+font_size = 32
+font_color = Color(0.831373, 0.423529, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dbxr"]
+atlas = ExtResource("11_8q7bs")
+region = Rect2(0, 0, 185, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy57q"]
+atlas = ExtResource("11_8q7bs")
+region = Rect2(185, 0, 185, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpffa"]
+atlas = ExtResource("11_8q7bs")
+region = Rect2(370, 0, 185, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxkwy"]
+atlas = ExtResource("11_8q7bs")
+region = Rect2(555, 0, 185, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhuwt"]
+atlas = ExtResource("11_8q7bs")
+region = Rect2(740, 0, 185, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vuer"]
+atlas = ExtResource("11_8q7bs")
+region = Rect2(925, 0, 185, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a5bj"]
+atlas = ExtResource("11_8q7bs")
+region = Rect2(1110, 0, 185, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gxa3"]
+atlas = ExtResource("12_0oviq")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_414p1"]
+atlas = ExtResource("12_0oviq")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4pkg"]
+animations = [{
+"frames": [SubResource("AtlasTexture_6dbxr"), SubResource("AtlasTexture_hy57q"), SubResource("AtlasTexture_tpffa"), SubResource("AtlasTexture_cxkwy"), SubResource("AtlasTexture_bhuwt"), SubResource("AtlasTexture_1vuer"), SubResource("AtlasTexture_7a5bj")],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [SubResource("AtlasTexture_7gxa3")],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_414p1"), SubResource("AtlasTexture_7gxa3")],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Control" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ucyrn")
+script = ExtResource("2_6a075")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -286.0
+offset_right = 170.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_kffb7")
+texture_pressed = SubResource("AtlasTexture_n7nxt")
+texture_hover = SubResource("AtlasTexture_e34rh")
+
+[node name="InfoButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_pccb0")
+texture_pressed = SubResource("AtlasTexture_uu6gr")
+texture_hover = SubResource("AtlasTexture_rdqf2")
+
+[node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_fjk2h")
+texture_pressed = SubResource("AtlasTexture_ka7rs")
+texture_hover = SubResource("AtlasTexture_hhntb")
+
+[node name="Info" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 31.0
+offset_right = -74.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pages" type="Control" parent="Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Page" type="Control" parent="Info/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Info/Pages/Page"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rojx0")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="Info/Pages/Page"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 63.0
+offset_right = 965.0
+offset_bottom = 583.0
+text = "How to Play
+
+Take control of a party of barn animals on a quest to harvest the biomass from all plants standing in their way. Fight through 3 different zones, each complete with different enemies and each with a special boss at the end.
+
+Each character has an attack, a passive ability, and an activated skill. A list of each character and their skill descriptions can be found on the descriptions screen.
+
+CONTROLS:
+WASD to move your currently selected character
+SPACE to use your skill
+TAB to switch to next available character
+
+You can only control one character at a time. Your currently selected character is shown with an arrow. The other characters will be controlled by the AI and walk towards the enemies, attack, and use skills.
+
+Kill enemies to harvest their biomass, gaining XP and PlantDollars. Clear a stage or die to reach the item shop, where you can spend ability points gained from levels for permanent ability upgrades and spend PlantDollars to buy items to permanently power up your fighter. Gaining levels also passively increases your character stats slightly."
+label_settings = SubResource("LabelSettings_uxivd")
+autowrap_mode = 2
+
+[node name="Page3" type="Control" parent="Info/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Info/Pages/Page3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_3k1qm")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="Info/Pages/Page3"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -459.0
+offset_top = 72.0
+offset_right = -55.0
+offset_bottom = 130.0
+grow_horizontal = 0
+text = "The Grim Cheaper"
+label_settings = SubResource("LabelSettings_bftnj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Info/Pages/Page3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -463.0
+offset_top = -442.0
+offset_right = -45.0
+offset_bottom = -79.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "
+•    Passive: 	Heals for a portion of damage dealt
+•    Normal Atk:	 Swings with scythe, dealing area damage
+•    Skill:	 Attack many times in quick succession
+"
+autowrap_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Info/Pages/Page3"]
+position = Vector2(289, 310)
+scale = Vector2(2.48919, 2.48919)
+frames = SubResource("SpriteFrames_s4pkg")
+animation = &"attack"
+playing = true
+
+[node name="Page2" type="Control" parent="Info/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Info/Pages/Page2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_3k1qm")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="Info/Pages/Page2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -459.0
+offset_top = 72.0
+offset_right = -55.0
+offset_bottom = 130.0
+grow_horizontal = 0
+text = "The Sheepherd"
+label_settings = SubResource("LabelSettings_bftnj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Info/Pages/Page2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -463.0
+offset_top = -442.0
+offset_right = -45.0
+offset_bottom = -79.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "•    Passive: damage dealt heals allies
+•    Normal Atk: summons a sheep to attack
+•    Skill: Buff allies for a short duration"
+autowrap_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Info/Pages/Page2"]
+position = Vector2(289, 310)
+scale = Vector2(2.48919, 2.48919)
+frames = ExtResource("13_fy3v5")
+animation = &"attack"
+playing = true
+
+[node name="Page4" type="Control" parent="Info/Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Info/Pages/Page4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_3k1qm")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="Info/Pages/Page4"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -459.0
+offset_top = 72.0
+offset_right = -55.0
+offset_bottom = 130.0
+grow_horizontal = 0
+text = "The Arboarist"
+label_settings = SubResource("LabelSettings_bftnj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Info/Pages/Page4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -463.0
+offset_top = -442.0
+offset_right = -45.0
+offset_bottom = -79.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "•    Passive: Taunts enemies and take reduced damage from them.
+•    Normal Atk: Spins with chainsaw, dealing area damage
+•    Skill: take greatly reduced damage for a short period and heal for a large amount of health."
+autowrap_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Info/Pages/Page4"]
+position = Vector2(289, 310)
+scale = Vector2(2.48919, 2.48919)
+frames = ExtResource("14_njfqa")
+animation = &"attack"
+playing = true
+
+[node name="TextureButton" type="TextureButton" parent="Info"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -19.0
+offset_top = -18.0
+offset_right = 21.0
+offset_bottom = 22.0
+grow_horizontal = 0
+texture_normal = ExtResource("6_se72m")
+texture_pressed = ExtResource("7_8sxgm")
+texture_hover = ExtResource("8_lsm2a")
+stretch_mode = 0
+
+[node name="LeftButton" type="TextureButton" parent="Info"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -27.0
+offset_right = 79.0
+offset_bottom = 37.0
+grow_vertical = 2
+texture_normal = ExtResource("15_qg5hj")
+texture_pressed = ExtResource("16_y3oh0")
+texture_hover = ExtResource("17_q4d1o")
+
+[node name="RightButton" type="TextureButton" parent="Info"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 963.0
+offset_top = -15.0
+offset_right = 1027.0
+offset_bottom = 49.0
+grow_vertical = 2
+texture_normal = ExtResource("15_qg5hj")
+texture_pressed = ExtResource("16_y3oh0")
+texture_hover = ExtResource("17_q4d1o")
+flip_h = true
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Info/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Info/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Info/RightButton" to="." method="_on_right_button_pressed"]
