@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="2_lq30u"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShoot.gd" id="2_mori0"]
 [ext_resource type="Resource" uid="uid://cljm6gj3jjpk2" path="res://Enemy/BossAssets/kornboss_projectile.tres" id="3_6mme6"]
-[ext_resource type="Texture2D" uid="uid://cph35vi8i8nyw" path="res://Enemy/BossAssets/corn_boss.png" id="3_8b42h"]
+[ext_resource type="Texture2D" uid="uid://dt1kuyc05u7tj" path="res://Enemy/BossAssets/corn_boss.png" id="3_8b42h"]
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShootCone.gd" id="4_wd67q"]
 [ext_resource type="Texture2D" uid="uid://bvr50uoh6un2l" path="res://Enemy/BossAssets/corn_boss_DED.png" id="4_wnh3x"]
 [ext_resource type="Resource" uid="uid://bjbl7nvw24ran" path="res://Enemy/BossAssets/kornboss_aoe_projectile.tres" id="5_xvvlp"]
@@ -25,9 +25,6 @@ animations = [{
 [node name="Enemy2" instance=ExtResource("1_vqlsb")]
 scale = Vector2(1, 1)
 max_hp = 4000
-
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 1
 
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
