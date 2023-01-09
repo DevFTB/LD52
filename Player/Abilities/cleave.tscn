@@ -5,39 +5,39 @@
 [ext_resource type="Texture2D" uid="uid://dwbfw7t1ml3m5" path="res://Player/Abilities/cleave.png" id="2_yxpoh"]
 [ext_resource type="Shader" path="res://Player/Abilities/cleaveOutline.gdshader" id="4_mxjmw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nwc46"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6t2i"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8j6k5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug2jy"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rsdq2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nilj7"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gvae8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot1c5"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g286s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkpgx"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2nvek"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdntd"]
 atlas = ExtResource("2_yxpoh")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hf8u7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bca8n"]
 animations = [{
-"frames": [SubResource("AtlasTexture_nwc46"), SubResource("AtlasTexture_8j6k5"), SubResource("AtlasTexture_rsdq2"), SubResource("AtlasTexture_gvae8"), SubResource("AtlasTexture_g286s"), SubResource("AtlasTexture_2nvek")],
+"frames": [SubResource("AtlasTexture_i6t2i"), SubResource("AtlasTexture_ug2jy"), SubResource("AtlasTexture_nilj7"), SubResource("AtlasTexture_ot1c5"), SubResource("AtlasTexture_dkpgx"), SubResource("AtlasTexture_xdntd")],
 "loop": true,
 "name": &"default",
 "speed": 18.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fb4hq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_670n3"]
 shader = ExtResource("4_mxjmw")
 shader_parameter/DonutMaskCenter = Vector2(0, 0.5)
 shader_parameter/DonutMaskSize = null
@@ -62,11 +62,11 @@ duration = 0.33
 texture_filter = 1
 material = ExtResource("1_r0ij3")
 scale = Vector2(1.2, 1.2)
-frames = SubResource("SpriteFrames_hf8u7")
+frames = SubResource("SpriteFrames_bca8n")
 playing = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_fb4hq")
+material = SubResource("ShaderMaterial_670n3")
 offset_left = -51.0
 offset_top = -74.0
 offset_right = 60.0

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=3 uid="uid://cljm6gj3jjpk2"]
 
 [ext_resource type="Script" path="res://Enemy/Scripts/ProjectileStats.gd" id="1_nggbi"]
-[ext_resource type="Texture2D" uid="uid://057um2y7b35q" path="res://Enemy/Assets/kornukopia_proj_texts.tres" id="1_rgybx"]
+[ext_resource type="Texture2D" path="res://Enemy/Assets/kornukopia_proj_texts.tres" id="1_rgybx"]
 [ext_resource type="Texture2D" uid="uid://d053fjmqpv0gu" path="res://Enemy/Assets/korn_projectile.png" id="2_46uap"]
 
 [resource]
