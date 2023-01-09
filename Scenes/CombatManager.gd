@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var campaign : GameProgression 
+
 @onready var current_zone = campaign.get_current_zone()
 var current_round = -1
 var arenas = []
