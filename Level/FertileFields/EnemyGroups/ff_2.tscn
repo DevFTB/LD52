@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwux127naula4"]
+
+[ext_resource type="PackedScene" uid="uid://rnthmsbk2wo1" path="res://Enemy/EnemyScenes/CornRanger.tscn" id="1_k1im7"]
+[ext_resource type="PackedScene" uid="uid://dmxx8wf4jf6fs" path="res://Enemy/EnemyScenes/HealingSunflower.tscn" id="2_f0e85"]
+
+[node name="ff_2" type="Node2D"]
+
+[node name="Enemy7" parent="." instance=ExtResource("1_k1im7")]
+position = Vector2(-64, -68)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_k1im7")]
+position = Vector2(77, 16)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_k1im7")]
+position = Vector2(-194, 81)
+
+[node name="Enemy6" parent="." instance=ExtResource("2_f0e85")]
+position = Vector2(-59, 14)

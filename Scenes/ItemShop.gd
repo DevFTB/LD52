@@ -7,11 +7,25 @@ extends Node
 @export var currency_label : Label
 @export var stash_gui: Control
 
+var timer = Timer.new()
+
+var rng = RandomNumberGenerator.new()
+var hitRandom = 1
+
+
+
+@export var voice_lines = ["Come browse my wares.", "Quality goods at low prices!", "I keep this for my most prized customers", "Someone acutally gifted these items to me.", "I never expected my food to start fighting back!"]
+
 var candidate_item = null
 
 func _ready():
 	regenerate_shop()
 	update_gui()
+	timer.timeout.connect(play_shopkeeper_sound)
+	timer.wait_time = 5
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
 	pass
 
 func regenerate_shop():
@@ -47,6 +61,7 @@ func _on_refresh_button_pressed():
 		game_progression.current_money -= 2
 		regenerate_shop()
 		update_gui()
+		$BuySound.play()
 	pass # Replace with function body.
 
 func update_gui():
@@ -58,6 +73,7 @@ func _on_buy_pressed(item, slot):
 		if game_progression.current_money >= item.cost:
 				game_progression.current_money -= item.cost
 				game_progression.stash.add(item)
+				$BuySound.play()
 				match(slot):
 					0:
 						slot1.set_item(select_item(game_progression.get_current_zone().shop_slot_1))
@@ -76,6 +92,7 @@ func update_player_views():
 func _on_character_button_pressed():
 	$CharacterScreen.visible = not $CharacterScreen.visible
 	stash_gui.set_char_mode($CharacterScreen.visible)
+	$ClickSound.play()
 	pass # Replace with function body.
 
 func set_player_candidate_item(item: Item):
@@ -86,7 +103,7 @@ func set_player_candidate_item(item: Item):
 
 func use_candidate(player_stats):
 	if candidate_item != null:
-		player_stats.inventory.add(candidate_item)
+		player_stats.add_item(candidate_item)
 		game_progression.stash.remove(candidate_item)
 		
 		update_gui()
@@ -109,4 +126,21 @@ func _input(event):
 
 func _on_next_stage_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Combat.tscn")
+	$ClickSound.play()
 	pass # Replace with function body.
+
+func play_shopkeeper_sound():
+	rng.randomize()
+	hitRandom = rng.randi_range(1,5)
+	if hitRandom == 1:
+		$ShopkeeperNoise1.play()
+	if hitRandom == 2:
+		$ShopkeeperNoise2.play()
+	if hitRandom == 3:
+		$ShopkeeperNoise3.play()
+	if hitRandom == 4:
+		$ShopkeeperNoise4.play()
+	if hitRandom == 5:
+		$ShopkeeperNoise5.play()
+	$ItemShopGUI/TextBox2/SpeechLabel.display_text(voice_lines[randi() % voice_lines.size()])
+

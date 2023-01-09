@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_gtedj")
-damage = 3.0
+damage = 4.0
 range = 128.0
 size = 128.0

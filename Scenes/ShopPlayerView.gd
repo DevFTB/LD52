@@ -13,7 +13,7 @@ func update():
 	$Control/Control/Attack/Label.text =  	"Attack:  " + str(player_stats.attack_level)
 	$Control/Control/Skill/Label.text =  	"Skill:   " + str(player_stats.skill_level)
 	$Control/Control/Passive/Label.text =  	"Passive: " + str(player_stats.passive_level)
-	
+	$BagLabel.text = "Bag: " + str(player_stats.inventory.get_amount_stored()) + " / " + str(player_stats.get_inventory_size())
 	var can_upgrade = player_stats.unused_skill_points > 0
 	$Control/Control/Attack/AddAttackLevelButton.visible = can_upgrade
 	$Control/Control/Skill/AddSkillLevelButton.visible = can_upgrade
@@ -46,21 +46,24 @@ func disable_candidate_mode():
 func _on_button_pressed():
 	shop.use_candidate(player_stats)
 	pass # Replace with function body.
-
+	$ClickSound.play()
 
 func _on_add_passive_level_button_pressed():
 	player_stats.passive_level_up()
 	update()
+	$ClickSound.play()
 	pass # Replace with function body.
 
 
 func _on_add_attack_level_button_pressed():
 	player_stats.attack_level_up()
 	update()
+	$ClickSound.play()
 	pass # Replace with function body.
 
 
 func _on_add_skill_level_button_pressed():
 	player_stats.skill_level_up()
 	update()
+	$ClickSound.play()
 	pass # Replace with function body.

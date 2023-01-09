@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ipchlkw56jbt"]
+[gd_scene load_steps=11 format=3 uid="uid://ipchlkw56jbt"]
 
 [ext_resource type="Script" path="res://Scenes/ShopPlayerView.gd" id="1_wrr77"]
 [ext_resource type="Resource" uid="uid://bp6lo7vsrhav8" path="res://Player/grim_cheaper_stats.tres" id="2_2nvbi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtf7qldq0jtem" path="res://Items/char_Screen/char_item_gui.tscn" id="4_j2cv7"]
 [ext_resource type="Texture2D" uid="uid://1rswg1qlqrrx" path="res://Items/char_Screen/plus_button3.png" id="5_ym0n4"]
 [ext_resource type="Texture2D" uid="uid://cpvfevb8ix83a" path="res://Items/char_Screen/plus_button2.png" id="6_kvld2"]
+[ext_resource type="AudioStream" uid="uid://dvwxjdg8bjtj6" path="res://Sounds/click sound effect.wav" id="8_t6juq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2mj2q"]
 font_size = 12
@@ -56,15 +57,10 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="LevelLabel" type="Label" parent="Control/Control"]
-offset_right = 125.0
-offset_bottom = 20.0
 text = "Level 12"
 label_settings = SubResource("LabelSettings_2mj2q")
 
 [node name="USPLabel" type="Label" parent="Control/Control"]
-offset_top = 24.0
-offset_right = 125.0
-offset_bottom = 44.0
 text = "Skill Points: 1"
 label_settings = SubResource("LabelSettings_2mj2q")
 
@@ -72,9 +68,6 @@ label_settings = SubResource("LabelSettings_2mj2q")
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 3
 anchors_preset = 0
-offset_top = 48.0
-offset_right = 125.0
-offset_bottom = 72.0
 
 [node name="AddAttackLevelButton" type="TextureButton" parent="Control/Control/Attack"]
 anchors_preset = 6
@@ -108,9 +101,6 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 3
 anchors_preset = 0
-offset_top = 76.0
-offset_right = 125.0
-offset_bottom = 100.0
 
 [node name="AddSkillLevelButton" type="TextureButton" parent="Control/Control/Skill"]
 anchors_preset = 6
@@ -144,9 +134,6 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 3
 anchors_preset = 0
-offset_top = 104.0
-offset_right = 125.0
-offset_bottom = 128.0
 
 [node name="AddPassiveLevelButton" type="TextureButton" parent="Control/Control/Passive"]
 anchors_preset = 6
@@ -183,9 +170,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = 19.0
+offset_top = 12.0
 offset_right = 112.0
-offset_bottom = 115.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
@@ -193,120 +180,57 @@ theme_override_constants/v_separation = 0
 columns = 7
 
 [node name="Control" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_right = 32.0
-offset_bottom = 32.0
 
 [node name="Control2" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 32.0
-offset_right = 64.0
-offset_bottom = 32.0
 
 [node name="Control3" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 64.0
-offset_right = 96.0
-offset_bottom = 32.0
 
 [node name="Control4" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 96.0
-offset_right = 128.0
-offset_bottom = 32.0
 
 [node name="Control5" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 128.0
-offset_right = 160.0
-offset_bottom = 32.0
 
 [node name="Control6" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 160.0
-offset_right = 192.0
-offset_bottom = 32.0
 
 [node name="Control7" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 192.0
-offset_right = 224.0
-offset_bottom = 32.0
 
 [node name="Control8" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_top = 32.0
-offset_right = 32.0
-offset_bottom = 64.0
 
 [node name="Control9" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 64.0
-offset_bottom = 64.0
 
 [node name="Control10" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 64.0
-offset_top = 32.0
-offset_right = 96.0
-offset_bottom = 64.0
 
 [node name="Control11" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 96.0
-offset_top = 32.0
-offset_right = 128.0
-offset_bottom = 64.0
 
 [node name="Control12" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 128.0
-offset_top = 32.0
-offset_right = 160.0
-offset_bottom = 64.0
 
 [node name="Control13" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 160.0
-offset_top = 32.0
-offset_right = 192.0
-offset_bottom = 64.0
 
 [node name="Control14" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 192.0
-offset_top = 32.0
-offset_right = 224.0
-offset_bottom = 64.0
 
 [node name="Control15" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_top = 64.0
-offset_right = 32.0
-offset_bottom = 96.0
 
 [node name="Control16" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 32.0
-offset_top = 64.0
-offset_right = 64.0
-offset_bottom = 96.0
 
 [node name="Control17" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 96.0
-offset_bottom = 96.0
 
 [node name="Control18" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 96.0
-offset_top = 64.0
-offset_right = 128.0
-offset_bottom = 96.0
 
 [node name="Control19" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 128.0
-offset_top = 64.0
-offset_right = 160.0
-offset_bottom = 96.0
 
 [node name="Control20" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 160.0
-offset_top = 64.0
-offset_right = 192.0
-offset_bottom = 96.0
 
 [node name="Control21" parent="InventoryDisplay" instance=ExtResource("4_j2cv7")]
-offset_left = 192.0
-offset_top = 64.0
-offset_right = 224.0
-offset_bottom = 96.0
+
+[node name="BagLabel" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -25.0
+offset_right = 70.0
+offset_bottom = 1.0
+grow_vertical = 0
+text = "Bag: 0/6"
 
 [node name="CandidateSelect" type="Control" parent="."]
 layout_mode = 3
@@ -314,9 +238,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
-offset_top = 155.0
+offset_top = 148.0
 offset_right = -6.0
-offset_bottom = -20.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -327,6 +251,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Click to add"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_t6juq")
 
 [connection signal="pressed" from="Control/Control/Attack/AddAttackLevelButton" to="." method="_on_add_attack_level_button_pressed"]
 [connection signal="pressed" from="Control/Control/Skill/AddSkillLevelButton" to="." method="_on_add_skill_level_button_pressed"]

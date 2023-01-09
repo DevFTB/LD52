@@ -20,10 +20,10 @@ func start_zone():
 		var arena = spawn_arena(i)
 		arenas.append(arena)
 		$Arenas.add_child(arena)
-		
-		
+		play_music()
 		
 	start_next_arena()
+	
 
 func spawn_arena(round):
 	var zs = current_zone.zone_scenes
@@ -48,7 +48,8 @@ func spawn_arena(round):
 	return instance
 
 func switch_arena():
-	if current_round >= arenas.size():
+
+	if current_round == arenas.size() - 1:
 		campaign.current_zone_index += 1
 		var tween = get_tree().create_tween()
 		tween.tween_property($Arenas, "position", Vector2(0, 0), 5)
@@ -73,11 +74,19 @@ func return_to_market():
 
 func start_next_arena():
 	current_round += 1
-
 	arenas[current_round].start_arena()
 	emit_signal("on_arena_changed", current_round, current_zone)
 	pass
 
-func on_arena_finished(round):
+func on_arena_finished(round): 
+	$RoundWin.play()
 	switch_arena()
 	pass
+
+func play_music():
+	if current_zone.zone_name == "Fertile Fields":	
+		$music1.play()
+	if current_zone.zone_name == "Rancid Ranch":
+		$music2.play()
+	if current_zone.zone_name == "Nightmare Nursery":
+		$music3.play()

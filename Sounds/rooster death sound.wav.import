@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kk04imqedygp"
+path="res://.godot/imported/rooster death sound.wav-20fdb19367aa819e1e99ef24a739f88e.sample"
+
+[deps]
+
+source_file="res://Sounds/rooster death sound.wav"
+dest_files=["res://.godot/imported/rooster death sound.wav-20fdb19367aa819e1e99ef24a739f88e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

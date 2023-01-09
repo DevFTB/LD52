@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://doqwlficofiab"]
+
+[ext_resource type="PackedScene" uid="uid://joihhtxfmiew" path="res://Enemy/EnemyScenes/SoulsuckingEggplant.tscn" id="1_aqoyw"]
+
+[node name="nn_2" type="Node2D"]
+
+[node name="Enemy4" parent="." instance=ExtResource("1_aqoyw")]
+position = Vector2(-75, 73)
+
+[node name="Enemy5" parent="." instance=ExtResource("1_aqoyw")]
+position = Vector2(-18, -19)
+
+[node name="Enemy6" parent="." instance=ExtResource("1_aqoyw")]
+position = Vector2(130, -2)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_aqoyw")]
+position = Vector2(81, 79)

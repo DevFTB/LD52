@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://kfumsr3f8apc" path="res://Enemy/EnemyScenes/WatermelonChan.tscn" id="1_0rum4"]
+[ext_resource type="PackedScene" uid="uid://dmxx8wf4jf6fs" path="res://Enemy/EnemyScenes/HealingSunflower.tscn" id="2_i0tss"]
+
+[node name="ff_3" type="Node2D"]
+
+[node name="Enemy8" parent="." instance=ExtResource("1_0rum4")]
+position = Vector2(60, -51)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_0rum4")]
+position = Vector2(85, 62)
+
+[node name="Enemy10" parent="." instance=ExtResource("1_0rum4")]
+position = Vector2(-119, 49)
+
+[node name="Enemy6" parent="." instance=ExtResource("2_i0tss")]
+position = Vector2(-14, 11)

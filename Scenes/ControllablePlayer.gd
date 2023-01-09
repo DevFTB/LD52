@@ -17,7 +17,7 @@ extends Node2D
 var dmg_reduction = 0
 
 var direction : Vector2 = Vector2.ZERO
-var facing  : Vector2 = Vector2.ZERO
+var facing : Vector2 = Vector2.ZERO
 signal stats_changed(hp, atk, atk_speed, move_speed, dmg_reduction, skill_cooldown)
 signal health_changed(new_health, difference, should_display)
 signal used_attack(cd)
@@ -26,7 +26,6 @@ signal control_changed(controlled)
 signal death
 signal skill_used
 signal attack_used
-
 
 # Called when the node enters the scene tree for the first time.
 var enabled = false
@@ -46,11 +45,10 @@ var find_enemy_timeout = 0.25
 @export var ai_stopping_range = 20
 
 func _ready():
-	$AnimatedSprite.animation_finished.connect(on_anim_end)
 	emit_signal("stats_changed", hp, atk, atk_speed, move_speed, dmg_reduction, player_stats.get_skill_cooldown())
 	emit_signal("health_changed", health, 0, false)
 	recalculate_stats()
-	$AnimatedSprite.play("walk")
+	$AnimatedSprite.animation_finished.connect(on_anim_end)
 	
 	# start find enemy timer
 	_find_enemy_timer = Timer.new()
@@ -74,7 +72,17 @@ func get_nearest_enemy():
 			nearest_enemy = enemy
 	
 	return nearest_enemy
+
+func get_random_enemy():
+	var enemies = get_tree().get_nodes_in_group("enemy").filter(func (e): return not e.is_dead)
 	
+	if len(enemies) == 0:
+		return null
+		
+	return enemies[randi() % enemies.size()]
+	return
+	pass
+
 func _find_enemy_timeout():
 	nearest_enemy = get_nearest_enemy()
  
@@ -91,23 +99,21 @@ func _process(delta):
 			new_direction += Vector2.LEFT
 		if Input.is_action_pressed("move_right"):
 			new_direction += Vector2.RIGHT
-		
-		if $AnimatedSprite.animation != "walk":
-			do_walk()
+
 		direction =  new_direction
 		
 		if new_direction.length() != 0:
 			$AnimatedSprite.flip_h = direction.x < 0
 			facing = direction
-
-		
 		
 		position += direction.normalized() * move_speed * 100 * delta
 
 func modify_health(modification):
 	if not is_dead and enabled:
 		if modification < 0:
+			
 			var delta =  modification * (1 - min(dmg_reduction, 1))
+			print('My name is ' + name + ". Delta :" + str(delta) + " , " + str(modification))
 			health += delta
 		else:
 			health += modification
@@ -123,7 +129,6 @@ func die():
 	is_dead = true 
 	disable()
 
-	$AnimatedSprite.play("walk")
 	if level_width != null:
 		var tween = get_tree().create_tween()
 		var destination = Vector2(level_width + 150, position.y + (randi() % 150))
@@ -153,15 +158,17 @@ func get_skill_damage():
 	return player_stats.get_skill_damage(atk)
 	
 func on_anim_end():
-	if direction.x == 0 and direction.y == 0 :
+	if direction.length() == 0:
 		$AnimatedSprite.play("idle")
+	else:
+		$AnimatedSprite.play("walk")
+	pass
 
-func do_walk():
-	$AnimatedSprite.play("walk")
 
 func do_attack():
-	$AnimatedSprite.play("attack")
 	var new_attack = normal_attack.instantiate()
+	
+	$AnimatedSprite.play("attack")
 	emit_signal("attack_used")
 	new_attack.set_damage(get_attack_damage())
 	new_attack.damage_callback = on_attack_damage
@@ -238,7 +245,6 @@ func get_sprite():
 
 func walk_on(destination_x, duration):
 	if not is_dead:
-		do_walk()
 		self.level_width = 1152
 		var tween = get_tree().create_tween()
 		var destination = Vector2(destination_x - 100, position.y)
@@ -292,6 +298,9 @@ func process_ai(delta):
 	if nearest_enemy:
 		# todo: enforce player separation
 		var enemy_pos = nearest_enemy.global_position
+		
+		var players = get_tree().get_nodes_in_group("players")
+		var friendlies = players.filter(func(x): return x != self)
 
 		direction.x = 0
 		if enemy_pos.x > global_position.x + 64:
@@ -304,9 +313,10 @@ func process_ai(delta):
 			direction.y = 1
 		if enemy_pos.y < global_position.y - 1:
 			direction.y = -1
-			
+		
 		if direction.length() > 0:
-			$AnimatedSprite.play("walk")
+			if $AnimatedSprite.animation != "walk":
+				$AnimatedSprite.play("walk")
 
 		# todo: use range or make it smarter with skills
 		if can_use_skill and not is_dead:

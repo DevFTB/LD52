@@ -13,7 +13,7 @@ script = ExtResource("3_58o2y")
 hp = 1000.0
 atk = 100.0
 atk_speed = 50.0
-move_speed = 30.0
+move_speed = 0.3
 dmg_reduction = 0.0
 skill_cooldown = 50.0
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7aymp45wpavm"]
+
+[ext_resource type="PackedScene" uid="uid://bf21dvyk6qugq" path="res://Enemy/EnemyScenes/DPSPurpleRose.tscn" id="1_aofat"]
+
+[node name="nn_1" type="Node2D"]
+
+[node name="Enemy7" parent="." instance=ExtResource("1_aofat")]
+position = Vector2(-56, -42)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_aofat")]
+position = Vector2(100, -7)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_aofat")]
+position = Vector2(34, 109)
+
+[node name="Enemy10" parent="." instance=ExtResource("1_aofat")]
+position = Vector2(-103, 58)

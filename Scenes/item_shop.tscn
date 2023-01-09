@@ -1,10 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://cwi8pxuq5etne"]
+[gd_scene load_steps=41 format=3 uid="uid://cwi8pxuq5etne"]
 
 [ext_resource type="Script" path="res://Scenes/ItemShop.gd" id="1_amji2"]
 [ext_resource type="Texture2D" uid="uid://jfpvwlqrgbgp" path="res://Items/item_shop/item_shop_bg.png" id="1_jjkfc"]
 [ext_resource type="Texture2D" uid="uid://dbtcnjk6g35p3" path="res://Items/item_shop_mockup.png" id="1_uovsa"]
 [ext_resource type="Texture2D" uid="uid://bxmddp6bddpcx" path="res://Items/item_shop/item_shop_cashbar.png" id="2_fnyvg"]
-[ext_resource type="Resource" uid="uid://clqbxc4onvl5x" path="res://Level/scream_of_the_crop.tres" id="2_qx5cf"]
+[ext_resource type="Resource" uid="uid://chiji37ctw3qn" path="res://Level/scream_of_the_crop.tres" id="2_qx5cf"]
 [ext_resource type="Texture2D" uid="uid://cc8yrqsodujv5" path="res://Items/item_shop/item_shop_counter.png" id="4_6ry8p"]
 [ext_resource type="SpriteFrames" uid="uid://5yu85co5vkr6" path="res://Items/item_shop/scales_sprite_frames.tres" id="7_o0qkb"]
 [ext_resource type="Texture2D" uid="uid://cl2dq2ki7aajm" path="res://Items/item_shop/item_shop_chacter_button-sheet.png" id="7_xc4dn"]
@@ -20,10 +20,20 @@
 [ext_resource type="Texture2D" uid="uid://cpyea8qqqojrr" path="res://Items/item_shop/item_shop_reset_button_cost.png" id="17_11rv8"]
 [ext_resource type="Texture2D" uid="uid://dxb6nhl2nl65u" path="res://Items/item_shop/text_box.png" id="18_27y1b"]
 [ext_resource type="Script" path="res://Scenes/HoverTooltip.gd" id="19_foh7c"]
+[ext_resource type="Script" path="res://Scenes/AnimatedLabel.gd" id="20_0hx07"]
 [ext_resource type="Texture2D" uid="uid://ssdhis7pxbca" path="res://Items/item_shop/tool_tip.png" id="20_4dui6"]
 [ext_resource type="PackedScene" uid="uid://ipchlkw56jbt" path="res://Items/char_Screen/player_view.tscn" id="22_801xu"]
+[ext_resource type="AudioStream" uid="uid://dgwo161tvuxo8" path="res://Sounds/shopkeep 1.wav" id="25_n8ccq"]
 [ext_resource type="Resource" uid="uid://dwydefp8cr4lw" path="res://Player/the_sheepard_stats.tres" id="26_h2x05"]
+[ext_resource type="AudioStream" uid="uid://bgm8j8g5cerh5" path="res://Sounds/shopkeep2.wav" id="26_rntxg"]
+[ext_resource type="AudioStream" uid="uid://cmhp4b2n4jxxx" path="res://Sounds/shopkeep3.wav" id="27_8cuco"]
 [ext_resource type="Resource" uid="uid://c2y7maiuusio3" path="res://Player/Arboarist/arboarist_stats.tres" id="27_8ox7v"]
+[ext_resource type="AudioStream" uid="uid://dnnix0q2w76d2" path="res://Sounds/shopkeep4.wav" id="28_2ubjb"]
+[ext_resource type="AudioStream" uid="uid://bilr4pf6uwfcm" path="res://Sounds/shopkeep 5.wav" id="29_hegki"]
+[ext_resource type="AudioStream" uid="uid://dvwxjdg8bjtj6" path="res://Sounds/click sound effect.wav" id="30_7prlm"]
+[ext_resource type="AudioStream" uid="uid://b00nl3gwwwqio" path="res://Sounds/kaching buy.wav" id="31_rkjlb"]
+[ext_resource type="AudioStream" uid="uid://bhahj6k5b1470" path="res://Sounds/Music/shop.wav" id="32_b1txg"]
+[ext_resource type="AudioStream" uid="uid://kk04imqedygp" path="res://Sounds/rooster death sound.wav" id="33_5f6mx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jx6hc"]
 font_size = 24
@@ -336,14 +346,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("18_27y1b")
 
-[node name="Label" type="Label" parent="ItemShopGUI/TextBox2"]
+[node name="SpeechLabel" type="Label" parent="ItemShopGUI/TextBox2"]
 offset_left = 35.0
 offset_top = 44.0
-offset_right = 75.0
-offset_bottom = 67.0
-text = "Your mum gey"
+offset_right = 610.0
+offset_bottom = 106.0
+text = "Hello. Welcome to the farmer's market!"
+script = ExtResource("20_0hx07")
 
 [node name="CharacterScreen" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -440,6 +452,35 @@ offset_right = 70.0
 offset_bottom = 99.0
 text = "+2 Atk
 +2 CDR"
+
+[node name="ShopkeeperNoise1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_n8ccq")
+
+[node name="ShopkeeperNoise2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_rntxg")
+
+[node name="ShopkeeperNoise3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_8cuco")
+
+[node name="ShopkeeperNoise4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_2ubjb")
+
+[node name="ShopkeeperNoise5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_hegki")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_7prlm")
+
+[node name="BuySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_rkjlb")
+
+[node name="ShopMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_b1txg")
+autoplay = true
+
+[node name="RoosterNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_5f6mx")
+autoplay = true
 
 [connection signal="pressed" from="ItemShopGUI/NextStageButton" to="." method="_on_next_stage_button_pressed"]
 [connection signal="pressed" from="ItemShopGUI/CharacterButton" to="." method="_on_character_button_pressed"]
