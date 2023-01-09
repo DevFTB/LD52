@@ -23,12 +23,6 @@ animations = [{
 [node name="Enemy7" instance=ExtResource("1_ujnet")]
 max_hp = 15
 
-[node name="DamageNumber" parent="EnemyGUI" index="0"]
-layout_mode = 3
-
-[node name="HealthBar" parent="EnemyGUI" index="1"]
-layout_mode = 3
-
 [node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Sprite")
 
