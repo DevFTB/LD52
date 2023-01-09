@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c74s3t1dimubd"]
+
+[ext_resource type="PackedScene" uid="uid://ct5jx2b62lj8s" path="res://Enemy/EnemyScenes/enemy.tscn" id="1_wtbql"]
+[ext_resource type="Script" path="res://Enemy/Scripts/ProjectileShootCone.gd" id="2_5hjod"]
+[ext_resource type="Resource" path="res://Enemy/Assets/mushroom_projectile.tres" id="3_gaajt"]
+[ext_resource type="Material" uid="uid://dwax5uwomrfi0" path="res://Shaders/HurtFlash.tres" id="4_bqeef"]
+[ext_resource type="Texture2D" uid="uid://dvdwf1v8dptqt" path="res://Enemy/Assets/mushroomkorn.png" id="5_80rjb"]
+[ext_resource type="Texture2D" uid="uid://dna0b5w73ci03" path="res://Enemy/Assets/dead_korn.png" id="6_ycjkt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5iya"]
+animations = [{
+"frames": [ExtResource("5_80rjb")],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [ExtResource("6_ycjkt")],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[node name="Enemy2" instance=ExtResource("1_wtbql")]
+max_hp = 300
+
+[node name="FlashOnHit" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite")
+
+[node name="ProjectileShoot" type="Node2D" parent="Attacks" index="0"]
+script = ExtResource("2_5hjod")
+projectile_stats = ExtResource("3_gaajt")
+attack_frequency = 1.0
+
+[node name="AttackTimer" type="Timer" parent="Attacks/ProjectileShoot" index="0"]
+one_shot = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="5"]
+material = ExtResource("4_bqeef")
+use_parent_material = true
+position = Vector2(-2, -41)
+scale = Vector2(0.6, 0.6)
+frames = SubResource("SpriteFrames_a5iya")
+animation = &"alive"
